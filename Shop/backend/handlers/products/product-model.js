@@ -16,7 +16,7 @@ const moment = require('moment');
 
   const schema= new mongoose.Schema({
     category:{type:String,required:true},
-    title:{type:String,required:true},
+    title:{type:String,required:true,unique:true},
     description:{type:String,required:true},
     price:{type:Number,required:true},
     sale:{type:Boolean,default:false},

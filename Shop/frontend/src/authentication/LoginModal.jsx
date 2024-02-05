@@ -6,6 +6,7 @@ function Login() {
       email: "",
       password: "",
     });
+    const [errors, setErrors] = useState([]);
     const inputChange = (ev) => {
       const { name, value } = ev.target;
       setFormData({
@@ -16,21 +17,14 @@ function Login() {
   
     const sendForm = (ev) => {
       ev.preventDefault();
-      if (!formData.email) {
-        alert("Not Funny...");
-        return;
-      }
-      if (!formData.password) {
-        alert("Really?? cost nothing?!");
-        return;
-      }
       fetch('http://localhost:4000/users/login', {
         credentials: "include",
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(formData),
-      }).then((res) => res.json())
+      }).then((res) => res.text())
       .then((data) => {
+        console.log(data);
         setModal(false);
         setFormData({
           email: "",

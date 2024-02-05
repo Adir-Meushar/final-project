@@ -3,6 +3,7 @@ const express=require('express');
 const cors =require('cors');
 const mongoose=require('mongoose');
 const chalk=require('chalk'); 
+const loggerMiddleware=require('./handlers/helpers/logger');
 const port=process.env.PORT;
 
 async function main(){
@@ -21,6 +22,8 @@ app.use(cors({
     methods: 'GET,PUT,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Accept, Authorization',
 }));
+
+app.use(loggerMiddleware);
 
 app.listen(port,()=>{
     console.log(chalk.blue((`Listening to port ${port}`)));

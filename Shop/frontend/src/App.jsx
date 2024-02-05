@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import './App.css';
 import CenteredLayout from './components/CenterdLayout';
 import Navbar from './components/Navbar';
 
 function App() {
+  const [user,setUser]=useState();
+ 
   return (
     <CenteredLayout>
       <Navbar/>

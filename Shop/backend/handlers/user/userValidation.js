@@ -14,7 +14,7 @@ const userValidationSchema = Joi.object({
         'string.pattern.base': 'Last name cannot contain numeric characters',
         'any.required': 'Last name is required',
       }),
-    }),
+    }).required(),
     phone: Joi.string().pattern(/^[0-9]{9,13}$/).required().messages({
       'string.pattern.base': 'Phone number must be numeric and between 9 to 13 digits',
       'any.required': 'Phone number is required',
