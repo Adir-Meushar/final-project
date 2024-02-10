@@ -5,16 +5,6 @@ const{Product}=require('./product-model');
 const productValidationSchema = require('./productValidation');
 
 module.exports=app=>{
-    //Get All Products||Permissions:All
-    app.get('/products',async(req,res)=>{
-        try{
-            const products=await Product.find();
-            res.send(products);
-        }catch(error){
-            res.status(500).send({ error: 'Error fetching products'});
-        }
-    })
-
     //Create Product||Permissions:Admin
     app.post('/products',guard,async(req,res)=>{ 
         const userToken=getUserInfo(req,res);

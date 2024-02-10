@@ -17,7 +17,7 @@ const app=express();
 app.use(express.json());
 
 app.use(cors({ 
-    origin: true,
+    origin: true, 
     credentials: true,
     methods: 'GET,PUT,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Accept, Authorization',
@@ -33,3 +33,4 @@ require('./handlers/authentication/signup')(app);
 require('./handlers/authentication/login')(app);
 require('./handlers/user/user')(app);
 require('./handlers/products/product')(app);
+require('./handlers/products/category')(app);

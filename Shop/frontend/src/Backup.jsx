@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './navbar.css';
 import Signup from '../authentication/SignupModal';
 import Login from '../authentication/LoginModal';
+import Logout from '../authentication/Logout';
+import { GeneralContext } from '../App';
+import CategoryNavbar from './CategoryNavbar'; // Import CategoryNavbar
 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
   const [activeLink, setActiveLink] = useState('Home');
+  const { user } = useContext(GeneralContext);
 
   const handleClick = () => {
     setClicked(!clicked);
@@ -30,12 +34,15 @@ const Navbar = () => {
             <li><a href="" className={activeLink === 'Contact' ? 'active' : ''} onClick={() => handleLinkClick('Contact')}>Contact</a></li>
             <li><Signup/></li>
             <li><Login/></li> 
+            {user ? <li><Logout/></li> : ''} 
           </ul>
         </div>
         <div id='mobile' onClick={handleClick}>
           <i id='bar' className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
         </div>
       </nav>
+      {/* Always render CategoryNavbar */}
+      <CategoryNavbar />
     </>
   );
 };

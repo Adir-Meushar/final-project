@@ -2,14 +2,15 @@ import { useState } from "react"
 import './modal.css'
 function Signup() {
   const [modal, setModal] = useState(false);
+  const [errors, setErrors] = useState([]);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    phone:"",
+    phone: "",
     email: "",
     password: "",
   });
-  const [errors, setErrors] = useState([]);
+  
   const inputChange = (ev) => {
     const { name, value } = ev.target;
     setFormData({
@@ -18,48 +19,49 @@ function Signup() {
     });
   };
 
-  const sendForm = (ev) => {
+  const handleSignup = async (ev) => {
     ev.preventDefault();
-    fetch('http://localhost:4000/users/signup', {
-      credentials: "include",
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify({
-        fullName: {
-          first: formData.firstName,
-          last: formData.lastName,
-        },
-        phone: formData.phone,
-        email: formData.email,
-        password: formData.password,
-      }),
-    }).then((res) => res.json())
-    .then((data) => {
+    try {
+      const response = await fetch('http://localhost:4000/users/signup', {
+        credentials: "include",
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          fullName: {
+            first: formData.firstName,
+            last: formData.lastName,
+          },
+          phone: formData.phone,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+  
+      const data = await response.json();
+  
       if (data.error) {
-        // Check for specific error messages
         if (data.error.includes('Email already exists')) {
           setErrors(['Email already exists']);
         } else {
-          // If there are other validation errors, update the errors state
           setErrors(data.error);
         }
       } else {
-        // If successful, close the modal and reset form and errors
         setModal(false);
-        setFormData({
-          firstName: "",
-          lastName: "",
-          phone: "",
-          email: "",
-          password: "",
-        });
+        setFormData({ firstName: "", lastName: "", phone: "", email: "", password: "" }); 
         setErrors([]);
       }
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error("Error submitting form:", error);
-    });
+    }
   };
+  
+  const inputFields = [
+    { name: "firstName", label: "First Name", type: "text" },
+    { name: "lastName", label: "Last Name", type: "text" },
+    { name: "phone", label: "Phone", type: "phone" },
+    { name: "email", label: "Email", type: "email" },
+    { name: "password", label: "Password", type: "password" }
+  ];
   return (
     <>
       <button onClick={() => setModal(true)}>Signup</button>
@@ -67,44 +69,31 @@ function Signup() {
         <div className="modal-frame">
           <div className="modal">
             <header>
-              <button className="close" onClick={() => { setModal(false); 
-                setFormData({ firstName: "", lastName: "",phone:"", email: "", password: "" });  setErrors([]);}}> 
-                X
-              </button>
+              <button className="close" onClick={() => {
+                setModal(false);
+                setFormData({ firstName: "", lastName: "", phone: "", email: "", password: "" }); 
+                setErrors([]);}}>X</button>
               <h2>Signup</h2>
             </header>
-            <form onSubmit={sendForm} >
-              <label>
-                First Name:
-                <input type="text" name="firstName" autoComplete="off"
-                  onChange={inputChange} value={formData.firstName} />
-              </label>
-              <label>
-                Last Name:
-                <input type="text" name="lastName" autoComplete="off"
-                  onChange={inputChange} value={formData.lastName} />
-              </label>
-              <label>
-                Phone:
-                <input type="phone" name="phone" autoComplete="off"
-                  onChange={inputChange} value={formData.phone} />
-              </label>
-              <label>
-                Email:
-                <input type="email" name="email" autoComplete="off"
-                  onChange={inputChange} value={formData.email} />
-              </label>
-              <label>
-                Password:
-                <input type="password" name="password" autoComplete="off"
-                  onChange={inputChange} value={formData.password} />
-              </label>
+            <form onSubmit={handleSignup}>
+              {inputFields.map((field, index) => (
+                <label key={index}>
+                  {field.label}:
+                  <input
+                    type={field.type}
+                    name={field.name}
+                    autoComplete="off"
+                    onChange={inputChange}
+                    value={formData[field.name]}
+                  />
+                </label>
+              ))}
               <button>Sign</button>
-                 {errors.length > 0 && (
+              {errors.length > 0 && (
                 <div className="error-messages">
                   <ul>
                     {errors.map((error, index) => (
-                      <li style={{color:'red',fontSize:'.8rem'}} key={index}>{error}</li>
+                      <li style={{ color: 'red', fontSize: '.8rem' }} key={index}>{error}</li>
                     ))}
                   </ul>
                 </div>

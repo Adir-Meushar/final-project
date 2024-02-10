@@ -1,6 +1,5 @@
-nav{
+.top-nav{
     width: 100%;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,6 +58,31 @@ nav{
     color: white;
     cursor: pointer;
 }
+#category-navbar{
+    background-color: #737373;
+    padding: 20px 80px;
+}
+#category-navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#category-navbar ul li {
+    display: inline;
+}
+
+#category-navbar ul li a {
+    text-decoration: none;
+    padding: 10px;
+    color: #e2dede;
+}
+
+#category-navbar ul li a:hover {
+    background-color: #eee;
+    color: #000;
+}
+
 
 @media screen and (max-width:769px) {
     #navbar{
@@ -75,13 +99,45 @@ nav{
         box-shadow:0 40px 60px rgba(0, 0, 0, 0.1) ;
         padding: 40px 0 0 10px;
         transition: 0.3s ease-in-out;
-
     }
     #navbar.active{
         right: 0px;
     }
     #navbar li{
         margin-bottom: 25px;
+    }
+    #category-navbar{
+        background-color: rgb(61, 59, 59);
+        padding:unset;
+        width: 100%;
+    }
+    #category-navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    #category-navbar ul li {
+        display: block;
+    }
+    #category-navbar ul li a {
+        text-decoration: none;
+        padding: unset;
+        color: #e2dede;
+    }
+    
+    #category-navbar ul li a:hover {
+        color: rgb(60, 208, 159);
+        background-color: unset;
+    }
+    #category-navbar ul li a:hover::after,
+    #category-navbar ul li a.active::after{
+    content:"";
+    width: 30%;
+    height: 2px;
+    background-color:rgb(60, 208, 159);
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
     }
     #mobile{
         display: block;
@@ -90,4 +146,7 @@ nav{
        font-size: 24px;
        cursor: pointer; 
     }
+    
 }
+
+

@@ -1,17 +1,45 @@
-import { useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import { jwtDecode } from "jwt-decode";
 import './App.css';
 import CenteredLayout from './components/CenterdLayout';
-import Navbar from './components/Navbar';
+import Router from './components/routes/Router';
+import Navbar from './components/navbars/Navbar';
+
+export const GeneralContext=createContext();
+
+export const RoleType = {
+  user: 10,
+  admin: 20,
+};
 
 function App() {
-  const [user,setUser]=useState();
- 
+  const [userId, setUserId] = useState('');
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const getCurrentUser = async () => {
+      const token = localStorage.getItem('token');
+      console.log(token);
+      if (token) {
+        const decodedToken = jwtDecode(token);
+        const { userId } = decodedToken;
+        const {currentUser}=decodedToken;
+        setUser(currentUser)
+        setUserId(userId);
+        console.log(currentUser);
+      }
+    };
+    getCurrentUser();
+  }, []);
+   
+
   return (
+    <GeneralContext.Provider value={{user,setUser}}>
     <CenteredLayout>
-      <Navbar/>
-      <img style={{width:"100%",height:"60vh"}} src="https://www.bhg.com/thmb/Mwd_YEkDbVg_fPsUDcWr3eZk9W0=/5645x0/filters:no_upscale():strip_icc()/difference-between-fruits-vegetables-01-5f92e7ec706b463287bcfb46985698f9.jpg" alt="" />
-      
+      <Navbar />
+      <Router/>
     </CenteredLayout>
+    </GeneralContext.Provider>
   );
 }
 
