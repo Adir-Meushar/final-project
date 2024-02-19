@@ -24,19 +24,20 @@ module.exports = app => {
             }
             const product = await Product.findById(productId);
             if (!product) {
-                return res.status(404).send({ error: 'Product not found' });  
+                return res.status(404).send({ error: 'Product not found' });   
             } 
-            const productName = product.title;
+            const { title: productName, price: productPrice, img: { url: productImg } } = product;
+
           
             let cart = await ShoppingCart.findOne({ user: userToken.userId });
-            if (!cart) {
+            if (!cart) { 
                 cart = new ShoppingCart({ user: userToken.userId, items: [] });
             }
             const existingItem = cart.items.find(item => item.product.equals(productId));
-            if (existingItem) {
+            if (existingItem) { 
                 existingItem.quantity += finalQuantity;
             } else {
-                cart.items.push({ product: productId, productName, quantity: finalQuantity });
+                cart.items.push({ product: productId, productName, productPrice, productImg, quantity: finalQuantity });
             }
             await cart.save();
             res.status(200).send(cart.items);

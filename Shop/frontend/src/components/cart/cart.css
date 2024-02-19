@@ -9,13 +9,27 @@
 
 .cart{
     position: absolute;
+    padding: 20px;
     left: 0;
-    width: 22vw;
+    width: 25vw;
+    min-width: 450px;
     height: 100vh;
     background-color: rgb(255, 245, 230);
     animation: slide-from-left 0.5s ease forwards;
 }
-
+.cart-card{
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.cart-item-img{
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+}
 .cart .close-btn{
     position: absolute;
     top: 5px;

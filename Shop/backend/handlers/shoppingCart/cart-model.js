@@ -4,6 +4,8 @@ const moment = require('moment');
 const cartItemSchema=new mongoose.Schema({
     product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
     productName:{type:String,required:true},
+    productImg:{type:String,required:true},
+    productPrice:{type:Number,required:true},
     quantity: { type: Number, default: 1 },
 });
 

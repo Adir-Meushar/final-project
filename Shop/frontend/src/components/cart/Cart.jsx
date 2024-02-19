@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import './cart.css';
 import { GeneralContext } from '../../App';
+import Counter from '../counter/Counter';
 
 function Cart() {
     const [cartModal, setCartModal] = useState(false);
@@ -39,7 +40,14 @@ function Cart() {
                         <h1>Your Cart</h1>
                         {cart?(
                             <div>{cart.map((item)=>(
-                                <div>{item.productName}</div>
+                                <div className='cart-card'>
+                                 <div>{item.productName}</div>
+                                 <div>{item.quantity}</div>
+                                 <img className='cart-item-img' src={item.productImg}/>
+                                 <div>{item.productPrice}&#8362;/kg</div>
+                                 <Counter/>
+                                </div>
+                               
                             ))}</div>
                         ):<p>Your cart is empty...</p>} 
                     </div>
