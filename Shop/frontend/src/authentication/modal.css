@@ -19,9 +19,7 @@
     width: 100%;
     box-sizing: border-box;
   }
-  
-
-  
+   
 .modal-frame {
     background-color: #00000098;
     position: fixed;
@@ -37,13 +35,14 @@
     width: 80%;
     max-width: 400px;
     min-height: 300px;
+    padding: 20px;
     background-color: white;
     box-shadow: 0 0 6px black;
     border-radius: 5px;
     margin: auto;
-    animation: slide-bottom 0.555s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
-  
+ 
   .modal h2 {
     color: #282c34;
   }
@@ -72,14 +71,16 @@
   .modal form {
     padding: 24px;
   }
-  
-  @keyframes slide-bottom {
+
+  @keyframes slide-up {
     0% {
-      transform: translateY(-200px);
+      opacity: 0;
+      transform: translateY(100px);
     }
   
     100% {
-      transform: translateY(100px);
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   

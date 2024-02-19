@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import CardComponent from "../Card";
+import CardComponent from "../product/Card";
 
 function Vegetables() {
     const [vegetables, setVegetables] = useState([]);

@@ -1,0 +1,42 @@
+.cart-img{
+    position: absolute;
+    right: 350px;
+    bottom: 5px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.cart{
+    position: absolute;
+    left: 0;
+    width: 22vw;
+    height: 100vh;
+    background-color: rgb(255, 245, 230);
+    animation: slide-from-left 0.5s ease forwards;
+}
+
+.cart .close-btn{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgb(58, 58, 58);
+    font-size: 2.5rem;
+}
+
+@keyframes slide-from-left {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  

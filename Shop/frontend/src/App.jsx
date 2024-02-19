@@ -5,16 +5,18 @@ import CenteredLayout from './components/CenterdLayout';
 import Router from './components/routes/Router';
 import Navbar from './components/navbars/Navbar';
 
+
 export const GeneralContext=createContext();
 
 export const RoleType = {
+  guest:5,
   user: 10,
   admin: 20,
 };
 
 function App() {
-  const [userId, setUserId] = useState('');
   const [user, setUser] = useState();
+  const [cart,setCart]=useState([]);
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -22,11 +24,14 @@ function App() {
       console.log(token);
       if (token) {
         const decodedToken = jwtDecode(token);
-        const { userId } = decodedToken;
         const {currentUser}=decodedToken;
         setUser(currentUser)
-        setUserId(userId);
+   
         console.log(currentUser);
+        if (decodedToken && decodedToken.exp * 1000 < Date.now()) {
+          // Token is expired, remove it from local storage
+          localStorage.removeItem("token");
+        }
       }
     };
     getCurrentUser();
@@ -34,7 +39,7 @@ function App() {
    
 
   return (
-    <GeneralContext.Provider value={{user,setUser}}>
+    <GeneralContext.Provider value={{user,setUser,cart,setCart}}>
     <CenteredLayout>
       <Navbar />
       <Router/>

@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react"
-import CardComponent from "../Card";
+import CardComponent from "../product/Card";
+
 
 function Products() {
     const [products, setProducts] = useState([]);
+
     useEffect(() => {
         const fetchProducts = async () => {
             try {
                 const response = await fetch('http://localhost:4000/products/all', {
                     credentials: "include",
                     method: "GET",
-                    headers: { "Content-type": "application/json", }
+                    headers: { "Content-type": "application/json"}
                 })
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

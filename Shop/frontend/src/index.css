@@ -6,6 +6,8 @@
 }
 
 body{
-  background: rgba(249, 249, 249, 0.732);
+  background: rgb(229 229 229 / 73%);
   font-family: 'Inter', sans-serif;
+  overflow-x:hidden;
 }
+

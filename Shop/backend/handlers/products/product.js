@@ -5,7 +5,7 @@ const{Product}=require('./product-model');
 const productValidationSchema = require('./productValidation');
 
 module.exports=app=>{
-    //Create Product||Permissions:Admin
+    //Create Product||Permissions:Admin//
     app.post('/products',guard,async(req,res)=>{ 
         const userToken=getUserInfo(req,res);
         if(userToken.isAdmin!=RoleType.admin){
@@ -46,7 +46,7 @@ module.exports=app=>{
        }
     });
 
-// Edit Product || Permissions: Admin
+// Edit Product || Permissions: Admin//
 app.put('/products/:id', guard, async (req, res) => {
     const userToken = getUserInfo(req, res);
     if (userToken.isAdmin !== RoleType.admin) {
@@ -91,7 +91,7 @@ app.put('/products/:id', guard, async (req, res) => {
     }
 });
 
-    //Delete Product||Permissions:Admin
+    //Delete Product||Permissions:Admin//
     app.delete('/products/:id',guard,async(req,res)=>{
         const userToken=getUserInfo(req,res);
         if(userToken.isAdmin!=RoleType.admin){

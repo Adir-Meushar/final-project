@@ -1,5 +1,12 @@
+.nav-container{
+    position: sticky;
+    top: 0; 
+    z-index: 999;
+}
+
 .top-nav{
-    width: 100%;
+    width: 100vw;
+    max-width: 2500px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -9,14 +16,26 @@
     position: relative;
 }
 .logo{
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: 15%;
+    left: 15px;
     border-radius: 50px;
+}
+
+.link-box{
+    display: flex;
+    margin-left: 20px;
+}
+.user-box{
+    display: flex;
 }
 #navbar{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 #navbar li{
@@ -27,7 +46,7 @@
 
 #navbar li a{
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: white;
     transition: 0.3s ease-in-out;
@@ -61,19 +80,21 @@
 #category-navbar{
     background-color: #737373;
     padding: 20px 80px;
+    
 }
 #category-navbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-
-#category-navbar ul li {
-    display: inline;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 55px;
 }
 
 #category-navbar ul li a {
     text-decoration: none;
+    font-size: 1.3rem;
     padding: 10px;
     color: #e2dede;
 }
@@ -91,7 +112,7 @@
         align-items: flex-start;
         justify-content: flex-start;
         position: fixed;
-        top: 103px;
+        top: 69px;
         right: -300px;
         width: 300px;
         height: 100vh;
@@ -106,6 +127,16 @@
     #navbar li{
         margin-bottom: 25px;
     }
+    .link-box{
+        display: flex;
+        flex-direction: column;
+        margin: unset;
+        align-items: start;
+    }
+    .user-box{
+        display: flex;
+        flex-direction: column;
+    }
     #category-navbar{
         background-color: rgb(61, 59, 59);
         padding:unset;
@@ -115,6 +146,9 @@
         list-style-type: none;
         margin: 0;
         padding: 0;
+        flex-direction: column;
+        gap: 0;
+        text-align: left;
     }
     #category-navbar ul li {
         display: block;
@@ -122,7 +156,7 @@
     #category-navbar ul li a {
         text-decoration: none;
         padding: unset;
-        color: #e2dede;
+        color: #fff;
     }
     
     #category-navbar ul li a:hover {

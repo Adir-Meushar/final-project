@@ -24,6 +24,8 @@ module.exports=app=>{
       const count=await User.where().count();
       if(count==0){
         user.roleType=RoleType.admin;
+      }else{
+        user.roleType=RoleType.user;
       } 
           const newUser=await user.save();
           res.status(200).send(newUser);

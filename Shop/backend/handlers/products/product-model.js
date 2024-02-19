@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 const moment = require('moment');
 
-   
+
   const imgSchema = new mongoose.Schema({
     url: String,
     alt: String

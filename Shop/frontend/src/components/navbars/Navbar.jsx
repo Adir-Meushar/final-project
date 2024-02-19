@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import './navbar.css';
 import Signup from '../../authentication/SignupModal';
 import Login from '../../authentication/LoginModal';
 import Logout from '../../authentication/Logout';
 import { GeneralContext, RoleType } from '../../App';
 import CategoryNavbar from './CategoryNavbar';
-
+import Cart from '../cart/Cart';
+ 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
   const [activeLink, setActiveLink] = useState('Home');
@@ -37,34 +38,43 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className='top-nav'>
-        <Link to="/">
-          <img className='logo' src="https://en.pimg.jp/058/800/704/1/58800704.jpg" alt="logo" />
-        </Link>
-        <div>
+      <div className='nav-container'>
+        <nav className='top-nav'>
+          <Link to="/">
+            <img className='logo' src="https://en.pimg.jp/058/800/704/1/58800704.jpg" alt="logo" />
+          </Link>
           <ul id='navbar' className={clicked ? 'navbar active' : 'navbar'}>
-            <li><Link to="/about" className={activeLink === 'About' ? 'active' : ''} onClick={() => handleLinkClick('About')}>About</Link></li>
-            <li><Link to="/contact" className={activeLink === 'Contact' ? 'active' : ''} onClick={() => handleLinkClick('Contact')}>Contact</Link></li>
+            <div className='link-box'>
+              <li><Link to="/about" className={activeLink === 'About' ? 'active' : ''} onClick={() => handleLinkClick('About')}>About</Link></li>
+              <li><Link to="/contact" className={activeLink === 'Contact' ? 'active' : ''} onClick={() => handleLinkClick('Contact')}>Contact</Link></li>
+              {user?.roleType == RoleType.admin ? <li><Link to="/dashboard" className={activeLink === 'Dashboard' ? 'active' : ''} onClick={() => handleLinkClick('Dashboard')}>Dashboard</Link></li> : ''}
+            </div>
             {isSmallScreen ? <CategoryNavbar /> : ''}
             {user ? (
               <>
-              {user.roleType==RoleType.admin?<li><Link to="/dashboard" className={activeLink === 'Dashboard' ? 'active' : ''} onClick={() => handleLinkClick('Dashboard')}>Dashboard</Link></li>:''}
-              <h3 style={{color:'white'}}>Hi there {user.fullName.first}!</h3>
-                <li><Logout /></li>
+                <div className='user-box'>
+                  <Cart/>
+                  <h3 style={{ color: 'white' }}>Hello {user.fullName.first}!</h3>
+                  <li><Logout /></li>
+                </div>
               </>
             ) : (
               <>
-                <li><Signup /></li>
-                <li><Login /></li>
+              <div className='user-box'>
+              
+              <li><Signup /></li>
+              <li><Login /></li>
+              </div>
               </>
             )}
           </ul>
-        </div>
-        <div id='mobile' onClick={handleClick}>
-          <i id='bar' className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
-        </div>
-      </nav>
-      {isSmallScreen ? '' : <CategoryNavbar />}
+
+          <div id='mobile' onClick={handleClick}>
+            <i id='bar' className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
+          </div>
+        </nav>
+        {isSmallScreen ? '' : <CategoryNavbar />}
+      </div>
     </>
   );
 };

@@ -5,7 +5,7 @@ const { userValidationSchema } = require('./userValidation');
 
 module.exports=app=>{
 
-    //Get all users-Admin
+    //Get All Users||Permissions:Admin//
     app.get('/users',guard,async(req,res)=>{
         const userToken=getUserInfo(req,res);
         if(userToken.isAdmin!=RoleType.admin){
@@ -25,7 +25,7 @@ module.exports=app=>{
         }
     });
 
-    //Get current user-Admin&current user//
+    //Get Current User||Permissions:Admin,Current user//
     app.get('/users/:id',guard,async(req,res)=>{
         const userToken=getUserInfo(req,res);
         if(userToken.userId!==req.params.id&&userToken.isAdmin!=RoleType.admin){
@@ -48,7 +48,7 @@ module.exports=app=>{
         }
     });
 
-
+    //Edit User||Permissions:Current user//
     app.put('/users/:id',guard,async(req,res)=>{
         const userToken=getUserInfo(req,res);
         if(userToken.userId!==req.params.id){
@@ -85,7 +85,7 @@ module.exports=app=>{
           }
     })
 
-    //User-Delete-Admin&current user// 
+    //Delete User||Permissions:Admin,Current user//
     app.delete('/users/:id',guard,async(req,res)=>{
         const userToken=getUserInfo(req,res);
         if(userToken.userId!==req.params.id&&userToken.isAdmin!=RoleType.admin){

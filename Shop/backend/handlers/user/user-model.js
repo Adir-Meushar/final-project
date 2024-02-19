@@ -3,6 +3,7 @@ const moment = require('moment');
 const bcrypt = require('bcrypt');
 
 const RoleType={
+    guest:5,
     user:10,
     admin:20,
 }
@@ -16,7 +17,7 @@ const userSchema=new mongoose.Schema({
     phone: { type: String, required: true },
     email:{type:String,required:true,unique:true},
     password: {type: String, required: true },
-    roleType:{type:Number,default:RoleType.user},
+    roleType:{type:Number,default:RoleType.guest},
     createdTime: { type: String, default: () => moment().format('D-M-Y HH:mm:ss') }
 }); 
 

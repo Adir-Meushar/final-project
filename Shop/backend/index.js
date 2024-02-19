@@ -25,8 +25,8 @@ app.use(cors({
 
 app.use(loggerMiddleware);
 
-app.listen(port,()=>{
-    console.log(chalk.blue((`Listening to port ${port}`)));
+app.listen(port,()=>{ 
+    console.log(chalk.blue((`Listening to port ${port}`))); 
 });
 
 require('./handlers/authentication/signup')(app);
@@ -34,3 +34,5 @@ require('./handlers/authentication/login')(app);
 require('./handlers/user/user')(app);
 require('./handlers/products/product')(app);
 require('./handlers/products/category')(app);
+require('./handlers/shoppingCart/cart')(app);
+require('./handlers/initialData/initialDataService');
