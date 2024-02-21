@@ -1,0 +1,30 @@
+.category-container{
+    max-width: 2500px;
+    width: 100vw;
+    height: 30vh;
+    background-color: #e7e5e5;
+    display: flex;
+    align-items: center;
+}
+.first-img ,.seconed-img{
+    height: 100%;
+    width: 15%;
+}
+.first-img img ,.seconed-img img{
+    height: 100%;
+    width: 100%;
+}
+.cover-title{
+    width: 50%;
+    margin: 0 auto;
+    
+}
+.cover-title h1{
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.cover-title p{
+    line-height: 1.7;
+    text-align: center;
+}

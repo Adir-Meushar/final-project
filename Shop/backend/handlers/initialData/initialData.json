@@ -5,6 +5,7 @@
             "title": "Tomato",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 8.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 20,
@@ -22,6 +23,7 @@
             "title": "Potato",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 5.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 93,
@@ -39,6 +41,7 @@
             "title": "Carrot",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 3.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 41,
@@ -56,6 +59,7 @@
             "title": "Garlic",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 11.90,
+            "unit": "package",
             "sale": false,
             "nutritionalValue": {
               "calories": 149,
@@ -73,6 +77,7 @@
             "title": "Cucumber",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 7.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 15,
@@ -90,6 +95,7 @@
             "title": "Onion",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 4.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 39,
@@ -107,6 +113,7 @@
             "title": "Pepper",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 10.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 20,
@@ -124,6 +131,7 @@
             "title": "Eggplant",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 8.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 24,
@@ -141,6 +149,7 @@
             "title": "Broccoli",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 11.90,
+            "unit": "package",
             "sale": false,
             "nutritionalValue": {
               "calories": 33,
@@ -158,6 +167,7 @@
             "title": "Lettuce",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 8.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 14,
@@ -175,6 +185,7 @@
             "title": "Sweet Potato",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 9.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 85,
@@ -192,6 +203,7 @@
             "title": "Beet",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 5.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 43,
@@ -210,6 +222,7 @@
             "title": "Apple",
             "description": "Apples are crisp, juicy, and sweet fruits that come in various colors and flavors. They are rich in fiber and vitamin C.",
             "price": 8.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 52,
@@ -227,6 +240,7 @@
             "title": "Banana",
             "description": "Bananas are elongated, yellow fruits with a creamy texture and sweet taste. They are a good source of potassium and vitamin B6.",
             "price": 4.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 89,
@@ -244,6 +258,7 @@
             "title": "Watermelon",
             "description": "Watermelon is a refreshing fruit with a juicy, sweet flesh and a crisp texture. It is high in water content and rich in vitamins A and C.",
             "price": 4.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 30,
@@ -261,6 +276,7 @@
             "title": "Orange",
             "description": "Oranges are round citrus fruits with a bright orange skin and juicy, sweet-tart flesh. They are high in vitamin C and antioxidants.",
             "price": 6.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 47,
@@ -278,6 +294,7 @@
             "title": "Kiwi",
             "description": "Kiwis are small, oval fruits with fuzzy brown skin and bright green flesh with tiny black seeds. They are rich in vitamin C, vitamin K, and fiber.",
             "price": 11.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 61,
@@ -295,6 +312,7 @@
             "title": "Mango",
             "description": "Mangoes are tropical stone fruits with a sweet, juicy flesh and a unique flavor profile. They are rich in vitamins A and C.",
             "price": 10.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 60,
@@ -312,6 +330,7 @@
             "title": "Pitaya",
             "description": "Pitaya, also known as dragon fruit, is a tropical fruit with vibrant pink skin and a sweet, mildly tangy flavor. It is rich in antioxidants and vitamin C.",
             "price": 18.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 60,
@@ -329,6 +348,7 @@
             "title": "Pomegranate",
             "description": "Pomegranates are round fruits with a thick, leathery skin and juicy, ruby-red seeds. They are rich in antioxidants and have a sweet-tart flavor.",
             "price": 4.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 83,
@@ -346,6 +366,7 @@
             "title": "Lemon",
             "description": "Lemons are sour citrus fruits with a bright yellow skin and acidic juice. They are used in cooking, baking, and beverages for their tangy flavor.",
             "price": 6.90,
+            "unit": "kg",
             "sale": false,
             "nutritionalValue": {
               "calories": 29,
@@ -363,6 +384,7 @@
             "title": "Pineapple",
             "description": "Pineapples are tropical fruits with a spiky, tough skin and sweet, juicy flesh. They are rich in vitamin C and manganese.",
             "price": 29.90,
+            "unit": "unit",
             "sale": false,
             "nutritionalValue": {
               "calories": 50,
@@ -380,6 +402,7 @@
             "title": "Strawberry",
             "description": "Strawberries are bright red, juicy berries with a sweet flavor and a slightly tart undertone. They are packed with vitamin C, fiber, and antioxidants.",
             "price": 10.90,
+            "unit": "package",
             "sale": false,
             "nutritionalValue": { 
               "calories": 32,
@@ -390,6 +413,80 @@
             "img": {
               "url": "https://i.pinimg.com/236x/69/bb/fb/69bbfbeb26800774a63b676398a25470.jpg",
               "alt": "Strawberry"
+            }
+          }
+        ]
+        ,"bakery":[
+          { 
+            "category": "Bakery",
+            "title": "Wheat bread",
+            "description": "Wheat bread, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
+            "price": 13.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 266,
+              "fat": 3.2,
+              "carbohydrates": 50.6,
+              "protein": 7.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/236x/1d/61/02/1d61020adea200dc46336914f0ba660a.jpg",
+              "alt": "Wheat bread"
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Wholegrain bread ",
+            "description": "Wholegrain bread , a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
+            "price": 18.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 252,
+              "fat": 3.5,
+              "carbohydrates": 43,
+              "protein": 12
+            },
+            "img": {
+              "url": "https://i.pinimg.com/236x/ad/0a/2b/ad0a2bde091b8ccc92e545c0944a3fba.jpg",
+              "alt": "Wholegrain bread "
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "challah",
+            "description": "Wheat bread, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
+            "price": 14.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 283,
+              "fat": 6,
+              "carbohydrates": 47.8,
+              "protein": 9.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/6d/93/ee/6d93ee552d73803a17e1ffdbe3955740.jpg",
+              "alt": "challah"
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Buguette",
+            "description": "Wheat bread, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
+            "price": 16.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 274,
+              "fat": 3,
+              "carbohydrates": 501.9, 
+              "protein": 8.8
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/fa/ab/c4/faabc405bb607cdffed3b3c3f90b6844.jpg",
+              "alt": "Buguette"
             }
           }
         ]

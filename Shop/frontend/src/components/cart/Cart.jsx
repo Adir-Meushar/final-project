@@ -6,7 +6,7 @@ import Counter from '../counter/Counter';
 function Cart() {
     const [cartModal, setCartModal] = useState(false);
     const cartImg = process.env.PUBLIC_URL + '/images/shopping-cart.png';
-    const { setUser,cart,setCart } = useContext(GeneralContext);
+    const { cart,setCart } = useContext(GeneralContext);
     
     const getCartItems=async()=>{
         try{
@@ -30,25 +30,33 @@ function Cart() {
 
     }
  console.log(cart);
+
     return (
         <>
-            <img onClick={() => {setCartModal(true);getCartItems();}} className="cart-img" src={cartImg} alt="Cart" />
+            <img onClick={() => {setCartModal(true);getCartItems();}} 
+            className="cart-img" src={cartImg} alt="Cart" />
             {cartModal && (
                 <div className="modal-frame">
                     <div className='cart'>
                         <button className='close-btn' onClick={() => { setCartModal(false) }}>&times;</button>
                         <h1>Your Cart</h1>
                         {cart?(
-                            <div>{cart.map((item)=>(
-                                <div className='cart-card'>
-                                 <div>{item.productName}</div>
+                            <>
+                               <div>{cart.map((item)=>(
+                                <div key={item.productName} className='cart-card'>
                                  <div>{item.quantity}</div>
+                                 <div>{item.productName}</div>
                                  <img className='cart-item-img' src={item.productImg}/>
-                                 <div>{item.productPrice}&#8362;/kg</div>
-                                 <Counter/>
+                                 <div>{item.productPrice}&#8362;/{item.unit}</div>
+                                 <Counter />
                                 </div>
-                               
-                            ))}</div>
+                            ))}
+                        </div>
+                        <div className='cart-payout'>
+                            <button>Order&Pay</button>
+                        </div>
+                            </>
+                         
                         ):<p>Your cart is empty...</p>} 
                     </div>
                 </div>

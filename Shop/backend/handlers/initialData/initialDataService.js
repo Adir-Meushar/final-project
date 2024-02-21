@@ -1,10 +1,10 @@
 const { Product } = require('../products/product-model');
-const { vegetables, fruits } = require('./initialData.json');
+const { vegetables, fruits,bakery } = require('./initialData.json');
 
 const initialDataStart = async () => {
     const productAmount = await Product.find().countDocuments();
     if (!productAmount) {
-        const allProducts = [...vegetables, ...fruits]; // Merge vegetables and fruits arrays
+        const allProducts = [...vegetables, ...fruits,...bakery]; // Merge vegetables and fruits arrays
         
         for (let i = 0; i < allProducts.length; i++) {
             const product = new Product(allProducts[i]);
@@ -13,4 +13,4 @@ const initialDataStart = async () => {
     }
 };
 
-initialDataStart();
+initialDataStart(); 

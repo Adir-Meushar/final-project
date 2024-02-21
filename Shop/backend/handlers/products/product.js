@@ -17,7 +17,7 @@ module.exports=app=>{
                 },
               });
         }
-        const{category,title,description,price,sale,nutritionalValue,img}=req.body;
+        const{category,title,description,price,sale,nutritionalValue,img,unit}=req.body;
 
         const{error,value}=productValidationSchema.validate(req.body,{abortEarly:false});
 
@@ -37,6 +37,7 @@ module.exports=app=>{
             sale,
             nutritionalValue,
             img,
+            unit
         });
 
         const newProduct= await product.save();

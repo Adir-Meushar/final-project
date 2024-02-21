@@ -7,6 +7,7 @@ const CardComponent = ({ items }) => {
   const [modal, setModal] = useState(null);
   const [sortOption, setSortOption] = useState('low');
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [countStates, setCountStates] = useState(Array(items.length).fill(0));
 
   const handleSortChange = (ev) => {
     setSortOption(ev.target.value);
@@ -56,7 +57,7 @@ const CardComponent = ({ items }) => {
            
             <div className="card-content">
               <h3 className="card-title">{item.title}</h3>
-              <p className="card-price">{item.price} &#8362;/kg </p>
+              <p className="card-price">{item.price} &#8362;/{item.unit} </p>
             </div>
             
             {modal === index && (

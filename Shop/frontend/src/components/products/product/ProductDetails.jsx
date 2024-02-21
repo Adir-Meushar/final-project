@@ -37,7 +37,7 @@ function ProductDetails({item,closeModal}) {
                   <img src={item.img.url} alt={item.title} className="product-image" />
                   </div>
                  <div className='details-box'>
-                    <div className='price'>{item.price}&#8362;/kg</div>
+                    <div className='price'>{item.price}&#8362;/{item.unit}</div>
                  <p>{item.description}</p>
                   <table>
                     <thead>

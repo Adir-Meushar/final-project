@@ -80,6 +80,7 @@
 #category-navbar{
     background-color: #737373;
     padding: 20px 80px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
     
 }
 #category-navbar ul {
@@ -140,6 +141,7 @@
     #category-navbar{
         background-color: rgb(61, 59, 59);
         padding:unset;
+        box-shadow: unset;
         width: 100%;
     }
     #category-navbar ul {

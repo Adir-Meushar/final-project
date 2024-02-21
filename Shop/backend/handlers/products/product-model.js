@@ -19,10 +19,11 @@ const moment = require('moment');
     title:{type:String,required:true,unique:true},
     description:{type:String,required:true},
     price:{type:Number,required:true},
-    sale:{type:Boolean,default:false},
+    sale:{type:Boolean,default:false}, 
     nutritionalValue:nutritionalValue,
     img:imgSchema,
     favorite:{type:Array},
+    unit: { type: String, enum: ['kg', 'package','unit'], default: 'kg' }, // Include unit field
     createdTime: { type: String, default: () => moment().format('D-M-Y HH:mm:ss') }
     });
 

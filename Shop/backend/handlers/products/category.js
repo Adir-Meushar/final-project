@@ -1,6 +1,6 @@
 const { Product } = require("./product-model");
 
-module.exports=app=>{
+module.exports=app=>{ 
     
     //Get All Products||Permissions:All//
     app.get('/products/all',async(req,res)=>{
@@ -29,5 +29,16 @@ module.exports=app=>{
         }catch(error){
             res.status(500).send({ error: 'Error fetching products'});
         }
-    })
+    });
+
+    //Get All Fruits||Permissions:All//
+    app.get('/products/bakery',async(req,res)=>{
+        try{
+            const bakery = await Product.find({ category: 'Bakery' });
+            res.send(bakery);
+        }catch(error){
+            res.status(500).send({ error: 'Error fetching products'});
+        }
+    });
+    
 }

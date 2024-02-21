@@ -26,18 +26,18 @@ module.exports = app => {
             if (!product) {
                 return res.status(404).send({ error: 'Product not found' });   
             } 
-            const { title: productName, price: productPrice, img: { url: productImg } } = product;
+            const { title: productName, price: productPrice, img: { url: productImg }, unit } = product;
 
           
             let cart = await ShoppingCart.findOne({ user: userToken.userId });
             if (!cart) { 
-                cart = new ShoppingCart({ user: userToken.userId, items: [] });
-            }
+                cart = new ShoppingCart({ user: userToken.userId, items: [] }); 
+            } 
             const existingItem = cart.items.find(item => item.product.equals(productId));
             if (existingItem) { 
                 existingItem.quantity += finalQuantity;
             } else {
-                cart.items.push({ product: productId, productName, productPrice, productImg, quantity: finalQuantity });
+                cart.items.push({ product: productId, productName, productPrice, productImg, quantity: finalQuantity,unit });
             }
             await cart.save();
             res.status(200).send(cart.items);

@@ -23,7 +23,7 @@ const productValidationSchema = Joi.object({
   nutritionalValue: Joi.object({
     calories: Joi.number().positive().required(),
     carbohydrates: Joi.number().positive().required(),
-    protein: Joi.number().positive().required(),
+    protein: Joi.number().positive().required(), 
     fat: Joi.number().positive().required(),
   }).required(),
   img: Joi.object({
@@ -31,6 +31,7 @@ const productValidationSchema = Joi.object({
     alt: Joi.string(),
   }).required(),
   sale:Joi.boolean(),
+  unit:Joi.allow(""),
  
 });
 
