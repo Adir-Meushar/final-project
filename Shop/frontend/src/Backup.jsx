@@ -1,6 +1,5 @@
-//Card with different count state for each card
-
-// import React, { useState, useEffect } from 'react';
+// // CardComponent.js with each card counter state
+// import { useState, useEffect } from 'react';
 // import './card.css';
 // import ProductDetails from './ProductDetails';
 // import Counter from '../../counter/Counter';
@@ -9,12 +8,11 @@
 //   const [modal, setModal] = useState(null);
 //   const [sortOption, setSortOption] = useState('low');
 //   const [hoveredIndex, setHoveredIndex] = useState(null);
-//   const [countStates, setCountStates] = useState([]);
+//   const [counts, setCounts] = useState(new Array(items.length).fill(0)); // Initialize counts with 0 for each item
 
 //   useEffect(() => {
-//     if (items && items.length > 0) {
-//       setCountStates(Array(items.length).fill(0));
-//     }
+//     // Ensure counts are initialized properly when items change
+//     setCounts(new Array(items.length).fill(0));
 //   }, [items]);
 
 //   const handleSortChange = (ev) => {
@@ -33,10 +31,10 @@
 //     setHoveredIndex(null);
 //   };
 
-//   const handleCountChange = (index, count) => {
-//     const newCountStates = [...countStates];
-//     newCountStates[index] = count;
-//     setCountStates(newCountStates);
+//   const handleCounterChange = (index, value) => {
+//     const newCounts = [...counts];
+//     newCounts[index] += value; // Increment or decrement count for the specific item
+//     setCounts(newCounts);
 //   };
 
 //   const sortItems = (items) => {
@@ -66,7 +64,7 @@
 //           >
 //             <img src={item.img.url} alt={item.title} className="card-image" />
 //             <div className='counter-box'>
-//               {hoveredIndex === index && <Counter item={item} count={countStates[index]} onCountChange={(count) => handleCountChange(index, count)} />}
+//               {hoveredIndex === index && <Counter index={index} count={counts[index]} onChange={(value) => handleCounterChange(index, value)} />}
 //             </div>
            
 //             <div className="card-content">
@@ -85,6 +83,7 @@
 // };
 
 // export default CardComponent;
+
 
 
 //Counter with add to cart (only add)
@@ -139,3 +138,39 @@
 //   };
   
 //   export default Counter;
+
+
+// Counter.js
+// import { useContext } from 'react';
+// import { GeneralContext } from '../../App';
+// import './counter.css';
+
+// function Counter({ count, onChange,item }) {
+//     const { cart,setCart } = useContext(GeneralContext);
+//     const cartItem = cart.find(c => c.product === item?._id);
+// console.log(item);
+//     // Set count based on the cartItem quantity if it exists
+//     const displayCount = cartItem ? cartItem.quantity : count;
+  
+//     const handleIncrement = (ev) => {
+//       ev.stopPropagation();
+//       onChange(1); // Increment count for the specific item
+//     };
+  
+//     const handleDecrement = (ev) => {
+//       ev.stopPropagation();
+//       if (displayCount > 0) {
+//         onChange(-1); // Decrement count for the specific item
+//       }
+//     };
+  
+//     return (
+//       <div className="counter">
+//         <button className="counter-btn" onClick={handleDecrement}>-</button>
+//         <p>{displayCount}</p>
+//         <button className="counter-btn" onClick={handleIncrement}>+</button>
+//       </div>
+//     );
+// }
+
+// export default Counter;

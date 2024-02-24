@@ -3,7 +3,8 @@ import './product-details.css';
 import { GeneralContext } from '../../../App';
 
 function ProductDetails({item,closeModal}) {
-  const { setUser,cart,setCart } = useContext(GeneralContext);
+  const { cart,setCart } = useContext(GeneralContext);
+  console.log(item);
   const addToCart = async () => {
     try {
         const response = await fetch(`http://localhost:4000/cart/add/${item._id}`, {

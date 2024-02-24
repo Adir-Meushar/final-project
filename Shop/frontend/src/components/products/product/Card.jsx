@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+// CardComponent.js
+import { useState, useEffect, useContext } from 'react';
 import './card.css';
 import ProductDetails from './ProductDetails';
 import Counter from '../../counter/Counter';
+import { GeneralContext } from '../../../App';
 
 const CardComponent = ({ items }) => {
   const [modal, setModal] = useState(null);
   const [sortOption, setSortOption] = useState('low');
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [countStates, setCountStates] = useState(Array(items.length).fill(0));
+ // Initialize counts with 0 for each item -new Array(items.length).fill(0)
+  const { cart,setCart,counts, setCounts } = useContext(GeneralContext);
+
+  useEffect(() => {
+    // Ensure counts are initialized properly when items change
+    setCounts(new Array(items.length).fill(0));
+  }, [items]);
 
   const handleSortChange = (ev) => {
     setSortOption(ev.target.value);
@@ -23,6 +31,12 @@ const CardComponent = ({ items }) => {
 
   const handleMouseLeave = () => {
     setHoveredIndex(null);
+  };
+
+  const handleCounterChange = (index, value) => {
+    const newCounts = [...counts];
+    newCounts[index] += value; // Increment or decrement count for the specific item
+    setCounts(newCounts);
   };
 
   const sortItems = (items) => {
@@ -52,7 +66,7 @@ const CardComponent = ({ items }) => {
           >
             <img src={item.img.url} alt={item.title} className="card-image" />
             <div className='counter-box'>
-            {hoveredIndex === index && <Counter />}
+              {hoveredIndex === index && <Counter item={item} count={counts[index]} onChange={(value) => handleCounterChange(index, value)} />}
             </div>
            
             <div className="card-content">
