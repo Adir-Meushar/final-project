@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import CardComponent from "../product/Card";
+import Products from "../product/Products";
 import './category.css'
 function Vegetables() {
     const [vegetables, setVegetables] = useState([]);
@@ -36,7 +36,7 @@ function Vegetables() {
                 </div>
                 {/* <div className="seconed-img"><img src="https://i.pinimg.com/236x/0d/52/f4/0d52f4621c208f9b7371fef45e787059.jpg" alt="seconed-img" /></div> */}
             </div>
-            <CardComponent items={vegetables} />
+            <Products items={vegetables} />
         </div>
     )
 }

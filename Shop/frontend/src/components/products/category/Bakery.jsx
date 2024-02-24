@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import CardComponent from "../product/Card";
+import Products from "../product/Products";
 
 function Bakery() {
     const [bakery, setBakery] = useState([]);
@@ -29,7 +29,7 @@ function Bakery() {
     return (
         <div>
             <h1>Bakery</h1>
-          <CardComponent items={bakery}/>
+          <Products items={bakery}/>
         </div>
     )
 }

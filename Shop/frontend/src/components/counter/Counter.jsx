@@ -1,12 +1,8 @@
 // Counter.js
-import { useContext } from 'react';
-import { GeneralContext } from '../../App';
 import './counter.css';
 
-function Counter({ count, onChange }) {
-    const { cart,setCart } = useContext(GeneralContext);
-  console.log(cart);
-  console.log(cart);
+function Counter({count,onChange}) {
+   
   const handleIncrement = (ev) => {
     ev.stopPropagation();
     onChange(1); // Increment count for the specific item

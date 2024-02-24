@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import CardComponent from "../product/Card";
+import Products from "../product/Products";
 
 
-function Products() {
+function AllProducts() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -31,9 +31,9 @@ function Products() {
     return (
         <div>
             <h1>Products</h1>
-          <CardComponent items={products}/>
+          <Products items={products}/>
         </div>
     )
 }
 
-export default Products
+export default AllProducts
