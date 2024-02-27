@@ -28,7 +28,13 @@ function Bakery() {
 
     return (
         <div>
-            <h1>Bakery</h1>
+         <div className="category-container">
+            <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Bakery-Desktop1.jpg" alt="bakery-img"/>
+                <div className="cover-title">
+                    <h1>Bakery</h1>
+                    <p>Freshly baked goods crafted with care from the finest ingredients, delivered swiftly to your doorstep.</p>
+                </div>
+            </div>
           <Products items={bakery}/>
         </div>
     )

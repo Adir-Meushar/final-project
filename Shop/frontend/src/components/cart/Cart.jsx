@@ -1,12 +1,13 @@
-import  { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './cart.css';
-
+import { BsTrash3 } from "react-icons/bs";
 import Counter from '../counter/Counter';
+import { GeneralContext } from '../../App';
 
 function Cart() {
-    const [cartModal, setCartModal] =useState(false);
+    const [cartModal, setCartModal] = useState(false);
     const cartImg = process.env.PUBLIC_URL + '/images/shopping-cart.png';
-    const [cartProducts,setCartProducts]=useState([]);
+    const { count, setCount,cartProducts, setCartProducts } = useContext(GeneralContext);
 
     useEffect(() => {
         // Retrieve cart from local storage
@@ -20,10 +21,19 @@ function Cart() {
         // Update the quantity of the item at the given index
         const updatedCart = [...cartProducts];
         updatedCart[index].quantity += value;
+        if (updatedCart[index].quantity <= 0) {
+            // If quantity becomes zero or negative, remove the item from the cart
+            updatedCart.splice(index, 1);
+        }
         setCartProducts(updatedCart);
         // Update cart in local storage
         localStorage.setItem('cart', JSON.stringify(updatedCart));
     };
+   const clearCart=()=>{
+    localStorage.removeItem('cart')
+    setCartProducts([])
+    setCount(0)
+   }
     return (
         <>
             <img onClick={() => { setCartModal(true); }}
@@ -32,10 +42,16 @@ function Cart() {
                 <div className="modal-frame">
                     <div className='cart'>
                         <button className='close-btn' onClick={() => { setCartModal(false) }}>&times;</button>
-                        <h1>Your Cart</h1>
+                        <div className='cart-header'>
+                            <div>
+                                <h1>My Cart</h1>
+                                <div>Items:{cartProducts.length}</div>
+                            </div>
+                            <BsTrash3 onClick={clearCart} className='cart-trash' />
+                        </div>
                         {cartProducts.length > 0 ? (
                             <>
-                                <div>{cartProducts.map((cartItem,index) => (
+                                <div>{cartProducts.map((cartItem, index) => (
                                     <div key={index} className='cart-card'>
                                         <div>{cartItem.quantity}{cartItem.unit}</div>
                                         <div>{cartItem.title}</div>
@@ -44,13 +60,14 @@ function Cart() {
                                         <div>total: {Number((cartItem.price * cartItem.quantity).toFixed(2))}&#8362;</div>
                                         <Counter count={cartItem.quantity} onChange={(value) => handleQuantityChange(index, value)} />
                                     </div>
+                                    
                                 ))}
                                 </div>
                                 <div className='cart-payout'>
                                     <button>Order&Pay</button>
                                 </div>
                             </>
-                        ) : <p>Your cart is empty...</p>}
+                        ) : <p className='empty-cart-msg'>Your cart is empty...</p>}
                     </div>
                 </div>
             )}

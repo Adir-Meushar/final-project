@@ -1,19 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Counter from '../../counter/Counter';
 import ProductDetails from './ProductDetails';
+import { GeneralContext } from '../../../App';
 
 function ProductCard({ item }) {
     const [modal, setModal] = useState(false);
     const [hovered, setHovered] = useState(false);
     const [count, setCount] = useState(0); 
-
-    useEffect(() => {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartItem = cart.find(cartItem => cartItem.id === item._id);
-        if (cartItem) {
-            setCount(cartItem.quantity);
-        }
-    }, [item._id]);
+    const {user,cartProducts, setCartProducts}=useContext(GeneralContext)
+    // useEffect(() => {
+    //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    //     const cartItem = cart.find(cartItem => cartItem.id === item._id);
+    //     if (cartItem) {
+    //         setCount(cartItem.quantity);
+    //         setCartProducts(cart)
+    //     }
+    // }, [item._id]);
+    
+    useEffect(()=>{
+      if(item){
+        const foundItem = cartProducts.find(product => product.id === item._id);
+       if(foundItem?.quantity){
+        setCount(foundItem.quantity)
+       }else{
+        setCount(count)
+       }
+      }   
+    },[cartProducts,item])
 
     const handleCardClick = () => {
       setModal(true);
@@ -58,6 +71,7 @@ function ProductCard({ item }) {
             });
         }
         localStorage.setItem('cart', JSON.stringify(cart));
+        setCartProducts(cart)
     };
 
     return (
@@ -69,9 +83,9 @@ function ProductCard({ item }) {
       >
         <img src={item.img.url} alt={item.title} className="card-image" />
         <div className="counter-box">
-          {hovered && (
+          {user?hovered &&  (
             <Counter count={count} onChange={handleCountChange} />
-          )}
+          ):''}
         </div>
   
         <div className="card-content">

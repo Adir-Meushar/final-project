@@ -1,7 +1,14 @@
+import { useContext } from 'react';
+import { GeneralContext } from '../../../App';
 import './product-details.css';
 
 function ProductDetails({ item, closeModal,setCount }) {
+  const {user,cartProducts, setCartProducts}=useContext(GeneralContext)
+
   const handleAddToCart = () => {
+    if(!user){
+      return alert('please login to purchase..')
+    }
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartItemIndex = cart.findIndex(cartItem => cartItem.id === item._id);
     if (cartItemIndex !== -1) {
@@ -21,8 +28,9 @@ function ProductDetails({ item, closeModal,setCount }) {
     // Update count state
     const updatedCartItem = cart.find(cartItem => cartItem.id === item._id);
     setCount(updatedCartItem ? updatedCartItem.quantity : 0);
+    setCartProducts(cart)
   };
-
+  
   return (
     <div className="modal-frame-details">
       <div className='product-details'>
@@ -57,9 +65,9 @@ function ProductDetails({ item, closeModal,setCount }) {
         </div>
         <button
           onClick={(ev) => {
-            ev.stopPropagation(); // Prevent event bubbling
-            handleAddToCart(); // Call handleAddToCart function to add the item to the cart
-            closeModal(); // Close the modal
+            ev.stopPropagation(); 
+            handleAddToCart(); 
+            closeModal(false); 
           }}
           className='add-btn'
         >

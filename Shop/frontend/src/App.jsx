@@ -17,6 +17,8 @@ export const RoleType = {
 function App() {
   const [user, setUser] = useState();
   const [count, setCount] = useState(0);
+  const [cartProducts, setCartProducts] = useState([]);
+
   useEffect(() => {
     const getCurrentUser = async () => {
       const token = localStorage.getItem('token');
@@ -38,7 +40,7 @@ function App() {
    
 
   return (
-    <GeneralContext.Provider value={{user,setUser,count, setCount}}>
+    <GeneralContext.Provider value={{user,setUser,count, setCount,cartProducts, setCartProducts}}>
     <CenteredLayout>
       <Navbar />
       <Router/>
