@@ -7,16 +7,16 @@ import { GeneralContext } from '../../App';
 function Cart() {
     const [cartModal, setCartModal] = useState(false);
     const cartImg = process.env.PUBLIC_URL + '/images/shopping-cart.png';
-    const { count, setCount,cartProducts, setCartProducts } = useContext(GeneralContext);
+    const { count, setCount, cartProducts, setCartProducts } = useContext(GeneralContext);
 
     useEffect(() => {
-        // Retrieve cart from local storage
         const storedCart = localStorage.getItem('cart');
         if (storedCart) {
             // If cart exists in local storage, parse it and set it to state
             setCartProducts(JSON.parse(storedCart));
         }
     }, []);
+
     const handleQuantityChange = (index, value) => {
         // Update the quantity of the item at the given index
         const updatedCart = [...cartProducts];
@@ -26,14 +26,40 @@ function Cart() {
             updatedCart.splice(index, 1);
         }
         setCartProducts(updatedCart);
-        // Update cart in local storage
         localStorage.setItem('cart', JSON.stringify(updatedCart));
     };
-   const clearCart=()=>{
-    localStorage.removeItem('cart')
-    setCartProducts([])
-    setCount(0)
-   }
+    const clearCart = () => {
+        localStorage.removeItem('cart')
+        setCartProducts([])
+    }
+
+    const createOrder = async () => {
+        try {
+            const response = await fetch('http://localhost:4000/order/create', {
+                credentials: "include",
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": localStorage.token,
+                },
+                body: JSON.stringify({ cart: cartProducts }),
+            });
+
+            const data = await response.json();
+
+            if(data.error){
+                console.log(data.error);
+            }else{
+                console.log("Order created successfully:", data);
+            }
+        }
+        catch (error) {
+            console.error("Error creating order:", error);
+            console.log(cartProducts);
+        }
+    }
+
+
     return (
         <>
             <img onClick={() => { setCartModal(true); }}
@@ -53,18 +79,20 @@ function Cart() {
                             <>
                                 <div>{cartProducts.map((cartItem, index) => (
                                     <div key={index} className='cart-card'>
+                                        <img className='cart-item-img' src={cartItem.img} />
+
                                         <div>{cartItem.quantity}{cartItem.unit}</div>
                                         <div>{cartItem.title}</div>
-                                        <img className='cart-item-img' src={cartItem.img} />
+
+
                                         {/* <div>{cartItem.price}&#8362;/{cartItem.unit}</div> */}
-                                        <div>total: {Number((cartItem.price * cartItem.quantity).toFixed(2))}&#8362;</div>
+                                        <div>{Number((cartItem.price * cartItem.quantity).toFixed(2))}&#8362;</div>
                                         <Counter count={cartItem.quantity} onChange={(value) => handleQuantityChange(index, value)} />
                                     </div>
-                                    
                                 ))}
                                 </div>
                                 <div className='cart-payout'>
-                                    <button>Order&Pay</button>
+                                    <button onClick={createOrder}>Order&Pay</button>
                                 </div>
                             </>
                         ) : <p className='empty-cart-msg'>Your cart is empty...</p>}

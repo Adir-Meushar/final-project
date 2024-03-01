@@ -15,9 +15,10 @@
     width: 100%;
     margin: 0 auto;
     position: absolute;
+    color: #3f6b44;
 }
 .cover-title h1{
-  font-size: 3rem;
+  font-size: 4rem;
   margin-bottom: 15px;
 }
 
@@ -25,4 +26,21 @@
     width: 45%;
     margin: 0 auto;
     line-height: 1.7;
+}
+
+.category-select {
+    margin: 20px;
+    width: 20%;
+}
+.category-select select{
+    cursor: pointer;
+    width: 200px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+.category-select select option{
+    background-color: rgb(229 229 229 / 73%);
+    border: none;
 }

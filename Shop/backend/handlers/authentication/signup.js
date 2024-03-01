@@ -4,7 +4,7 @@ const { userValidationSchema } = require("../user/userValidation");
 
 module.exports=app=>{
     app.post('/users/signup',async(req,res)=>{
-        const{fullName,phone,email,password}=req.body;
+        const{fullName,phone,email,password,address}=req.body;
         const {error,value}=userValidationSchema.validate(req.body, { abortEarly: false });
         if (error) {
           return res.status(400).json({ error: error.details.map(detail => detail.message) });
@@ -19,6 +19,7 @@ module.exports=app=>{
           phone,
           email,
           password,
+          address
       })
       //set first user created to admin//
       const count=await User.where().count();

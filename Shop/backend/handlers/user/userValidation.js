@@ -31,6 +31,17 @@ const userValidationSchema = Joi.object({
       'string.min': 'Password must be at least {#limit} characters long',
       'string.max': 'Password must not exceed {#limit} characters',
     }),
+    address: Joi.object({
+      city: Joi.string().min(2).max(100).required().messages({
+        'string.min': 'City must be at least {#limit} characters long',
+        'string.max': 'City must not exceed {#limit} characters',
+      }),
+      street: Joi.string().min(2).max(100).required().messages({
+        'string.min': 'Street must be at least {#limit} characters long',
+        'string.max': 'Street must not exceed {#limit} characters',
+      }),
+      houseNumber: Joi.number().required().positive(),
+    }).required(),
   });
 
   const loginValidationSchema = Joi.object({

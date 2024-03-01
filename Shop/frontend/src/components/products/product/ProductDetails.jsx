@@ -41,7 +41,7 @@ function ProductDetails({ item, closeModal,setCount }) {
             <img src={item.img.url} alt={item.title} className="product-image" />
           </div>
           <div className='details-box'>
-            <div className='price'>{item.price}&#8362;/{item.unit}</div>
+            <div className='price'>{item.price}0&#8362;/{item.unit}</div>
             <p>{item.description}</p>
             <table>
               <thead>

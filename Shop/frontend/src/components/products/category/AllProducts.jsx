@@ -30,7 +30,13 @@ function AllProducts() {
 
     return (
         <div>
-            <h1>Products</h1>
+          <div className="category-container">
+            <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2023/06/DES-_-category-_-health.jpg" alt="bakery-img"/>
+                <div className="cover-title">
+                    <h1>Welcome!</h1>
+                    <p>Discover a wide variety of fresh and flavorful products, ranging from farm-fresh vegetables and juicy fruits to delectable bakery treats and more.</p>
+                </div>
+            </div>
           <Products items={products}/>
         </div>
     )

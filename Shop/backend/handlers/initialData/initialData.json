@@ -167,7 +167,7 @@
             "title": "Lettuce",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 8.90,
-            "unit": "kg",
+            "unit": "unit",
             "sale": false,
             "nutritionalValue": {
               "calories": 14,
@@ -419,8 +419,8 @@
         ,"bakery":[
           { 
             "category": "Bakery",
-            "title": "Wheat bread",
-            "description": "Wheat bread, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
+            "title": "White bread",
+            "description": "White bread, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
             "price": 13.90,
             "unit": "unit",
             "sale": false,
@@ -431,8 +431,8 @@
               "protein": 7.5
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/1d/61/02/1d61020adea200dc46336914f0ba660a.jpg",
-              "alt": "Wheat bread"
+              "url": "https://i.pinimg.com/564x/b9/b6/f2/b9b6f20045460b5cfd023e6f1c539dd9.jpg",
+              "alt": "White bread"
             }
           },
           { 
@@ -449,7 +449,7 @@
               "protein": 12
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/ad/0a/2b/ad0a2bde091b8ccc92e545c0944a3fba.jpg",
+              "url": "https://i.pinimg.com/564x/53/c2/b6/53c2b613a93d1be7b8724fd41846957f.jpg",
               "alt": "Wholegrain bread "
             }
           },
@@ -467,7 +467,7 @@
               "protein": 9.5
             },
             "img": {
-              "url": "https://i.pinimg.com/564x/6d/93/ee/6d93ee552d73803a17e1ffdbe3955740.jpg",
+              "url": "https://i.pinimg.com/564x/00/cc/a9/00cca993edbf4287dea567c603e97a28.jpg",
               "alt": "challah"
             }
           },
@@ -481,12 +481,120 @@
             "nutritionalValue": { 
               "calories": 274,
               "fat": 3,
-              "carbohydrates": 501.9, 
+              "carbohydrates": 51.9, 
               "protein": 8.8
             },
             "img": {
-              "url": "https://i.pinimg.com/564x/fa/ab/c4/faabc405bb607cdffed3b3c3f90b6844.jpg",
+              "url": "https://i.pinimg.com/564x/73/3e/b8/733eb82095131b3503b088f85f36ec67.jpg",
               "alt": "Buguette"
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Croissant",
+            "description": "Enjoy our buttery and flaky croissant, perfect for breakfast or a tasty snack!",
+            "price": 9.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 406,
+              "fat": 21 ,
+              "carbohydrates": 46 , 
+              "protein": 8
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/a2/e3/65/a2e365dc41d97914f112506d1252f64b.jpg",
+              "alt": "Croissant"
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Bread Basket",
+            "description": "Enjoy our tasty selection of different types of bread. From crunchy baguettes to soft brioche, there's something for everyone in our basket!",
+            "price": 109.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 1300,
+              "fat": 14,
+              "carbohydrates": 260, 
+              "protein": 33
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/cc/75/67/cc75674d365aebdf0b76b28b43dcc783.jpg",
+              "alt": "Bread Basket"
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Bagel",
+            "description":"Savor our chewy and flavorful bagel, great for breakfast or a quick bite on the go!",
+            "price": 8.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 250,
+              "fat": 1.5,
+              "carbohydrates": 49, 
+              "protein": 10 
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/77/a9/41/77a941e2a32d037bdce44fdf2eb18d08.jpg",
+              "alt": "Bagel"
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Mixed Seed Sourdough",
+            "description": "Try our hearty sourdough bread packed with mixed seeds for a nutritious and delicious slice every time!",
+            "price": 16.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 267,
+              "fat": 5.9,
+              "carbohydrates": 41.9, 
+              "protein": 8.1 
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/08/46/b7/0846b7e8bb26f339c16bb1aa1669a181.jpg",
+              "alt": "Mixed Seed Sourdough"
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Chocolate Croissant",
+            "description": "Indulge in our delightful croissant filled with rich chocolate, perfect for a sweet treat anytime!",
+            "price": 8.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 416,
+              "fat": 24.13,
+              "carbohydrates": 44.2, 
+              "protein": 8.6
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/54/94/53/549453ea281e98d3df1f52e7d85cb732.jpg",
+              "alt": "Chocolate Croissant"
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Burger Buns",
+            "description": "Enjoy our soft and fluffy burger buns, the perfect partner for your favorite burgers!",
+            "price": 6.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 460,
+              "fat": 24.7,
+              "carbohydrates": 51.5, 
+              "protein": 8
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/88/c8/7f/88c87f7466576eedc2168c742a5f361e.jpg",
+              "alt": "Burger Buns"
             }
           }
         ]

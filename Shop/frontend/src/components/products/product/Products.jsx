@@ -16,21 +16,24 @@ const Products = ({ items }) => {
       } else if (sortOption === 'high') {
         return b.price - a.price;
       } else if (sortOption === 'alphabetical') {
-        return a.title.localeCompare(b.title); 
+        return a.title.localeCompare(b.title);
       }
     });
   };
 
   return (
     <>
-      <select name="" id="" onChange={handleSortChange}>
-        <option value="low">Price: Low to High</option>
-        <option value="high">Price: High to Low</option>
-        <option value="alphabetical">Alphabetical</option>
-      </select>
+      <div className='category-select'>
+        <select name="" id="" onChange={handleSortChange}>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+          <option value="alphabetical">Alphabetical</option>
+        </select>
+      </div>
+
       <div className="grid-container">
         {sortItems(items).map((item) => (
-          <ProductCard key={item._id} item={item}/>
+          <ProductCard key={item._id} item={item} />
         ))}
       </div>
     </>

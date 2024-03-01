@@ -9,6 +9,9 @@ function Signup() {
     phone: "",
     email: "",
     password: "",
+    city:"",
+    street:"",
+    houseNumber:""
   });
   
   const inputChange = (ev) => {
@@ -34,6 +37,11 @@ function Signup() {
           phone: formData.phone,
           email: formData.email,
           password: formData.password,
+          address:{
+            city:formData.city,
+            street:formData.street,
+            houseNumber:formData.houseNumber
+          }
         }),
       });
   
@@ -47,7 +55,8 @@ function Signup() {
         }
       } else {
         setModal(false);
-        setFormData({ firstName: "", lastName: "", phone: "", email: "", password: "" }); 
+        setFormData({ firstName: "", lastName: "", phone: "", email: "", 
+        password: "", city:"",street:"",houseNumber:"" }); 
         setErrors([]);
       }
     } catch (error) {
@@ -60,7 +69,10 @@ function Signup() {
     { name: "lastName", label: "Last Name", type: "text" },
     { name: "phone", label: "Phone", type: "phone" },
     { name: "email", label: "Email", type: "email" },
-    { name: "password", label: "Password", type: "password" }
+    { name: "password", label: "Password", type: "password" },
+    { name: "city", label: "City", type: "text" },
+    { name: "street", label: "Street", type: "text" },
+    { name: "houseNumber", label: "House Number", type: "text" },
   ];
   return (
     <>
@@ -71,7 +83,8 @@ function Signup() {
             <header>
               <button className="close" onClick={() => {
                 setModal(false);
-                setFormData({ firstName: "", lastName: "", phone: "", email: "", password: "" }); 
+                setFormData({ firstName: "", lastName: "", phone: "", email: "", password: "", 
+                city:"",street:"",houseNumber:"" }); 
                 setErrors([]);}}>X</button>
               <h2>Signup</h2>
             </header>

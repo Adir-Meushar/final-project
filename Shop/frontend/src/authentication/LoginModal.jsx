@@ -31,8 +31,9 @@ function Login() {
       console.log("Response status:", response.status);
       const data = await response.json();
       console.log("Response data:", data);
-  
-      if (response.ok) {
+      if (data.error) {
+          setErrors(data.error);
+      } else {
         localStorage.setItem("token", data.token);
         setUser(data.user); // Update user state with fetched user data
         setModal(false);
@@ -41,9 +42,6 @@ function Login() {
           password: "",
         });
         setErrors([]);
-      } else {
-        const errorData = JSON.parse(data);
-        setErrors(errorData.error);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -63,6 +61,7 @@ function Login() {
                 onClick={() => {
                   setModal(false);
                   setFormData({ email: "", password: "" });
+                   setErrors([]);
                 }}
               >
                 X
@@ -91,6 +90,15 @@ function Login() {
                 />
               </label>
               <button>Login</button>
+              {errors.length > 0 && (
+                <div className="error-messages">
+                  <ul>
+                    {errors.map((error, index) => (
+                      <li style={{ color: 'red', fontSize: '.8rem' }} key={index}>{error}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </form>
           </div>
         </div>

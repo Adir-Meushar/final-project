@@ -8,7 +8,7 @@ const { loginValidationSchema } = require('../user/userValidation');
 module.exports=app=>{
     app.post('/users/login',async(req,res)=>{
         const{email,password}=req.body;
-        const { error, value } = loginValidationSchema.validate(req.body);
+        const { error, value } = loginValidationSchema.validate(req.body, { abortEarly: false });
         if (error) {
           return res.status(400).json({ error: error.details.map(detail => detail.message) });
         }

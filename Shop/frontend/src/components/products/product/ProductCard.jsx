@@ -8,25 +8,25 @@ function ProductCard({ item }) {
     const [hovered, setHovered] = useState(false);
     const [count, setCount] = useState(0); 
     const {user,cartProducts, setCartProducts}=useContext(GeneralContext)
-    // useEffect(() => {
-    //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    //     const cartItem = cart.find(cartItem => cartItem.id === item._id);
-    //     if (cartItem) {
-    //         setCount(cartItem.quantity);
-    //         setCartProducts(cart)
-    //     }
-    // }, [item._id]);
     
-    useEffect(()=>{
-      if(item){
-        const foundItem = cartProducts.find(product => product.id === item._id);
-       if(foundItem?.quantity){
-        setCount(foundItem.quantity)
-       }else{
-        setCount(count)
-       }
-      }   
-    },[cartProducts,item])
+    useEffect(() => {
+      if (item) {
+        const foundItemIndex = cartProducts.findIndex(product => product.id === item._id);
+        if (foundItemIndex !== -1) {
+          const foundItem = cartProducts[foundItemIndex];
+          if (foundItem.quantity > 0) {
+            setCount(foundItem.quantity);
+            console.log(foundItem);
+          } else {
+            // Remove item from cartProducts
+            const newCartProducts = [...cartProducts]; // Create a copy of the cartProducts array
+            newCartProducts.splice(foundItemIndex, 1); // Remove the item at foundItemIndex
+            setCartProducts(newCartProducts); // Update cartProducts state
+          }
+        }
+      }
+    }, [cartProducts, item]);
+    
 
     const handleCardClick = () => {
       setModal(true);
@@ -91,7 +91,7 @@ function ProductCard({ item }) {
         <div className="card-content">
           <h3 className="card-title">{item.title}</h3>
           <p className="card-price">
-            {item.price} &#8362;/{item.unit}
+            {item.price}0 &#8362;/{item.unit}
           </p>
         </div>
   

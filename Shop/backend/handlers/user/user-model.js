@@ -11,12 +11,18 @@ const nameSchema = new mongoose.Schema({
     first: { type: String, required: true },
     last: { type: String, required: true },
   });
+  const addressSchema = new mongoose.Schema({
+    city: { type: String, required: true }, 
+    street: { type: String, required: true },
+    houseNumber: { type: Number, required: true }, 
+  });
   
 const userSchema=new mongoose.Schema({
     fullName:nameSchema,
     phone: { type: String, required: true },
     email:{type:String,required:true,unique:true},
     password: {type: String, required: true },
+    address:addressSchema,
     roleType:{type:Number,default:RoleType.guest},
     createdTime: { type: String, default: () => moment().format('D-M-Y HH:mm:ss') }
 }); 

@@ -52,7 +52,11 @@
     transition: 0.3s ease-in-out;
 }
 #navbar li button{
-  width: 100px;
+    width: 77px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
  }
 #navbar li a:hover,
 #navbar li a.active{
