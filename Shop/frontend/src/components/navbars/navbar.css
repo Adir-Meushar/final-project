@@ -51,7 +51,7 @@
     color: white;
     transition: 0.3s ease-in-out;
 }
-#navbar li button{
+.user-box .nav-login ,.nav-signup,.nav-logout{
     width: 77px;
     border-radius: 5px;
     padding: 5px 10px;

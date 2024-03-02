@@ -1,20 +1,18 @@
 const Joi=require('joi');
 
 const userValidationSchema = Joi.object({
-    fullName: Joi.object({
-      first: Joi.string().min(2).max(30).pattern(/^[^\d]+$/).required().messages({
+     firstName: Joi.string().min(2).max(30).pattern(/^[^\d]+$/).required().messages({
         'string.min': 'First name must be at least {#limit} characters long',
         'string.max': 'First name must not exceed {#limit} characters',
         'string.pattern.base': 'First name cannot contain numeric characters',
         'any.required': 'First name is required',
       }),
-      last: Joi.string().min(2).max(30).pattern(/^[^\d]+$/).required().messages({
+      lastName: Joi.string().min(2).max(30).pattern(/^[^\d]+$/).required().messages({
         'string.min': 'Last name must be at least {#limit} characters long',
         'string.max': 'Last name must not exceed {#limit} characters',
         'string.pattern.base': 'Last name cannot contain numeric characters',
         'any.required': 'Last name is required',
       }),
-    }).required(),
     phone: Joi.string().pattern(/^[0-9]{9,13}$/).required().messages({
       'string.pattern.base': 'Phone number must be numeric and between 9 to 13 digits',
       'any.required': 'Phone number is required',
@@ -28,10 +26,9 @@ const userValidationSchema = Joi.object({
     .messages({
       'string.pattern.base': 'Password must contain at least one digit, one lowercase and one uppercase letter, and one special character',
       'any.required': 'Password is required',
-      'string.min': 'Password must be at least {#limit} characters long',
+      'string.min': 'Password must be at least {#limit} characters long', 
       'string.max': 'Password must not exceed {#limit} characters',
     }),
-    address: Joi.object({
       city: Joi.string().min(2).max(100).required().messages({
         'string.min': 'City must be at least {#limit} characters long',
         'string.max': 'City must not exceed {#limit} characters',
@@ -41,7 +38,6 @@ const userValidationSchema = Joi.object({
         'string.max': 'Street must not exceed {#limit} characters',
       }),
       houseNumber: Joi.number().required().positive(),
-    }).required(),
   });
 
   const loginValidationSchema = Joi.object({

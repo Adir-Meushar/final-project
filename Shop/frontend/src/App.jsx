@@ -4,6 +4,7 @@ import './App.css';
 import CenteredLayout from './components/CenterdLayout';
 import Router from './components/routes/Router';
 import Navbar from './components/navbars/Navbar';
+import Snackbar from './components/snackbar/Snackbar';
 
 
 export const GeneralContext=createContext();
@@ -18,6 +19,7 @@ function App() {
   const [user, setUser] = useState();
   const [count, setCount] = useState(0);
   const [cartProducts, setCartProducts] = useState([]);
+  const [snackbarText,setSnackbarText]=useState('')
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -38,12 +40,16 @@ function App() {
     getCurrentUser();
   }, []);
    
-
+  const snackbar = (text) => {
+    setSnackbarText(text);
+    setTimeout(() => setSnackbarText(""), 3 * 1000);
+  };
   return (
-    <GeneralContext.Provider value={{user,setUser,count, setCount,cartProducts, setCartProducts}}>
+    <GeneralContext.Provider value={{snackbar,user,setUser,count, setCount,cartProducts, setCartProducts}}>
     <CenteredLayout>
       <Navbar />
       <Router/>
+      {snackbarText && <Snackbar text={snackbarText} />}
     </CenteredLayout>
     </GeneralContext.Provider>
   );

@@ -1,27 +1,39 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import './modal.css'
+import { signupSchema } from "./userValidation";
+import { GeneralContext } from "../App";
 function Signup() {
   const [modal, setModal] = useState(false);
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     phone: "",
     email: "",
     password: "",
-    city:"",
-    street:"",
-    houseNumber:""
+    city: "",
+    street: "",
+    houseNumber: ""
   });
-  
-  const inputChange = (ev) => {
-    const { name, value } = ev.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const { snackbar,setUser } = useContext(GeneralContext);
 
+  const handleValid = (ev) => {
+    const { name, value } = ev.target;
+    const obj = { ...formData, [name]: value }
+    setFormData(obj)
+    const validate = signupSchema.validate(obj, { abortEarly: false })
+    const tempErrors = { ...errors }
+    delete tempErrors[name];
+    if (validate.error) {
+      const item = validate.error.details.find((e) => e.context.key == name)
+      if (item) {
+        tempErrors[name] = item.message;
+      }
+    }
+    setIsFormValid(!validate.error)
+    setErrors(tempErrors)
+  }
   const handleSignup = async (ev) => {
     ev.preventDefault();
     try {
@@ -29,24 +41,11 @@ function Signup() {
         credentials: "include",
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
-          fullName: {
-            first: formData.firstName,
-            last: formData.lastName,
-          },
-          phone: formData.phone,
-          email: formData.email,
-          password: formData.password,
-          address:{
-            city:formData.city,
-            street:formData.street,
-            houseNumber:formData.houseNumber
-          }
-        }),
+        body: JSON.stringify(formData),
       });
-  
+
       const data = await response.json();
-  
+
       if (data.error) {
         if (data.error.includes('Email already exists')) {
           setErrors(['Email already exists']);
@@ -55,15 +54,18 @@ function Signup() {
         }
       } else {
         setModal(false);
-        setFormData({ firstName: "", lastName: "", phone: "", email: "", 
-        password: "", city:"",street:"",houseNumber:"" }); 
+        setFormData({
+          firstName: "", lastName: "", phone: "", email: "",
+          password: "", city: "", street: "", houseNumber: ""
+        });
         setErrors([]);
+        snackbar(`Hello and Welcome ${data?.firstName}!`)
       }
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
-  
+
   const inputFields = [
     { name: "firstName", label: "First Name", type: "text" },
     { name: "lastName", label: "Last Name", type: "text" },
@@ -74,18 +76,23 @@ function Signup() {
     { name: "street", label: "Street", type: "text" },
     { name: "houseNumber", label: "House Number", type: "text" },
   ];
+
+  console.log(errors);
   return (
     <>
-      <button onClick={() => setModal(true)}>Signup</button>
+      <button className="nav-signup" onClick={() => setModal(true)}>Signup</button>
       {modal && (
         <div className="modal-frame">
-          <div className="modal">
+          <div className="signup-modal modal">
             <header>
-              <button className="close" onClick={() => {
+              <button className="close-btn" onClick={() => {
                 setModal(false);
-                setFormData({ firstName: "", lastName: "", phone: "", email: "", password: "", 
-                city:"",street:"",houseNumber:"" }); 
-                setErrors([]);}}>X</button>
+                setFormData({
+                  firstName: "", lastName: "", phone: "", email: "", password: "",
+                  city: "", street: "", houseNumber: ""
+                });
+                setErrors([]);
+              }}>X</button>
               <h2>Signup</h2>
             </header>
             <form onSubmit={handleSignup}>
@@ -96,21 +103,15 @@ function Signup() {
                     type={field.type}
                     name={field.name}
                     autoComplete="off"
-                    onChange={inputChange}
+                    onChange={handleValid}
                     value={formData[field.name]}
                   />
+                  {errors[field.name] && (
+                    <div className="error-message">{errors[field.name]}</div>
+                  )}
                 </label>
               ))}
-              <button>Sign</button>
-              {errors.length > 0 && (
-                <div className="error-messages">
-                  <ul>
-                    {errors.map((error, index) => (
-                      <li style={{ color: 'red', fontSize: '.8rem' }} key={index}>{error}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              <button className="signup-btn" disabled={!isFormValid}>Sign</button>
             </form>
           </div>
         </div>

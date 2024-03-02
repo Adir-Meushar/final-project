@@ -1,25 +1,3 @@
-
-  h2 {
-    font-size: 1.5em;
-    text-align: center;
-  }
-  
-  label {
-    text-align-last: left;
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  input {
-    display: block;
-    border: 1px solid black;
-    padding: 8px 12px;
-    border-radius: 5px;
-    margin-top: 3px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-   
 .modal-frame {
     background-color: #00000098;
     position: fixed;
@@ -34,7 +12,7 @@
     position: relative;
     width: 80%;
     max-width: 400px;
-    min-height: 300px;
+    min-height: 400px;
     padding: 20px;
     background-color: white;
     box-shadow: 0 0 6px black;
@@ -42,36 +20,84 @@
     margin: auto;
     animation: slide-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
- 
-  .modal h2 {
-    color: #282c34;
-  }
-  
-  .modal .close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 3px;
-    width: initial;
-    background: none;
-    color: #373737;
-    font-size: 16px;
-    width: 30px;
-    height: 30px;
-    transition: 0.3s;
-    cursor: pointer;
-  }
-  
-  .modal .close:hover {
-    background-color: #af0000;
-    color: white;
-
-  }
   
   .modal form {
     padding: 24px;
   }
 
+  .login-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+  .signup-modal{
+    min-width: 603px;
+  }
+ .signup-modal form{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+ }
+ 
+ h2 {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+  .modal h2 {
+    color: #282c34;
+  }
+  label {
+    text-align-last: left;
+    display: block;
+   font-size: .9rem;
+   height:4.5rem ;
+  }
+  
+  .signup-modal input,.login-modal input {
+    display: block;
+    border: 1px solid black;
+    padding: 8px 12px;
+    border-radius: 3px;
+    margin-top: 3px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .modal .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgb(58, 58, 58);
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+.error-message{
+  color: #dc1818;
+  font-size: .8rem;
+  text-align-last: left;
+}
+.login-btn,.signup-btn{
+  width: 100%;
+  margin-top: 20%;
+  height: 35px;
+  border-radius: 5px;
+  background-color: rgb(46, 122, 222);
+  color: white;
+  font-size: 1rem;
+  border: none;
+}
+.login-btn:disabled,.signup-btn:disabled{
+  background-color: rgb(131, 184, 253);
+}
+.signup-btn{
+  grid-column: span 2;
+}
   @keyframes slide-up {
     0% {
       opacity: 0;

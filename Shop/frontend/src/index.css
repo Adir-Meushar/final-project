@@ -11,3 +11,10 @@ body{
   overflow-x:hidden;
 }
 
+button{
+  cursor: pointer;
+}
+
+input{
+  outline: none;
+}

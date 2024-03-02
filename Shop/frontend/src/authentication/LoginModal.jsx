@@ -1,23 +1,34 @@
 import { useState, useContext } from "react";
 import { GeneralContext } from "../App";
+import { loginSchema } from './userValidation';
+import { Link } from "react-router-dom";
 
 function Login() {
   const [modal, setModal] = useState(false);
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const { setUser } = useContext(GeneralContext);
+  const { setUser, snackbar } = useContext(GeneralContext);
 
-  const inputChange = (ev) => {
+  const handleValid = (ev) => {
     const { name, value } = ev.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
+    const obj = { ...formData, [name]: value }
+    setFormData(obj)
+    const validate = loginSchema.validate(obj, { abortEarly: false })
+    const tempErrors = { ...errors }
+    delete tempErrors[name];
+    if (validate.error) {
+      const item = validate.error.details.find((e) => e.context.key == name)
+      if (item) {
+        tempErrors[name] = item.message;
+      }
+    }
+    setIsFormValid(!validate.error)
+    setErrors(tempErrors)
+  }
   const handleLogin = async (ev, setUser) => {
     ev.preventDefault();
     try {
@@ -27,12 +38,13 @@ function Login() {
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(formData),
       });
-  
+
       console.log("Response status:", response.status);
       const data = await response.json();
       console.log("Response data:", data);
       if (data.error) {
-          setErrors(data.error);
+        setErrors(data.error);
+        setIsFormValid(false)
       } else {
         localStorage.setItem("token", data.token);
         setUser(data.user); // Update user state with fetched user data
@@ -45,23 +57,24 @@ function Login() {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setModal(false);
+      snackbar('Email or Password is Incorrect')
     }
   };
-  
+  console.log(errors);
   return (
     <>
-      <button onClick={() => setModal(true)}>Login</button>
+      <button className="nav-login" onClick={() => setModal(true)}>Login</button>
       {modal && (
         <div className="modal-frame">
-          <div className="modal">
+          <div className="login-modal modal">
             <header>
               <button
-                className="close"
+                className="close-btn"
                 onClick={() => {
                   setModal(false);
+                  setIsFormValid(false);
                   setFormData({ email: "", password: "" });
-                   setErrors([]);
+                  setErrors([]);
                 }}
               >
                 X
@@ -75,9 +88,12 @@ function Login() {
                   type="email"
                   name="email"
                   autoComplete="off"
-                  onChange={inputChange}
+                  onChange={handleValid}
                   value={formData.email}
                 />
+                {errors.email && (
+                  <span className="error-message">{errors.email}</span>
+                )}
               </label>
               <label>
                 Password:
@@ -85,20 +101,14 @@ function Login() {
                   type="password"
                   name="password"
                   autoComplete="off"
-                  onChange={inputChange}
+                  onChange={handleValid}
                   value={formData.password}
                 />
+                {errors.password && (
+                  <span className="error-message">{errors.password}</span>
+                )}
               </label>
-              <button>Login</button>
-              {errors.length > 0 && (
-                <div className="error-messages">
-                  <ul>
-                    {errors.map((error, index) => (
-                      <li style={{ color: 'red', fontSize: '.8rem' }} key={index}>{error}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              <button className="login-btn" disabled={!isFormValid}>Login</button>
             </form>
           </div>
         </div>
