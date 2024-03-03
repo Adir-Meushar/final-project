@@ -1,16 +1,23 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './card.css';
 import ProductCard from './ProductCard';
+import { GeneralContext } from '../../../App';
+import { useLocation } from 'react-router-dom';
 
 const Products = ({ items }) => {
   const [sortOption, setSortOption] = useState('low');
-
+  const { query, setQuery } = useContext(GeneralContext)
+  const location = useLocation(); // Get current location
+  useEffect(() => {
+    // Clear query when route changes
+    setQuery('');
+  }, [location.pathname]); // Re-run effect when pathname changes
   const handleSortChange = (ev) => {
     setSortOption(ev.target.value);
   };
 
   const sortItems = (items) => {
-    return items.slice().sort((a, b) => {
+    return items&&items.length? items.slice().sort((a, b) => {
       if (sortOption === 'low') {
         return a.price - b.price;
       } else if (sortOption === 'high') {
@@ -18,8 +25,11 @@ const Products = ({ items }) => {
       } else if (sortOption === 'alphabetical') {
         return a.title.localeCompare(b.title);
       }
-    });
+    }):[]
   };
+  
+  const filterd = query.length ? sortItems(items).filter(item=>item.title.toUpperCase().includes(query.toUpperCase())):sortItems(items);
+  console.log(filterd);
 
   return (
     <>
@@ -32,7 +42,7 @@ const Products = ({ items }) => {
       </div>
 
       <div className="grid-container">
-        {sortItems(items).map((item) => (
+        {filterd.map((item) => (
           <ProductCard key={item._id} item={item} />
         ))}
       </div>

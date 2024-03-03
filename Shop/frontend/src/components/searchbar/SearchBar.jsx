@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './searchbar.css'
-function SearchBar({ onSearch }) {
-  const [query, setQuery] = useState('');
+import { GeneralContext } from '../../App';
+function SearchBar() {
+  const { query, setQuery } = useContext(GeneralContext)
 
   const handleChange = (event) => {
     setQuery(event.target.value);
@@ -9,7 +10,7 @@ function SearchBar({ onSearch }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSearch(query);
+    setQuery(query);
   };
 
   return (

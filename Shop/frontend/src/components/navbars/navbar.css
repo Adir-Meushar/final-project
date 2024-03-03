@@ -51,7 +51,7 @@
     color: white;
     transition: 0.3s ease-in-out;
 }
-.user-box .nav-login ,.nav-signup,.nav-logout{
+.user-box .nav-login ,.nav-signup,.nav-logout,.nav-account{
     width: 77px;
     border-radius: 5px;
     padding: 5px 10px;

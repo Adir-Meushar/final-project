@@ -21,7 +21,7 @@
           {
             "category": "Vegetables",
             "title": "Potato",
-            "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
+            "description": "Renowned for their versatility and comforting taste, potatoes are a kitchen staple cherished in countless recipes worldwide. Whether mashed, roasted, or fried, these humble tubers never fail to satisfy.",
             "price": 5.90,
             "unit": "kg",
             "sale": false,
@@ -39,7 +39,7 @@
           {
             "category": "Vegetables",
             "title": "Carrot",
-            "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
+            "description": "Carrots are loved for their crisp texture and naturally sweet flavor. Whether enjoyed raw as a crunchy snack, grated into salads, or cooked in soups and stews, these nutritious root vegetables add a burst of color and taste to any meal.",
             "price": 3.90,
             "unit": "kg",
             "sale": false,
@@ -57,7 +57,7 @@
           {
             "category": "Vegetables",
             "title": "Garlic",
-            "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
+            "description": "Garlic is celebrated for its pungent flavor and aromatic qualities. Whether minced into sauces, roasted whole for a mellow taste, or sautéed to add depth to dishes, this versatile bulb adds a bold and distinctive flavor to a wide range of cuisines.",
             "price": 11.90,
             "unit": "package",
             "sale": false,
@@ -75,7 +75,7 @@
           {
             "category": "Vegetables",
             "title": "Cucumber",
-            "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
+            "description": "Cucumbers are known for their crisp texture and refreshing taste. Whether sliced in salads, pickled for a tangy crunch, or enjoyed on their own as a hydrating snack, these versatile vegetables add a cool and rejuvenating element to any dish.",
             "price": 7.90,
             "unit": "kg",
             "sale": false,
@@ -86,14 +86,14 @@
               "protein": 0.7
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/14/e8/13/14e813bd7c9d90fe671c31aca9bcdeb7.jpg",
+              "url": "https://i.pinimg.com/564x/43/bd/81/43bd81e1e023c060fc4463f053b1553b.jpg",
               "alt": "Cucumber"
             }
           },
           {
             "category": "Vegetables",
             "title": "Onion",
-            "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
+            "description": "Onions are prized for their pungent flavor and culinary versatility. Whether caramelized to add sweetness to savory dishes, diced into salads for a zesty kick, or used as a flavorful base for soups and sauces, these aromatic bulbs are a staple ingredient in kitchens worldwide.",
             "price": 4.90,
             "unit": "kg",
             "sale": false,
@@ -110,8 +110,8 @@
           },
           {
             "category": "Vegetables",
-            "title": "Pepper",
-            "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
+            "title": "Pepper (Red)",
+            "description": "Known for their vibrant colors, crisp texture, and sweet flavor, bell peppers are versatile vegetables that add a refreshing crunch and a hint of sweetness to salads, stir-fries, and other culinary creations.",
             "price": 10.90,
             "unit": "kg",
             "sale": false,
@@ -122,14 +122,14 @@
               "protein": 0.9
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/a2/a0/c7/a2a0c786f7abd1cb6526809d60e48d3c.jpg",
+              "url": "https://i.pinimg.com/564x/bc/70/47/bc70470465a3548103502303fe6dfc42.jpg",
               "alt": "Pepper"
             }
           },
           {
             "category": "Vegetables",
             "title": "Eggplant",
-            "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
+            "description": "Eggplants, with their glossy purple skin and creamy flesh, offer a unique flavor and texture. Whether grilled to perfection, roasted until tender, or used in hearty stews and casseroles, these versatile vegetables bring a rich and satisfying element to your culinary creations.",
             "price": 8.90,
             "unit": "kg",
             "sale": false,
@@ -147,7 +147,7 @@
           {
             "category": "Vegetables",
             "title": "Broccoli",
-            "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
+            "description": "Broccoli, with its vibrant green florets and crisp stalks, is a nutritious powerhouse packed with vitamins and fiber. Whether steamed until tender-crisp, roasted to enhance its nutty flavor, or added to stir-fries for a crunchy texture, this versatile vegetable adds a burst of freshness and goodness to any meal.",
             "price": 11.90,
             "unit": "package",
             "sale": false,
@@ -155,7 +155,7 @@
               "calories": 33,
               "fat": 0.4, 
               "carbohydrates": 7,
-              "protein": 2.8
+              "protein": 2.8 
             },
             "img": {
               "url": "https://i.pinimg.com/236x/2d/0e/9b/2d0e9bb30ec7994e952511619f6dd569.jpg",
@@ -214,6 +214,42 @@
             "img": {
               "url": "https://i.pinimg.com/236x/ee/59/70/ee5970a4cc4f66965d42e2ace382fda7.jpg",
               "alt": "Beet"
+            }
+          } ,
+          {
+            "category": "Vegetables",
+            "title": "Corn",
+            "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
+            "price": 19.90,
+            "unit": "kg",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 96,
+              "fat": 1.2, 
+              "carbohydrates": 21,
+              "protein": 3.4
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/7a/a0/45/7aa045abb6cc0416d2f534ef97a992f3.jpg",
+              "alt": "Corn"
+            }
+          },
+          {
+            "category": "Vegetables",
+            "title": "Pepper (Yellow)",
+            "description": "Known for their vibrant colors, crisp texture, and sweet flavor, bell peppers are versatile vegetables that add a refreshing crunch and a hint of sweetness to salads, stir-fries, and other culinary creations.",
+            "price": 10.90,
+            "unit": "kg",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 20,
+              "fat": 0.2, 
+              "carbohydrates": 4.6, 
+              "protein": 0.9
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/6d/cf/81/6dcf815a0a4c34af6a2eab6e9efd2aad.jpg",
+              "alt": "Pepper"
             }
           } 
     ]

@@ -48,7 +48,7 @@ function Signup() {
 
       if (data.error) {
         if (data.error.includes('Email already exists')) {
-          setErrors(['Email already exists']);
+          snackbar('Email already exists');
         } else {
           setErrors(data.error);
         }
@@ -92,6 +92,7 @@ function Signup() {
                   city: "", street: "", houseNumber: ""
                 });
                 setErrors([]);
+                setIsFormValid(false)
               }}>X</button>
               <h2>Signup</h2>
             </header>

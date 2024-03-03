@@ -9,7 +9,7 @@ import Bakery from '../products/category/Bakery';
 export default function Router() {
     return (
         <Routes>
-            <Route path="/" element={<Products/>}/>
+            <Route path="/" element={<Products />}/>
             <Route path="/dashboard" element={<Dashboard/>}/>
             <Route path="/vegetables" element={<Vegetables/>} />
             <Route path="/fruits" element={<Fruits/>} />
