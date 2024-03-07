@@ -1,30 +1,30 @@
 import React, { useContext, useState } from 'react';
 import './searchbar.css'
 import { GeneralContext } from '../../App';
+import { MdSearch } from "react-icons/md";
+
 function SearchBar() {
-  const { query, setQuery } = useContext(GeneralContext)
+  const { search, setSearch } = useContext(GeneralContext)
 
   const handleChange = (event) => {
-    setQuery(event.target.value);
+    setSearch(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setQuery(query);
+    setSearch(search);
   };
 
   return (
-    <div className="search-bar">
-      <form onSubmit={handleSubmit}>
+    <div className="search-bar-box" >
         <input
           className="search-input"
           type="text"
-          value={query}
+          value={search}
           onChange={handleChange}
           placeholder="Search..."
         />
-        <button className="search-button" type="submit">Search</button>
-      </form>
+        <MdSearch className='search-icon' />
     </div>
   );
 }

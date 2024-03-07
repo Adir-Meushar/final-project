@@ -6,7 +6,7 @@
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 8.90,
             "unit": "kg",
-            "sale": false,
+            "sale": false, 
             "nutritionalValue": {
               "calories": 20,
               "fat": 0.1, 

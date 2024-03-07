@@ -1,33 +1,64 @@
-import { useState } from "react"
-import '../modal.css'
-import { productsStructure } from "../../components/products/product/ProductStructure";
-import './productForm.css'
+import { useState } from "react";
+import '../modal.css';
+import './productForm.css';
+import { productValidationSchema } from "./newProdcutValid";
+
 function NewProduct() {
-    const [modal, setModal] = useState(false);
-    const [errors, setErrors] = useState([]);
-    const [formData, setFormData] = useState({
+    const initialFormData = {
         category: "Vegetables",
         title: "",
         description: "",
         price: "",
-        sale: "",
+        sale: false,
+        unit: 'kg',
         calories: "",
         carbohydrates: "",
         protein: "",
         fat: "",
         imgUrl: "",
         imgAlt: ""
-    });
-
-
-    const inputChange = (ev) => {
-        const { name, value, type, checked } = ev.target;
-        const newValue = type === 'checkbox' ? checked : value;
-        setFormData({
-            ...formData,
-            [name]: newValue,
-        });
     };
+
+    const [modal, setModal] = useState(false);
+    const [errors, setErrors] = useState([]);
+    const [formData, setFormData] = useState(initialFormData);
+    const [isFormValid, setIsFormValid] = useState(false);
+
+    const nutritionalValue = [
+        { name: "calories", label: "Calories" },
+        { name: "carbohydrates", label: "Carbohydrates" },
+        { name: "protein", label: "Protein" },
+        { name: "fat", label: "Fat" }
+    ]
+
+    const resetForm = () => {
+        setFormData(initialFormData);
+        setErrors([]);
+    };
+
+    const renderError = (name) => {
+        return errors[name] && (
+            <div className="error-message" style={{ color: "red", fontSize: ".8rem" }}>
+                {errors[name]}
+            </div>
+        );
+    };
+    const handleValid = (ev) => {
+        const { name, value } = ev.target;
+        const obj = { ...formData, [name]: value }
+        setFormData(obj)
+        const validate = productValidationSchema.validate(obj, { abortEarly: false })
+        const tempErrors = { ...errors }
+        delete tempErrors[name];
+        if (validate.error) {
+            const item = validate.error.details.find((e) => e.context.key == name)
+            if (item) {
+                tempErrors[name] = item.message;
+            }
+        }
+        setIsFormValid(!validate.error)
+        setErrors(tempErrors)
+    }
 
     const addProduct = async (ev) => {
         ev.preventDefault();
@@ -35,16 +66,8 @@ function NewProduct() {
             const { imgUrl, imgAlt, calories, carbohydrates, protein, fat, ...rest } = formData;
             const obj = {
                 ...rest,
-                nutritionalValue: {
-                    calories,
-                    carbohydrates,
-                    protein,
-                    fat
-                },
-                img: {
-                    url: imgUrl,
-                    alt: imgAlt
-                }
+                nutritionalValue: { calories, carbohydrates, protein, fat },
+                img: { url: imgUrl, alt: imgAlt }
             };
 
             const response = await fetch('http://localhost:4000/products', {
@@ -63,27 +86,13 @@ function NewProduct() {
                 setErrors(data.error);
             } else {
                 setModal(false);
-                setFormData({
-                    category: "Vegetables",
-                    title: "",
-                    description: "",
-                    price: "",
-                    sale: "",
-                    calories: "",
-                    carbohydrates: "",
-                    protein: "",
-                    fat: "",
-                    imgUrl: "",
-                    imgAlt: ""
-                });
-                setErrors([]);
+                resetForm();
             }
         } catch (error) {
             console.error("Error submitting form:", error);
         }
     };
-
-
+    console.log(errors);
     return (
         <>
             <button onClick={() => setModal(true)}>New Product</button>
@@ -91,80 +100,110 @@ function NewProduct() {
                 <div className="modal-frame">
                     <div className="modal product-modal">
                         <header>
-                            <button className="close" onClick={() => {
-                                setModal(false);
-                                setFormData({
-                                    category: "Vegetables",
-                                    title: "",
-                                    description: "",
-                                    price: "",
-                                    sale: "",
-                                    calories: "",
-                                    carbohydrates: "",
-                                    protein: "",
-                                    fat: "",
-                                    imgUrl: "",
-                                    imgAlt: ""
-                                });
-                                setErrors([]);
-                            }}>X</button>
+                            <button className="close-btn" onClick={() => { setModal(false); resetForm(); }}>X</button>
                             <h2>New Product</h2>
                         </header>
                         <form onSubmit={addProduct}>
-                            {productsStructure.map((field, index) => (
-                                <label key={index}>
-                                    {field.label}:
-                                    {field.label === "Category" ? (
-                                        <select
-                                            name={field.name}
-                                            onChange={inputChange}
-                                            value={formData[field.name]}
-                                        >
-                                            <option value="Vegetables">Vegetables</option>
-                                            <option value="Fruits">Fruits</option>
-                                            <option value="Eggs&Dairy">Eggs&Dairy</option>
-                                            <option value="Bakery">Bakery</option>
-                                        </select>
-                                    ) : field.type === "boolean" ? (
-                                        <input
-                                            type="checkbox"
-                                            name={field.name}
-                                            onChange={inputChange}
-                                            checked={formData[field.name]}
-                                        />
-                                    ) : field.name === "description" ? ( // Check if field is "description"
-                                        <textarea
-                                            name={field.name}
-                                            onChange={inputChange}
-                                            value={formData[field.name]}
-                                        />
-                                    ) : (
-                                        <input
-                                            type={field.type}
-                                            name={field.name}
-                                            autoComplete="off"
-                                            onChange={inputChange}
-                                            value={formData[field.name]}
-                                        />
-                                    )}
+                            <div className="form-product-header">
+                                <label className="input-box">
+                                    Category:
+                                    <select name="category" onChange={handleValid} value={formData.category}>
+                                        <option value="Vegetables">Vegetables</option>
+                                        <option value="Fruits">Fruits</option>
+                                        <option value="Eggs&Dairy">Eggs&Dairy</option>
+                                        <option value="Bakery">Bakery</option>
+                                    </select>
                                 </label>
-                            ))}
-                            <button className="btnAdd">Add</button>
-                            {errors.length > 0 && (
-                                <div className="error-messages">
-                                    <ul>
-                                        {errors.map((error, index) => (
-                                            <li style={{ color: 'red', fontSize: '.8rem' }} key={index}>{error}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
+                                <label className="input-box">
+                                    Title:
+                                    <input type="text" autoComplete="off" onChange={handleValid} value={formData.title} name="title" />
+                                    {renderError("title")}
+                                </label>
+                            </div>
+                            <h3>Nutritional Values (100g)</h3>
+                            <div className="nutrition-value">
+                                {nutritionalValue.map((item, index) => (
+                                    <label key={index} className="input-box">
+                                        {item.label}
+                                        <input
+                                            type="number"
+                                            autoComplete="off"
+                                            onChange={handleValid}
+                                            value={formData[item.name]}
+                                            name={item.name}
+                                            className="input-number"
+                                        />
+                                        {renderError(`${item.name}`)}
+                                    </label>
+                                ))}
+                            </div>
+                            <div className="pricing">
+                                <label>
+                                    Price
+                                    <input type="number" autoComplete="off" onChange={handleValid} value={formData.price} name="price" className="input-number" />
+                                </label>
+                                <label>
+                                    Discount
+                                    <input type="checkbox" autoComplete="off" onChange={handleValid} value={formData.sale} name="sale" className="input-number" />
+                                </label>
+                            </div>
+                            <div className="unit-type">
+                                Unit:
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="unit"
+                                        value="kg"
+                                        checked={formData.unit === 'kg'}
+                                        onChange={handleValid}
+                                    />
+                                    KG
+                                </label>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="unit"
+                                        value="package"
+                                        checked={formData.unit === 'package'}
+                                        onChange={handleValid}
+                                    />
+                                    Package
+                                </label>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="unit"
+                                        value="unit"
+                                        checked={formData.unit === 'unit'}
+                                        onChange={handleValid}
+                                    />
+                                    Unit
+                                </label>
+                            </div>
+                            <div className="img-details">
+                                <label>
+                                    Image URL:
+                                    <input type="text" autoComplete="off" onChange={handleValid} value={formData.imgUrl} name="imgUrl" />
+                                    {renderError("imgUrl")}
+                                </label>
+                                <label>
+                                    Image Alt:
+                                    <input type="text" autoComplete="off" onChange={handleValid} value={formData.imgAlt} name="imgAlt" />
+                                    {renderError("imgAlt")}
+                                </label>
+                            </div>
+                            <label style={{ textAlign: 'left' }}>
+                                Description
+                                <textarea className="description" onChange={handleValid} value={formData.description} name="description" />
+                                {renderError("description")}
+                            </label>
+                            <button className="btnAdd" disabled={!isFormValid}>Add</button>
                         </form>
                     </div>
                 </div>
             )}
         </>
-    )
+    );
 }
 
-export default NewProduct
+export default NewProduct;

@@ -48,13 +48,16 @@
   .modal h2 {
     color: #282c34;
   }
-  label {
-    text-align-last: left;
-    display: block;
+  label { 
+  display: block;
    font-size: .9rem;
-   height:4.5rem ;
+   /* height:3rem ; */
   }
-  
+  .signup-modal label,.login-modal label{
+    text-align-last: left;
+
+    height:4rem ;
+  }
   .signup-modal input,.login-modal input {
     display: block;
     border: 1px solid black;
@@ -80,7 +83,6 @@
 .error-message{
   color: #dc1818;
   font-size: .8rem;
-  text-align-last: left;
 }
 .login-btn,.signup-btn{
   width: 100%;

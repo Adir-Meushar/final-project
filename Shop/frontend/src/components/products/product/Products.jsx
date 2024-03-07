@@ -6,11 +6,11 @@ import { useLocation } from 'react-router-dom';
 
 const Products = ({ items }) => {
   const [sortOption, setSortOption] = useState('low');
-  const { query, setQuery } = useContext(GeneralContext)
+  const { search, setSearch } = useContext(GeneralContext)
   const location = useLocation(); // Get current location
   useEffect(() => {
     // Clear query when route changes
-    setQuery('');
+    setSearch('');
   }, [location.pathname]); // Re-run effect when pathname changes
   const handleSortChange = (ev) => {
     setSortOption(ev.target.value);
@@ -28,7 +28,7 @@ const Products = ({ items }) => {
     }):[]
   };
   
-  const filterd = query.length ? sortItems(items).filter(item=>item.title.toUpperCase().includes(query.toUpperCase())):sortItems(items);
+  const filterd = search.length ? sortItems(items).filter(item=>item.title.toUpperCase().includes(search.toUpperCase())):sortItems(items);
   console.log(filterd);
 
   return (

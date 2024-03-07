@@ -47,9 +47,9 @@ function Cart() {
 
             const data = await response.json();
 
-            if(data.error){
+            if (data.error) {
                 console.log(data.error);
-            }else{
+            } else {
                 console.log("Order created successfully:", data);
             }
         }
@@ -66,36 +66,34 @@ function Cart() {
                 className="cart-img" src={cartImg} alt="Cart" />
             {cartModal && (
                 <div className="modal-frame">
-                    <div className='cart'>
-                        <button className='close-btn' onClick={() => { setCartModal(false) }}>&times;</button>
-                        <div className='cart-header'>
+                    <div className="cart">
+                        <button className="close-btn" onClick={() => { setCartModal(false) }}>&times;</button>
+                        <div className="cart-header">
                             <div>
                                 <h1>My Cart</h1>
-                                <div>Items:{cartProducts.length}</div>
+                                <div>Items: {cartProducts.length}</div>
                             </div>
-                            <BsTrash3 onClick={clearCart} className='cart-trash' />
+                            <BsTrash3 onClick={clearCart} className="cart-trash" />
                         </div>
                         {cartProducts.length > 0 ? (
                             <>
-                                <div>{cartProducts.map((cartItem, index) => (
-                                    <div key={index} className='cart-card'>
-                                        <img className='cart-item-img' src={cartItem.img} />
-
-                                        <div>{cartItem.quantity}{cartItem.unit}</div>
-                                        <div>{cartItem.title}</div>
-
-
-                                        {/* <div>{cartItem.price}&#8362;/{cartItem.unit}</div> */}
-                                        <div>{Number((cartItem.price * cartItem.quantity).toFixed(2))}&#8362;</div>
-                                        <Counter count={cartItem.quantity} onChange={(value) => handleQuantityChange(index, value)} />
-                                    </div>
-                                ))}
+                                <div className="cart-products">
+                                    {cartProducts.map((cartItem, index) => (
+                                        <div key={index} className="cart-card">
+                                            <img className="cart-item-img" src={cartItem.img} />
+                                            <div>{cartItem.quantity}{cartItem.unit}</div>
+                                            <div>{cartItem.title}</div>
+                                            {/* <div>{cartItem.price}&#8362;/{cartItem.unit}</div> */}
+                                            <div>{Number((cartItem.price * cartItem.quantity).toFixed(2))}&#8362;</div>
+                                            <Counter count={cartItem.quantity} onChange={(value) => handleQuantityChange(index, value)} />
+                                        </div>
+                                    ))}
                                 </div>
-                                <div className='cart-payout'>
-                                    <button onClick={createOrder}>Order&Pay</button>
+                                <div className={'cart-payout ' + (cartProducts.length > 7 ? "cart-payout-sticky" : "cart-payout-fixed")}>
+                                    <button onClick={createOrder}>Go To Checkout</button>
                                 </div>
                             </>
-                        ) : <p className='empty-cart-msg'>Your cart is empty...</p>}
+                        ) : <p className="empty-cart-msg">Your cart is empty...</p>}
                     </div>
                 </div>
             )}

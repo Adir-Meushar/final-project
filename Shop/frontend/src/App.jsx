@@ -20,8 +20,8 @@ function App() {
   const [count, setCount] = useState(0);
   const [cartProducts, setCartProducts] = useState([]);
   const [snackbarText,setSnackbarText]=useState('')
-  const [query, setQuery] = useState('');
- console.log(query);
+  const [search, setSearch] = useState('');
+ console.log(search);
   useEffect(() => {
     const getCurrentUser = async () => {
       const token = localStorage.getItem('token');
@@ -46,7 +46,7 @@ function App() {
     setTimeout(() => setSnackbarText(""), 3 * 1000);
   };
   return (
-    <GeneralContext.Provider value={{snackbar,user,setUser,count, setCount,cartProducts, setCartProducts,query, setQuery}}>
+    <GeneralContext.Provider value={{snackbar,user,setUser,count, setCount,cartProducts, setCartProducts,search, setSearch}}>
     <CenteredLayout>
       <Navbar />
       <Router/>
