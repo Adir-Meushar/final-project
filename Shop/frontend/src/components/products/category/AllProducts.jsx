@@ -29,7 +29,7 @@ function AllProducts() {
 
 
     return (
-        <div>
+        <div className="main-content">
           <div className="category-container">
             <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2023/06/DES-_-category-_-health.jpg" alt="bakery-img"/>
                 <div className="cover-title">

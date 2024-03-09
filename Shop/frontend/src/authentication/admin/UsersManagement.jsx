@@ -23,6 +23,7 @@ function UsersManagement() {
             console.error("Error fetching users:", error);
         }
     }
+    
     const deleteUser=async(userId)=>{
         if (!window.confirm(`Are you sure you want to delete this user?`)) {
             return;
@@ -43,13 +44,12 @@ function UsersManagement() {
                   console.error("Error Deleteing user:", error);
               }
         }
-       
       }
    
-
     useEffect(()=>{
         fetchUsers();
     },[])
+
     return (
         <div className="container-table">
             <div className='page-header'>

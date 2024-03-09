@@ -5,6 +5,7 @@ import CenteredLayout from './components/CenterdLayout';
 import Router from './components/routes/Router';
 import Navbar from './components/navbars/Navbar';
 import Snackbar from './components/snackbar/Snackbar';
+import Footer from './components/footer/Footer';
 
 
 export const GeneralContext=createContext();
@@ -50,6 +51,7 @@ function App() {
     <CenteredLayout>
       <Navbar />
       <Router/>
+      <Footer/>
       {snackbarText && <Snackbar text={snackbarText} />}
     </CenteredLayout>
     </GeneralContext.Provider>

@@ -1,7 +1,7 @@
 const guard=require('../helpers/guard');
 const { getUserInfo } = require('../helpers/jwtUtils');
 const { User, RoleType } = require('./user-model');
-const { userValidationSchema } = require('./userValidation');
+const { userValidationSchema, updateUserValidationSchema } = require('./userValidation');
 
 module.exports=app=>{
 
@@ -61,7 +61,7 @@ module.exports=app=>{
               });
         }
         try{
-            const {error,value}=userValidationSchema.validate(req.body,{abortEarly:false});
+            const {error,value}=updateUserValidationSchema.validate(req.body,{abortEarly:false});
             if (error) {
                 return res.status(400).json({ error: error.details.map(detail => detail.message) });
               }

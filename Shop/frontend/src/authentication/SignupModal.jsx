@@ -77,7 +77,6 @@ function Signup() {
     { name: "houseNumber", label: "House Number", type: "text" },
   ];
 
-  console.log(errors);
   return (
     <>
       <button className="nav-signup" onClick={() => setModal(true)}>Signup</button>

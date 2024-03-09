@@ -60,7 +60,6 @@ function Login() {
       snackbar('Email or Password is Incorrect')
     }
   };
-  console.log(errors);
   return (
     <>
       <button className="nav-login" onClick={() => setModal(true)}>Login</button>

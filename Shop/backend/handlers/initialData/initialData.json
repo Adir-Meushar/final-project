@@ -92,7 +92,7 @@
           },
           {
             "category": "Vegetables",
-            "title": "Onion",
+            "title": "Onion (White)",
             "description": "Onions are prized for their pungent flavor and culinary versatility. Whether caramelized to add sweetness to savory dishes, diced into salads for a zesty kick, or used as a flavorful base for soups and sauces, these aromatic bulbs are a staple ingredient in kitchens worldwide.",
             "price": 4.90,
             "unit": "kg",
@@ -101,11 +101,29 @@
               "calories": 39,
               "fat": 0.1, 
               "carbohydrates": 9,
-              "protein": 1.1
+              "protein": 1.1 
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/05/2b/e2/052be22181d0c17bf8429e621342260a.jpg",
-              "alt": "Onion"
+              "url": "https://i.pinimg.com/564x/24/ea/3b/24ea3b6c7b0b8273702c4c9863020153.jpg",
+              "alt": "Onion (White)"
+            }
+          },
+          {
+            "category": "Vegetables",
+            "title": "Onion (Red)",
+            "description": "Onions are prized for their pungent flavor and culinary versatility. Whether caramelized to add sweetness to savory dishes, diced into salads for a zesty kick, or used as a flavorful base for soups and sauces, these aromatic bulbs are a staple ingredient in kitchens worldwide.", 
+            "price": 5.90,
+            "unit": "kg",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 42,
+              "fat": 0.1, 
+              "carbohydrates": 10.1,
+              "protein": 0.9 
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/d7/ee/bb/d7eebb3ea1b336d2f0981aa21d8c95ea.jpg",
+              "alt": "Onion (Red)"
             }
           },
           {
@@ -123,9 +141,63 @@
             },
             "img": {
               "url": "https://i.pinimg.com/564x/bc/70/47/bc70470465a3548103502303fe6dfc42.jpg",
-              "alt": "Pepper"
+              "alt": "Pepper (Red)"
             }
           },
+          {
+            "category": "Vegetables",
+            "title": "Pepper (Yellow)",
+            "description": "Known for their vibrant colors, crisp texture, and sweet flavor, bell peppers are versatile vegetables that add a refreshing crunch and a hint of sweetness to salads, stir-fries, and other culinary creations.",
+            "price": 10.90,
+            "unit": "kg",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 20,
+              "fat": 0.2, 
+              "carbohydrates": 4.6, 
+              "protein": 0.9
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/6d/cf/81/6dcf815a0a4c34af6a2eab6e9efd2aad.jpg",
+              "alt": "Pepper (Yellow)"
+            }
+          } ,
+          {
+            "category": "Vegetables",
+            "title": "Pepper (Green)",
+            "description": "Known for their vibrant colors, crisp texture, and sweet flavor, bell peppers are versatile vegetables that add a refreshing crunch and a hint of sweetness to salads, stir-fries, and other culinary creations.",
+            "price": 9.90,
+            "unit": "kg",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 20,
+              "fat": 0.2, 
+              "carbohydrates": 4.6, 
+              "protein": 0.9
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/e4/d3/7c/e4d37cf7110611891e0027e0bf890c46.jpg",
+              "alt": "Pepper (Green)"
+            }
+          } ,
+          {
+            "category": "Vegetables",
+            "title": "Pepper (Orange)",
+            "description": "Known for their vibrant colors, crisp texture, and sweet flavor, bell peppers are versatile vegetables that add a refreshing crunch and a hint of sweetness to salads, stir-fries, and other culinary creations.",
+            "price": 10.90, 
+            "unit": "kg",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 20,
+              "fat": 0.2, 
+              "carbohydrates": 4.6, 
+              "protein": 0.9
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/56/c2/0a/56c20a4b979581f3c0805312ea86f25e.jpg",
+              "alt": "Pepper (Orange)"
+            }
+          } ,
           {
             "category": "Vegetables",
             "title": "Eggplant",
@@ -140,10 +212,10 @@
               "protein": 1
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/26/29/61/26296152cfa06e8a1a9bad20121e9c77.jpg",
+              "url": "https://i.pinimg.com/564x/f2/a4/1b/f2a41bbfe548b027cd69e12af98e99ba.jpg",
               "alt": "Eggplant"
             }
-          },
+          }, 
           {
             "category": "Vegetables",
             "title": "Broccoli",
@@ -236,20 +308,110 @@
           },
           {
             "category": "Vegetables",
-            "title": "Pepper (Yellow)",
-            "description": "Known for their vibrant colors, crisp texture, and sweet flavor, bell peppers are versatile vegetables that add a refreshing crunch and a hint of sweetness to salads, stir-fries, and other culinary creations.",
-            "price": 10.90,
+            "title": "Cabbage (Red)",
+            "description": "Renowned for its bold hue, hearty texture, and slightly peppery taste, red cabbage is a versatile vegetable that lends vibrant color and robust flavor to salads, slaws, stir-fries, and various other culinary dishes.",
+            "price": 5.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 29,
+              "fat": 0.1, 
+              "carbohydrates": 6.1, 
+              "protein": 1.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/41/4b/ac/414bac8634f3528eb395337a222edf6d.jpg",
+              "alt": "Cabbage (Red)"
+            }
+          } ,
+          {
+            "category": "Vegetables",
+            "title": "Cabbage (Green)",
+            "description": "Renowned for its bold hue, hearty texture, and slightly peppery taste, red cabbage is a versatile vegetable that lends vibrant color and robust flavor to salads, slaws, stir-fries, and various other culinary dishes.",
+            "price": 5.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 23,
+              "fat": 0.1, 
+              "carbohydrates": 5.5, 
+              "protein": 1.3
+            },
+            "img": { 
+              "url": "https://i.pinimg.com/564x/c2/03/d8/c203d812b787d49ea1e1c7a9dbe2f589.jpg",
+              "alt": "Cabbage (Green)"
+            }
+          } ,
+          {
+            "category": "Vegetables",
+            "title": "Squash",
+            "description": "Squash is a versatile vegetable with a hearty texture and slightly sweet taste, perfect for salads, soups, and other dishes.",
+            "price": 9.90,
             "unit": "kg",
             "sale": false,
             "nutritionalValue": {
-              "calories": 20,
-              "fat": 0.2, 
-              "carbohydrates": 4.6, 
-              "protein": 0.9
+              "calories": 19,
+              "fat": 0.1, 
+              "carbohydrates": 3.5, 
+              "protein": 1.3
             },
-            "img": {
-              "url": "https://i.pinimg.com/564x/6d/cf/81/6dcf815a0a4c34af6a2eab6e9efd2aad.jpg",
-              "alt": "Pepper"
+            "img": { 
+              "url": "https://i.pinimg.com/564x/13/dc/58/13dc5881c84d384bce427308d77a9aa4.jpg",
+              "alt": "Squash"
+            }
+          } ,
+          {
+            "category": "Vegetables",
+            "title": "Radish",
+            "description": "Radish is a crisp and peppery root vegetable, often used to add a fresh and spicy flavor to salads, sandwiches, and various dishes.",
+            "price": 5.90,
+            "unit": "package",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 15,
+              "fat": 0.1, 
+              "carbohydrates": 3.4, 
+              "protein": 0.7
+            },
+            "img": { 
+              "url": "https://i.pinimg.com/564x/61/c5/98/61c598c6444f6a34f12aaddb60264e2f.jpg",
+              "alt": "Radish"
+            }
+          } ,
+          {
+            "category": "Vegetables",
+            "title": "Chilli Pepper (Green)",
+            "description": "Chilli Pepper is known for its vibrant color and spicy flavor, adding heat and depth to a wide range of dishes including salsas, stir-fries, and marinades.",
+            "price": 1.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 39,
+              "fat": 0.4, 
+              "carbohydrates": 9, 
+              "protein": 1.9
+            },
+            "img": { 
+              "url": "https://i.pinimg.com/736x/33/1a/40/331a4074be23631c27edfe9200b08018.jpg",
+              "alt": "Chilli Pepper (Green)"
+            }
+          } ,
+          {
+            "category": "Vegetables",
+            "title": "Chilli Pepper (Red)",
+            "description": "Chilli Pepper is known for its vibrant color and spicy flavor, adding heat and depth to a wide range of dishes including salsas, stir-fries, and marinades.",
+            "price": 1.90,
+            "unit": "unit", 
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 39,
+              "fat": 0.4, 
+              "carbohydrates": 9, 
+              "protein": 1.9 
+            },
+            "img": { 
+              "url": "https://i.pinimg.com/564x/38/59/6f/38596fdd928af7c8b8609744b0d26143.jpg",
+              "alt": "Chilli Pepper (Red)"
             }
           } 
     ]
@@ -437,7 +599,7 @@
             "category": "Fruits",
             "title": "Strawberry",
             "description": "Strawberries are bright red, juicy berries with a sweet flavor and a slightly tart undertone. They are packed with vitamin C, fiber, and antioxidants.",
-            "price": 10.90,
+            "price": 14.90,
             "unit": "package",
             "sale": false,
             "nutritionalValue": { 
@@ -449,6 +611,42 @@
             "img": {
               "url": "https://i.pinimg.com/236x/69/bb/fb/69bbfbeb26800774a63b676398a25470.jpg",
               "alt": "Strawberry"
+            }
+          },
+          {
+            "category": "Fruits",
+            "title": "Grapes (Green)",
+           "description": "Grapes (Green) are crisp and refreshing fruits with a sweet flavor and a hint of tartness. They are enjoyed fresh as a snack, in salads, or pressed into refreshing juices and wines.",
+            "price": 18.90,
+            "unit": "package",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 69,
+              "fat": 0.2,
+              "carbohydrates": 18,
+              "protein": 0.7
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/f4/64/eb/f464eb3327d44ed66e587a726098c3fe.jpg",
+              "alt": "Grapes (Green)"
+            }
+          },
+          {
+            "category": "Fruits",
+            "title": "Grapes (Red)",
+           "description": "Grapes (Green) are crisp and refreshing fruits with a sweet flavor and a hint of tartness. They are enjoyed fresh as a snack, in salads, or pressed into refreshing juices and wines.",
+            "price": 17.90,
+            "unit": "package",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 69,
+              "fat": 0.2,
+              "carbohydrates": 18,
+              "protein": 0.7
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/47/1e/61/471e615ae8f890eeec67535dcda49e09.jpg",
+              "alt": "Grapes (Red)"
             }
           }
         ]
@@ -488,7 +686,7 @@
               "url": "https://i.pinimg.com/564x/53/c2/b6/53c2b613a93d1be7b8724fd41846957f.jpg",
               "alt": "Wholegrain bread "
             }
-          },
+          }, 
           { 
             "category": "Bakery",
             "title": "challah",

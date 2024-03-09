@@ -124,4 +124,25 @@ app.put('/products/:id', guard, async (req, res) => {
             res.status(500).send({ error: 'Error deleting product'});
         }
     })
+
+
+    //Get One Product||Permissions:Admin//
+    app.get('/product/:id',async(req,res)=>{
+        try{
+            const product=await Product.findById(req.params.id);
+            if(!product){
+                return res.status(404).send({
+                    error: {
+                      code: 404,
+                      message: 'Not Found',
+                      details: 'The requested product could not be found.',
+                    },
+                  });
+            }
+            res.status(200).send(product);
+        }catch(error){
+            res.status(500).send({ error: 'Error fetching product'});
+        }
+    })
+
 };

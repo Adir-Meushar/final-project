@@ -43,6 +43,8 @@ function ProductDetails({ item, closeModal,setCount }) {
           <div className='details-box'>
             <div className='price'>{item.price}0&#8362;/{item.unit}</div>
             <p>{item.description}</p>
+            <div>
+            <h4>"Nutritional Information (per 100g)"</h4>
             <table>
               <thead>
                 <tr>
@@ -61,6 +63,8 @@ function ProductDetails({ item, closeModal,setCount }) {
                 </tr>
               </tbody>
             </table>
+            </div>
+           
           </div>
         </div>
         <button

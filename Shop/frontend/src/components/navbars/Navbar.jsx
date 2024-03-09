@@ -9,13 +9,13 @@ import CategoryNavbar from './CategoryNavbar';
 import Cart from '../cart/Cart';
 import SearchBar from '../searchbar/SearchBar';
 import EditUser from '../../authentication/EditUser';
- 
+
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
   const [activeLink, setActiveLink] = useState('');
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 769);
 
-  const { user,query, setQuery } = useContext(GeneralContext)
+  const { user, query, setQuery } = useContext(GeneralContext)
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,26 +49,26 @@ const Navbar = () => {
             <div className='link-box'>
               {/* <li><Link to="/about" className={activeLink === 'About' ? 'active' : ''} onClick={() => handleLinkClick('About')}>About</Link></li>
               <li><Link to="/contact" className={activeLink === 'Contact' ? 'active' : ''} onClick={() => handleLinkClick('Contact')}>Contact</Link></li> */}
-              <li><SearchBar/></li>
+              <li><SearchBar /></li>
               {user?.roleType == RoleType.admin ? <li><Link to="/dashboard" className={activeLink === 'Dashboard' ? 'active' : ''} onClick={() => handleLinkClick('Dashboard')}>Dashboard</Link></li> : ''}
             </div>
             {isSmallScreen ? <CategoryNavbar /> : ''}
             {user ? (
               <>
                 <div className='user-box'>
-                  <Cart/>
+                  <Cart />
                   {/* <h3 style={{ color: 'white' }}>Hello {user.firstName}!</h3> */}
-                  <li><EditUser/></li>
+                <Link to={'/my-account'}><li><button className="nav-account">{user.firstName}</button></li></Link>  
                   <li><Logout /></li>
                 </div>
               </>
             ) : (
               <>
-              <div className='user-box'>
-              
-              <li><Signup /></li>
-              <li><Login /></li>
-              </div>
+                <div className='user-box'>
+
+                  <li><Signup /></li>
+                  <li><Login /></li>
+                </div>
               </>
             )}
           </ul>
