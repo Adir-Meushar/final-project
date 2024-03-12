@@ -5,6 +5,7 @@ import Products from '../products/category/AllProducts';
 import Dashboard from '../../authentication/admin/Dashboard';
 import Bakery from '../products/category/Bakery';
 import EditUser from '../../authentication/EditUser';
+import Checkout from '../checkout/Checkout';
 
 
 export default function Router() {
@@ -16,7 +17,7 @@ export default function Router() {
             <Route path="/vegetables" element={<Vegetables/>} />
             <Route path="/fruits" element={<Fruits/>} />
             <Route path="/bakery" element={<Bakery/>} />
-           
+            <Route path="/checkout" element={<Checkout/>} />
         </Routes>
     )
 }

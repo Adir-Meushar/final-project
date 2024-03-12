@@ -54,9 +54,9 @@ function App() {
       window.scrollTo(0, 0);
     } else {
       document.body.style.overflow = 'auto';
+      document.body.style.overflowX = 'hidden'; // Disable horizontal scrollbar
     }
   }, [loader]);
-
   const snackbar = (text) => {
     setSnackbarText(text);
     setTimeout(() => setSnackbarText(""), 3 * 1000);

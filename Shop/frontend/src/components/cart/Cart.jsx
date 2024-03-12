@@ -3,9 +3,11 @@ import './cart.css';
 import { BsTrash3 } from "react-icons/bs";
 import Counter from '../counter/Counter';
 import { GeneralContext } from '../../App';
+import { Link } from 'react-router-dom';
 
 function Cart() {
     const [cartModal, setCartModal] = useState(false);
+    const [totalPrice, setTotalPrice] = useState(0); // State to hold the total price
     const cartImg = process.env.PUBLIC_URL + '/images/shopping-cart.png';
     const { count, setCount, cartProducts, setCartProducts } = useContext(GeneralContext);
 
@@ -16,6 +18,13 @@ function Cart() {
             setCartProducts(JSON.parse(storedCart));
         }
     }, []);
+    useEffect(() => {
+        let total = 0;
+        cartProducts.forEach(item => {
+            total += item.price * item.quantity;
+        });
+        setTotalPrice(total);
+    }, [cartProducts]);
 
     const handleQuantityChange = (index, value) => {
         // Update the quantity of the item at the given index
@@ -32,34 +41,8 @@ function Cart() {
         localStorage.removeItem('cart')
         setCartProducts([])
     }
-
-    const createOrder = async () => {
-        try {
-            const response = await fetch('http://localhost:4000/order/create', {
-                credentials: "include",
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json",
-                    "Authorization": localStorage.token,
-                },
-                body: JSON.stringify({ cart: cartProducts }),
-            });
-
-            const data = await response.json();
-
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                console.log("Order created successfully:", data);
-            }
-        }
-        catch (error) {
-            console.error("Error creating order:", error);
-            console.log(cartProducts);
-        }
-    }
-
-
+    
+console.log(totalPrice);
     return (
         <>
             <img onClick={() => { setCartModal(true); }}
@@ -72,6 +55,7 @@ function Cart() {
                             <div>
                                 <h1>My Cart</h1>
                                 <div>Items: {cartProducts.length}</div>
+                                <div>Total:{totalPrice.toFixed(2)}&#8362;</div>
                             </div>
                             <BsTrash3 onClick={clearCart} className="cart-trash" />
                         </div>
@@ -89,11 +73,15 @@ function Cart() {
                                         </div>
                                     ))}
                                 </div>
+                                <p className={totalPrice>30?'remove-message':'minimum-message'}>*Please note min cost for delivery 30&#8362;*</p>
                                 <div className={'cart-payout ' + (cartProducts.length > 7 ? "cart-payout-sticky" : "cart-payout-fixed")}>
-                                    <button onClick={createOrder}>Go To Checkout</button>
+                                   <Link to={'/checkout'}><button disabled={totalPrice<30} onClick={()=>setCartModal(false)} >Go To Checkout</button></Link>
                                 </div>
                             </>
-                        ) : <p className="empty-cart-msg">Your cart is empty...</p>}
+                        ) : <div className='empty-cart-msg'>
+                            <p >Your cart is empty...</p>
+                            <img className='empty-cart-img' src="https://i.pinimg.com/564x/b7/4e/21/b74e214472d9ee763f2613ae280f96d2.jpg" alt="sad-emo" />
+                              </div>}
                     </div>
                 </div>
             )}

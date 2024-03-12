@@ -3,6 +3,7 @@ import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -11,27 +12,28 @@ function Footer() {
                 <div className="footer-links">
                     <div className="footer-links-div">
                         <h4>Categoty</h4>
-                        <a href="/">
-                            <p>Vegetables</p>
-                        </a>
-                        <a href="/">
-                            <p>Fruits</p>
-                        </a>
-                        <a href="/">
-                            <p>Bakery</p>
-                        </a>
+                        <Link to={'/vegetables'}>
+                        <p>Vegetables</p>
+                        </Link>
+                        <Link to={'/fruits'}>
+                        <p>Fruits</p>
+                        </Link>
+                        <Link to={'/bakery'}>
+                        <p>Bakery</p>
+                        </Link>
+                        <Link to={'/bakery'}>
+                        <p>Eggs&Dairy</p>
+                        </Link>
                     </div>
                     <div className="footer-links-div">
-                        <h4>Recourses</h4>
+                        <h4>Grocery</h4>
                         <a href="/">
-                            <p>Employer</p>
+                            <p>About</p>
                         </a>
                         <a href="/">
-                            <p>Employer</p>
+                            <p>Q&A</p>
                         </a>
-                        <a href="/">
-                            <p>Employer</p>
-                        </a>
+                       
                     </div>
                     <div className="footer-links-div">
                         <h4>Partners</h4>
@@ -64,12 +66,11 @@ function Footer() {
                 <hr></hr>
                 <div className="footer-below">
                     <div className="footer-copyright">
-                        <p>All right bla bla</p>
+                        <p>All rights bla bla</p>
                     </div>
                     <div className="footer-below-links">
                         <a href=""><div><p>Terms of conditions</p></div></a>
                         <a href=""><div><p>Privacy</p></div></a>
-                        <a href=""><div><p>Terms of conditions</p></div></a>
                         <a href=""><div><p>Terms of conditions</p></div></a>
                     </div>
                 </div>

@@ -2,13 +2,14 @@ import { useContext } from 'react';
 import { GeneralContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 function Logout() {
-    const{setUser,snackbar}=useContext(GeneralContext)
+    const{setUser,snackbar,user}=useContext(GeneralContext)
     const navigate=useNavigate();
     const logout=()=>{
         localStorage.clear();
+        snackbar(`Until you Next Time ${user.firstName} 😁`)
         setUser(null)
         navigate('/')
-        snackbar('Until you Next Time 😁')
+        console.log(user);
     }
     return (
        <>

@@ -16,7 +16,7 @@ function Signup() {
     street: "",
     houseNumber: ""
   });
-  const { snackbar,setUser } = useContext(GeneralContext);
+  const { snackbar, setUser, setLoader} = useContext(GeneralContext);
 
   const handleValid = (ev) => {
     const { name, value } = ev.target;
@@ -37,6 +37,7 @@ function Signup() {
   const handleSignup = async (ev) => {
     ev.preventDefault();
     try {
+      setLoader(true)
       const response = await fetch('http://localhost:4000/users/signup', {
         credentials: "include",
         method: "POST",
@@ -59,10 +60,14 @@ function Signup() {
           password: "", city: "", street: "", houseNumber: ""
         });
         setErrors([]);
+        setTimeout(() => {
+          setLoader(false)
+        }, 500)
         snackbar(`Hello and Welcome ${data?.firstName}!`)
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      setLoader(false)
     }
   };
 

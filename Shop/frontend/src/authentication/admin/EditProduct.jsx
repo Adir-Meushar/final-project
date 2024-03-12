@@ -61,36 +61,36 @@ function EditProduct({ modal, setModal,product }) {
     }
 
     const addProduct = async (ev) => {
-        ev.preventDefault();
-        try {
-            const { imgUrl, imgAlt, calories, carbohydrates, protein, fat, ...rest } = formData;
-            const obj = {
-                ...rest,
-                nutritionalValue: { calories, carbohydrates, protein, fat },
-                img: { url: imgUrl, alt: imgAlt }
-            };
+        // ev.preventDefault();
+        // try {
+        //     const { imgUrl, imgAlt, calories, carbohydrates, protein, fat, ...rest } = formData;
+        //     const obj = {
+        //         ...rest,
+        //         nutritionalValue: { calories, carbohydrates, protein, fat },
+        //         img: { url: imgUrl, alt: imgAlt }
+        //     };
 
-            const response = await fetch('http://localhost:4000/products', {
-                credentials: "include",
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json",
-                    "Authorization": localStorage.token,
-                },
-                body: JSON.stringify(obj),
-            });
+        //     const response = await fetch('http://localhost:4000/products', {
+        //         credentials: "include",
+        //         method: "POST",
+        //         headers: {
+        //             "Content-type": "application/json",
+        //             "Authorization": localStorage.token,
+        //         },
+        //         body: JSON.stringify(obj),
+        //     });
 
-            const data = await response.json();
+        //     const data = await response.json();
 
-            if (data.error) {
-                setErrors(data.error);
-            } else {
-                setModal(false);
-                resetForm();
-            }
-        } catch (error) {
-            console.error("Error submitting form:", error);
-        }
+        //     if (data.error) {
+        //         setErrors(data.error);
+        //     } else {
+        //         setModal(false);
+        //         resetForm();
+        //     }
+        // } catch (error) {
+        //     console.error("Error submitting form:", error);
+        // }
     };
     return (
         <>

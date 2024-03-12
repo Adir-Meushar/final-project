@@ -15,7 +15,7 @@ const Navbar = () => {
   const [activeLink, setActiveLink] = useState('');
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 769);
 
-  const { user, query, setQuery } = useContext(GeneralContext)
+  const { user } = useContext(GeneralContext)
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,7 +49,7 @@ const Navbar = () => {
             <div className='link-box'>
               {/* <li><Link to="/about" className={activeLink === 'About' ? 'active' : ''} onClick={() => handleLinkClick('About')}>About</Link></li>
               <li><Link to="/contact" className={activeLink === 'Contact' ? 'active' : ''} onClick={() => handleLinkClick('Contact')}>Contact</Link></li> */}
-              <li><SearchBar /></li>
+              <li className='remove-search'><SearchBar /></li>
               {user?.roleType == RoleType.admin ? <li><Link to="/dashboard" className={activeLink === 'Dashboard' ? 'active' : ''} onClick={() => handleLinkClick('Dashboard')}>Dashboard</Link></li> : ''}
             </div>
             {isSmallScreen ? <CategoryNavbar /> : ''}
@@ -57,7 +57,6 @@ const Navbar = () => {
               <>
                 <div className='user-box'>
                   <Cart />
-                  {/* <h3 style={{ color: 'white' }}>Hello {user.firstName}!</h3> */}
                 <Link to={'/my-account'}><li><button className="nav-account">{user.firstName}</button></li></Link>  
                   <li><Logout /></li>
                 </div>
@@ -77,7 +76,7 @@ const Navbar = () => {
             <i id='bar' className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
           </div>
         </nav>
-        {isSmallScreen ? '' : <CategoryNavbar />}
+        {isSmallScreen ?<SearchBar/> : <CategoryNavbar />}
       </div>
     </>
   );

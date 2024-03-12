@@ -4,6 +4,7 @@ import { loginSchema } from './userValidation';
 import { Link } from "react-router-dom";
 
 function Login() {
+  const [showSignup,setShowSignup]=useState(false);
   const [modal, setModal] = useState(false);
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
@@ -60,7 +61,9 @@ function Login() {
       console.error("Error submitting form:", error);
       snackbar('Email or Password is Incorrect')
     }
-    setLoader(false)
+    setTimeout(()=>{
+      setLoader(false)
+    },1000)
   };
   return (
     <>
@@ -110,6 +113,7 @@ function Login() {
                 )}
               </label>
               <button className="login-btn" disabled={!isFormValid}>Login</button>
+              <p>First time here? signup</p>  
             </form>
           </div>
         </div>

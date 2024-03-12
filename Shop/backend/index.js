@@ -35,4 +35,5 @@ require('./handlers/user/user')(app);
 require('./handlers/products/product')(app);
 require('./handlers/products/category')(app);
 require('./handlers/order/order')(app);
+require('./handlers/adminData/dashboard')(app)
 require('./handlers/initialData/initialDataService');

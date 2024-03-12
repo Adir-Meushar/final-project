@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import NewProduct from "./NewProduct";
-import { GeneralContext, RoleType } from "../../App";
-import { Link, useNavigate } from "react-router-dom";
 import ProductsManagement from "./ProductManagement";
 import UsersManagement from "./UsersManagement"; // Import the UsersManagement component
+import AdminData from "./AdminData";
 
 function Dashboard() {
-  const { user } = useContext(GeneralContext);
  
   const [showProductsManagement, setShowProductsManagement] = useState(false);
   const [showUsersManagement, setShowUsersManagement] = useState(false); // State for user management
@@ -15,6 +13,7 @@ function Dashboard() {
     <div>
       <h1>Dashboard</h1>
       <NewProduct />
+      <AdminData/>
       <div>
         <button onClick={() => { setShowUsersManagement(true); setShowProductsManagement(false); }}>
           Users Management

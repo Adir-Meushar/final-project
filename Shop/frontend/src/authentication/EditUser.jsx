@@ -92,7 +92,6 @@ function EditUser() {
         { name: "lastName", label: "Last Name", type: "text" },
         { name: "phone", label: "Phone", type: "phone" },
         { name: "email", label: "Email", type: "email" },
-        // { name: "password", label: "Password", type: "password" },
         { name: "city", label: "City", type: "text" },
         { name: "street", label: "Street", type: "text" },
         { name: "houseNumber", label: "House Number", type: "text" },
@@ -101,7 +100,7 @@ function EditUser() {
     return (
         <>
             <div className="signup-modal modal">
-                <h2>My Account</h2>
+                <h2>My Details</h2>
                 <form onSubmit={(ev) => updateUser(ev, user._id)}>
                     {inputFields.map((field, index) => (
                         <label key={index}>
