@@ -39,38 +39,9 @@ const userValidationSchema = Joi.object({
       }),
       houseNumber: Joi.number().required().positive(),
   });
-  const updateUserValidationSchema = Joi.object({
-    firstName: Joi.string().min(2).max(30).pattern(/^[^\d]+$/).required().messages({
-       'string.min': 'First name must be at least {#limit} characters long',
-       'string.max': 'First name must not exceed {#limit} characters',
-       'string.pattern.base': 'First name cannot contain numeric characters',
-       'any.required': 'First name is required',
-     }),
-     lastName: Joi.string().min(2).max(30).pattern(/^[^\d]+$/).required().messages({
-       'string.min': 'Last name must be at least {#limit} characters long',
-       'string.max': 'Last name must not exceed {#limit} characters',
-       'string.pattern.base': 'Last name cannot contain numeric characters',
-       'any.required': 'Last name is required',
-     }),
-   phone: Joi.string().pattern(/^[0-9]{9,13}$/).required().messages({
-     'string.pattern.base': 'Phone number must be numeric and between 9 to 13 digits',
-     'any.required': 'Phone number is required',
-   }),
-   email: Joi.string().email().required().messages({ 
-     'string.email': 'Invalid email format',
-     'any.required': 'Email is required',
-   }),
-     city: Joi.string().min(2).max(100).required().messages({
-       'string.min': 'City must be at least {#limit} characters long',
-       'string.max': 'City must not exceed {#limit} characters',
-     }),
-     street: Joi.string().min(2).max(100).required().messages({
-       'string.min': 'Street must be at least {#limit} characters long',
-       'string.max': 'Street must not exceed {#limit} characters',
-     }),
-     houseNumber: Joi.number().required().positive(),
- });
-
+  const updateUserValidationSchema = userValidationSchema.keys({
+    password: Joi.forbidden()
+  });
 
   const loginValidationSchema = Joi.object({
     email: Joi.string().email().required().messages({

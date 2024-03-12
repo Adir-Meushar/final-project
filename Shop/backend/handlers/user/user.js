@@ -1,7 +1,7 @@
 const guard=require('../helpers/guard');
 const { getUserInfo } = require('../helpers/jwtUtils');
 const { User, RoleType } = require('./user-model');
-const { userValidationSchema, updateUserValidationSchema } = require('./userValidation');
+const { updateUserValidationSchema } = require('./userValidation');
 
 module.exports=app=>{
 
@@ -40,7 +40,7 @@ module.exports=app=>{
         try{
             const currentUser=await User.findById(req.params.id).select('-password');
             if(!currentUser){
-                return res.status(403).send('User not found');
+                return res.status(404).send('User not found');
             }
             res.send(currentUser);
         }catch(error){
@@ -72,7 +72,7 @@ module.exports=app=>{
              }
              const user=await User.findById(req.params.id);
              if (!user) {
-                return res.status(401).send('User not found.');
+                return res.status(404).send('User not found.');
               }
        
                user.set(value);
@@ -111,4 +111,34 @@ module.exports=app=>{
              res.status(500).send('Internal Server Error');
         }
     })
+
+    //Change User Role||Permissions:Admin//
+    app.patch('/users/:id',guard,async(req,res)=>{
+      const userToken=getUserInfo(req,res);
+      if(userToken.isAdmin!=RoleType.admin){
+          return res.status(401).send({
+              error: {
+                code: 401,
+                message: 'Unauthorized',
+                details: 'User authentication failed.',
+              },
+            });
+      }
+      try{
+        const user=await User.findByIdAndUpdate(req.params.id);
+        if(!user){
+          return res.status(403).send('User not found');
+        }
+        user.roleType = user.roleType !== RoleType.admin ? RoleType.admin : RoleType.user;
+
+       await user.save();
+
+        res.status(200).send({
+          message:`User was updated sucssesfully!`,
+          updated:user,
+        });
+      }catch(error){
+           res.status(500).send('Internal Server Error');
+      }
+  })
 };

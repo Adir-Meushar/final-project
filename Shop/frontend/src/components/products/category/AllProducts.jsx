@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Products from "../product/Products";
+import { GeneralContext } from "../../../App";
 
 
 function AllProducts() {
     const [products, setProducts] = useState([]);
-
+    const{setLoader}=useContext(GeneralContext) 
     useEffect(() => {
         const fetchProducts = async () => {
+            setLoader(true)
             try {
                 const response = await fetch('http://localhost:4000/products/all', {
                     credentials: "include",
@@ -22,6 +24,9 @@ function AllProducts() {
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
+            setTimeout(() => {
+                setLoader(false);
+              }, 1000);
         }
         fetchProducts();
     }, [])

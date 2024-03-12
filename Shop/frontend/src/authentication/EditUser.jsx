@@ -4,7 +4,7 @@ import {  updateSchema } from "./userValidation";
 import { GeneralContext } from "../App";
 function EditUser() {
     const [errors, setErrors] = useState({});
-    const [isFormValid, setIsFormValid] = useState(false);
+    const [isFormValid, setIsFormValid] = useState(true);
     const { user, setUser, snackbar } = useContext(GeneralContext);
     const [formData, setFormData] = useState({});
 
@@ -118,7 +118,7 @@ function EditUser() {
                             )}
                         </label>
                     ))}
-                    <button className="signup-btn">Update</button>
+                    <button className="signup-btn" disabled={!isFormValid}>Update</button>
                 </form>
             </div>
         </>

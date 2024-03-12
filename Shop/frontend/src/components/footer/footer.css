@@ -33,15 +33,16 @@
 }
 
 .footer a{
-    color: rgb(110, 110, 110);
+    color: rgb(192, 192, 192);
     text-decoration: none;
 }
 .social-media{
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly
 };
-.social-media img{
-    width: 80%;
+ .media-icon{
+   font-size: 2rem;
 }
 
 .footer-links-div h4{
@@ -81,10 +82,10 @@ hr{
     width: 100%;
 }
 
-.footer-copright p{
+.footer-copyright p{
     font-size: 13px;
     line-height: 15px;
-    color: white;
+    color: rgb(255, 252, 252);
     font-weight: 600;
 }
 

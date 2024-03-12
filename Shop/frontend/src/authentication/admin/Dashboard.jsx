@@ -7,15 +7,9 @@ import UsersManagement from "./UsersManagement"; // Import the UsersManagement c
 
 function Dashboard() {
   const { user } = useContext(GeneralContext);
-  const navigate = useNavigate();
+ 
   const [showProductsManagement, setShowProductsManagement] = useState(false);
   const [showUsersManagement, setShowUsersManagement] = useState(false); // State for user management
-
-  useEffect(() => {
-    if (user?.roleType !== RoleType.admin) {
-      navigate('/');
-    }
-  }, [user, navigate]);
 
   return (
     <div>

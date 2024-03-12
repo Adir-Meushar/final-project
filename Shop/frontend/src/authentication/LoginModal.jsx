@@ -11,7 +11,7 @@ function Login() {
     email: "",
     password: "",
   });
-  const { setUser, snackbar } = useContext(GeneralContext);
+  const { setUser, snackbar,setLoader } = useContext(GeneralContext);
 
   const handleValid = (ev) => {
     const { name, value } = ev.target;
@@ -32,6 +32,7 @@ function Login() {
   const handleLogin = async (ev, setUser) => {
     ev.preventDefault();
     try {
+      setLoader(true)
       const response = await fetch("http://localhost:4000/users/login", {
         credentials: "include",
         method: "POST",
@@ -59,6 +60,7 @@ function Login() {
       console.error("Error submitting form:", error);
       snackbar('Email or Password is Incorrect')
     }
+    setLoader(false)
   };
   return (
     <>

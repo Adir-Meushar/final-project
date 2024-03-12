@@ -44,6 +44,29 @@ function UsersManagement() {
                   console.error("Error Deleteing user:", error);
               }
         }
+      };
+
+      const updateUserRole=async(userId)=>{
+        if (!window.confirm(`Are you sure you want to change this user role?`)) {
+            return;
+        } else {
+            try{
+                const response=await fetch(`http://localhost:4000/users/${userId}`, {
+                  credentials: "include",
+                  method: "PATCH",
+                  headers: {
+                      "Content-type": "application/json",
+                      "Authorization": localStorage.token,
+                  },
+              })
+              const updatedUserData = await response.json();
+            
+              setUsers(users.map(user => user._id === userId ? { ...user, roleType: updatedUserData.roleType } : user));
+
+              }catch(error){
+                  console.error("Error Updating user:", error);
+              }
+        }
       }
    
     useEffect(()=>{
@@ -65,7 +88,7 @@ function UsersManagement() {
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Role</th>
-                        {/* <th>Edit User</th> */}
+                        <th>Edit User</th>
                         <th>Delete User</th>
                     </tr>
                 </thead>
@@ -77,8 +100,8 @@ function UsersManagement() {
                             <td>{user.email}</td>
                             <td>{user.phone}</td>
                             <td>{ user.street+ ' ' +user.houseNumber+ ' ' + user.city}</td>
-                            <td>{user.roleType === RoleType.admin ? 'Admin' : 'User'}</td>
-                            {/* <td >< FaRegEdit className="fa-edit"/></td> */}
+                            <td>{user.roleType === RoleType.user ? 'Admin' : 'User'}</td> 
+                            <td >< FaRegEdit className="fa-edit" onClick={()=>updateUserRole(user._id)}/></td>
                             <td ><AiFillDelete className="ai-delete" onClick={()=>deleteUser(user._id)} /></td>
                         </tr>
                     ))}
