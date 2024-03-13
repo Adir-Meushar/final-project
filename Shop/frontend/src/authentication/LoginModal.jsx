@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { GeneralContext } from "../App";
-import { loginSchema } from './userValidation';
+import { loginSchema } from './user/userValidation';
 import { Link } from "react-router-dom";
 
 function Login() {

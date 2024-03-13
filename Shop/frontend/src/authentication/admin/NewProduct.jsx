@@ -110,7 +110,7 @@ function NewProduct() {
                                     <select name="category" onChange={handleValid} value={formData.category}>
                                         <option value="Vegetables">Vegetables</option>
                                         <option value="Fruits">Fruits</option>
-                                        <option value="Eggs&Dairy">Eggs&Dairy</option>
+                                        <option value="Dairy&Eggs">Dairy&Eggs</option>
                                         <option value="Bakery">Bakery</option>
                                     </select>
                                 </label>

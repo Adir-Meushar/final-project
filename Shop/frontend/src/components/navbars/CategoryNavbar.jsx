@@ -9,7 +9,7 @@ function CategoryNavbar() {
                     <li><Link to="/vegetables">Vegetables</Link></li>
                     <li><Link to="/fruits">Fruits</Link></li>
                     <li><Link to="/bakery">Bakery</Link></li>
-                    <li><Link to="/eggs-dairy">Eggs&Dairy</Link></li>
+                    <li><Link to="/dairy&egss">Dairy&Egss</Link></li>
                 </ul>
             </nav>
         </div>

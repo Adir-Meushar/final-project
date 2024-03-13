@@ -830,6 +830,171 @@
               "url": "https://i.pinimg.com/564x/88/c8/7f/88c87f7466576eedc2168c742a5f361e.jpg",
               "alt": "Burger Buns"
             }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Chocolate Chip Cookie",
+            "description": "Enjoy a classic comfort of our Chocolate Chip Cookie. Baked to perfection with golden edges and gooey chocolate chips, it's a timeless treat for any occasion",
+            "price": 4.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 489,
+              "fat": 24.7,
+              "carbohydrates": 64,  
+              "protein": 5.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/13/d0/b4/13d0b445814042ab89517d2d5cd35807.jpg",
+              "alt": "Chocolate Chip Cookie"
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Chocolate brownie",
+            "description": "Delight in the irresistible goodness of our Chocolate Brownie. Made with rich cocoa, it's a heavenly treat for chocolate lovers !",
+            "price": 4.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 466,
+              "fat": 29,
+              "carbohydrates": 50, 
+              "protein": 6
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/7b/0e/03/7b0e0312e6a1e037d7975177954bcc5f.jpg",
+              "alt": "Chocolate brownie"
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Cinnamon roll",
+            "description": "Savor the deliciousness of our Cinnamon Roll. With its perfect mix of cinnamon and sugar, it's a treat you won't want to miss !",
+            "price": 10.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": {  
+              "calories": 436,
+              "fat": 24,
+              "carbohydrates": 50, 
+              "protein": 4.7
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/3b/f6/5a/3bf65a771021e399f24af772b6d39e6e.jpg",
+              "alt": "Cinnamon roll"
+            }
+          }
+          
+        ],
+        "dairyAndeggs":[
+          { 
+            "category": "Dairy&Eggs",
+            "title": "Eggs(6)",
+            "description": "Eggs(6), a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
+            "price": 10.90,
+            "unit": "package",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 143,
+              "fat": 9.5,
+              "carbohydrates": 0.7,
+              "protein": 12.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/cb/df/be/cbdfbe43b4365c3b2b3fb6d952d4d115.jpg",
+              "alt": "Eggs(6)"
+            }
+          },
+          { 
+            "category": "Dairy&Eggs",
+            "title": "Eggs(12)",
+            "description": "Eggs(12), a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
+            "price": 14.90,
+            "unit": "package",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 143,
+              "fat": 9.5,
+              "carbohydrates": 0.7,
+              "protein": 12.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/0f/10/16/0f10162233ac06f975d968fc214a1cbd.jpg",
+              "alt": "Eggs(12)"
+            }
+          },
+          { 
+            "category": "Dairy&Eggs",
+            "title": "Eggs(30)",
+            "description": "Eggs(30), a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
+            "price": 33.90,
+            "unit": "package",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 143,
+              "fat": 9.5,
+              "carbohydrates": 0.7,
+              "protein": 12.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/5f/d6/06/5fd60664dfeb9cb75e34da8023cad277.jpg",
+              "alt": "Eggs(30)"
+            }
+          },
+          { 
+            "category": "Dairy&Eggs",
+            "title": "Milk",
+            "description": "Milk, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
+            "price": 7.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 61,
+              "fat": 3,
+              "carbohydrates": 4.8,
+              "protein": 3.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/94/50/85/945085c25f6124e98360656f0bf88ad5.jpg",
+              "alt": "Milk"
+            }
+          },
+          { 
+            "category": "Dairy&Eggs",
+            "title": "Butter",
+            "description": "Butter, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
+            "price": 7.90,
+            "unit": "package",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 717,
+              "fat": 81.1,
+              "carbohydrates": 0.06,
+              "protein": 0.8
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/db/4c/dd/db4cdd4a09d5fc22da86d470bfe85f6c.jpg",
+              "alt": "Butter"
+            }
+          },
+          { 
+            "category": "Dairy&Eggs",
+            "title": "Cottage Cheese",
+            "description": "Cottage Cheese, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
+            "price": 6.90,
+            "unit": "package",
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 95,
+              "fat": 5,
+              "carbohydrates": 1.5,
+              "protein": 11
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/d3/08/97/d3089782f10c6ae6a25ed4fec7943eea.jpg",
+              "alt": "Cottage Cheese"
+            }
           }
         ]
       }

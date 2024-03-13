@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
-import './modal.css'
+import '../modal.css'
 import {  updateSchema } from "./userValidation";
-import { GeneralContext } from "../App";
+import { GeneralContext } from "../../App";
 function EditUser() {
     const [errors, setErrors] = useState({});
     const [isFormValid, setIsFormValid] = useState(true);

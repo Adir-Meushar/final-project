@@ -1,294 +1,116 @@
-// import { useState } from "react"
-// import '../modal.css'
-// import { productsStructure } from "../../components/products/product/ProductStructure";
-// import './productForm.css'
-// function NewProduct() {
-//     const [modal, setModal] = useState(false);
-//     const [errors, setErrors] = useState([]);
-//     const [formData, setFormData] = useState({
-//         category: "Vegetables",
-//         title: "",
-//         description: "",
-//         price: "",
-//         sale: "",
-//         calories: "",
-//         carbohydrates: "",
-//         protein: "",
-//         fat: "",
-//         imgUrl: "",
-//         imgAlt: ""
-//     });
+// import React, { useContext, useState } from 'react';
+// import { GeneralContext } from '../../App';
+// import DatePicker from 'react-datepicker';
+// import 'react-datepicker/dist/react-datepicker.css'; // Import the CSS for styling
+// import './checkout.css'
+// import { useNavigate } from 'react-router-dom';
+// import { checkoutSchema } from './checkoutValid';
+// function Checkout() {
+//     const { cartProducts, setCartProducts, snackbar } = useContext(GeneralContext);
+//     const [deliveryDate, setDeliveryDate] = useState(Date.now());
+//     const navigate = useNavigate();
 
-
-//     const inputChange = (ev) => {
-//         const { name, value, type, checked } = ev.target;
-//         const newValue = type === 'checkbox' ? checked : value;
-//         setFormData({
-//             ...formData,
-//             [name]: newValue,
-//         });
-//     };
-
-//     const addProduct = async (ev) => {
+//     const createOrder = async (ev) => {
 //         ev.preventDefault();
+//         if(cartProducts.length==0){
+//             return snackbar('cart is empty')
+//         }
 //         try {
-//             const { imgUrl, imgAlt, calories, carbohydrates, protein, fat, ...rest } = formData;
-//             const obj = {
-//                 ...rest,
-//                 nutritionalValue: {
-//                     calories,
-//                     carbohydrates,
-//                     protein,
-//                     fat
-//                 },
-//                 img: {
-//                     url: imgUrl,
-//                     alt: imgAlt
-//                 }
-//             };
-
-//             const response = await fetch('http://localhost:4000/products', {
+//             const response = await fetch('http://localhost:4000/order/create', {
 //                 credentials: "include",
 //                 method: "POST",
 //                 headers: {
 //                     "Content-type": "application/json",
 //                     "Authorization": localStorage.token,
 //                 },
-//                 body: JSON.stringify(obj),
+//                 body: JSON.stringify({ cart: cartProducts }),
 //             });
-
 //             const data = await response.json();
-
 //             if (data.error) {
-//                 setErrors(data.error);
+//                 console.log(data.error);
 //             } else {
-//                 setModal(false);
-//                 setFormData({
-//                     category: "Vegetables",
-//                     title: "",
-//                     description: "",
-//                     price: "",
-//                     sale: "",
-//                     calories: "",
-//                     carbohydrates: "",
-//                     protein: "",
-//                     fat: "",
-//                     imgUrl: "",
-//                     imgAlt: ""
-//                 });
-//                 setErrors([]);
+//                 console.log("Order created successfully:", data);
+//                 setCartProducts([]);
+//                 localStorage.removeItem('cart');
+//                 navigate('/');
+//                 snackbar('Your order has been received! 🎉 We are thrilled to be preparing your items for delivery.');
 //             }
 //         } catch (error) {
-//             console.error("Error submitting form:", error);
+//             console.error("Error creating order:", error);
 //         }
 //     };
-
 
 //     return (
 //         <>
-//             <button onClick={() => setModal(true)}>New Product</button>
-//             {modal && (
-//                 <div className="modal-frame">
-//                     <div className="modal product-modal">
-//                         <header>
-//                             <button className="close" onClick={() => {
-//                                 setModal(false);
-//                                 setFormData({
-//                                     category: "Vegetables",
-//                                     title: "",
-//                                     description: "",
-//                                     price: "",
-//                                     sale: "",
-//                                     calories: "",
-//                                     carbohydrates: "",
-//                                     protein: "",
-//                                     fat: "",
-//                                     imgUrl: "",
-//                                     imgAlt: ""
-//                                 });
-//                                 setErrors([]);
-//                             }}>X</button>
-//                             <h2>New Product</h2>
-//                         </header>
-//                         <form onSubmit={addProduct}>
-//                             {productsStructure.map((field, index) => (
-//                                 <label key={index}>
-//                                     {field.label}:
-//                                     {field.label === "Category" ? (
-//                                         <select
-//                                             name={field.name}
-//                                             onChange={inputChange}
-//                                             value={formData[field.name]}
-//                                         >
-//                                             <option value="Vegetables">Vegetables</option>
-//                                             <option value="Fruits">Fruits</option>
-//                                             <option value="Eggs&Dairy">Eggs&Dairy</option>
-//                                             <option value="Bakery">Bakery</option>
-//                                         </select>
-//                                     ) : field.type === "boolean" ? (
-//                                         <input
-//                                             type="checkbox"
-//                                             name={field.name}
-//                                             onChange={inputChange}
-//                                             checked={formData[field.name]}
-//                                         />
-//                                     ) : field.name === "description" ? ( // Check if field is "description"
-//                                         <textarea
-//                                             name={field.name}
-//                                             onChange={inputChange}
-//                                             value={formData[field.name]}
-//                                         />
-//                                     ) : (
-//                                         <input
-//                                             type={field.type}
-//                                             name={field.name}
-//                                             autoComplete="off"
-//                                             onChange={inputChange}
-//                                             value={formData[field.name]}
-//                                         />
-//                                     )}
-//                                 </label>
-//                             ))}
-//                             <button className="btnAdd">Add</button>
-//                             {errors.length > 0 && (
-//                                 <div className="error-messages">
-//                                     <ul>
-//                                         {errors.map((error, index) => (
-//                                             <li style={{ color: 'red', fontSize: '.8rem' }} key={index}>{error}</li>
-//                                         ))}
-//                                     </ul>
-//                                 </div>
-//                             )}
-//                         </form>
-//                     </div>
-//                 </div>
-//             )}
+//             <form onSubmit={createOrder} className='payment-form'>
+//                 <h1>Checkout</h1>
+//                 <label>
+//                     card number:
+//                     <input type="number" className='card-details' />
+//                 </label>
+//                 <label>
+//                     card number:
+//                     <input type="number" className='card-details' />
+//                 </label>
+//                 <label>
+//                     cvv:
+//                     <input type="number" className='card-details' />
+//                 </label>
+//                 <label>
+//                     Expiration Date:
+//                     <DatePicker
+//                         selected={deliveryDate}
+//                         onChange={(date) => setDeliveryDate(date)}
+//                         dateFormat="MM/dd/yyyy"
+//                         placeholderText="Select delivery date"
+//                     />
+//                 </label>
+//                 <button className='payment-btn'>Order & Pay</button>
+//             </form>
 //         </>
-//     )
+//     );
 // }
 
-// export default NewProduct
-// import { useEffect, useState } from 'react'
-// import './users-management.css'
-// import { AiFillDelete } from "react-icons/ai";
-// import { FaRegEdit } from "react-icons/fa";
-// import EditProduct from './EditProduct';
-// function ProductsManagement() {
-//     const [products,setProducts]=useState([]);
-//     const [modal,setModal]=useState(false)
-//     const [currentProduct,setCurrentProduct]=useState({});
+// export default Checkout;
 
-//     const fetchProducts=async ()=>{
-//         try{
-//           const response=await fetch('http://localhost:4000/products/all', {
-//             credentials: "include",
-//             method: "GET",
-//             headers: {
-//                 "Content-type": "application/json",
-//                 "Authorization": localStorage.token,
-//             },
-//         })
-//          const data=await response.json();
-//          setProducts(data)
-//         }catch(error){
-//             console.error("Error fetching users:", error);
-//         }
-//     }
-    
-//     const deleteProduct=async(productId)=>{
-//         if (!window.confirm(`Are you sure you want to delete this product?`)) {
-//             return;
-//         } else {
-//             try{
-//                 const response=await fetch(`http://localhost:4000/products/${productId}`, {
-//                   credentials: "include",
-//                   method: "DELETE",
-//                   headers: {
-//                       "Content-type": "application/json",
-//                       "Authorization": localStorage.token,
-//                   },
-//               })
-//                setProducts(products.filter((product) => product._id !== productId));
-//               }catch(error){
-//                   console.error("Error Deleteing product:", error);
-//               }
-//         }
-//       }
-//       const getOneProduct = async (productId) => {
-//         try {
-//             console.log("Fetching product details...");
-//             const response = await fetch(`http://localhost:4000/product/${productId}`, {
-//                 credentials: "include",
-//                 method: "GET",
-//                 headers: {
-//                     "Content-type": "application/json",
-//                     "Authorization": localStorage.token,
-//                 },
-//             });
-//             const data = await response.json();
-//             console.log("Product details fetched:", data);
-//             setCurrentProduct(data);
-//         } catch (error) {
-//             console.error("Error fetching product details:", error);
-//         }
-//     };
-    
-//    const openEditModal = async (productId) => {
-//     try {
-//         console.log("Opening edit modal...");
-//         await getOneProduct(productId);
-//         console.log("Product details loaded:", currentProduct);
-//         setModal(true);
-//     } catch (error) {
-//         console.error("Error opening edit modal:", error);
-//     }
-// };
-//     useEffect(()=>{
-//         fetchProducts();
-//     },[])
-//     useEffect(()=>{
-
-//     },[currentProduct])
-    
-//     return (
-//         <div className="container-table">
-//             <div className='page-header'>
-//                 <h1 >Product Management</h1>
-//                 <p>Here you can fined information about the products.</p>
-//             </div>
-//             <table className='product-table'>
-//                 <thead>
-//                     <tr >
-//                         <th>X</th>
-//                         <th>Category</th>
-//                         <th>Title</th>
-//                         <th>Price</th>
-//                         <th>Unit</th>
-//                         <th>Image</th>
-//                         <th>Edit Product</th>
-//                         <th>Delete Product</th>
-//                     </tr>
-//                 </thead>
-//                 <tbody>
-//                     {products?.map((product, index) => (
-//                         <tr key={index}>
-//                             <td>{index + 1}</td>
-//                             <td>{product.category}</td>
-//                             <td>{product.title}</td>
-//                             <td>{product.price}0&#8362;</td>
-//                             <td>{product.unit}</td>
-//                             <td><img className='table-img' src={product.img.url} alt={product.img.alt}/></td>
-//                             <td >< FaRegEdit className="fa-edit" onClick={() =>openEditModal(product._id)}/></td>
-//                             <td ><AiFillDelete className="ai-delete" onClick={()=>deleteProduct(product._id)} /></td>
-//                         </tr>
-//                     ))}
-//                 </tbody>
-//             </table>
-//             <EditProduct modal={modal} setModal={setModal} product={currentProduct} />
-
-//         </div>
-//     )
+// //card-details//
+// //choose delivery date//
+// //msg for current savesd address//
+// //total sum to pay//
+// .payment-form {
+//     text-transform: capitalize;
+//     margin: 10px;
+//     padding: 20px 0 0 0;
+//     border-radius: 5px;
+//     width: 35vw;
+//     min-width: 450px;
+//     height: 55vh;
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr);
+//     grid-gap: 20px; /* Added gap between grid items */
+//     background-color: #fff;
 // }
+// .payment-form h1{
+//     grid-column: span 2;
+// }
+// .payment-btn {
+//     grid-column: span 2; /* Button spans across 2 columns */
+//     justify-self: end;
+//     align-self: flex-end; /* Aligns button to the end of the grid */
+//     width: 100%;
+//     height: 35px;
+//     border-radius: 5px;
+//     background-color: rgb(46, 122, 222);
+//     color: white;
+//     font-size: 1rem;
+//     border: none;
+// }
+//   .card-details::-webkit-inner-spin-button,
+//   .card-details::-webkit-outer-spin-button {
+//     -webkit-appearance: none;
+//     margin: 0;
+//   }
+  
 
 
 //NOTES//

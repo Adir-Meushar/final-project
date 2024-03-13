@@ -23,7 +23,7 @@ module.exports=app=>{
           if(!passwordMatch){
               return res.status(401).send('Email or password is incorrect.');
           }
-          const currentUser = await User.findOne({ email }).select('-password -phone -createdTime -email');
+          const currentUser = await User.findOne({ email }).select('-password -phone -createdTime -email -city -street -houseNumber');
           const token = jwt.sign({ 
               userId: user._id,  
               isAdmin: user.roleType, 

@@ -32,10 +32,19 @@ module.exports=app=>{
     });
 
     //Get All Fruits||Permissions:All//
-    app.get('/products/bakery',async(req,res)=>{
+    app.get('/products/bakery',async(req,res)=>{ 
         try{
             const bakery = await Product.find({ category: 'Bakery' });
             res.send(bakery);
+        }catch(error){
+            res.status(500).send({ error: 'Error fetching products'});
+        } 
+    });
+      //Get All Dairy&Eggs||Permissions:All//
+      app.get('/products/dairy&eggs',async(req,res)=>{
+        try{
+            const dairyAndeggs = await Product.find({ category: 'Dairy&Eggs' });
+            res.send(dairyAndeggs);
         }catch(error){
             res.status(500).send({ error: 'Error fetching products'});
         }

@@ -73,9 +73,9 @@ console.log(totalPrice);
                                         </div>
                                     ))}
                                 </div>
-                                <p className={totalPrice>30?'remove-message':'minimum-message'}>*Please note min cost for delivery 30&#8362;*</p>
+                                <p className={totalPrice>50?'remove-message':'minimum-message'}>*Please note min cost for delivery 50&#8362;*</p>
                                 <div className={'cart-payout ' + (cartProducts.length > 7 ? "cart-payout-sticky" : "cart-payout-fixed")}>
-                                   <Link to={'/checkout'}><button disabled={totalPrice<30} onClick={()=>setCartModal(false)} >Go To Checkout</button></Link>
+                                   <Link to={'/checkout'}><button disabled={totalPrice<50} onClick={()=>setCartModal(false)} >Go To Checkout</button></Link>
                                 </div>
                             </>
                         ) : <div className='empty-cart-msg'>

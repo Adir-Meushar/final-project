@@ -23,9 +23,12 @@ function AdminData() {
         fetchData();
     }, []);
     return (
-        <div>
+      
+          <div>
             {productsAmount}
-        </div>
+          </div>
+         
+    
     )
 }
 

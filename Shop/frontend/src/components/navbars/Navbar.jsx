@@ -8,7 +8,7 @@ import { GeneralContext, RoleType } from '../../App';
 import CategoryNavbar from './CategoryNavbar';
 import Cart from '../cart/Cart';
 import SearchBar from '../searchbar/SearchBar';
-import EditUser from '../../authentication/EditUser';
+import EditUser from '../../authentication/user/EditUser';
 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);

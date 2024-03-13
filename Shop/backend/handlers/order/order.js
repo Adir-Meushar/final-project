@@ -4,7 +4,7 @@ const { Product } = require('../products/product-model');
 const Order = require('./order-model');
 
 module.exports = app => {
-    app.post('/order/create', guard, async (req, res) => {
+    app.post('/orders/create', guard, async (req, res) => {
         try {
             const userToken = getUserInfo(req, res);
             if (!userToken) {
@@ -66,4 +66,22 @@ module.exports = app => {
             res.status(500).send({ error: 'Error creating order' });
         }
     });
+
+    // app.get('/orders/my-order',guard ,async(req,res)=>{
+    //     try{
+    //         const userToken = getUserInfo(req, res);
+    //         if (!userToken) {
+    //             return res.status(401).send({
+    //                 error: { 
+    //                     code: 401,
+    //                     message: 'Unauthorized',
+    //                     details: 'User authentication failed.',
+    //                 },
+    //             });
+    //         }
+    //         const myOrders=
+    //     }catch(error){
+
+    //     }
+    // })
 }

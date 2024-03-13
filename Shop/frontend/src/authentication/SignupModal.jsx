@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import './modal.css'
-import { signupSchema } from "./userValidation";
+import { signupSchema } from "./user/userValidation";
 import { GeneralContext } from "../App";
 function Signup() {
   const [modal, setModal] = useState(false);
