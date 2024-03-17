@@ -1,34 +1,31 @@
 import React, { useState } from "react";
 import NewProduct from "./NewProduct";
 import ProductsManagement from "./ProductManagement";
-import UsersManagement from "./UsersManagement"; // Import the UsersManagement component
+import UsersManagement from "./UsersManagement"; 
 import AdminData from "./AdminData";
 
 function Dashboard() {
- 
-  const [showProductsManagement, setShowProductsManagement] = useState(false);
-  const [showUsersManagement, setShowUsersManagement] = useState(false); // State for user management
-
+  const [display, setDisplay] = useState('users')
   return (
-    <div>
+    <>
       <h1>Dashboard</h1>
       <NewProduct />
-      <AdminData/>
-      <div>
-        <button onClick={() => { setShowUsersManagement(true); setShowProductsManagement(false); }}>
-          Users Management
-        </button>
-        
-        <button onClick={() => { setShowProductsManagement(true); setShowUsersManagement(false); }}>
-          Products Management
-        </button>
+      <AdminData />
+      <div className="display">
+        <button onClick={() => setDisplay('users')} className={display === 'users' ? 'active' : ''}> Users Management</button>
+        <button onClick={() => setDisplay('prodcuts')} className={display === 'prodcuts' ? 'active' : ''}>Prodcuts Management</button>
       </div>
 
-      {showUsersManagement && <UsersManagement />}
-      
-      {showProductsManagement && <ProductsManagement />}
-    </div>
-  );
+      {
+        (() => {
+          switch (display) {
+            case 'users': return <UsersManagement />
+            case 'prodcuts': return <ProductsManagement />
+          }
+        })()
+      }
+    </>
+  )
 }
 
 export default Dashboard;

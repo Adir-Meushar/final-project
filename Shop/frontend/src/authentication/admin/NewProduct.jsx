@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import '../modal.css';
 import './productForm.css';
 import { productValidationSchema } from "./newProdcutValid";
+import { GeneralContext } from "../../App";
 
 function NewProduct() {
     const initialFormData = {
@@ -18,6 +19,7 @@ function NewProduct() {
         imgUrl: "",
         imgAlt: ""
     };
+    const { snackbar,setLoader} = useContext(GeneralContext);
 
     const [modal, setModal] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -63,6 +65,7 @@ function NewProduct() {
     const addProduct = async (ev) => {
         ev.preventDefault();
         try {
+            setLoader(true)
             const { imgUrl, imgAlt, calories, carbohydrates, protein, fat, ...rest } = formData;
             const obj = {
                 ...rest,
@@ -87,6 +90,10 @@ function NewProduct() {
             } else {
                 setModal(false);
                 resetForm();
+                setTimeout(() => {
+                    setLoader(false)
+                  }, 1000)
+                  snackbar(`${data?.title} Was added to the product list!`)
             }
         } catch (error) {
             console.error("Error submitting form:", error);
@@ -141,10 +148,12 @@ function NewProduct() {
                                 <label>
                                     Price
                                     <input type="number" autoComplete="off" onChange={handleValid} value={formData.price} name="price" className="input-number" />
+                                    {renderError("price")}
                                 </label>
                                 <label>
                                     Discount
-                                    <input type="checkbox" autoComplete="off" onChange={handleValid} value={formData.sale} name="sale" className="input-number" />
+                                    <input type="checkbox" onChange={(e) => setFormData({ ...formData, sale: e.target.checked })}
+                                        checked={formData.sale}  name="sale" className="input-check" />
                                 </label>
                             </div>
                             <div className="unit-type">

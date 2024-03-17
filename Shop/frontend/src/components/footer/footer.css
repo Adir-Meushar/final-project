@@ -1,8 +1,11 @@
 .footer{
-    margin-top: 5rem;
-    background-color: rgb(61 60 60);
+    /* background-color: rgb(61 60 60); */
+    background-color: rgb(22 57 19);
     width: 100vw;
     max-width: 2500px;
+}
+.footer.dark{
+    background-color: rgb(15, 15, 15);
 }
 .section-padding{
     padding: 4rem 4rem;

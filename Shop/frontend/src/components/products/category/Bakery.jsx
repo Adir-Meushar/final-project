@@ -4,7 +4,7 @@ import { GeneralContext } from "../../../App";
 
 function Bakery() {
     const [bakery, setBakery] = useState([]);
-    const{setLoader}=useContext(GeneralContext) 
+    const{setLoader,isDarkMode}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchBakery = async () => {
@@ -34,7 +34,7 @@ function Bakery() {
 
 
     return (
-        <div>
+        <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}>
          <div className="category-container">
             <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Bakery-Desktop1.jpg" alt="bakery-img"/>
                 <div className="cover-title">

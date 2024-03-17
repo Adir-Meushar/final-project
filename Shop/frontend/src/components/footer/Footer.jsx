@@ -4,10 +4,14 @@ import { BsInstagram } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import { GeneralContext } from '../../App';
+import { useContext } from 'react';
 
 function Footer() {
+    const {isDarkMode} = useContext(GeneralContext)
+
     return (
-        <div className="footer">
+        <div className={`footer ${isDarkMode ? 'dark' : 'light'}`}>
             <div className="am-footer section-padding">
                 <div className="footer-links">
                     <div className="footer-links-div">

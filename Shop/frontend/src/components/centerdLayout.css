@@ -8,3 +8,11 @@
   margin: 0 auto;
   box-sizing: border-box;
 } 
+.main-content{
+  background-color: rgb(244 244 244 / 73%);
+  /* background-color: rgb(249 249 249 / 73%); */
+  padding-bottom: 30px;
+}
+.main-content.dark{
+  background-color: rgb(15, 15, 15);
+}

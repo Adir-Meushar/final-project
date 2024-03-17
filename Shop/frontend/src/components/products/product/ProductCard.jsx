@@ -7,7 +7,7 @@ function ProductCard({ item }) {
     const [modal, setModal] = useState(false);
     const [hovered, setHovered] = useState(false);
     const [count, setCount] = useState(0); 
-    const {user,cartProducts, setCartProducts}=useContext(GeneralContext)
+    const {user,cartProducts, setCartProducts,isDarkMode}=useContext(GeneralContext)
     
     useEffect(() => {
       if (item) {
@@ -88,7 +88,7 @@ function ProductCard({ item }) {
           ):''}
         </div>
   
-        <div className="card-content">
+        <div className={`card-content ${isDarkMode ? 'dark' : 'light'}`}>
           <h3 className="card-title">{item.title}</h3>
           <p className="card-price">
             {item.price}0 &#8362;/{item.unit}

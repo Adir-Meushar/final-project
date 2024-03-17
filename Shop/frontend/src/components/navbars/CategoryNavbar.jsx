@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { GeneralContext } from '../../App';
 
 function CategoryNavbar() {
+    const {isDarkMode} = useContext(GeneralContext)
+
     return (
         <div>
-            <nav id="category-navbar">
+            <nav className={`category-navbar ${isDarkMode ? 'dark' : 'light'}`}>
                 <ul>
                     <li><Link to="/vegetables">Vegetables</Link></li>
                     <li><Link to="/fruits">Fruits</Link></li>

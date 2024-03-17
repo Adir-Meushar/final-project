@@ -5,14 +5,14 @@ const mongoose=require('mongoose');
 const chalk=require('chalk'); 
 const loggerMiddleware=require('./handlers/helpers/logger');
 const port=process.env.PORT;
-
+ 
 async function main(){
     await mongoose.connect(process.env.REMOTE_URL); 
     console.log(chalk.blue('Connection Established')); 
 } 
 main().catch(err=>console.log(chalk.red(err)));
 
-const app=express();
+const app=express(); 
 
 app.use(express.json());
 

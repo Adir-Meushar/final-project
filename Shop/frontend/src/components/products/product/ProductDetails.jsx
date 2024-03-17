@@ -3,7 +3,7 @@ import { GeneralContext } from '../../../App';
 import './product-details.css';
 
 function ProductDetails({ item, closeModal,setCount }) {
-  const {user,cartProducts, setCartProducts}=useContext(GeneralContext)
+  const {user,cartProducts, setCartProducts,snackbar}=useContext(GeneralContext)
 
   const handleAddToCart = () => {
     if(!user){
@@ -28,7 +28,8 @@ function ProductDetails({ item, closeModal,setCount }) {
     // Update count state
     const updatedCartItem = cart.find(cartItem => cartItem.id === item._id);
     setCount(updatedCartItem ? updatedCartItem.quantity : 0);
-    setCartProducts(cart)
+    setCartProducts(cart);
+    snackbar(`One ${item.unit} ${item.title} was added to cart`)
   };
   
   return (

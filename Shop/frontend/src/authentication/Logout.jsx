@@ -2,15 +2,18 @@ import { useContext } from 'react';
 import { GeneralContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 function Logout() {
-    const{setUser,snackbar,user}=useContext(GeneralContext)
+    const{setUser,snackbar,user,setLoader}=useContext(GeneralContext)
     const navigate=useNavigate();
     const logout=()=>{
         localStorage.clear();
-        snackbar(`Until you Next Time ${user.firstName} 😁`)
+        setLoader(true)
+        snackbar(`Until Next Time ${user.firstName} 😁`)
         setUser(null)
         navigate('/')
-        console.log(user);
-    }
+        setTimeout(()=>{
+            setLoader(false)
+          },500)
+     }
     return (
        <>
        <button className='nav-logout' onClick={logout}>Logout</button>
@@ -18,4 +21,4 @@ function Logout() {
     )
 }
 
-export default Logout
+export default Logout;

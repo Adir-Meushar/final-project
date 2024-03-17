@@ -10,6 +10,7 @@ function Checkout() {
     // const [deliveryDate, setDeliveryDate] = useState(Date.now());
     const [totalPrice, setTotalPrice] = useState(0); // State to hold the total price
     const [cardExpiredData, setCardExpiredData] = useState();
+    const [deliveryDate, setDeliveryDate] = useState(Date.now());
     const [isFormValid, setIsFormValid] = useState(false);
     const [errors, setErrors] = useState({});
     const [formData, setFormData] = useState({})
@@ -85,7 +86,22 @@ function Checkout() {
                         </div>
                     </div>
                 </div>
-                
+                <label>
+                       Choose Date For Delivery:
+                        <DatePicker
+                            name="deliveryDate"
+                            selected={deliveryDate}
+                            onChange={(date) => {
+                                setDeliveryDate(date);
+                                handleValid({ target: { name: 'deliveryDate', value: date } });
+                            }}
+                            dateFormat="dd/MM/yyyy"
+                            className='card-fields'
+                        />
+                         {errors && errors.deliveryDate && (
+                            <div className="error-message">{errors.deliveryDate}</div>
+                        )}
+                    </label>
                 <div className='card-details'>
                     <h3>Card-details</h3>
                     <label>
@@ -130,7 +146,11 @@ function Checkout() {
                             dateFormat="dd/MM/yyyy"
                             placeholderText="Select expiration date"
                             className='card-fields'
+                            autoComplete='off'
                         />
+                        {errors && errors.expirationDate && (
+                            <div className="error-message">{errors.expirationDate}</div>
+                        )}
                     </label>
                 </div>
 

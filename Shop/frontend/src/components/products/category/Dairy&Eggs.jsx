@@ -4,7 +4,7 @@ import Products from "../product/Products";
 
 function DairyAndEggs() {
     const [dairyAndEggs, setDairyAndEggs] = useState([]);
-    const{setLoader}=useContext(GeneralContext) 
+    const{setLoader,isDarkMode}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchDairyAndEggs = async () => {
@@ -34,7 +34,7 @@ function DairyAndEggs() {
 
 
     return (
-        <div>
+        <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}>
             <div className="category-container">
                <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Refrigerator-milk-and-eggs-Desktop1.jpg" alt="dairy&eggs-img" />
                 <div className="cover-title">

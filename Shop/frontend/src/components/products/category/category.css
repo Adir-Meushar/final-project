@@ -31,16 +31,29 @@
 .category-select {
     margin: 20px;
     width: 20%;
+    
 }
+
 .category-select select{
     cursor: pointer;
+    color: rgb(8 62 3);
     width: 200px;
-    font-size: 1rem;
+    font-size: .9rem;
+    font-weight: bold;
     border: none;
     outline: none;
     background-color: transparent;
 }
+.category-select.dark select{
+    color: white;
+}
 .category-select select option{
-    background-color: rgb(229 229 229 / 73%);
+    background-color: rgb(235, 235, 235);
+    border: none;
+    font-weight: bold;
+
+}
+.category-select.dark select option{
+    background-color: rgba(0, 0, 0);
     border: none;
 }

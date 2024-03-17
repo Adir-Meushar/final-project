@@ -4,7 +4,7 @@ import './category.css'
 import { GeneralContext } from "../../../App";
 function Vegetables() {
     const [vegetables, setVegetables] = useState([]);
-    const{setLoader}=useContext(GeneralContext) 
+    const{setLoader,isDarkMode}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchVegetables = async () => {
@@ -35,7 +35,7 @@ function Vegetables() {
 
 
     return (
-        <div>
+        <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}> 
             <div className="category-container">
                 <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Desktop1.jpg" alt="vegetables-img" />
                 <div className="cover-title">

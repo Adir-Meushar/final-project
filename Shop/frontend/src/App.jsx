@@ -24,6 +24,7 @@ function App() {
   const [snackbarText,setSnackbarText]=useState('')
   const [loader, setLoader] = useState(true);
   const [search, setSearch] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const navigate = useNavigate();
 
@@ -61,8 +62,10 @@ function App() {
     setSnackbarText(text);
     setTimeout(() => setSnackbarText(""), 3 * 1000);
   };
+  console.log(isDarkMode);
   return (
-    <GeneralContext.Provider value={{snackbar,user,setUser,count, setCount,cartProducts, setCartProducts,search, setSearch,setLoader}}>
+    <GeneralContext.Provider value={{snackbar,user,setUser,count, setCount,cartProducts, setCartProducts,search, 
+    setSearch,setLoader,isDarkMode, setIsDarkMode}}>
     <CenteredLayout>
       <Navbar />
       <Router/>

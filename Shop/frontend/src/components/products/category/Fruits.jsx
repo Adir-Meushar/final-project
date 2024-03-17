@@ -4,7 +4,7 @@ import { GeneralContext } from "../../../App";
 
 function Fruits() {
     const [fruits, setFruits] = useState([]);
-    const{setLoader}=useContext(GeneralContext) 
+    const{setLoader,isDarkMode}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchFruits = async () => {
@@ -34,7 +34,7 @@ function Fruits() {
 
 
     return (
-        <div>
+        <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}>
             <div className="category-container">
                <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Fruits-Desktop1.jpg" alt="fruits-img" />
                 <div className="cover-title">

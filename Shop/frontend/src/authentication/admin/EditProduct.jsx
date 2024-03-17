@@ -4,7 +4,7 @@ import './productForm.css';
 import { productValidationSchema } from "./newProdcutValid";
 
 function EditProduct({ modal, setModal,product }) {
-
+ console.log(product);
     const initialFormData = {
         category: product.category,
         title: product.title,

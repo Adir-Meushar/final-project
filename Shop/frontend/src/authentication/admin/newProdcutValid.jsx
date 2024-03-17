@@ -2,10 +2,10 @@ import Joi from "joi";
 
 export const productValidationSchema = Joi.object({
     category:Joi.allow(""),
-    title: Joi.string().min(2).max(30).pattern(/^[A-Za-z]+$/).required().messages({
+    title: Joi.string().min(2).max(30).pattern(/^[A-Za-z].*$/, 'startWithLetters') .required().messages({
         'string.min': 'Title must be at least {#limit} characters long',
         'string.max': 'Title must not exceed {#limit} characters',
-        'string.pattern.base': 'Title must contain only letters',
+        'string.pattern.base': 'Title must start with letters',
         'any.required': 'Title is required',
     }),
     description: Joi.string().min(15).max(150).required().messages({
@@ -13,14 +13,56 @@ export const productValidationSchema = Joi.object({
         'string.max': 'Description must not exceed {#limit} characters',
         'any.required': 'Description is required',
     }),
-    price: Joi.number().positive().required().messages({
-        'number.positive': 'Price must be a positive number',
-        'any.required': 'Price is required',
-    }),
-        calories: Joi.number().positive().required(),
-        carbohydrates: Joi.number().positive().required(),
-        protein: Joi.number().positive().required(),
-        fat: Joi.number().positive().required(),
+    price: Joi.number()
+        .positive()
+        .max(1000)
+        .required()
+        .messages({
+            'number.base': 'Price must be a number',
+            'number.positive': 'Price must be a positive number',
+            'number.max': 'Price must not exceed 1000',
+            'any.required': 'Price is required',
+        }),
+        calories: Joi.number()
+        .positive()
+        .max(4000)
+        .required()
+        .messages({
+            'number.base': 'Calories must be a number',
+            'number.positive': 'Calories must be a positive number',
+            'number.max': 'Calories must not exceed 4000',
+            'any.required': 'Calories are required',
+        }),
+        carbohydrates: Joi.number()
+        .positive()
+        .max(200)
+        .required()
+        .messages({
+            'number.base': 'Carbohydrates must be a number',
+            'number.positive': 'Carbohydrates must be a positive number',
+            'number.max': 'Carbohydrates must not exceed 200',
+            'any.required': 'Carbohydrates are required',
+        }),
+    protein: Joi.number()
+        .positive()
+        .max(200)
+        .required()
+        .messages({
+            'number.base': 'Protein must be a number',
+            'number.positive': 'Protein must be a positive number',
+            'number.max': 'Protein must not exceed 200',
+            'any.required': 'Protein is required',
+        }),
+    fat: Joi.number()
+        .positive()
+        .max(200)
+        .required()
+        .messages({
+            'number.base': 'Fat must be a number',
+            'number.positive': 'Fat must be a positive number',
+            'number.max': 'Fat must not exceed 200',
+            'any.required': 'Fat is required',
+        }),
     imgUrl: Joi.string().min(15).max(500).required().messages({
         'string.empty': 'Image URL must not be empty',
         'any.required': 'Image URL is required',

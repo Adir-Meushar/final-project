@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './users-management.css'
 import { AiFillDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
 import EditProduct from './EditProduct';
+import { GeneralContext } from '../../App';
 function ProductsManagement() {
     const [products,setProducts]=useState([]);
     const [modal,setModal]=useState(false)
     const [currentProduct,setCurrentProduct]=useState({});
+    const { snackbar,setLoader} = useContext(GeneralContext);
 
     const fetchProducts=async ()=>{
         try{
+            setLoader(true)
           const response=await fetch('http://localhost:4000/products/all', {
             credentials: "include",
             method: "GET",
@@ -20,6 +23,9 @@ function ProductsManagement() {
         })
          const data=await response.json();
          setProducts(data)
+         setTimeout(() => {
+            setLoader(false)
+          }, 500)
         }catch(error){
             console.error("Error fetching users:", error);
         }
@@ -29,6 +35,7 @@ function ProductsManagement() {
         if (!window.confirm(`Are you sure you want to delete this product?`)) {
             return;
         } else {
+            setLoader(true)
             try{
                 const response=await fetch(`http://localhost:4000/products/${productId}`, {
                   credentials: "include",
@@ -42,6 +49,10 @@ function ProductsManagement() {
               }catch(error){
                   console.error("Error Deleteing product:", error);
               }
+              setTimeout(() => {
+                setLoader(false)
+              }, 500)
+              snackbar(`Prodcut was deleted sucsesfully!`)
         }
       }
       const getOneProduct = async (productId) => {
@@ -76,6 +87,7 @@ function ProductsManagement() {
     useEffect(()=>{
         fetchProducts();
     },[])
+    
     useEffect(()=>{
 
     },[currentProduct])

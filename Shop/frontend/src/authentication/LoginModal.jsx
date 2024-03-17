@@ -56,6 +56,7 @@ function Login() {
           password: "",
         });
         setErrors([]);
+        snackbar(`Welcome ${data.user.firstName}!`)
       }
     } catch (error) {
       console.error("Error submitting form:", error);

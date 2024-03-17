@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 const Products = ({ items }) => {
   const [sortOption, setSortOption] = useState('low');
-  const { search, setSearch } = useContext(GeneralContext)
+  const { search, setSearch,isDarkMode } = useContext(GeneralContext)
   const location = useLocation(); // Get current location
   useEffect(() => {
     // Clear query when route changes
@@ -33,7 +33,7 @@ const Products = ({ items }) => {
 
   return (
     <>
-      <div className='category-select'>
+      <div className={`category-select ${isDarkMode ? 'dark' : 'light'}`}>
         <select name="" id="" onChange={handleSortChange}>
           <option value="low">Price: Low to High</option>
           <option value="high">Price: High to Low</option>

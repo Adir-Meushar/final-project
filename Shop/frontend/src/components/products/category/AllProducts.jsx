@@ -5,7 +5,7 @@ import { GeneralContext } from "../../../App";
 
 function AllProducts() {
     const [products, setProducts] = useState([]);
-    const{setLoader}=useContext(GeneralContext) 
+    const{setLoader,isDarkMode}=useContext(GeneralContext) 
     useEffect(() => {
         const fetchProducts = async () => {
             setLoader(true)
@@ -34,7 +34,7 @@ function AllProducts() {
 
 
     return (
-        <div className="main-content">
+        <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}>
           <div className="category-container">
             <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2023/06/DES-_-category-_-health.jpg" alt="bakery-img"/>
                 <div className="cover-title">

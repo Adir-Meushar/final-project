@@ -6,30 +6,33 @@ const productValidationSchema = require('./productValidation');
 
 module.exports=app=>{
     //Create Product||Permissions:Admin//
-    app.post('/products',guard,async(req,res)=>{ 
-        const userToken=getUserInfo(req,res);
-        if(userToken.isAdmin!=RoleType.admin){
-            return res.status(401).send({
-                error: {
-                  code: 401,
-                  message: 'Unauthorized',
-                  details: 'User authentication failed.',
-                },
-              });
-        }
-        const{category,title,description,price,sale,nutritionalValue,img,unit}=req.body;
+    app.post('/products', guard, async (req, res) => {
+    const userToken = getUserInfo(req, res);
+    if (userToken.isAdmin != RoleType.admin) {
+        return res.status(401).send({
+            error: {
+                code: 401,
+                message: 'Unauthorized',
+                details: 'User authentication failed.',
+            },
+        });
+    }
+    const { category, title, description, price, sale, nutritionalValue, img, unit } = req.body;
 
-        const{error,value}=productValidationSchema.validate(req.body,{abortEarly:false});
+    const { error, value } = productValidationSchema.validate(req.body, { abortEarly: false });
 
-        if (error) {
-            return res.status(400).json({ error: error.details.map(detail => detail.message) });
-          }
-          const existingProduct = await Product.findOne({ title });
+    if (error) {
+        return res.status(400).json({ error: error.details.map(detail => detail.message) });
+    }
+
+    try {
+        const existingProduct = await Product.findOne({ title }).get({ getters: true });
+
         if (existingProduct) {
-          return res.status(400).json({ error: 'Product already exists' });
+            return res.status(400).json({ error: 'Product already exists' });
         }
-       try{
-        const product=new Product({
+
+        const product = new Product({
             category,
             title,
             description,
@@ -40,12 +43,13 @@ module.exports=app=>{
             unit
         });
 
-        const newProduct= await product.save();
+        const newProduct = await product.save();
         res.status(200).send(newProduct);
-       }catch(error){
-        res.status(500).send({ error: 'Error creating product'});
-       }
-    });
+    } catch (error) {
+        res.status(500).send({ error: 'Error creating product' });
+    }
+});
+
 
 // Edit Product || Permissions: Admin//
 app.put('/products/:id', guard, async (req, res) => {

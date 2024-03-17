@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './users-management.css'
-import {RoleType} from '../../App';
+import {GeneralContext, RoleType} from '../../App';
 import { AiFillDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
 function UsersManagement() {
     const [users,setUsers]=useState([]);
+    const { setLoader} = useContext(GeneralContext)
 
     const fetchUsers=async ()=>{
         try{
+            setLoader(true)
           const response=await fetch('http://localhost:4000/users', {
             credentials: "include",
             method: "GET",
@@ -19,6 +21,9 @@ function UsersManagement() {
          const data=await response.json();
          console.log(data);
          setUsers(data)
+         setTimeout(() => {
+            setLoader(false)
+          }, 500)
         }catch(error){
             console.error("Error fetching users:", error);
         }

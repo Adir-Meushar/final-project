@@ -6,9 +6,10 @@
 }
 
 body{
-  background-color: rgb(229 229 229 / 73%);
   font-family: 'Inter', sans-serif;
   overflow-x:hidden;
+  /* background-color: rgb(229 229 229 / 73%); */
+
 }
 
 button{

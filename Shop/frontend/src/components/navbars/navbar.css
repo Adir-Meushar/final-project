@@ -10,12 +10,19 @@
     max-width: 2500px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: rgba(69, 69, 69, 0.942);
-    padding: 20px 80px;
+    justify-content: flex-end;
+    /* background-color: rgba(69, 69, 69, 0.942); */
+    background: #52c234;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #061700, #52c234);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #061700, #52c234); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        padding: 20px 80px;
     box-shadow:0 5px 15px rgba(0, 0, 0, 0.06) ;
     position: relative;
 }
+.top-nav.dark{
+    background: #000000;  /* fallback for old browsers */
+  
+    }
 .logo{
     width: 90px;
     height: 90px;
@@ -31,54 +38,61 @@
 }
 .user-box{
     display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
 }
-#navbar{
+.guest-box{
+    display: flex;
+}
+.navbar{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
 }
 
-#navbar li{
+.navbar li{
     list-style: none;
     padding: 0 20px;
     position: relative;
 }
 
-#navbar li a{
+.navbar li a{
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: 600;
     color: white;
     transition: 0.3s ease-in-out;
 }
-.user-box .nav-login ,.nav-signup,.nav-logout,.nav-account{
+.nav-signup,.nav-login,.nav-logout{
     width: 77px;
     border-radius: 5px;
     padding: 5px 10px;
     border: none;
     cursor: pointer;
  }
-#navbar li a:hover,
-#navbar li a.active
-,#category-navbar ul li a:hover,
-#category-navbar ul li a:active{
-    color: rgb(60, 208, 159);
+.navbar li a:hover,
+.navbar li a.active
+,.category-navbar ul li a:hover,
+.category-navbar ul li a:active{
+    color: rgba(88, 192, 78, 0.72);
 }
 
 
-#navbar li a:hover::after,
-#navbar li a.active::after,
-#category-navbar ul li a:hover::after,
-#category-navbar ul li a:active::after{
+/* .navbar li a:hover::after,
+.navbar li a.active::after,
+.category-navbar ul li a:hover::after,
+.category-navbar ul li a:active::after{
     content:"";
     width: 30%;
     height: 2px;
-    background-color:rgb(60, 208, 159);
+    background-color: rgb(8 62 3 / 72%);
     position: absolute;
     bottom: -4px;
     left: 20px;
-}
+} */
 #mobile{
     display: none;
 }
@@ -86,13 +100,19 @@
     color: white;
     cursor: pointer;
 }
-#category-navbar{
-    background-color: #737373;
+.category-navbar{
+    /* background-color: #43b032; */
+    background-color: #ffffe5;
     padding: 20px 80px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
     
 }
-#category-navbar ul {
+.category-navbar.dark{
+  background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #434343, #000000);  
+    background: linear-gradient(to right, #434343, #000000); 
+}
+.category-navbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -101,28 +121,37 @@
     justify-content: center;
     gap: 25px;
 }
-#category-navbar ul li{
+.category-navbar ul li{
     position: relative;
     padding: 5px 20px;
 
 }
-#category-navbar ul li a {
+.category-navbar ul li a {
     text-decoration: none;
     font-size: 1.3rem;
     padding: 10px;
-    color: #f7f7f7;
+    color: rgb(8 62 3);
+    font-weight: bold;
     transition: 0.3s ease-in-out;
 
 }
-
-/* #category-navbar ul li a:hover {
+.category-navbar.dark ul li a{
+    color: white;
+} 
+/* .category-navbar ul li a:hover {
     background-color: #eee;
     color: #000;
 } */
-
-
-@media screen and (max-width:769px) {
-    #navbar{
+.user-icon,.admin-icon,.theme-btn{
+    font-size: 1.4rem;
+    color: white;
+    cursor: pointer;
+}
+.theme-btn{
+ margin-left: 2%;
+  }
+@media screen and (max-width:1000px) {
+    .navbar{
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -132,16 +161,16 @@
         right: -300px;
         width: 300px;
         height: 100vh;
-        background-color: rgb(61, 59, 59);
+        background-color: rgb(18, 37, 14);
         box-shadow:0 40px 60px rgba(0, 0, 0, 0.1) ;
         padding: 40px 0 0 10px;
         z-index: 80;
         transition: 0.3s ease-in-out;
     }
-    #navbar.active{
+    .navbar.active{
         right: 0px;
     }
-    #navbar li{
+    .navbar li{
         margin-bottom: 25px;
     }
     .link-box{
@@ -153,36 +182,38 @@
     .user-box{
         display: flex;
         flex-direction: column;
+        gap: unset;
     }
-    #category-navbar{
+    .category-navbar{
         background-color: rgb(61, 59, 59);
         padding:unset;
         box-shadow: unset;
         width: 100%;
     }
-    #category-navbar ul {
+    .category-navbar ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
         flex-direction: column;
         gap: 0;
         text-align: left;
+        
     }
-    #category-navbar ul li {
+    .category-navbar ul li {
         display: block;
     }
-    #category-navbar ul li a {
+    .category-navbar ul li a {
         text-decoration: none;
         padding: unset;
-        color: #fff;
+        color: white;
     }
     
-    #category-navbar ul li a:hover {
+    .category-navbar ul li a:hover {
         color: rgb(60, 208, 159);
         background-color: unset;
     }
-    #category-navbar ul li a:hover::after,
-    #category-navbar ul li a.active::after{
+    .category-navbar ul li a:hover::after,
+    .category-navbar ul li a.active::after{
     content:"";
     width: 30%;
     height: 2px;

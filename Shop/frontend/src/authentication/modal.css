@@ -33,6 +33,7 @@
   }
   .signup-modal{
     min-width: 603px;
+    margin: 3rem;
   }
  .signup-modal form{
   display: grid;

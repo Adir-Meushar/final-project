@@ -32,9 +32,14 @@
 .card-content {
   text-transform: capitalize;
   padding: 10px;
-  background-color: rgb(229 229 229 / 73%);
+  background-color: rgb(244 244 244 / 73%);
   color: rgb(73, 73, 73);
   font-size: .9rem;
+  border-radius: 4px;
+}
+.card-content.dark{
+  background-color: black;
+  color: white;
 }
 .card-title {
   text-align: left;
