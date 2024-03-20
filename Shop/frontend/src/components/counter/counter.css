@@ -26,7 +26,14 @@
     font-size: 1.1rem;
     cursor: pointer;
 }
-
+@media screen and (max-width:550px) {
+  .counter-box{
+    position: unset;
+  }
+  .counter-btn{
+    width: 30px;
+  }
+}
 @keyframes slide-up-counter {
     0% {
       opacity: 0;

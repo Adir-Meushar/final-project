@@ -151,7 +151,7 @@ function NewProduct() {
                                     {renderError("price")}
                                 </label>
                                 <label>
-                                    Discount
+                                    Sale
                                     <input type="checkbox" onChange={(e) => setFormData({ ...formData, sale: e.target.checked })}
                                         checked={formData.sale}  name="sale" className="input-check" />
                                 </label>

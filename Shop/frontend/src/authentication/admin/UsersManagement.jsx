@@ -5,7 +5,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
 function UsersManagement() {
     const [users,setUsers]=useState([]);
-    const { setLoader} = useContext(GeneralContext)
+    const { setLoader,snackbar} = useContext(GeneralContext)
 
     const fetchUsers=async ()=>{
         try{
@@ -45,6 +45,7 @@ function UsersManagement() {
                const data=await response.json();
                console.log(data);
                setUsers(users.filter((user) => user._id !== userId));
+               snackbar(`${data.deletedUser.firstName} was deleted successfully.`)
               }catch(error){
                   console.error("Error Deleteing user:", error);
               }
@@ -65,9 +66,9 @@ function UsersManagement() {
                   },
               })
               const updatedUserData = await response.json();
-            
-              setUsers(users.map(user => user._id === userId ? { ...user, roleType: updatedUserData.roleType } : user));
-
+            console.log(updatedUserData);
+              setUsers(users.map(user => user._id === userId ? { ...user, roleType: user.roleType === RoleType.user ? RoleType.admin : RoleType.user } : user));
+              snackbar(`${updatedUserData.updated.firstName} is now ${updatedUserData.updated.roleType==20?'Admin User!':'Commen User!'} `)
               }catch(error){
                   console.error("Error Updating user:", error);
               }
@@ -77,7 +78,7 @@ function UsersManagement() {
     useEffect(()=>{
         fetchUsers();
     },[])
-
+ console.log(users);
     return (
         <div className="container-table">
             <div className='page-header'>
@@ -105,7 +106,7 @@ function UsersManagement() {
                             <td>{user.email}</td>
                             <td>{user.phone}</td>
                             <td>{ user.street+ ' ' +user.houseNumber+ ' ' + user.city}</td>
-                            <td>{user.roleType === RoleType.user ? 'Admin' : 'User'}</td> 
+                            <td>{user.roleType == RoleType.user ? 'User' : 'Admin'}</td> 
                             <td >< FaRegEdit className="fa-edit" onClick={()=>updateUserRole(user._id)}/></td>
                             <td ><AiFillDelete className="ai-delete" onClick={()=>deleteUser(user._id)} /></td>
                         </tr>

@@ -50,7 +50,17 @@
   text-align: left;
   font-weight: bold;
 }
-
+.discount-box{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.original-price{
+  text-decoration: line-through;
+}
+.sale-price{
+  color: rgb(219, 2, 2);
+}
 .card-description {
   margin: 0;
   font-size: 1rem;
@@ -97,5 +107,13 @@
   .card-content{
     padding: 0;
     background: transparent;
+  }
+  .card-content.dark{
+    background-color: #fff;
+    color: black;
+  }
+  .discount-box{
+    display: flex;
+    flex-direction: column;
   }
 }

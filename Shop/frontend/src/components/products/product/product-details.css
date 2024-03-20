@@ -45,8 +45,8 @@
    height: 70%;
   }
   .product-image {
-    width: 70%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     }
   .content .details-box {
     display: flex;
@@ -80,14 +80,13 @@
     font-size: 1rem;
     cursor: pointer;
     border: none;
-    background-color: rgba(82, 82, 82, 0.952);
+    background-color:rgb(8 62 3);
     color: white;
     border-radius: 10px;
     transition: all .3s;
   }
   .product-details .add-btn:hover{
-    background-color:rgb(224, 224, 224);
-    color: rgba(82, 82, 82, 0.952);
+    background-color:rgba(80, 185, 71, 0.879);
   }
   table {
     margin: 0 auto;

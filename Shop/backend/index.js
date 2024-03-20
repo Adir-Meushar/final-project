@@ -7,7 +7,7 @@ const loggerMiddleware=require('./handlers/helpers/logger');
 const port=process.env.PORT;
  
 async function main(){
-    await mongoose.connect(process.env.REMOTE_URL); 
+    await mongoose.connect(process.env.REMOTE_URL);  
     console.log(chalk.blue('Connection Established')); 
 } 
 main().catch(err=>console.log(chalk.red(err)));

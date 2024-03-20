@@ -8,6 +8,8 @@ const orderSchema = new mongoose.Schema({
         productName: { type: String, required: true },
         quantity: { type: Number, default: 1 },
         price:Number,
+        finalPrice:Number,
+        sale:Boolean,
     }],
     totalPrice: { type: Number, required: true, set: v => Math.floor(v) },
     createdTime: { type: String, default: () => moment().format('D-M-Y HH:mm:ss') }

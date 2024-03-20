@@ -62,7 +62,7 @@ const Navbar = () => {
                   <FaRegUser onClick={() => navigate('/my-account')} className='user-icon' />
                   {user?.roleType == RoleType.admin ? <ImStatsDots className='admin-icon' onClick={()=>navigate('/dashboard')} />
                     : ''}
-                  <Cart />
+                 <div className='remove-cart'><Cart /></div> 
                 </div>
               </>
             ) : (
@@ -70,12 +70,12 @@ const Navbar = () => {
                 <div className='guest-box'>
                   <li><Signup /></li>
                   <li><Login /></li>
-
                 </div>
               </>
             )}
           </ul>
           {!isDarkMode ? <MdOutlineDarkMode className='theme-btn' onClick={() => setIsDarkMode(true)} /> : <MdOutlineLightMode className='theme-btn' onClick={() => setIsDarkMode(false)} />}
+        {user?<div className='cart-mobile'> <Cart /></div>:''} 
           <div id='mobile' onClick={handleClick}>
             <i id='bar' className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
           </div>

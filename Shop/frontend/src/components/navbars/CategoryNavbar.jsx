@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { GeneralContext } from '../../App';
+import './category-navbar.css'
 
 function CategoryNavbar() {
     const {isDarkMode} = useContext(GeneralContext)

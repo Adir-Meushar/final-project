@@ -2,7 +2,7 @@ const guard=require('../helpers/guard');
 const { getUserInfo } = require('../helpers/jwtUtils');
 const { RoleType } = require('../user/user-model');
 const{Product}=require('./product-model');
-const productValidationSchema = require('./productValidation');
+const { productValidationSchema, editProductValidationSchema } = require('./productValidation');
 
 module.exports=app=>{
     //Create Product||Permissions:Admin//
@@ -83,7 +83,7 @@ app.put('/products/:id', guard, async (req, res) => {
             });
         }
 
-        const { error, value } = productValidationSchema.validate(req.body, { abortEarly: false });
+        const { error, value } = editProductValidationSchema.validate(req.body, { abortEarly: false });
         if (error) {
             return res.status(400).json({ error: error.details.map(detail => detail.message) });
         }

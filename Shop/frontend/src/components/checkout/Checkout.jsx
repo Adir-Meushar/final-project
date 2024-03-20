@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { GeneralContext } from '../../App';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'; // Import the CSS for styling
+import 'react-datepicker/dist/react-datepicker.css'; 
 import './checkout.css'
 import { useNavigate } from 'react-router-dom';
 import { checkoutSchema } from './checkoutValid';
 function Checkout() {
     const { cartProducts, setCartProducts, snackbar, user } = useContext(GeneralContext);
-    // const [deliveryDate, setDeliveryDate] = useState(Date.now());
-    const [totalPrice, setTotalPrice] = useState(0); // State to hold the total price
+    const [totalPrice, setTotalPrice] = useState(0); 
     const [cardExpiredData, setCardExpiredData] = useState();
     const [deliveryDate, setDeliveryDate] = useState(Date.now());
     const [isFormValid, setIsFormValid] = useState(false);
@@ -19,7 +18,7 @@ function Checkout() {
     useEffect(() => {
         let total = 0;
         cartProducts.forEach(item => {
-            total += item.price * item.quantity;
+            total += item.sale ? item.finalPrice * item.quantity : item.price * item.quantity;
         });
         setTotalPrice(total);
     }, [cartProducts]);

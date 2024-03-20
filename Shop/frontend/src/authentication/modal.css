@@ -31,6 +31,7 @@
     justify-content: center;
     gap: 10px;
   }
+  
   .signup-modal{
     min-width: 603px;
     margin: 3rem;
@@ -52,11 +53,9 @@
   label { 
   display: block;
    font-size: .9rem;
-   /* height:3rem ; */
   }
   .signup-modal label,.login-modal label{
     text-align-last: left;
-
     height:4rem ;
   }
   .signup-modal input,.login-modal input {
@@ -100,6 +99,33 @@
 }
 .signup-btn{
   grid-column: span 2;
+}
+.sign-up-link ,.login-link {
+  color: rgb(0, 0, 71);
+  font-size: .9rem;
+  cursor: pointer;
+}
+.sign-up-link{
+  margin-top: 6%;
+}
+
+.login-link{
+  grid-column: span 2;
+}
+
+
+@media screen and (max-width:660px) {
+  .signup-modal{
+    min-width: unset;
+    margin: 3rem;
+    padding: unset;
+  }
+  .signup-modal form{
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+   max-height: 90vh;
+  }
 }
   @keyframes slide-up {
     0% {

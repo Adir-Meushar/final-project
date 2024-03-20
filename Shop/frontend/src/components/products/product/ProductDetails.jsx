@@ -2,11 +2,11 @@ import { useContext } from 'react';
 import { GeneralContext } from '../../../App';
 import './product-details.css';
 
-function ProductDetails({ item, closeModal,setCount }) {
-  const {user,cartProducts, setCartProducts,snackbar}=useContext(GeneralContext)
+function ProductDetails({ item, closeModal, setCount }) {
+  const { user, cartProducts, setCartProducts, snackbar } = useContext(GeneralContext)
 
   const handleAddToCart = () => {
-    if(!user){
+    if (!user) {
       return alert('please login to purchase..')
     }
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -18,9 +18,11 @@ function ProductDetails({ item, closeModal,setCount }) {
         id: item._id,
         quantity: 1,
         price: item.price,
+        finalPrice:item.finalPrice,
         title: item.title,
         img: item.img.url,
-        unit: item.unit
+        unit: item.unit,
+        sale:item.sale
       });
     }
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -31,48 +33,59 @@ function ProductDetails({ item, closeModal,setCount }) {
     setCartProducts(cart);
     snackbar(`One ${item.unit} ${item.title} was added to cart`)
   };
-  
+
   return (
-    <div className="modal-frame-details">
-      <div className='product-details'>
-        <button className='close-btn' onClick={(ev) => { closeModal(false); ev.stopPropagation() }}>&times;</button>
+    <div className="modal-frame-details" onClick={(ev) => { closeModal(false); ev.stopPropagation() }}>
+      <div className='product-details' onClick={(ev) => ev.stopPropagation()}>
+        <button className='close-btn' onClick={() => closeModal(false)}>&times;</button>
         <h1>{item.title} </h1>
         <div className='content'>
           <div className='img-box'>
             <img src={item.img.url} alt={item.title} className="product-image" />
           </div>
           <div className='details-box'>
-            <div className='price'>{item.price}0&#8362;/{item.unit}</div>
+            <div className='price'>
+            {item.sale ? (
+            <>
+              <div className='discount-box'>
+                <span className='original-price'>{item.price}&#8362;/{item.unit}</span>
+                <span className='sale-price'>{item.finalPrice}&#8362;/{item.unit}</span>
+              </div>
+            </>
+          ) : (
+            <span>{item.price}&#8362;/{item.unit}</span>
+          )}
+            </div>
             <p>{item.description}</p>
             <div>
-            <h4>"Nutritional Information (per 100g)"</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Calories</th>
-                  <th>Carbohydrate</th>
-                  <th>Protein</th>
-                  <th>Fat</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{item.nutritionalValue.calories}</td>
-                  <td>{item.nutritionalValue.carbohydrates}</td>
-                  <td>{item.nutritionalValue.protein}</td>
-                  <td>{item.nutritionalValue.fat}</td>
-                </tr>
-              </tbody>
-            </table>
+              <h4>"Nutritional Information (per 100g)"</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Calories</th>
+                    <th>Carbohydrate</th>
+                    <th>Protein</th>
+                    <th>Fat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{item.nutritionalValue.calories}</td>
+                    <td>{item.nutritionalValue.carbohydrates}</td>
+                    <td>{item.nutritionalValue.protein}</td>
+                    <td>{item.nutritionalValue.fat}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-           
+
           </div>
         </div>
         <button
           onClick={(ev) => {
-            ev.stopPropagation(); 
-            handleAddToCart(); 
-            closeModal(false); 
+            ev.stopPropagation();
+            handleAddToCart();
+            closeModal(false);
           }}
           className='add-btn'
         >

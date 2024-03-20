@@ -21,7 +21,7 @@ function Cart() {
     useEffect(() => {
         let total = 0;
         cartProducts.forEach(item => {
-            total += item.price * item.quantity;
+            total += item.sale ? item.finalPrice * item.quantity : item.price * item.quantity;
         });
         setTotalPrice(total);
     }, [cartProducts]);
@@ -41,15 +41,16 @@ function Cart() {
         localStorage.removeItem('cart')
         setCartProducts([])
     }
-    
-console.log(totalPrice);
+
+    console.log(totalPrice);
+    console.log(cartProducts);
     return (
         <>
             <img onClick={() => { setCartModal(true); }}
                 className="cart-img" src={cartImg} alt="Cart" />
             {cartModal && (
-                <div className="modal-frame">
-                    <div className="cart">
+                <div className="modal-frame" onClick={() => { setCartModal(false) }}>
+                    <div className="cart"  onClick={(ev) => ev.stopPropagation()}>
                         <button className="close-btn" onClick={() => { setCartModal(false) }}>&times;</button>
                         <div className="cart-header">
                             <div>
@@ -65,23 +66,31 @@ console.log(totalPrice);
                                     {cartProducts.map((cartItem, index) => (
                                         <div key={index} className="cart-card">
                                             <img className="cart-item-img" src={cartItem.img} />
-                                            <div>{cartItem.quantity}{cartItem.unit}</div>
                                             <div>{cartItem.title}</div>
+
+                                            <div>{cartItem.quantity}{cartItem.unit}</div>
                                             {/* <div>{cartItem.price}&#8362;/{cartItem.unit}</div> */}
-                                            <div>{Number((cartItem.price * cartItem.quantity).toFixed(2))}&#8362;</div>
+                                            <div>
+                                                {cartItem.sale ? (
+                                                    Number((cartItem.finalPrice * cartItem.quantity).toFixed(2))
+                                                ) : (
+                                                    Number((cartItem.price * cartItem.quantity).toFixed(2))
+                                                )}
+                                                &#8362;
+                                            </div>
                                             <Counter count={cartItem.quantity} onChange={(value) => handleQuantityChange(index, value)} />
                                         </div>
                                     ))}
                                 </div>
-                                <p className={totalPrice>50?'remove-message':'minimum-message'}>*Please note min cost for delivery 50&#8362;*</p>
+                                <p className={totalPrice > 50 ? 'remove-message' : 'minimum-message'}>*Please note min cost for delivery 50&#8362;*</p>
                                 <div className={'cart-payout ' + (cartProducts.length > 7 ? "cart-payout-sticky" : "cart-payout-fixed")}>
-                                   <Link to={'/checkout'}><button disabled={totalPrice<50} onClick={()=>setCartModal(false)} >Go To Checkout</button></Link>
+                                    <Link to={'/checkout'}><button disabled={totalPrice < 50} onClick={() => setCartModal(false)} >Go To Checkout</button></Link>
                                 </div>
                             </>
                         ) : <div className='empty-cart-msg'>
                             <p >Your cart is empty...</p>
                             <img className='empty-cart-img' src="https://i.pinimg.com/564x/b7/4e/21/b74e214472d9ee763f2613ae280f96d2.jpg" alt="sad-emo" />
-                              </div>}
+                        </div>}
                     </div>
                 </div>
             )}

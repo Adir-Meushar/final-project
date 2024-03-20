@@ -40,17 +40,26 @@ module.exports = app => {
                     product: id,
                     productName: product.title,
                     quantity: quantity,
-                    price:product.price
+                    price:product.price,
+                    finalPrice:product.finalPrice,
+                    sale:product.sale
                 });
             }
-
-            // Calculate total price based on items in the cart
             const totalPricePromise = Promise.all(items.map(async (item) => {
                 const product = await Product.findById(item.product);
-                return product.price * item.quantity;
+            
+                // If the product has a sale, calculate the total price using the final price
+                if (product.sale) {
+                    return product.finalPrice * item.quantity;
+                } else {
+                    return product.price * item.quantity;
+                }
             }));
             
+            // Wait for all promises to resolve
             const totalPriceArray = await totalPricePromise;
+            
+            // Sum up the total price
             const totalPrice = totalPriceArray.reduce((acc, price) => acc + price, 0);
             const order = new Order({
                 user: userToken.userId,

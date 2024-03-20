@@ -39,7 +39,7 @@ function DairyAndEggs() {
                <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Refrigerator-milk-and-eggs-Desktop1.jpg" alt="dairy&eggs-img" />
                 <div className="cover-title">
                     <h1>Dairy&Eggs</h1>
-                    <p>Fresh and wonderful fruits straight from the best farmers, with fast delivery to your door. Here you will find delightful summer fruits, aromatic winter fruits and a large variety of seasonal fruits, every season.</p>
+                    <p>Explore our selection of fresh dairy products and eggs, sourced directly from local farms for quality and flavor.</p>
                 </div>
             </div>
           <Products items={dairyAndEggs}/>

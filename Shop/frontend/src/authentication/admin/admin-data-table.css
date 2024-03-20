@@ -1,0 +1,13 @@
+.admin-data-table{
+    min-height: 50vh;
+    width: 50vw;
+    margin: 5% auto;
+}
+
+.admin-data-table tr td:not(:first-child) {
+    font-size: 1.7rem;
+   font-weight: bold; 
+ }
+ .admin-data-table .data{
+    font-weight: bold;
+ }

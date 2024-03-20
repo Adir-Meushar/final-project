@@ -11,7 +11,7 @@
               "calories": 20,
               "fat": 0.1, 
               "carbohydrates": 3.47, 
-              "protein": 0.8
+              "protein": 0.8 
             },
             "img": {
               "url": "https://i.pinimg.com/236x/cb/71/90/cb7190237e3098a376a1807a1dcdb48d.jpg",
@@ -24,7 +24,7 @@
             "description": "Renowned for their versatility and comforting taste, potatoes are a kitchen staple cherished in countless recipes worldwide. Whether mashed, roasted, or fried, these humble tubers never fail to satisfy.",
             "price": 5.90,
             "unit": "kg",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": {
               "calories": 93,
               "fat": 0.1, 
@@ -38,29 +38,103 @@
           },
           {
             "category": "Vegetables",
+            "title": "Ginger",
+            "description":"Ginger, prized for its versatility and distinctive flavor, is a beloved ingredient in kitchens worldwide. Whether used fresh in stir-fries, grated into teas, or incorporated into marinades, this aromatic root adds warmth and depth to a variety of dishes",
+            "price": 7.90,
+            "unit": "unit",
+            "sale": true,
+            "nutritionalValue": {
+              "calories": 79,
+              "fat": 0.8, 
+              "carbohydrates": 18, 
+              "protein": 1.8
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/65/bb/21/65bb2102534ae0e3e594462f9e09ea9b.jpg",
+              "alt": "Ginger"
+            }
+          },
+          {
+            "category": "Vegetables",
+            "title": "Mushrooms (Shiitake)",
+            "description": 
+            "Mushrooms are celebrated for their versatility and rich flavor. Whether sautéed, grilled, or added to soups, these fungi bring depth and earthiness to a wide range of dishes.",
+            "price": 8.90,
+            "unit": "package",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 33,
+              "fat": 0.5, 
+              "carbohydrates": 7, 
+              "protein": 2.2 
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/af/23/1b/af231b9fef489c0b1061cb1d00800a80.jpg",
+              "alt": "Mushrooms (Shiitake)"
+            }
+          },
+          {
+            "category": "Vegetables",
             "title": "Carrot",
             "description": "Carrots are loved for their crisp texture and naturally sweet flavor. Whether enjoyed raw as a crunchy snack, grated into salads, or cooked in soups and stews, these nutritious root vegetables add a burst of color and taste to any meal.",
             "price": 3.90,
             "unit": "kg",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": {
               "calories": 41,
               "fat": 0.2, 
-              "carbohydrates": 10,
+              "carbohydrates": 10, 
               "protein": 0.9
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/6e/47/e4/6e47e4f7bafb1b6453d2389d4af5c77a.jpg",
+              "url": "https://i.pinimg.com/564x/19/e0/bc/19e0bcf78443626b94c967f50e1227e9.jpg",
               "alt": "Carrot"
             }
           },
+          {
+            "category": "Vegetables",
+            "title": "Parsley ",
+            "description": "Parsley is a versatile herb known for its crisp texture and fresh flavor. Whether as a garnish or in salads, it adds brightness to any dish.",
+            "price": 3.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 36,  
+              "fat": 0.7, 
+              "carbohydrates": 6.3, 
+              "protein": 2.9
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/6d/d7/74/6dd774248c1838c6f718abc3e150d8d4.jpg",
+              "alt": "Parsley "
+            }
+          },
+          {
+            "category": "Vegetables",
+            "title": "Pumpkin",
+            "description": "Pumpkins, known for their crisp texture and natural sweetness, are cherished for their versatility. Whether roasted for a snack, grated into salads, or blended into soups and stews, these nutritious gourds bring vibrant color and flavor to every dish.",
+            "price": 10.90,
+            "unit": "package",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 26,
+              "fat": 0.1, 
+              "carbohydrates": 7, 
+              "protein": 1 
+            },
+            "img": { 
+              "url": "https://i.pinimg.com/564x/da/11/71/da117105f035118f396a64eb4b7a42da.jpg",
+              "alt": "Pumpkin"
+            }
+          },
+          
           {
             "category": "Vegetables",
             "title": "Garlic",
             "description": "Garlic is celebrated for its pungent flavor and aromatic qualities. Whether minced into sauces, roasted whole for a mellow taste, or sautéed to add depth to dishes, this versatile bulb adds a bold and distinctive flavor to a wide range of cuisines.",
             "price": 11.90,
             "unit": "package",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": {
               "calories": 149,
               "fat": 0.5, 
@@ -68,7 +142,7 @@
               "protein": 0.57
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/e2/f9/75/e2f97508034961d0b4d62dceff655604.jpg",
+              "url": "https://i.pinimg.com/564x/b8/8b/af/b88baf8fac3319214eaf9353a32574c4.jpg",
               "alt": "Garlic"
             }
           },
@@ -78,7 +152,7 @@
             "description": "Cucumbers are known for their crisp texture and refreshing taste. Whether sliced in salads, pickled for a tangy crunch, or enjoyed on their own as a hydrating snack, these versatile vegetables add a cool and rejuvenating element to any dish.",
             "price": 7.90,
             "unit": "kg",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": {
               "calories": 15,
               "fat": 0.1, 
@@ -298,11 +372,11 @@
             "nutritionalValue": {
               "calories": 96,
               "fat": 1.2, 
-              "carbohydrates": 21,
+              "carbohydrates": 21, 
               "protein": 3.4
             },
             "img": {
-              "url": "https://i.pinimg.com/564x/7a/a0/45/7aa045abb6cc0416d2f534ef97a992f3.jpg",
+              "url": "https://i.pinimg.com/564x/7a/97/6d/7a976dc0a06be0aa865a7e88b34173b8.jpg",
               "alt": "Corn"
             }
           },
@@ -417,9 +491,9 @@
     ]
     ,"fruits":[
         {   "category": "Fruits",
-            "title": "Apple",
+            "title": "Apple (Hermon apple)",
             "description": "Apples are crisp, juicy, and sweet fruits that come in various colors and flavors. They are rich in fiber and vitamin C.",
-            "price": 8.90,
+            "price": 10.90,
             "unit": "kg",
             "sale": false,
             "nutritionalValue": {
@@ -429,17 +503,85 @@
               "protein": 0.3
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/45/fd/d3/45fdd38b20a18b1fe3308158b9e8ea70.jpg",
-              "alt": "Apple"
+              "url": "https://i.pinimg.com/564x/c2/c9/e0/c2c9e05009dddbc5d8bf7640c515470d.jpg",
+              "alt": "Apple (Hermon apple)"
             }
           },
+          {   "category": "Fruits",
+          "title": "Apple (Smith)",
+          "description": "Apples are crisp, juicy, and sweet fruits that come in various colors and flavors. They are rich in fiber and vitamin C.",
+          "price": 10.90,
+          "unit": "kg",
+          "sale": false,
+          "nutritionalValue": {
+            "calories": 52,
+            "fat": 0.2,
+            "carbohydrates": 14,
+            "protein": 0.3
+          },
+          "img": {
+            "url": "https://i.pinimg.com/564x/d4/d6/33/d4d633eb628c55a084205dc8f1bf8f38.jpg",
+            "alt": "Apple (Smith)"
+          }
+        },
+        {   "category": "Fruits",
+        "title": "Apple (Pink Lady)",
+        "description": "Apples are crisp, juicy, and sweet fruits that come in various colors and flavors. They are rich in fiber and vitamin C.",
+        "price": 14.90,
+        "unit": "kg",
+        "sale": true,
+        "nutritionalValue": {
+          "calories": 52,
+          "fat": 0.2,  
+          "carbohydrates": 14,
+          "protein": 0.3
+        },
+        "img": {
+          "url": "https://i.pinimg.com/564x/2e/7f/05/2e7f055ea054d626cd6dc7152645aceb.jpg",
+          "alt": "Apple (Pink Lady)"
+        }
+      },
+      {   "category": "Fruits",
+      "title": "Apple (Golden Delicious)",
+      "description": "Apples are crisp, juicy, and sweet fruits that come in various colors and flavors. They are rich in fiber and vitamin C.",
+      "price": 10.90,
+      "unit": "kg",
+      "sale": true,
+      "nutritionalValue": {
+        "calories": 52,
+        "fat": 0.2,  
+        "carbohydrates": 14,
+        "protein": 0.3
+      },
+      "img": {
+        "url": "https://i.pinimg.com/564x/56/eb/c4/56ebc4f7f49e1bf48c95e18b6feed75b.jpg",
+        "alt": "Apple (Golden Delicious)" 
+      }
+    },
+    {   "category": "Fruits",
+    "title": "Pears",
+    "description": "Pears are renowned for their crispness, juiciness, and sweet flavor, coming in diverse colors and tastes. Loaded with fiber, they offer both a delightful snack and a healthy addition to meals.",
+    "price": 9.90,
+    "unit": "kg",
+    "sale": false,
+    "nutritionalValue": {
+      "calories": 43.6,
+      "fat": 0.1,  
+      "carbohydrates": 9.2,
+      "protein": 0.3
+    },
+    "img": {
+      "url": "https://i.pinimg.com/564x/7f/c3/d4/7fc3d4db314aeffc0766052e63ef3015.jpg",
+      "alt": "Pears" 
+    }
+  },
           {
             "category": "Fruits",
             "title": "Banana",
             "description": "Bananas are elongated, yellow fruits with a creamy texture and sweet taste. They are a good source of potassium and vitamin B6.",
-            "price": 4.90,
+            "price": 7.90,
             "unit": "kg",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": {
               "calories": 89,
               "fat": 0.3,
@@ -473,7 +615,7 @@
             "category": "Fruits",
             "title": "Orange",
             "description": "Oranges are round citrus fruits with a bright orange skin and juicy, sweet-tart flesh. They are high in vitamin C and antioxidants.",
-            "price": 6.90,
+            "price": 8.90,
             "unit": "kg",
             "sale": false,
             "nutritionalValue": {
@@ -485,6 +627,42 @@
             "img": {
               "url": "https://i.pinimg.com/236x/7a/aa/a5/7aaaa545e00e8a434850e80b8910dd94.jpg",
               "alt": "Orange"
+            }
+          },
+          {
+            "category": "Fruits",
+            "title": "Grapefruite",
+            "description": "Grapefruits are round citrus fruits with a bright orange skin and juicy, sweet-tart flesh. Packed with vitamin C and antioxidants, they offer a refreshing and nutritious addition to your diet.",
+            "price": 10.90,
+            "unit": "kg",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 42,
+              "fat": 0.1,
+              "carbohydrates": 11,
+              "protein": 0.8
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/db/36/56/db36561ffa303bfece6aafc13589a13a.jpg",
+              "alt": "Grapefruite"
+            }
+          },
+          { 
+            "category": "Fruits",
+            "title": "Lime",
+            "description": "Limes are round citrus fruits with a vibrant green skin and juicy, tangy flesh. Rich in vitamin C and antioxidants, they are a zesty addition to any dish or beverage.",
+            "price": 9.90,
+            "unit": "kg",
+            "sale": false,
+            "nutritionalValue": { 
+              "calories": 30,
+              "fat": 0.2,
+              "carbohydrates": 11,
+              "protein": 0.7
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/59/e3/de/59e3defbb6b306138e3810c93e0a5f90.jpg",
+              "alt": "Lime"
             }
           },
           {
@@ -501,15 +679,51 @@
               "protein": 1.1
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/79/99/70/799970f50080ee196cc337fb2843ceb8.jpg",
+              "url": "https://i.pinimg.com/564x/fb/b2/71/fbb27112f6973922e466106ea10e01bf.jpg",
               "alt": "Kiwi"
+            }
+          },
+          {
+            "category": "Fruits",
+            "title": "Melons",
+            "description": "Melons are small, oval fruits with fuzzy brown skin and juicy, bright green flesh dotted with tiny black seeds. They are packed with vitamin C, vitamin K, and fiber, offering a refreshing and nutritious treat.",
+            "price": 12.90, 
+            "unit": "kg",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 33,
+              "fat": 0.2,
+              "carbohydrates": 8,
+              "protein": 0.8
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/c8/9a/74/c89a74d98c4ed1194948229c9baa4118.jpg",
+              "alt": "Melons"
+            }
+          },
+          {
+            "category": "Fruits",
+            "title": "Melons (Cantaloupe)",
+            "description": "Melons are small, oval fruits with fuzzy brown skin and juicy, bright green flesh dotted with tiny black seeds. They are packed with vitamin C, vitamin K, and fiber, offering a refreshing and nutritious treat.",
+            "price": 13.90, 
+            "unit": "kg",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 33,
+              "fat": 0.2,
+              "carbohydrates": 8, 
+              "protein": 0.8
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/3e/93/e5/3e93e516e07ddeef6369353e1a93e0e2.jpg",
+              "alt": "Melon (Cantaloupe)"
             }
           },
           {
             "category": "Fruits",
             "title": "Mango",
             "description": "Mangoes are tropical stone fruits with a sweet, juicy flesh and a unique flavor profile. They are rich in vitamins A and C.",
-            "price": 10.90,
+            "price": 13.90,
             "unit": "kg",
             "sale": false,
             "nutritionalValue": {
@@ -519,7 +733,7 @@
               "protein": 0.8
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/cb/de/77/cbde77550cf0ede6f33227119d8c7fed.jpg",
+              "url": "https://i.pinimg.com/564x/f3/18/c6/f318c68ebf8f6489491c937797d92b32.jpg",
               "alt": "Mango"
             }
           },
@@ -539,6 +753,25 @@
             "img": {
               "url": "https://i.pinimg.com/236x/04/71/fd/0471fd0da408b5a66cb084261675b907.jpg",
               "alt": "Pitaya"
+            }
+          },
+          {
+            "category": "Fruits",
+            "title": "Coconut",
+            "description": 
+            "Coconut, a tropical fruit with its distinctive hard shell and creamy white flesh, boasts a sweet and nutty flavor. Rich in healthy fats and antioxidants, coconut is not only delicious but also offers numerous health benefits.",
+            "price": 10.90,
+            "unit": "unit",
+            "sale": true,
+            "nutritionalValue": {
+              "calories": 354,
+              "fat": 33,
+              "carbohydrates": 15,
+              "protein": 3.3
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/54/03/94/5403941bb86454d7187406bf22afe860.jpg",
+              "alt": "Coconut"
             }
           },
           {
@@ -601,7 +834,7 @@
             "description": "Strawberries are bright red, juicy berries with a sweet flavor and a slightly tart undertone. They are packed with vitamin C, fiber, and antioxidants.",
             "price": 14.90,
             "unit": "package",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": { 
               "calories": 32,
               "fat": 0.3,
@@ -743,6 +976,24 @@
           },
           { 
             "category": "Bakery",
+            "title": "Blueberry Muffins",
+            "description": "Indulge in our moist and bursting-with-flavor blueberry muffins, ideal for breakfast or a delightful snack!",
+            "price": 9.90,
+            "unit": "unit",
+            "sale": true,
+            "nutritionalValue": { 
+              "calories": 277,
+              "fat": 6.5 ,
+              "carbohydrates": 48 ,   
+              "protein": 5.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/86/cd/89/86cd8901b0e154beb19eb3400fd9e751.jpg",
+              "alt": "Blueberry Muffins"
+            }
+          },
+          { 
+            "category": "Bakery",
             "title": "Bread Basket",
             "description": "Enjoy our tasty selection of different types of bread. From crunchy baguettes to soft brioche, there's something for everyone in our basket!",
             "price": 109.90,
@@ -783,7 +1034,7 @@
             "description": "Try our hearty sourdough bread packed with mixed seeds for a nutritious and delicious slice every time!",
             "price": 16.90,
             "unit": "unit",
-            "sale": false,
+            "sale": true, 
             "nutritionalValue": { 
               "calories": 267,
               "fat": 5.9,
@@ -801,7 +1052,7 @@
             "description": "Indulge in our delightful croissant filled with rich chocolate, perfect for a sweet treat anytime!",
             "price": 8.90,
             "unit": "unit",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": { 
               "calories": 416,
               "fat": 24.13,
@@ -984,11 +1235,11 @@
             "description": "Cottage Cheese, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
             "price": 6.90,
             "unit": "package",
-            "sale": false, 
+            "sale": true, 
             "nutritionalValue": { 
               "calories": 95,
               "fat": 5,
-              "carbohydrates": 1.5,
+              "carbohydrates": 1.5, 
               "protein": 11
             },
             "img": {

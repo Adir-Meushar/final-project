@@ -4,15 +4,13 @@ import { loginSchema } from './user/userValidation';
 import { Link } from "react-router-dom";
 
 function Login() {
-  const [showSignup,setShowSignup]=useState(false);
-  const [modal, setModal] = useState(false);
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const { setUser, snackbar,setLoader } = useContext(GeneralContext);
+  const { setUser, snackbar,setLoader,loginModal,setLoginModal,setSignModal } = useContext(GeneralContext);
 
   const handleValid = (ev) => {
     const { name, value } = ev.target;
@@ -50,7 +48,7 @@ function Login() {
       } else {
         localStorage.setItem("token", data.token);
         setUser(data.user); // Update user state with fetched user data
-        setModal(false);
+        setLoginModal(false);
         setFormData({
           email: "",
           password: "",
@@ -68,15 +66,15 @@ function Login() {
   };
   return (
     <>
-      <button className="nav-login" onClick={() => setModal(true)}>Login</button>
-      {modal && (
-        <div className="modal-frame">
-          <div className="login-modal modal">
+      <button className="nav-login" onClick={() => setLoginModal(true)}>Login</button>
+      {loginModal && (
+        <div className="modal-frame" onClick={() => setLoginModal(false)}>
+          <div className="login-modal modal" onClick={(ev) =>  ev.stopPropagation()}>
             <header>
               <button
                 className="close-btn"
                 onClick={() => {
-                  setModal(false);
+                  setLoginModal(false);
                   setIsFormValid(false);
                   setFormData({ email: "", password: "" });
                   setErrors([]);
@@ -114,7 +112,7 @@ function Login() {
                 )}
               </label>
               <button className="login-btn" disabled={!isFormValid}>Login</button>
-              <p>First time here? signup</p>  
+              <p className="sign-up-link" onClick={() => { setLoginModal(false); setSignModal(true); }}>First time here? Sign up</p>
             </form>
           </div>
         </div>

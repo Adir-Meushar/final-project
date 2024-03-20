@@ -3,7 +3,6 @@ import './modal.css'
 import { signupSchema } from "./user/userValidation";
 import { GeneralContext } from "../App";
 function Signup() {
-  const [modal, setModal] = useState(false);
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
   const [formData, setFormData] = useState({
@@ -16,7 +15,7 @@ function Signup() {
     street: "",
     houseNumber: ""
   });
-  const { snackbar, setUser, setLoader} = useContext(GeneralContext);
+  const { snackbar, setUser, setLoader,signupModal,setSignModal,setLoginModal} = useContext(GeneralContext);
 
   const handleValid = (ev) => {
     const { name, value } = ev.target;
@@ -54,7 +53,7 @@ function Signup() {
           setErrors(data.error);
         }
       } else {
-        setModal(false);
+        setSignModal(false);
         setFormData({
           firstName: "", lastName: "", phone: "", email: "",
           password: "", city: "", street: "", houseNumber: ""
@@ -84,13 +83,13 @@ function Signup() {
 
   return (
     <>
-      <button className="nav-signup" onClick={() => setModal(true)}>Signup</button>
-      {modal && (
-        <div className="modal-frame">
-          <div className="signup-modal modal">
+      <button className="nav-signup" onClick={() => setSignModal(true)}>Signup</button>
+      {signupModal && (
+        <div className="modal-frame" onClick={() => setSignModal(false)}>
+          <div className="signup-modal modal" onClick={(ev) =>  ev.stopPropagation()}>
             <header>
               <button className="close-btn" onClick={() => {
-                setModal(false);
+                setSignModal(false);
                 setFormData({
                   firstName: "", lastName: "", phone: "", email: "", password: "",
                   city: "", street: "", houseNumber: ""
@@ -117,6 +116,7 @@ function Signup() {
                 </label>
               ))}
               <button className="signup-btn" disabled={!isFormValid}>Sign</button>
+              <p className="login-link" onClick={() => { setLoginModal(true); setSignModal(false); }}>Already signed up? Log in</p>
             </form>
           </div>
         </div>

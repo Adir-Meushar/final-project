@@ -74,5 +74,5 @@ export const productValidationSchema = Joi.object({
     sale: Joi.boolean(),
     unit: Joi.allow(""),
 
-});
+}).options({ allowUnknown: true });//prevent createdTime,id and other fields in edit to be validate
 

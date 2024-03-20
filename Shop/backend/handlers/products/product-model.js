@@ -19,7 +19,15 @@ const moment = require('moment');
     title:{type:String,required:true,unique:true},
     description:{type:String,required:true},
     price:{type:Number,required:true},
-    // finalPrice:{type:Number},
+    finalPrice: { 
+      type: Number, 
+      default: function() {
+          // Calculate finalPrice as 90% of price
+          const finalPrice = this.price * 0.8;
+          // Convert finalPrice to a string with 2 decimal places
+          return Math.floor(parseFloat(finalPrice.toFixed(2)));
+        }
+  },
     sale:{type:Boolean,default:false}, 
     nutritionalValue:nutritionalValue,
     img:imgSchema,
