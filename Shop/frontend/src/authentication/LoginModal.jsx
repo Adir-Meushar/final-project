@@ -66,7 +66,7 @@ function Login() {
   };
   return (
     <>
-      <button className="nav-login" onClick={() => setLoginModal(true)}>Login</button>
+      <button className="register-btn close" onClick={() => setLoginModal(true)}>Login</button>
       {loginModal && (
         <div className="modal-frame" onClick={() => setLoginModal(false)}>
           <div className="login-modal modal" onClick={(ev) =>  ev.stopPropagation()}>

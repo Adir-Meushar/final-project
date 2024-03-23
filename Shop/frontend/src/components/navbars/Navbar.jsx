@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './navbar.css';
+import './navbar-buttons.css';
 import Signup from '../../authentication/SignupModal';
 import Login from '../../authentication/LoginModal';
 import Logout from '../../authentication/Logout';
@@ -10,15 +11,13 @@ import Cart from '../cart/Cart';
 import SearchBar from '../searchbar/SearchBar';
 import { MdOutlineDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
-import { FaRegUser } from "react-icons/fa";
 import { ImStatsDots } from "react-icons/im";
 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
-  const [activeLink, setActiveLink] = useState('');
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1000);
   const navigate = useNavigate();
-
+  const location = useLocation();
   const { user, isDarkMode, setIsDarkMode } = useContext(GeneralContext)
 
   useEffect(() => {
@@ -37,11 +36,9 @@ const Navbar = () => {
     setClicked(!clicked);
   };
 
-  const handleLinkClick = (link) => {
-    setActiveLink(link);
-    setClicked(false);
-  };
-  console.log(isDarkMode);
+
+  const shouldRenderSearchBar = !['/about', '/dashboard', '/my-account', '/checkout'].includes(location.pathname);
+
   return (
     <>
       <div className='nav-container'>
@@ -51,18 +48,17 @@ const Navbar = () => {
           </Link>
           <ul className={clicked ? 'navbar active' : 'navbar'}>
             <div className='link-box'>
-              <li className='remove-search'><SearchBar /></li>
-
+              {shouldRenderSearchBar && <li className='remove-search'><SearchBar /></li>}
             </div>
             {isSmallScreen ? <CategoryNavbar /> : ''}
             {user ? (
               <>
                 <div className='user-box'>
                   <Logout />
-                  <FaRegUser onClick={() => navigate('/my-account')} className='user-icon' />
-                  {user?.roleType == RoleType.admin ? <ImStatsDots className='admin-icon' onClick={()=>navigate('/dashboard')} />
+                  <div onClick={() => navigate('/my-account')} class="icon icon-enter"><i class="fa fa-user"></i></div>
+                  {user?.roleType == RoleType.admin ? <div onClick={() => navigate('/dashboard')} class="icon icon-fill"><ImStatsDots className='admin-icon' /></div>
                     : ''}
-                 <div className='remove-cart'><Cart /></div> 
+                  <div className='remove-cart'><Cart /></div>
                 </div>
               </>
             ) : (
@@ -74,13 +70,13 @@ const Navbar = () => {
               </>
             )}
           </ul>
-          {!isDarkMode ? <MdOutlineDarkMode className='theme-btn' onClick={() => setIsDarkMode(true)} /> : <MdOutlineLightMode className='theme-btn' onClick={() => setIsDarkMode(false)} />}
-        {user?<div className='cart-mobile'> <Cart /></div>:''} 
+          {!isDarkMode ? <div class="icon icon-expand" onClick={() => setIsDarkMode(true)}><MdOutlineDarkMode className='theme-btn' /> </div> : <div class="icon icon-expand" onClick={() => setIsDarkMode(false)}><MdOutlineLightMode className='theme-btn' /></div>}
+          {user ? <div className='cart-mobile'> <Cart /></div> : ''}
           <div id='mobile' onClick={handleClick}>
             <i id='bar' className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
           </div>
         </nav>
-        {isSmallScreen ? <SearchBar /> : <CategoryNavbar />}
+        {isSmallScreen ? (shouldRenderSearchBar ? <SearchBar /> : null) : <CategoryNavbar />}
       </div>
     </>
   );

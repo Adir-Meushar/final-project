@@ -42,7 +42,8 @@ module.exports = app => {
                     quantity: quantity,
                     price:product.price,
                     finalPrice:product.finalPrice,
-                    sale:product.sale
+                    sale:product.sale,
+                    unit:product.unit
                 });
             }
             const totalPricePromise = Promise.all(items.map(async (item) => {
@@ -76,21 +77,34 @@ module.exports = app => {
         }
     });
 
-    // app.get('/orders/my-order',guard ,async(req,res)=>{
-    //     try{
-    //         const userToken = getUserInfo(req, res);
-    //         if (!userToken) {
-    //             return res.status(401).send({
-    //                 error: { 
-    //                     code: 401,
-    //                     message: 'Unauthorized',
-    //                     details: 'User authentication failed.',
-    //                 },
-    //             });
-    //         }
-    //         const myOrders=
-    //     }catch(error){
-
-    //     }
-    // })
+    app.get('/orders/my-orders/:userId', guard, async (req, res) => {
+        try {
+            const userToken = getUserInfo(req, res);
+            if (userToken.userId !== req.params.userId) {
+                return res.status(401).send({
+                    error: {
+                        code: 401,
+                        message: 'Unauthorized',
+                        details: 'User authentication failed.',
+                    },
+                });
+            }
+            const myOrders = await Order.find({ user: req.params.userId });
+            
+            if (!myOrders) {
+                return res.status(404).send({
+                    error: {
+                        code: 404,
+                        message: 'Not Found',
+                        details: 'No orders found for the user.',
+                    },
+                });
+            }
+                res.status(200).send(myOrders);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({ error: 'Error fetching user orders' });
+        }
+    });
+    
 }

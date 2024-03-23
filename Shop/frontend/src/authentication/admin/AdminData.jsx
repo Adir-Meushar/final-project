@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import './admin-data-table.css'
-
+import {GeneralContext} from '../../App'
 function AdminData() {
     const [amount, setAmount] = useState({
         totalAmount: '',
@@ -12,10 +12,12 @@ function AdminData() {
 
     const [priceData, setPriceData] = useState([]);
     const [productsOnSale, setProductsOnSale] = useState({});
+    const { snackbar,setLoader} = useContext(GeneralContext);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setLoader(true)
                 const response = await fetch('http://localhost:4000/dashboard/products/data', {
                     credentials: "include",
                     method: "GET",
@@ -40,7 +42,9 @@ function AdminData() {
                 console.error("Error fetching data:", error);
             }
         };
-
+        setTimeout(() => {
+            setLoader(false)
+          }, 1000)
         fetchData();
     }, []);
 

@@ -11,9 +11,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background: #52c234;  
-    background: -webkit-linear-gradient(to right, #061700, #52c234);  
-    background: linear-gradient(to right, #061700, #52c234); 
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
     padding: 20px 80px;
     box-shadow:0 5px 15px rgba(0, 0, 0, 0.06) ;
     position: relative;
@@ -81,10 +82,14 @@
     cursor: pointer;
 }
 
-.user-icon,.admin-icon,.theme-btn{
-    font-size: 1.4rem;
+
+.admin-icon,.theme-btn{
     color: white;
-    cursor: pointer;
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    font-size: 27px;
+ 
 }
 .theme-btn{
  margin-left: 2%;
@@ -100,7 +105,7 @@
         align-items: flex-start;
         justify-content: flex-start;
         position: fixed;
-        top: 69px;
+        top: 90px;
         right: -300px;
         width: 300px;
         height: 100vh;
@@ -147,7 +152,7 @@
        left: 20%;
       }
     .theme-btn{
-        margin-right: 8%;
+        margin-right: 10%;
          }
 }
 

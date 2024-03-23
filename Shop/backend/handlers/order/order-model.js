@@ -10,6 +10,7 @@ const orderSchema = new mongoose.Schema({
         price:Number,
         finalPrice:Number,
         sale:Boolean,
+        unit:String,
     }],
     totalPrice: { type: Number, required: true, set: v => Math.floor(v) },
     createdTime: { type: String, default: () => moment().format('D-M-Y HH:mm:ss') }

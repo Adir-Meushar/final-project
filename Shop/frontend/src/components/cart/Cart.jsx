@@ -4,13 +4,14 @@ import { BsTrash3 } from "react-icons/bs";
 import Counter from '../counter/Counter';
 import { GeneralContext } from '../../App';
 import { Link } from 'react-router-dom';
+import { ImCart } from "react-icons/im";
 
 function Cart() {
     const [cartModal, setCartModal] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0); // State to hold the total price
-    const cartImg = process.env.PUBLIC_URL + '/images/shopping-cart.png';
+    const cartImg = process.env.PUBLIC_URL + '/images/shopping-bag.png';
     const { count, setCount, cartProducts, setCartProducts } = useContext(GeneralContext);
-
+    const itemInCart=cartProducts.length;
     useEffect(() => {
         const storedCart = localStorage.getItem('cart');
         if (storedCart) {
@@ -43,14 +44,18 @@ function Cart() {
     }
 
     console.log(totalPrice);
-    console.log(cartProducts);
+    console.log(cartProducts.length);
     return (
         <>
-            <img onClick={() => { setCartModal(true); }}
-                className="cart-img" src={cartImg} alt="Cart" />
+            <div className='shopping-cart-box'>
+                <div className='products-in-cart'>{itemInCart>0?itemInCart:''}</div>
+                <img onClick={() => { setCartModal(true); }}
+                    className="cart-img" src={cartImg} alt="Cart" />
+            </div>
+
             {cartModal && (
                 <div className="modal-frame" onClick={() => { setCartModal(false) }}>
-                    <div className="cart"  onClick={(ev) => ev.stopPropagation()}>
+                    <div className="cart" onClick={(ev) => ev.stopPropagation()}>
                         <button className="close-btn" onClick={() => { setCartModal(false) }}>&times;</button>
                         <div className="cart-header">
                             <div>
@@ -67,9 +72,7 @@ function Cart() {
                                         <div key={index} className="cart-card">
                                             <img className="cart-item-img" src={cartItem.img} />
                                             <div>{cartItem.title}</div>
-
                                             <div>{cartItem.quantity}{cartItem.unit}</div>
-                                            {/* <div>{cartItem.price}&#8362;/{cartItem.unit}</div> */}
                                             <div>
                                                 {cartItem.sale ? (
                                                     Number((cartItem.finalPrice * cartItem.quantity).toFixed(2))

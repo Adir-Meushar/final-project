@@ -99,7 +99,7 @@ function EditUser() {
 
     return (
         <>
-            <div className="signup-modal modal">
+            <div className="edit-modal">
                 <h2>My Details</h2>
                 <form onSubmit={(ev) => updateUser(ev, user._id)}>
                     {inputFields.map((field, index) => (

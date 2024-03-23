@@ -3,7 +3,7 @@ import { GeneralContext } from '../../../App';
 import './product-details.css';
 
 function ProductDetails({ item, closeModal, setCount }) {
-  const { user, cartProducts, setCartProducts, snackbar } = useContext(GeneralContext)
+  const { user, cartProducts, setCartProducts, snackbar,isDarkMode } = useContext(GeneralContext)
 
   const handleAddToCart = () => {
     if (!user) {
@@ -36,7 +36,7 @@ function ProductDetails({ item, closeModal, setCount }) {
 
   return (
     <div className="modal-frame-details" onClick={(ev) => { closeModal(false); ev.stopPropagation() }}>
-      <div className='product-details' onClick={(ev) => ev.stopPropagation()}>
+      <div className={`product-details ${isDarkMode ? 'dark' : 'light'}`} onClick={(ev) => ev.stopPropagation()}>
         <button className='close-btn' onClick={() => closeModal(false)}>&times;</button>
         <h1>{item.title} </h1>
         <div className='content'>

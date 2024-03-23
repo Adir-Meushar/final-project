@@ -63,6 +63,7 @@ function Signup() {
           setLoader(false)
         }, 500)
         snackbar(`Hello and Welcome ${data?.firstName}!`)
+        setLoginModal(true);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -83,7 +84,7 @@ function Signup() {
 
   return (
     <>
-      <button className="nav-signup" onClick={() => setSignModal(true)}>Signup</button>
+      <button className="register-btn up" onClick={() => setSignModal(true)}>Signup</button>
       {signupModal && (
         <div className="modal-frame" onClick={() => setSignModal(false)}>
           <div className="signup-modal modal" onClick={(ev) =>  ev.stopPropagation()}>

@@ -1,9 +1,25 @@
-.cart-img{
-    width: 43px;
-    height: 43px;
-    cursor: pointer;
+.shopping-cart-box{
+  position: relative;
 }
-
+.cart-img{
+    width: 46px;
+    height: 46px;
+    cursor: pointer;
+    transition: all .3s;
+}
+.cart-img:hover{
+  transform: scale(1.1);
+}
+.products-in-cart {
+  position: absolute;
+  top: 24px;
+  right: 17px;
+  background-color: #fff;
+  border-radius: 50px;
+  width: 17px;
+  z-index: 999;
+  font-size: .9rem;
+}
 .cart{
     position: absolute;
     left: 0;

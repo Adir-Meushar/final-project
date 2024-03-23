@@ -9,6 +9,7 @@ import DairyAndEggs from '../products/category/Dairy&Eggs';
 import MyAccount from '../../authentication/user/MyAccount';
 import { GeneralContext } from '../../App';
 import { useContext } from 'react';
+import About from '../about/About';
 
 
 export default function Router() {
@@ -17,6 +18,7 @@ export default function Router() {
     return (
         <Routes>
             <Route path="/" element={<Products />} />
+            <Route path="/about" element={<About />} />
             {user ? <Route path="/my-account" element={<MyAccount />} /> : ''}
             {user ? <Route path="/dashboard" element={<Dashboard />} /> : ''}
             <Route path="/vegetables" element={<Vegetables />} />

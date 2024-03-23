@@ -31,9 +31,9 @@ function Footer() {
                     </div>
                     <div className="footer-links-div">
                         <h4>Grocery</h4>
-                        <a href="/">
-                            <p>About</p>
-                        </a>
+                        <Link to={'/about'}>
+                        <p>About</p>
+                        </Link>
                         <a href="/">
                             <p>Q&A</p>
                         </a>
