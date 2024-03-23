@@ -84,6 +84,7 @@ function UsersManagement() {
             <div className='page-header'>
                 <h1 >Users Management</h1>
                 <p>Here you can fined information about the users.</p>
+                <p>Total Users:{users.length}</p>
             </div>
             <table className='users-table'>
                 <thead>

@@ -1,17 +1,17 @@
 .container-table{
-  min-width: 60vw;
+  min-width: 70vw;
 }
 .users-table ,.product-table {
-    width: 80%;
-    margin: 0 auto;
+    width: 85%;
+    margin: 3% auto;
     border-collapse: collapse;
-    margin-bottom: 20px;
   }
   .users-table-dark{
     color: black;
    }
    .table-img{
-    width: 40px;
+    width: 60px;
+    border-radius: 10px;
    }
   .users-table th ,.product-table th {
     background-color: #ebebeb;
@@ -31,7 +31,7 @@
   }
   .users-table td,.product-table td{
     border: 1px solid #bbbbbb;
-    background-color: #f9feff;
+    background-color: #ffffff;
     padding: 20px;
     text-align: center;
   }
@@ -56,17 +56,40 @@
    }
   /* responsive */
   
-  @media screen and (max-width:750px){
+  @media screen and (max-width:940px){
+  
     .users-table th ,.product-table th{
-      padding: 3px;
-      font-size: .5rem;
+      padding: 10px;
+      font-size: .8rem;
     }
     .users-table td ,.product-table td{
       padding: 6px;
-      font-size: .5rem;
+      font-size: .8rem;
     }
-    .users-table .fa-edit,
-    .users-table .ai-delete {
-      font-size: .7rem;
+    .table-img{
+      width: 35px;
+    }
+    .users-table .fa-edit,.product-table .fa-edit,
+    .users-table .ai-delete,.product-table .ai-delete {
+      font-size: .8rem;
+    }
+  }
+
+  @media screen and (max-width:630px){
+  
+    .users-table th ,.product-table th{
+      padding: 6px;
+      font-size: .6rem;
+    }
+    .users-table td ,.product-table td{
+      padding: 4px;
+      font-size: .6rem;
+    }
+    .table-img{
+      width: 25px;
+    }
+    .users-table .fa-edit,.product-table .fa-edit,
+    .users-table .ai-delete,.product-table .ai-delete {
+      font-size: .6rem;
     }
   }

@@ -35,7 +35,7 @@
   background-color: rgb(244 244 244 / 73%);
   color: rgb(73, 73, 73);
   font-size: .9rem;
-  border-radius: 4px;
+  border-radius: 0 0 5px 5px;
 }
 .card-content.dark{
   background-color: black;

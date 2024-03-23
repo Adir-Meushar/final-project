@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { jwtDecode } from "jwt-decode";
 import './App.css';
-import CenteredLayout from './components/CenterdLayout';
+import CenteredLayout from './components/main-content/CenterdLayout';
 import Router from './components/routes/Router';
 import Navbar from './components/navbars/Navbar';
 import Snackbar from './components/snackbar/Snackbar';
@@ -60,11 +60,20 @@ function App() {
       document.body.style.overflowX = 'hidden'; // Disable horizontal scrollbar
     }
   }, [loader]);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
+  
   const snackbar = (text) => {
     setSnackbarText(text);
     setTimeout(() => setSnackbarText(""), 3 * 1000);
   };
-  console.log(isDarkMode);
+
   return (
     <GeneralContext.Provider value={{snackbar,user,setUser,count, setCount,cartProducts, setCartProducts,search, 
     setSearch,setLoader,isDarkMode, setIsDarkMode,loginModal,setLoginModal,signupModal,setSignModal}}>

@@ -29,6 +29,8 @@ app.listen(port,()=>{
     console.log(chalk.blue((`Listening to port ${port}`))); 
 });
 
+app.use(express.static("public"));
+
 require('./handlers/authentication/signup')(app);
 require('./handlers/authentication/login')(app);
 require('./handlers/user/user')(app);
@@ -37,3 +39,7 @@ require('./handlers/products/category')(app);
 require('./handlers/order/order')(app);
 require('./handlers/adminData/dashboard')(app)
 require('./handlers/initialData/initialDataService');
+
+app.get("*", (req, res) => {
+    res.sendFile(`${__dirname}/public/pageNotFound.html`);
+ }); 

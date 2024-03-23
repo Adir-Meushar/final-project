@@ -80,6 +80,10 @@
 .up:focus {
   box-shadow: inset 0 -3.25em 0 0 var(--hover);
 }
+.slide:hover,
+.slide:focus {
+  box-shadow: inset 13em 0 0 0 var(--hover);
+}
 
 
 .up {
@@ -96,7 +100,10 @@
   --color: #ff7f82;
   --hover: #ffdc7f;
 }
-
+.slide {
+  --color: #8fc866;
+  --hover: #66c887;
+}
 .register-btn {
   color: var(--color);
   transition: 0.25s;

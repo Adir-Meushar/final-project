@@ -71,6 +71,8 @@ function ProductsManagement() {
             <div className='page-header'>
                 <h1>Product Management</h1>
                 <p>Here you can find information about the products.</p>
+                <p>Total Products:{products.length}</p>
+
             </div>
             <table className='product-table'>
                 <thead>

@@ -9,7 +9,8 @@ import DairyAndEggs from '../products/category/Dairy&Eggs';
 import MyAccount from '../../authentication/user/MyAccount';
 import { GeneralContext } from '../../App';
 import { useContext } from 'react';
-import About from '../about/About';
+import About from '../pages/about/About';
+import ErrorPage from '../pages/error-page/ErrorPage';
 
 
 export default function Router() {
@@ -26,6 +27,7 @@ export default function Router() {
             <Route path="/bakery" element={<Bakery />} />
             <Route path="/dairy&egss" element={<DairyAndEggs />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="*" element={<ErrorPage />}/>
         </Routes>
     )
 }

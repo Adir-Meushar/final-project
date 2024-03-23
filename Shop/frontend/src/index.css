@@ -9,9 +9,11 @@ body{
   font-family: 'Inter', sans-serif;
   overflow-x:hidden;
   background-color: rgb(244 244 244 / 73%);
-
 }
+ body.dark-mode{
+  background-color: rgb(15, 15, 15);
 
+ }
 button{
   cursor: pointer;
 }
@@ -19,18 +21,4 @@ button{
 input{
   outline: none;
 }
-.display{
-  display: flex;
-  gap: 5px;
-}
-.display button{
-  width: 12rem;
-  height: 3rem;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-  background-color:rgb(8 62 3);
-  color: white;
-  border-radius: 10px;
-  transition: all .3s;
-}
+

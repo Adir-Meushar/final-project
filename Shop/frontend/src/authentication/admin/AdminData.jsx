@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import './admin-data-table.css'
-import {GeneralContext} from '../../App'
+import { GeneralContext } from '../../App'
 function AdminData() {
     const [amount, setAmount] = useState({
         totalAmount: '',
@@ -12,7 +12,7 @@ function AdminData() {
 
     const [priceData, setPriceData] = useState([]);
     const [productsOnSale, setProductsOnSale] = useState({});
-    const { snackbar,setLoader} = useContext(GeneralContext);
+    const { snackbar, setLoader } = useContext(GeneralContext);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -44,16 +44,15 @@ function AdminData() {
         };
         setTimeout(() => {
             setLoader(false)
-          }, 1000)
+        }, 1000)
         fetchData();
     }, []);
 
     return (
         <div>
-            <h1>Admin Data</h1>
-           Total Amount: {amount.totalAmount}
-           Total Users?
-           {/* user role type */}
+            <h1>Data Overview</h1>
+            <p>Here you can find statistical information about the site.</p>
+            <p>Total Products:{amount.totalAmount}</p>
             <table className="admin-data-table">
                 <thead>
                     <tr>
