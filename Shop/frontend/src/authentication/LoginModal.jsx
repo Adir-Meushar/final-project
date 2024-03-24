@@ -10,7 +10,7 @@ function Login() {
     email: "",
     password: "",
   });
-  const { setUser, snackbar,setLoader,loginModal,setLoginModal,setSignModal } = useContext(GeneralContext);
+  const { setUser, snackbar, setLoader, loginModal, setLoginModal, setSignModal, isDarkMode } = useContext(GeneralContext);
 
   const handleValid = (ev) => {
     const { name, value } = ev.target;
@@ -60,28 +60,25 @@ function Login() {
       console.error("Error submitting form:", error);
       snackbar('Email or Password is Incorrect')
     }
-    setTimeout(()=>{
+    setTimeout(() => {
       setLoader(false)
-    },1000)
+    }, 1000)
   };
+  const cleanForm = () => {
+    setLoginModal(false);
+    setFormData({ email: "", password: "" });
+    setErrors([]);
+    setIsFormValid(false);
+  }
+
   return (
     <>
       <button className="register-btn up" onClick={() => setLoginModal(true)}>Login</button>
       {loginModal && (
-        <div className="modal-frame" onClick={() => setLoginModal(false)}>
-          <div className="login-modal modal" onClick={(ev) =>  ev.stopPropagation()}>
+        <div className="modal-frame" onClick={cleanForm} >
+          <div className={`login-modal modal ${isDarkMode ? 'dark' : 'light'}`} onClick={(ev) => ev.stopPropagation()}>
             <header>
-              <button
-                className="close-btn"
-                onClick={() => {
-                  setLoginModal(false);
-                  setIsFormValid(false);
-                  setFormData({ email: "", password: "" });
-                  setErrors([]);
-                }}
-              >
-                X
-              </button>
+              <button className="close-btn" onClick={cleanForm} >X</button>
               <h2>Login</h2>
             </header>
             <form onSubmit={(e) => handleLogin(e, setUser)}>
@@ -112,7 +109,7 @@ function Login() {
                 )}
               </label>
               <button className="login-btn" disabled={!isFormValid}>Login</button>
-              <p className="sign-up-link" onClick={() => { setLoginModal(false); setSignModal(true); }}>First time here? Sign up</p>
+              <p className="signup-link" onClick={() => { setLoginModal(false); setSignModal(true); }}>First time here? Sign up</p>
             </form>
           </div>
         </div>

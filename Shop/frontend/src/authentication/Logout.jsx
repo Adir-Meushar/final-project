@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { GeneralContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 
-function Logout() {
+function Logout({clicked,handleClick}) {
     const { setUser, snackbar, user, setLoader } = useContext(GeneralContext)
     const navigate = useNavigate();
     const logout = () => {
@@ -14,6 +14,7 @@ function Logout() {
         setTimeout(() => {
             setLoader(false)
         }, 500)
+        handleClick();
     }
 
     return (

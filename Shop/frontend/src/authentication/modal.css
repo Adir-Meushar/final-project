@@ -31,7 +31,7 @@
     justify-content: center;
     gap: 10px;
   }
-  
+
   .signup-modal{
     min-width: 603px;
     margin: 3rem;
@@ -55,11 +55,14 @@
   display: block;
    font-size: .9rem;
   }
-  .signup-modal label,.login-modal label{
+  .modal label{
     text-align-last: left;
     height:4rem ;
   }
-  .signup-modal input,.login-modal input {
+  .login-modal label{
+    height: 5rem;
+  }
+  .modal input {
     display: block;
     border: 1px solid black;
     padding: 8px 12px;
@@ -82,7 +85,7 @@
   }
   
 .error-message{
-  color: #dc1818;
+  color: #b23d3d;
   font-size: .75rem;
   font-weight: bold;
 }
@@ -102,12 +105,12 @@
 .signup-btn{
   grid-column: span 2;
 }
-.sign-up-link ,.login-link {
+.signup-link ,.login-link {
   color: rgb(0, 0, 71);
   font-size: .9rem;
   cursor: pointer;
 }
-.sign-up-link{
+.signup-link{
   margin-top: 6%;
 }
 
@@ -115,6 +118,32 @@
   grid-column: span 2;
 }
 
+.modal.dark{
+  color: #bcbcbc;
+  background-color: #1b1b1b;
+}
+.modal.dark .close-btn{
+  color: #bcbcbc;
+}
+.modal.dark h2{
+  color: #bcbcbc;
+}
+.modal.dark input{
+  background-color: #9b9b9b33;
+    color: #dcdcdc;
+}
+.modal.dark .login-btn,.modal.dark .signup-btn{
+  background-color:rgb(24 46 75)
+  ;
+}
+.modal.dark .login-btn:disabled,.modal.dark .signup-btn:disabled{
+  background-color:rgb(107, 122, 142);
+  color: rgb(179, 179, 179);
+
+}
+.modal.dark .login-link,.modal.dark .signup-link{
+  color: rgb(244, 244, 244);
+}
 
 @media screen and (max-width:660px) {
   .signup-modal{
@@ -127,6 +156,15 @@
    flex-direction: column;
    gap: 5px;
    max-height: 90vh;
+  }
+}
+
+@media screen and (max-width:430px){
+  .signup-modal label ,.login-modal label{
+    height: 5rem;
+  }
+  .signup-modal, .login-modal{
+    min-width: 90vw;
   }
 }
   @keyframes slide-up {

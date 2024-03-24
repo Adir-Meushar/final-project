@@ -15,7 +15,7 @@ function Signup() {
     street: "",
     houseNumber: ""
   });
-  const { snackbar, setUser, setLoader,signupModal,setSignModal,setLoginModal} = useContext(GeneralContext);
+  const { snackbar, setUser, setLoader,signupModal,setSignModal,setLoginModal,isDarkMode} = useContext(GeneralContext);
 
   const handleValid = (ev) => {
     const { name, value } = ev.target;
@@ -87,7 +87,7 @@ function Signup() {
       <button className="register-btn up" onClick={() => setSignModal(true)}>Signup</button>
       {signupModal && (
         <div className="modal-frame" onClick={() => setSignModal(false)}>
-          <div className="signup-modal modal" onClick={(ev) =>  ev.stopPropagation()}>
+          <div className={`signup-modal modal ${isDarkMode ? 'dark' : 'light'}`} onClick={(ev) =>  ev.stopPropagation()}>
             <header>
               <button className="close-btn" onClick={() => {
                 setSignModal(false);

@@ -6,9 +6,8 @@
     
 }
 .category-navbar.dark{
-    background: #000000;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to right, #434343, #000000);  
-      background: linear-gradient(to right, #434343, #000000); 
+    background-color: rgb(15, 15, 15);
+
   }
   .category-navbar ul {
       list-style-type: none;
@@ -41,9 +40,12 @@
     color: rgba(88, 192, 78, 0.72);
 }
 
+.category-navbar .disabled{
+display: none;
+}
 @media screen and (max-width:1000px) {
     .category-navbar{
-        background-color: rgb(18, 37, 14);
+        background-color: rgb(22, 42, 27);
         padding:unset;
         box-shadow: unset;
         width: 100%;

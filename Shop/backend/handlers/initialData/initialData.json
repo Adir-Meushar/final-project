@@ -87,7 +87,7 @@
               "protein": 0.9
             },
             "img": {
-              "url": "https://i.pinimg.com/564x/19/e0/bc/19e0bcf78443626b94c967f50e1227e9.jpg",
+              "url": "https://i.pinimg.com/736x/e8/e7/35/e8e7357586ecdcaae077e2de12dcbd39.jpg",
               "alt": "Carrot"
             }
           },
@@ -109,6 +109,42 @@
               "alt": "Parsley "
             }
           },
+          { 
+            "category": "Vegetables",
+            "title": "Cilantro ",
+            "description": "Cilantro is a versatile herb known for its crisp texture and fresh flavor. Whether as a garnish or in salads, it adds brightness to any dish.",
+            "price": 3.90,
+            "unit": "unit",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 36,  
+              "fat": 0.7,  
+              "carbohydrates": 6.3, 
+              "protein": 2.9
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/69/c1/c9/69c1c983951401c32f9ff8f32fd56e94.jpg",
+              "alt": "Cilantro "
+            }
+          },
+          { 
+            "category": "Vegetables",
+            "title": "Cherry Tomato ",
+            "description": "Cherry Tomato is a versatile herb known for its crisp texture and fresh flavor. Whether as a garnish or in salads, it adds brightness to any dish.",
+            "price": 5.90,
+            "unit": "package",
+            "sale": false,
+            "nutritionalValue": {
+              "calories": 18,  
+              "fat": 0.2,  
+              "carbohydrates": 3.9, 
+              "protein": 0.8
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/5a/55/32/5a5532d5b1de32825cd7df0b02c24cff.jpg",
+              "alt": "Cherry Tomato "
+            }
+          },
           {
             "category": "Vegetables",
             "title": "Pumpkin",
@@ -119,11 +155,11 @@
             "nutritionalValue": {
               "calories": 26,
               "fat": 0.1, 
-              "carbohydrates": 7, 
+              "carbohydrates": 7,  
               "protein": 1 
             },
             "img": { 
-              "url": "https://i.pinimg.com/564x/da/11/71/da117105f035118f396a64eb4b7a42da.jpg",
+              "url": "https://i.pinimg.com/564x/be/8a/2f/be8a2f7c06f64043582836c72193db09.jpg",
               "alt": "Pumpkin"
             }
           },
@@ -304,7 +340,7 @@
               "protein": 2.8 
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/2d/0e/9b/2d0e9bb30ec7994e952511619f6dd569.jpg",
+              "url": "https://i.pinimg.com/564x/32/08/f1/3208f1fcd1ef1b7437f5faca10f332c2.jpg",
               "alt": "Broccoli"
             }
           },
@@ -340,7 +376,7 @@
               "protein": 1.6
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/d7/b1/6d/d7b16d5a8f243a1347084c32d3a9ce74.jpg",
+              "url": "https://i.pinimg.com/564x/1c/a1/4e/1ca14efd4166e04a6e25cda5d9cb3df0.jpg",
               "alt": "Sweet Potato"
             }
           },
@@ -559,8 +595,42 @@
       }
     },
     {   "category": "Fruits",
-    "title": "Pears",
-    "description": "Pears are renowned for their crispness, juiciness, and sweet flavor, coming in diverse colors and tastes. Loaded with fiber, they offer both a delightful snack and a healthy addition to meals.",
+    "title": "Persimmon",
+    "description": "Enjoy the sweet taste of persimmons – great for snacking or cooking up something tasty.",
+    "price": 15.90,
+    "unit": "kg",
+    "sale": true,
+    "nutritionalValue": {
+      "calories": 70,
+      "fat": 0.2,  
+      "carbohydrates": 18.5,
+      "protein": 0.5
+    },
+    "img": {
+      "url": "https://i.pinimg.com/564x/3b/4a/f9/3b4af9ce1ccf1e72c35a24cf6d193fd8.jpg",
+      "alt": "Persimmon" 
+    }
+  },
+  {   "category": "Fruits",
+  "title": "Figs",
+  "description": "Savor the rich sweetness of figs – a delectable fruit perfect for snacking or adding a touch of flavor to your dishes",
+  "price": 16.90,
+  "unit": "package",
+  "sale": true,
+  "nutritionalValue": {
+    "calories": 74,
+    "fat": 0.3,  
+    "carbohydrates": 19.1,
+    "protein": 0.75
+  },
+  "img": {
+    "url": "https://i.pinimg.com/564x/0d/99/d0/0d99d056cb36e8d317d3bd822f2a77b3.jpg",
+    "alt": "Figs" 
+  }
+},
+    {   "category": "Fruits",
+    "title": "Pear",
+    "description": "Pear's are renowned for their crispness, juiciness, and sweet flavor, coming in diverse colors and tastes. Loaded with fiber, they offer both a delightful snack and a healthy addition to meals.",
     "price": 9.90,
     "unit": "kg",
     "sale": false,
@@ -572,9 +642,60 @@
     },
     "img": {
       "url": "https://i.pinimg.com/564x/7f/c3/d4/7fc3d4db314aeffc0766052e63ef3015.jpg",
-      "alt": "Pears" 
+      "alt": "Pear" 
     }
   },
+  {   "category": "Fruits",
+    "title": "Peach",
+    "description": "Juicy and sweet, our peaches are bursting with flavor and freshness. Enjoy them as a healthy snack or add them to your favorite recipes for a delightful touch of summer sweetness.",
+    "price": 15.90,
+    "unit": "kg",
+    "sale": false,
+    "nutritionalValue": {
+      "calories": 42, 
+      "fat": 0.2,  
+      "carbohydrates": 10,
+      "protein": 0.9
+    },
+    "img": {
+      "url": "https://i.pinimg.com/564x/6e/ac/eb/6eacebe20641f5710f8b109105554b43.jpg",
+      "alt": "Peach" 
+    }
+  },
+  {   "category": "Fruits",
+  "title": "Plums",
+  "description": "Plums, ripe and succulent, offer a burst of sweet-tart flavor in every bite. Enjoy them as a refreshing snack or incorporate them into your culinary creations for a delicious twist.",
+  "price": 15.90,
+  "unit": "kg",
+  "sale": false,
+  "nutritionalValue": {
+    "calories": 46, 
+    "fat": 0.3,  
+    "carbohydrates": 11,
+    "protein": 0.7
+  },
+  "img": {
+    "url": "https://i.pinimg.com/564x/43/86/25/43862549c42b44c3ceab28af20099998.jpg",
+    "alt": "Plums" 
+  }
+},
+{   "category": "Fruits",
+"title": "Apricot",
+"description": "Delight in the juicy sweetness of apricots – perfect for a quick snack or as a tasty addition to your recipes.",
+"price": 16.90,
+"unit": "package",
+"sale": false,
+"nutritionalValue": {
+  "calories": 48,  
+  "fat": 0.4,  
+  "carbohydrates": 11,
+  "protein": 1.4
+},
+"img": {
+  "url": "https://i.pinimg.com/564x/88/8c/f6/888cf6bccb50c2cba8d715c9784aaec4.jpg",
+  "alt": "Apricot" 
+}
+},
           {
             "category": "Fruits",
             "title": "Banana",
@@ -788,7 +909,7 @@
               "protein": 1.7
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/63/d5/98/63d59871d9c4974218c00523353e9e01.jpg",
+              "url": "https://i.pinimg.com/564x/c2/b1/09/c2b10932d82f89d8f044556b5e0f1f53.jpg",
               "alt": "Pomegranate"
             }
           },
@@ -842,7 +963,7 @@
               "protein": 0.7
             },
             "img": {
-              "url": "https://i.pinimg.com/236x/69/bb/fb/69bbfbeb26800774a63b676398a25470.jpg",
+              "url": "https://i.pinimg.com/564x/10/c5/f1/10c5f121a926ff596b94cad09ec943fa.jpg",
               "alt": "Strawberry"
             }
           },
@@ -900,6 +1021,24 @@
             "img": {
               "url": "https://i.pinimg.com/564x/b9/b6/f2/b9b6f20045460b5cfd023e6f1c539dd9.jpg",
               "alt": "White bread"
+            }
+          },
+          { 
+            "category": "Bakery",
+            "title": "Pita Bread",
+            "description": "Pita Bread a versatile and delicious choice for any meal. Soft, satisfying, and perfect with your favorite spreads or fillings",
+            "price": 5.90,
+            "unit": "unit",
+            "sale": false,  
+            "nutritionalValue": { 
+              "calories": 275,
+              "fat": 1.2,
+              "carbohydrates": 55.7,
+              "protein": 9.1
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/8c/48/77/8c48774cc431eee4a931886367d97dc6.jpg",
+              "alt": "Pita Bread"
             }
           },
           { 
@@ -1238,17 +1377,358 @@
             "sale": true, 
             "nutritionalValue": { 
               "calories": 95,
-              "fat": 5,
+              "fat": 5, 
               "carbohydrates": 1.5, 
               "protein": 11
             },
             "img": {
-              "url": "https://i.pinimg.com/564x/d3/08/97/d3089782f10c6ae6a25ed4fec7943eea.jpg",
+              "url": "https://i.pinimg.com/564x/83/db/d8/83dbd8b33b99bdca03900df8ebe6cfba.jpg",
               "alt": "Cottage Cheese"
+            }
+          },
+          { 
+            "category": "Dairy&Eggs",
+            "title": "YoPro (Watermelon)",
+            "description": "Discover YoPro Protein Yogurt—delicious flavors Packed with protein, it's your go-to snack for a healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit",
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 43,
+              "fat": 0.3,
+              "carbohydrates": 4.1, 
+              "protein": 9.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/f9/5c/33/f95c33203cb49f83e3a8fd3deddb7c52.jpg",
+              "alt": "YoPro (Watermelon)"
+            }
+          },
+          { 
+            "category": "Dairy&Eggs",
+            "title": "YoPro (Blueberry)",
+            "description": "Discover YoPro Protein Yogurt—delicious flavors Packed with protein, it's your go-to snack for a healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 43,
+              "fat": 0.3, 
+              "carbohydrates": 4.1,  
+              "protein": 9.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/df/05/97/df0597c95c71040a355f6682345e6af4.jpg",
+              "alt": "YoPro (Blueberry)"
+            }
+          },
+          { 
+            "category": "Dairy&Eggs",
+            "title": "YoPro (Salted Caramel)",
+            "description": "Discover YoPro Protein Yogurt—delicious flavors Packed with protein, it's your go-to snack for a healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 43,
+              "fat": 0.3, 
+              "carbohydrates": 4.1,  
+              "protein": 9.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/2b/bc/a1/2bbca114fb880af6fba6245bc3d8590f.jpg",
+              "alt": "YoPro (Salted Caramel)"
+            }
+          },
+          { 
+            "category": "Dairy&Eggs",
+            "title": "YoPro (Passion Fruit)",
+            "description": "Discover YoPro Protein Yogurt—delicious flavors Packed with protein, it's your go-to snack for a healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 43,
+              "fat": 0.3, 
+              "carbohydrates": 4.1,  
+              "protein": 9.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/95/d3/96/95d396761acd9f462870693af5e59bab.jpg",
+              "alt": "YoPro (Passion Fruit)"
+            }
+          },
+          { 
+            "category": "Dairy&Eggs",
+            "title": "YoPro (Strawberry)",
+            "description": "Discover YoPro Protein Yogurt—delicious flavors Packed with protein, it's your go-to snack for a healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 43, 
+              "fat": 0.3, 
+              "carbohydrates": 4.1,  
+              "protein": 9.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/5e/f1/90/5ef190f533f8d8f0107d94770cb9c461.jpg",
+              "alt": "YoPro (Strawberry)"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "YoPro (Banana)",
+            "description": "Discover YoPro Protein Yogurt—delicious flavors Packed with protein, it's your go-to snack for a healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 43,
+              "fat": 0.3, 
+              "carbohydrates": 4.1,  
+              "protein": 9.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/63/15/00/63150035bb82e87444850922376b324e.jpg",
+              "alt": "YoPro (Banana)"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 54,
+              "fat": 0.1,  
+              "carbohydrates": 3.4,  
+              "protein": 9.5
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/ff/20/e6/ff20e6af595c9d9d44a768ae8b1ad943.jpg",
+              "alt": "Chobani"
+            } 
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Lemon)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/87/67/a4/8767a4ec8e0a20a07f779cc8604663f7.jpg",
+              "alt": "Chobani"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Coconut)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/2f/a8/d5/2fa8d5c5be50370b447a6e4ed4c1577c.jpg",
+              "alt": "Chobani (Coconut)"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Lime)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/7f/4f/66/7f4f667589253ea21f07fbfba115d61e.jpg",
+              "alt": "Chobani (Lime)"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Raspberry)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/24/76/2d/24762d1780693d96f8d77453bed4ec48.jpg",
+              "alt": "Chobani (Raspberry)"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Mixed Berry)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/e6/3b/1e/e63b1ef8c3c573ab8dd8df8e4ba780b2.jpg",
+              "alt": "Chobani (Mixed Berry)"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Cherry)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/90/8b/a3/908ba3a34641001d5d57491d2dd72f8d.jpg",
+              "alt": "Chobani (Cherry)"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Strawberry)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/a1/36/d5/a136d504535cd1f95d92bfd420476498.jpg",
+              "alt": "Chobani (Strawberry)"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Coffee)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/87/d9/2d/87d92d79565b87db0cca8475cad2e833.jpg",
+              "alt": "Chobani (Coffee)"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Pineapple)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/3a/0c/6a/3a0c6aeca1aeb571c7a8c85087926441.jpg",
+              "alt": "Chobani (Pineapple)"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Blueberry)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/3a/5c/15/3a5c15cc29a0e4b570cd73b544833749.jpg",
+              "alt": "Chobani (Blueberry)"
+            }
+          },
+          {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Peach)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false, 
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/d8/2e/29/d82e29ec64a84ac0d6d2815519cde762.jpg",
+              "alt": "Chobani (Peach)"
+            }
+          }, {  
+            "category": "Dairy&Eggs",
+            "title": "Chobani (Mango)",
+            "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
+            "price": 5.90,
+            "unit": "unit", 
+            "sale": false,  
+            "nutritionalValue": { 
+              "calories": 82,
+              "fat":4, 
+              "carbohydrates": 3.2,  
+              "protein": 8.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/df/65/a6/df65a6d302771648c693afe4d26f4ad8.jpg",
+              "alt": "Chobani (Mango)"
             }
           }
         ]
-      }
+      } 
     
    
     

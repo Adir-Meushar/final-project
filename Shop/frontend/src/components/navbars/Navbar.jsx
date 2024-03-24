@@ -50,13 +50,13 @@ const Navbar = () => {
             <div className='link-box'>
               {shouldRenderSearchBar && <li className='remove-search'><SearchBar /></li>}
             </div>
-            {isSmallScreen ? <CategoryNavbar /> : ''}
+            {isSmallScreen ? (shouldRenderSearchBar? <CategoryNavbar clicked={clicked} handleClick={handleClick} />:<Link to={'/'}><div class="icon icon-rotate home-icon"><i class="fa fa-home"></i></div></Link>  ): ''}
             {user ? (
               <>
                 <div className='user-box'>
-                  <Logout />
-                  <div onClick={() => navigate('/my-account')} class="icon icon-enter"><i class="fa fa-user"></i></div>
-                  {user?.roleType == RoleType.admin ? <div onClick={() => navigate('/dashboard')} class="icon icon-fill"><ImStatsDots className='admin-icon' /></div>
+                  <Logout clicked={clicked} handleClick={handleClick} />
+                  <div onClick={() => {navigate('/my-account');handleClick();}} class="icon icon-enter"><i class="fa fa-user"></i></div>
+                  {user?.roleType == RoleType.admin ? <div onClick={() => { navigate('/dashboard'); handleClick(); }} class="icon icon-fill"><ImStatsDots className='admin-icon' /></div>
                     : ''}
                   <div className='remove-cart'><Cart /></div>
                 </div>

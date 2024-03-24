@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { GeneralContext } from '../../App';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; 
 import './checkout.css'
 import { useNavigate } from 'react-router-dom';
 import { checkoutSchema } from './checkoutValid';
+import { GeneralContext } from '../../../App';
 function Checkout() {
     const { cartProducts, setCartProducts, snackbar, user } = useContext(GeneralContext);
     const [totalPrice, setTotalPrice] = useState(0); 

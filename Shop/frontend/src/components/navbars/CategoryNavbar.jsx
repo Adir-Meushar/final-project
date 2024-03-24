@@ -1,19 +1,24 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { GeneralContext } from '../../App';
 import './category-navbar.css'
 
-function CategoryNavbar() {
+function CategoryNavbar({clicked,handleClick}) {
     const {isDarkMode} = useContext(GeneralContext)
+    const location = useLocation();
+    const showNavbarRoutes = ['/about', '/dashboard', '/my-account', '/checkout'];
+
+    const shouldRenderUl = !showNavbarRoutes.includes(location.pathname);
+    const ulClass = shouldRenderUl ? 'enabled' : 'disabled';
 
     return (
         <div>
             <nav className={`category-navbar ${isDarkMode ? 'dark' : 'light'}`}>
-                <ul>
-                    <li><Link to="/vegetables">Vegetables</Link></li>
-                    <li><Link to="/fruits">Fruits</Link></li>
-                    <li><Link to="/bakery">Bakery</Link></li>
-                    <li><Link to="/dairy&egss">Dairy&Egss</Link></li>
+                <ul className={ulClass}>
+                    <li><Link onClick={handleClick} to="/vegetables">Vegetables</Link></li>
+                    <li><Link onClick={handleClick} to="/fruits">Fruits</Link></li>
+                    <li><Link onClick={handleClick} to="/bakery">Bakery</Link></li>
+                    <li><Link onClick={handleClick} to="/dairy&egss">Dairy&Egss</Link></li>
                 </ul>
             </nav>
         </div>

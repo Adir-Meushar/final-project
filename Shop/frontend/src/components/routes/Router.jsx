@@ -4,7 +4,7 @@ import Fruits from '../products/category/Fruits';
 import Products from '../products/category/AllProducts';
 import Dashboard from '../../authentication/admin/Dashboard';
 import Bakery from '../products/category/Bakery';
-import Checkout from '../checkout/Checkout';
+import Checkout from '../pages/checkout/Checkout';
 import DairyAndEggs from '../products/category/Dairy&Eggs';
 import MyAccount from '../../authentication/user/MyAccount';
 import { GeneralContext } from '../../App';
