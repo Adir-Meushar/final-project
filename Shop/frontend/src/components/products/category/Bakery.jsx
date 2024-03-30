@@ -4,7 +4,7 @@ import { GeneralContext } from "../../../App";
 
 function Bakery() {
     const [bakery, setBakery] = useState([]);
-    const{setLoader,isDarkMode}=useContext(GeneralContext) 
+    const{setLoader,isDarkMode,isSmallScreen}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchBakery = async () => {
@@ -36,7 +36,7 @@ function Bakery() {
     return (
         <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}>
          <div className="category-container">
-            <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Bakery-Desktop1.jpg" alt="bakery-img"/>
+            <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Bakery-Mobile-Long1.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Bakery-Desktop1.jpg"} alt="bakery-img"/>
                 <div className="cover-title">
                     <h1>Bakery</h1>
                     <p>Freshly baked goods crafted with care from the finest ingredients, delivered swiftly to your doorstep.</p>

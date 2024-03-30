@@ -1,0 +1,10 @@
+{
+    "configurations": [
+    {
+        "command": "cd Shop/backend | node index.js",
+        "name": "Run npm start",
+        "request": "launch",
+        "type": "node-terminal"
+    }
+    ]
+}

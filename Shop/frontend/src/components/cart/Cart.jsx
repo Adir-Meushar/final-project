@@ -71,22 +71,24 @@ function Cart() {
                                     {cartProducts.map((cartItem, index) => (
                                         <div key={index} className="cart-card">
                                             <img className="cart-item-img" src={cartItem.img} />
-                                            <div>{cartItem.title}</div>
-                                            <div>{cartItem.quantity}{cartItem.unit}</div>
+                                            <div className='cart-item-title'>{cartItem.title}</div>
+                                            <div className='cart-item-sum'>
+                                                <span>{cartItem.quantity}-{cartItem.unit}</span>
                                             <div>
-                                                {cartItem.sale ? (
+                                                {cartItem.sale ? ( 
                                                     Number((cartItem.finalPrice * cartItem.quantity).toFixed(2))
                                                 ) : (
                                                     Number((cartItem.price * cartItem.quantity).toFixed(2))
                                                 )}
                                                 &#8362;
                                             </div>
+                                            </div>
                                             <Counter count={cartItem.quantity} onChange={(value) => handleQuantityChange(index, value)} />
                                         </div>
                                     ))}
                                 </div>
-                                <p className={totalPrice > 50 ? 'remove-message' : 'minimum-message'}>*Please note min cost for delivery 50&#8362;*</p>
-                                <div className={'cart-payout ' + (cartProducts.length > 7 ? "cart-payout-sticky" : "cart-payout-fixed")}>
+                                <p className={totalPrice > 50 ? 'remove-message' : 'minimum-message'}>*Please note minimum cost for delivery is 50&#8362;*</p>
+                                <div className={'cart-payout ' + (cartProducts.length > 6 ? "cart-payout-sticky" : "cart-payout-fixed")}>
                                     <Link to={'/checkout'}><button disabled={totalPrice < 50} onClick={() => setCartModal(false)} >Go To Checkout</button></Link>
                                 </div>
                             </>

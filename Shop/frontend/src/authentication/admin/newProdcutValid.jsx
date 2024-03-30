@@ -8,7 +8,7 @@ export const productValidationSchema = Joi.object({
         'string.pattern.base': 'Title must start with letters',
         'any.required': 'Title is required',
     }),
-    description: Joi.string().min(15).max(150).required().messages({
+    description: Joi.string().min(15).max(250).required().messages({
         'string.min': 'Description must be at least {#limit} characters long',
         'string.max': 'Description must not exceed {#limit} characters',
         'any.required': 'Description is required',

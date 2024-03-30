@@ -62,6 +62,7 @@
   
   .order.expanded {
     max-height: 500px;
+    overflow-y: auto;
   }
   
   .order-info {

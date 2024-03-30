@@ -80,11 +80,13 @@ function Checkout() {
                       </div> 
                         <div className='cart-items'>
                             {cartProducts.map(p => (
-                                <div className='item' key={p.id}>{p.quantity}-{p.title}</div>
+                                <div className='item' key={p.id}>{p.quantity} {p.unit}-{p.title}:{Number((p.price * p.quantity).toFixed(2))
+                                }&#8362;</div>
                             ))}
                         </div>
                     </div>
                 </div>
+                <div className='delivry-box'>
                 <label>
                        Choose Date For Delivery:
                         <DatePicker
@@ -101,6 +103,9 @@ function Checkout() {
                             <div className="error-message">{errors.deliveryDate}</div>
                         )}
                     </label>
+                    <p>**Your delivery will be sent to the address currently saved in your account. Feel free to update it in the account settings if needed </p>
+                </div>
+              
                 <div className='card-details'>
                     <h3>Card-details</h3>
                     <label>
@@ -162,6 +167,3 @@ function Checkout() {
 
 export default Checkout;
 
-
-//choose delivery date//
-//msg for current savesd address//

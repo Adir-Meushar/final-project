@@ -87,7 +87,7 @@
     border-bottom: rgba(0, 0, 0, 0.12) solid 0.0625rem; 
   }
   .desc__body {
-    color: rgba(0, 0, 0, 0.43); 
+    color: rgb(0 0 0 / 76%); 
   }
   .desc__body.dark ,.desc__head.dark{
     color: white;

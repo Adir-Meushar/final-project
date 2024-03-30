@@ -4,7 +4,7 @@ import Products from "../product/Products";
 
 function DairyAndEggs() {
     const [dairyAndEggs, setDairyAndEggs] = useState([]);
-    const{setLoader,isDarkMode}=useContext(GeneralContext) 
+    const{setLoader,isDarkMode,isSmallScreen}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchDairyAndEggs = async () => {
@@ -36,7 +36,7 @@ function DairyAndEggs() {
     return (
         <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}>
             <div className="category-container">
-               <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Refrigerator-milk-and-eggs-Desktop1.jpg" alt="dairy&eggs-img" />
+               <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Refrigerator-milk-and-eggs-Mobile-Long1.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Refrigerator-milk-and-eggs-Desktop1.jpg"} alt="dairy&eggs-img" />
                 <div className="cover-title">
                     <h1>Dairy&Eggs</h1>
                     <p>Explore our selection of fresh dairy products and eggs, sourced directly from local farms for quality and flavor.</p>

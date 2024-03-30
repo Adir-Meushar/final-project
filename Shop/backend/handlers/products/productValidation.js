@@ -11,7 +11,7 @@ const productValidationSchema = Joi.object({
       'string.max': 'Title must not exceed {#limit} characters',
       'any.required': 'Title is required',
     }),
-    description: Joi.string().min(2).max(150).required().messages({
+    description: Joi.string().min(2).max(250).required().messages({
       'string.min': 'Description must be at least {#limit} characters long',
       'string.max': 'Description must not exceed {#limit} characters',
       'any.required': 'Description is required',
@@ -47,7 +47,7 @@ const editProductValidationSchema = Joi.object({
     'string.max': 'Title must not exceed {#limit} characters',
     'any.required': 'Title is required',
   }),
-  description: Joi.string().min(2).max(150).required().messages({
+  description: Joi.string().min(2).max(250).required().messages({
     'string.min': 'Description must be at least {#limit} characters long',
     'string.max': 'Description must not exceed {#limit} characters',
     'any.required': 'Description is required',

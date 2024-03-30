@@ -34,17 +34,18 @@ function Footer() {
                         <Link to={'/about'}>
                         <p>About</p>
                         </Link>
-                        <a href="/">
+
+                        <Link to={'/q&a'}>
                             <p>Q&A</p>
-                        </a>
+                         </Link>
                        
                     </div>
-                    <div className="footer-links-div">
+                    {/* <div className="footer-links-div">
                         <h4>Partners</h4>
                         <a href="/">
                             <p>Employer</p>
                         </a>
-                    </div>
+                    </div> */}
                     <div className="footer-links-div">
                         <h4>Compeny</h4>
                         <a href="/">
@@ -58,7 +59,7 @@ function Footer() {
                         </a>
                     </div>
                     <div className="footer-links-div">
-                        <h4>Follow Us</h4>
+                        <h4 className='social-media-header'>Follow Us</h4>
                         <div className="social-media">
                             <div className='media-icon'><BsFacebook/></div>
                             <div className='media-icon'><BsInstagram/></div>
@@ -75,7 +76,6 @@ function Footer() {
                     <div className="footer-below-links">
                         <a href=""><div><p>Terms of conditions</p></div></a>
                         <a href=""><div><p>Privacy</p></div></a>
-                        <a href=""><div><p>Terms of conditions</p></div></a>
                     </div>
                 </div>
             </div>

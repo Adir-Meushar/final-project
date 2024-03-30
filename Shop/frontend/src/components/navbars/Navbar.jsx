@@ -15,10 +15,9 @@ import { ImStatsDots } from "react-icons/im";
 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1000);
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, isDarkMode, setIsDarkMode } = useContext(GeneralContext)
+  const { user, isDarkMode, setIsDarkMode,isSmallScreen, setIsSmallScreen } = useContext(GeneralContext)
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,20 +36,24 @@ const Navbar = () => {
   };
 
 
-  const shouldRenderSearchBar = !['/about', '/dashboard', '/my-account', '/checkout'].includes(location.pathname);
-
+  // const shouldRenderSearchBar = !['/about', '/dashboard', '/my-account', '/checkout'].includes(location.pathname);
+  const shouldRender = ['/vegetables', '/fruits', '/bakery', '/dairy&egss','/'].includes(location.pathname);
+// https://en.pimg.jp/058/800/704/1/58800704.jpg
+//https://i.pinimg.com/564x/24/67/20/24672086120c1e8f0b6192f1b86de4ec.jpg
+//https://i.pinimg.com/564x/04/61/15/04611584c1a983b86242d873b2fbb1cd.jpg
+//https://i.pinimg.com/564x/2c/76/68/2c7668186f41f093f87aba59d82fd268.jpg
   return (
     <>
       <div className='nav-container'>
         <nav className={`top-nav ${isDarkMode ? 'dark' : 'light'}`}>
           <Link to="/">
-            <img className='logo' src="https://en.pimg.jp/058/800/704/1/58800704.jpg" alt="logo" />
+            <img className='logo' src="https://i.pinimg.com/564x/24/67/20/24672086120c1e8f0b6192f1b86de4ec.jpg" alt="logo" />
           </Link>
           <ul className={clicked ? 'navbar active' : 'navbar'}>
             <div className='link-box'>
-              {shouldRenderSearchBar && <li className='remove-search'><SearchBar /></li>}
+              {shouldRender && <li className='remove-search'><SearchBar /></li>}
             </div>
-            {isSmallScreen ? (shouldRenderSearchBar? <CategoryNavbar clicked={clicked} handleClick={handleClick} />:<Link to={'/'}><div class="icon icon-rotate home-icon"><i class="fa fa-home"></i></div></Link>  ): ''}
+            {isSmallScreen ? (shouldRender? <CategoryNavbar clicked={clicked} handleClick={handleClick} />:<Link to={'/'}><div class="icon icon-rotate home-icon"><i class="fa fa-home"></i></div></Link>  ): ''}
             {user ? (
               <>
                 <div className='user-box'>
@@ -76,7 +79,7 @@ const Navbar = () => {
             <i id='bar' className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
           </div>
         </nav>
-        {isSmallScreen ? (shouldRenderSearchBar ? <SearchBar /> : null) : <CategoryNavbar />}
+        {isSmallScreen ? (shouldRender ? <SearchBar /> : null) : <CategoryNavbar />}
       </div>
     </>
   );

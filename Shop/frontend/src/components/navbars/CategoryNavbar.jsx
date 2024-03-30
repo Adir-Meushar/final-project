@@ -6,9 +6,10 @@ import './category-navbar.css'
 function CategoryNavbar({clicked,handleClick}) {
     const {isDarkMode} = useContext(GeneralContext)
     const location = useLocation();
-    const showNavbarRoutes = ['/about', '/dashboard', '/my-account', '/checkout'];
+    // const showNavbarRoutes = ['/about', '/dashboard', '/my-account', '/checkout'];
+    const shouldRender = ['/vegetables', '/fruits', '/bakery', '/dairy&egss','/']
 
-    const shouldRenderUl = !showNavbarRoutes.includes(location.pathname);
+    const shouldRenderUl = shouldRender.includes(location.pathname);
     const ulClass = shouldRenderUl ? 'enabled' : 'disabled';
 
     return (

@@ -19,7 +19,7 @@ const moment = require('moment');
     title:{type:String,required:true,unique:true},
     description:{type:String,required:true},
     price:{type:Number,required:true},
-    finalPrice: { 
+    finalPrice: {  
       type: Number, 
       default: function() {
           // Calculate finalPrice as 90% of price

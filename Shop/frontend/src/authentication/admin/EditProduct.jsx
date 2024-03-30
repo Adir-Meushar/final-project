@@ -5,11 +5,10 @@ import { productValidationSchema } from "./newProdcutValid";
 import { GeneralContext } from "../../App";
 
 function EditProduct({ modal, setModal, currentProduct }) {
-    console.log('currentProduct:',currentProduct);
     const [errors, setErrors] = useState([]);
     const [formData, setFormData] = useState({});
-    const [isFormValid, setIsFormValid] = useState(false);
-    const { snackbar,setLoader} = useContext(GeneralContext);
+    const [isFormValid, setIsFormValid] = useState(true);
+    const { snackbar, setLoader } = useContext(GeneralContext);
 
     useEffect(() => {
         if (Object.keys(currentProduct).length) {
@@ -21,14 +20,12 @@ function EditProduct({ modal, setModal, currentProduct }) {
     }, [currentProduct])
 
 
-
-    const nutritionalValue = [
-        { name: "calories", label: "Calories" },
-        { name: "carbohydrates", label: "Carbohydrates" },
-        { name: "protein", label: "Protein" },
-        { name: "fat", label: "Fat" }
-    ]
-
+    const nutritionalValue = {
+        calories: '',
+        carbohydrates: '',
+        protein: '',
+        fat: '',
+    }
     const resetForm = () => {
         setFormData(currentProduct);
         setErrors([]);
@@ -41,9 +38,13 @@ function EditProduct({ modal, setModal, currentProduct }) {
             </div>
         );
     };
-    const handleValid = (ev) => {
+    const handleValid = (ev, item) => {
         const { name, value } = ev.target;
-        const obj = { ...formData, [name]: value }
+
+
+        const obj = name === 'nutritionalValue'
+            ? { ...formData, [name]: { ...formData.nutritionalValue, [item]: +value } }
+            : name === 'img' ? { ...formData, [name]: { ...formData.img, [item]: value } } : { ...formData, [name]: value }
         setFormData(obj)
         const validate = productValidationSchema.validate(obj, { abortEarly: false })
         const tempErrors = { ...errors }
@@ -57,19 +58,12 @@ function EditProduct({ modal, setModal, currentProduct }) {
         setIsFormValid(!validate.error)
         setErrors(tempErrors)
     }
-     
 
-    const editProduct=async(ev,productId)=>{
+
+    const editProduct = async (ev, productId) => {
         ev.preventDefault();
         try {
             setLoader(true)
-            const { imgUrl, imgAlt, calories, carbohydrates, protein, fat, ...rest } = formData;
-            const obj = {
-                ...rest,
-                nutritionalValue: { calories, carbohydrates, protein, fat },
-                img: { url: imgUrl, alt: imgAlt }
-            };
-
             const response = await fetch(`http://localhost:4000/products/${productId}`, {
                 credentials: "include",
                 method: "PUT",
@@ -77,7 +71,7 @@ function EditProduct({ modal, setModal, currentProduct }) {
                     "Content-type": "application/json",
                     "Authorization": localStorage.token,
                 },
-                body: JSON.stringify(obj),
+                body: JSON.stringify(formData),
             });
 
             const data = await response.json();
@@ -89,8 +83,8 @@ function EditProduct({ modal, setModal, currentProduct }) {
                 resetForm(currentProduct);
                 setTimeout(() => {
                     setLoader(false)
-                  }, 1000)
-                  snackbar(`${data?.title} Was updated Sucsesfully!`)
+                }, 1000)
+                snackbar(`${data?.title} Was updated Sucsesfully!`)
             }
         } catch (error) {
             console.error("Error submitting form:", error);
@@ -126,30 +120,30 @@ function EditProduct({ modal, setModal, currentProduct }) {
                             </div>
                             <h3>Nutritional Values (100g)</h3>
                             <div className="nutrition-value">
-                                {nutritionalValue?.map((item, index) => (
+                                {Object.keys(nutritionalValue)?.map((item, index) => (
                                     <label key={index} className="input-box">
-                                        {item.label}
+                                        {item}
                                         <input
                                             type="number"
                                             autoComplete="off"
-                                            onChange={handleValid}
-                                            value={formData.nutritionalValue[item.name]}
+                                            onChange={(ev) => handleValid(ev, item)}
+                                            value={formData.nutritionalValue[item]}
                                             name='nutritionalValue'
                                             className="input-number"
                                         />
-                                        {renderError(item.name)}
+                                        {renderError(item)}
                                     </label>
                                 ))}
                             </div>
                             <div className="pricing">
                                 <label>
                                     Price
-                                    <input type="number" autoComplete="off" onChange={handleValid} value={formData.price } name="price" className="input-number" />
+                                    <input type="number" autoComplete="off" onChange={handleValid} value={formData.price} name="price" className="input-number" />
                                     {renderError("price")}
                                 </label>
                                 <label>
                                     Sale
-                                    <input type="checkbox" onChange={handleValid} value={formData.sale} name="sale" />
+                                    <input type="checkbox" onChange={handleValid} value={formData.sale}  checked={formData.sale} name="sale" />
                                 </label>
                             </div>
                             <div className="unit-type">
@@ -188,12 +182,12 @@ function EditProduct({ modal, setModal, currentProduct }) {
                             <div className="img-details">
                                 <label>
                                     Image URL:
-                                    <input type="text" autoComplete="off" onChange={handleValid} value={formData.img.url} name="img" />
+                                    <input type="text" autoComplete="off" onChange={(ev) => handleValid(ev, 'url')} value={formData.img.url} name="img" />
                                     {renderError("imgUrl")}
                                 </label>
                                 <label>
                                     Image Alt:
-                                    <input type="text" autoComplete="off" onChange={handleValid} value={formData.img.alt} name="img" />
+                                    <input type="text" autoComplete="off" onChange={(ev) => handleValid(ev, 'alt')} value={formData.img.alt} name="img" />
                                     {renderError("imgAlt")}
                                 </label>
                             </div>
@@ -202,7 +196,7 @@ function EditProduct({ modal, setModal, currentProduct }) {
                                 <textarea className="description" onChange={handleValid} value={formData.description} name="description" />
                                 {renderError("description")}
                             </label>
-                            <button className="btnAdd" disabled={!isFormValid}>Update</button>
+                            <button className="btnAdd" >Update</button>
                         </form>
                     </div>
                 </div>

@@ -8,7 +8,6 @@ function Dashboard() {
   const [display, setDisplay] = useState('admin-data')
   return (
     <>
-      <NewProduct />
       <div className="dashboard-header">
         <h1>Dashboard</h1>
       <div className="display">

@@ -5,7 +5,7 @@ import { GeneralContext } from "../../../App";
 
 function AllProducts() {
     const [products, setProducts] = useState([]);
-    const{setLoader,isDarkMode}=useContext(GeneralContext) 
+    const{setLoader,isDarkMode,isSmallScreen}=useContext(GeneralContext) 
     useEffect(() => {
         const fetchProducts = async () => {
             setLoader(true)
@@ -35,8 +35,8 @@ function AllProducts() {
 
     return (
         <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}>
-          <div className="category-container">
-            <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2023/06/DES-_-category-_-health.jpg" alt="bakery-img"/>
+          <div className='category-container'>
+            <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2023/06/MOB-_-category-_-health.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2023/06/DES-_-category-_-health.jpg"} alt="bakery-img"/>
                 <div className="cover-title">
                     <h1>Welcome!</h1>
                     <p>Discover a wide variety of fresh and flavorful products, ranging from farm-fresh vegetables and juicy fruits to delectable bakery treats and more.</p>

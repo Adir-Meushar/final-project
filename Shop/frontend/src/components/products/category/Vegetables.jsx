@@ -4,7 +4,7 @@ import './category.css'
 import { GeneralContext } from "../../../App";
 function Vegetables() {
     const [vegetables, setVegetables] = useState([]);
-    const{setLoader,isDarkMode}=useContext(GeneralContext) 
+    const{setLoader,isDarkMode,isSmallScreen}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchVegetables = async () => {
@@ -37,7 +37,7 @@ function Vegetables() {
     return (
         <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}> 
             <div className="category-container">
-                <img src="https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Desktop1.jpg" alt="vegetables-img" />
+                <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Mobile-Long1.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Desktop1.jpg"} alt="vegetables-img" />
                 <div className="cover-title">
                     <h1>Vegetables</h1>
                     <p>An enormous variety of fresh, high-quality, and delicious vegetables, delivered straight to us every morning from the finest farmers in the country with fast home delivery.</p>

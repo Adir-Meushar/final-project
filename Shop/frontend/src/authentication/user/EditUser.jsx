@@ -5,7 +5,7 @@ import { GeneralContext } from "../../App";
 function EditUser() {
     const [errors, setErrors] = useState({});
     const [isFormValid, setIsFormValid] = useState(true);
-    const { user, setUser, snackbar } = useContext(GeneralContext);
+    const { user, setUser, snackbar,setLoader } = useContext(GeneralContext);
     const [formData, setFormData] = useState({});
 
     useEffect(() => {
@@ -28,7 +28,6 @@ function EditUser() {
                         lastName: userData.lastName,
                         phone: userData.phone,
                         email: userData.email,
-                        // password: userData.password, // Assuming user.password is the correct field
                         city: userData.city,
                         street: userData.street,
                         houseNumber: userData.houseNumber
@@ -64,6 +63,7 @@ function EditUser() {
     const updateUser = async (ev,userId) => {
         ev.preventDefault();
         try {
+            setLoader(true)
             const response = await fetch(`http://localhost:4000/users/${userId}`, {
                 credentials: "include",
                 method: "PUT",
@@ -81,10 +81,15 @@ function EditUser() {
                 } else {
                     setErrors(data.error);
                 }
+            }else{
+              snackbar(`${data.firstName} details updated successfully!`)
             }
         } catch (error) {
             console.error("Error submitting form:", error);
         }
+        setTimeout(() => {
+            setLoader(false)
+          }, 800)
     };
 
     const inputFields = [

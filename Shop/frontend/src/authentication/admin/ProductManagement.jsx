@@ -4,6 +4,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
 import EditProduct from './EditProduct';
 import { GeneralContext } from '../../App';
+import NewProduct from './NewProduct';
 
 function ProductsManagement() {
     const [products, setProducts] = useState([]);
@@ -72,7 +73,7 @@ function ProductsManagement() {
                 <h1>Product Management</h1>
                 <p>Here you can find information about the products.</p>
                 <p>Total Products:{products.length}</p>
-
+                <NewProduct />
             </div>
             <table className='product-table'>
                 <thead>
@@ -94,7 +95,7 @@ function ProductsManagement() {
                             <td>{index + 1}</td>
                             <td>{product.category}</td>
                             <td>{product.title}</td>
-                            <td>{product.price}0&#8362;</td>
+                            <td>{product.price}&#8362;</td>
                             <td>{product.unit}</td>
                             <td>{product.sale ? 'True' : 'False'}</td>
                             <td><img className='table-img' src={product.img.url} alt={product.img.alt} /></td>

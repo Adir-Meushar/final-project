@@ -3,8 +3,8 @@
     margin: 2rem;
     border-radius: 5px;
     width: 40vw;
-    min-width: 650px;
-    height: 75vh;
+    min-width: 700px;
+    height: fit-content;  
     min-height: 650px;
     background-color: #fff;
     display: flex;
@@ -17,14 +17,16 @@
 }
 
 .order-details{
-  width: 85%;
+  width: 95%;
+  border-radius: 8px;
+  padding: 10px;
   min-width: 500px;
-  height: 43%;
-  background-color: rgba(244, 252, 250, 0.531);
+  background-color: rgb(242 249 247 / 53%);
+  margin-bottom: 10px;
 }
-.cart-details{
+/* .cart-details{
   height: 93%;
-}
+} */
 .cart-summary{
   display: flex;
   flex-direction: row;
@@ -35,12 +37,12 @@
 }
 .cart-items{
   width: 100%;
-  height: 60%;
+  height: fit-content;
   font-size: .7rem;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(3,1fr);
   text-align-last: left;
-  gap: 1px;
+  gap: 5px;
   padding: 10px;
 }
 .cart-items .item{
@@ -49,7 +51,14 @@
 }
 
 
-
+.delivry-box{
+  margin: 10px;
+}
+.delivry-box p{
+  width: 80%;
+   margin:10px auto ;
+  font-size: .7rem;
+}
 
 
 /* CREDIT-CARD */
@@ -57,7 +66,7 @@
 
 .card-details{
   width: 85%;
-  height: 40%;
+  height: 30vh;
   display: grid;
   grid-template-columns: repeat(2,1fr);
 }
@@ -112,4 +121,33 @@
 .back-to-shop-btn:hover{
   background-color: rgba(40, 177, 51, 0.856);
 
+}
+
+@media screen and (max-width:725px){
+  .payment-form{
+    min-width: unset;
+    width: 95vw;
+  }
+  .order-details{
+    min-width: 95%;
+  }
+  .cart-items{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+@media screen and (max-width:500px){
+  .cart-items{
+    grid-template-columns: repeat(1,1fr);
+  }
+  .card-details{
+    width: 100%;
+    padding: 10px;
+    height: fit-content; 
+    display: flex;
+    flex-direction: column;
+  }
+  .card-details label{
+    margin-bottom: 10px;
+  }
+  
 }

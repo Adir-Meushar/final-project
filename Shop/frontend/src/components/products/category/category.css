@@ -7,6 +7,12 @@
     display: flex;
     align-items: center;
 }
+/* .category-container.small{
+    height: 44vh;
+} */
+/* .category-container.small h1{
+    font-size: 2.1rem;
+} */
 .category-container img{
     height: 100%;
     width: 100%;
@@ -57,3 +63,15 @@
     background-color: rgba(0, 0, 0);
     border: none;
 }
+
+@media screen and (max-width:1000px) {
+    .category-container{
+        height: 44vh;
+    }
+    .category-container h1{
+     font-size: 2.1rem;
+    }
+    .cover-title p{
+        width: 75%;
+    }
+  }

@@ -50,28 +50,31 @@ module.exports=app=>{
     }
 });
 
-
 // Edit Product || Permissions: Admin//
 app.put('/products/:id', guard, async (req, res) => {
-    const userToken = getUserInfo(req, res);
-    if (userToken.isAdmin !== RoleType.admin) {
-        return res.status(401).send({
-            error: {
-                code: 401,
-                message: 'Unauthorized',
-                details: 'User authentication failed.',
-            },
-        });
-    }
-
-    const productId = req.params.id;
-    const { title } = req.body;
-
-    const existingProductWithTitle = await Product.findOne({ title, _id: { $ne: productId } });
-    if (existingProductWithTitle) {
-        return res.status(400).json({ error: 'Product with the same title already exists.' });
-    }
     try {
+        // Ensure user is an admin
+        const userToken = getUserInfo(req, res);
+        if (userToken.isAdmin !== RoleType.admin) {
+            return res.status(401).send({
+                error: {
+                    code: 401,
+                    message: 'Unauthorized',
+                    details: 'User authentication failed.',
+                },
+            });
+        }
+
+        const productId = req.params.id;
+        const { category, title, description, price, sale, nutritionalValue, img, unit } = req.body;
+
+        // Check if a product with the same title already exists
+        const existingProductWithTitle = await Product.findOne({ title, _id: { $ne: productId } });
+        if (existingProductWithTitle) {
+            return res.status(400).json({ error: 'Product with the same title already exists.' });
+        }
+
+        // Find the product by ID
         const product = await Product.findById(productId);
         if (!product) {
             return res.status(404).send({
@@ -83,15 +86,29 @@ app.put('/products/:id', guard, async (req, res) => {
             });
         }
 
+        // Validate the request body
         const { error, value } = editProductValidationSchema.validate(req.body, { abortEarly: false });
         if (error) {
             return res.status(400).json({ error: error.details.map(detail => detail.message) });
         }
 
-        product.set(value);
+        // Update product fields
+        product.set({
+            category,
+            title,
+            description,
+            price,
+            sale,
+            nutritionalValue,
+            img,
+            unit
+        });
+
+        // Save the updated product
         const updatedProduct = await product.save();
         res.send(updatedProduct);
     } catch (error) {
+        console.error("Error editing product:", error);
         res.status(500).send({ error: 'Error editing product' });
     }
 });

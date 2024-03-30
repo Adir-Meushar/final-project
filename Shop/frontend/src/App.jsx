@@ -27,6 +27,7 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const[loginModal,setLoginModal]=useState(false);
   const[signupModal,setSignModal]=useState(false)
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1000);
 
   const navigate = useNavigate();
 
@@ -76,7 +77,7 @@ function App() {
 
   return (
     <GeneralContext.Provider value={{snackbar,user,setUser,count, setCount,cartProducts, setCartProducts,search, 
-    setSearch,setLoader,isDarkMode, setIsDarkMode,loginModal,setLoginModal,signupModal,setSignModal}}>
+    setSearch,setLoader,isDarkMode, setIsDarkMode,loginModal,setLoginModal,signupModal,setSignModal,isSmallScreen, setIsSmallScreen}}>
     <CenteredLayout>
       <Navbar />
       <Router/>
