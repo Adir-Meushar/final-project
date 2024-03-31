@@ -13,6 +13,8 @@ function QuestionAndAnswer() {
                     <p>Freshly baked goods crafted with care from the finest ingredients, delivered swiftly to your doorstep.</p>
                 </div>
             </div>
+
+            <div></div>
         </div>
     )
 }

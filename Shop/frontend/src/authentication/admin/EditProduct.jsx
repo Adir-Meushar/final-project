@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import '../modal.css';
 import './productForm.css';
-import { productValidationSchema } from "./newProdcutValid";
+import { editProductValidationSchema } from "./newProdcutValid";
 import { GeneralContext } from "../../App";
 
 function EditProduct({ modal, setModal, currentProduct }) {
@@ -19,7 +19,6 @@ function EditProduct({ modal, setModal, currentProduct }) {
 
     }, [currentProduct])
 
-
     const nutritionalValue = {
         calories: '',
         carbohydrates: '',
@@ -33,31 +32,44 @@ function EditProduct({ modal, setModal, currentProduct }) {
 
     const renderError = (name) => {
         return errors[name] && (
-            <div className="error-message" style={{ color: "red", fontSize: ".8rem" }}>
+            <div className="error-message">
                 {errors[name]}
             </div>
         );
     };
     const handleValid = (ev, item) => {
         const { name, value } = ev.target;
-
-
         const obj = name === 'nutritionalValue'
             ? { ...formData, [name]: { ...formData.nutritionalValue, [item]: +value } }
             : name === 'img' ? { ...formData, [name]: { ...formData.img, [item]: value } } : { ...formData, [name]: value }
         setFormData(obj)
-        const validate = productValidationSchema.validate(obj, { abortEarly: false })
+        const validate = editProductValidationSchema.validate(obj, { abortEarly: false })
         const tempErrors = { ...errors }
         delete tempErrors[name];
         if (validate.error) {
-            const item = validate.error.details.find((e) => e.context.key == name)
-            if (item) {
-                tempErrors[name] = item.message;
-            }
+            console.log(validate.error);
+            validate.error.details.forEach((error) => {
+                if (error.path[0] === 'img' && (error.path[1] === 'url' || error.path[1] === 'alt')) {
+                    tempErrors[`img.${error.path[1]}`] = error.message;
+                } else if (error.path[0] === 'nutritionalValue' && ['calories', 'carbohydrates', 'protein', 'fat'].includes(error.path[1])) {
+                    tempErrors[`nutritionalValue.${error.path[1]}`] = error.message;
+                } else {
+                    const errorKey = error.context.key || name;
+                    tempErrors[errorKey] = error.message;
+                }
+            });
+        } else {
+            delete tempErrors['img.url'];
+            delete tempErrors['img.alt'];
+            delete tempErrors['nutritionalValue.calories'];
+            delete tempErrors['nutritionalValue.carbs'];
+            delete tempErrors['nutritionalValue.protein'];
+            delete tempErrors['nutritionalValue.fat'];
         }
         setIsFormValid(!validate.error)
         setErrors(tempErrors)
     }
+
 
 
     const editProduct = async (ev, productId) => {
@@ -96,7 +108,7 @@ function EditProduct({ modal, setModal, currentProduct }) {
         <>
             {modal && Object.keys(formData).length && (
                 <div className="modal-frame">
-                    <div className="modal product-modal">
+                    <div className="product-modal">
                         <header>
                             <button className="close-btn" onClick={() => { setModal(false); resetForm(); }}>X</button>
                             <h2>Edit Product</h2>
@@ -131,7 +143,7 @@ function EditProduct({ modal, setModal, currentProduct }) {
                                             name='nutritionalValue'
                                             className="input-number"
                                         />
-                                        {renderError(item)}
+                                        {renderError(`nutritionalValue.${item}`)}
                                     </label>
                                 ))}
                             </div>
@@ -143,7 +155,7 @@ function EditProduct({ modal, setModal, currentProduct }) {
                                 </label>
                                 <label>
                                     Sale
-                                    <input type="checkbox" onChange={handleValid} value={formData.sale}  checked={formData.sale} name="sale" />
+                                    <input type="checkbox" onChange={handleValid} value={formData.sale} checked={formData.sale} name="sale" />
                                 </label>
                             </div>
                             <div className="unit-type">
@@ -183,12 +195,12 @@ function EditProduct({ modal, setModal, currentProduct }) {
                                 <label>
                                     Image URL:
                                     <input type="text" autoComplete="off" onChange={(ev) => handleValid(ev, 'url')} value={formData.img.url} name="img" />
-                                    {renderError("imgUrl")}
+                                    {renderError("img.url")}
                                 </label>
                                 <label>
                                     Image Alt:
                                     <input type="text" autoComplete="off" onChange={(ev) => handleValid(ev, 'alt')} value={formData.img.alt} name="img" />
-                                    {renderError("imgAlt")}
+                                    {renderError("img.alt")}
                                 </label>
                             </div>
                             <label style={{ textAlign: 'left' }}>
@@ -196,7 +208,7 @@ function EditProduct({ modal, setModal, currentProduct }) {
                                 <textarea className="description" onChange={handleValid} value={formData.description} name="description" />
                                 {renderError("description")}
                             </label>
-                            <button className="btnAdd" >Update</button>
+                            <button className="btnAdd" disabled={!isFormValid} >Update</button>
                         </form>
                     </div>
                 </div>

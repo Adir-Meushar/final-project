@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import './admin-data-table.css'
 import { GeneralContext } from '../../App'
 function AdminData() {
     const [amount, setAmount] = useState({
@@ -50,9 +49,13 @@ function AdminData() {
 
     return (
         <div>
-            <h1>Data Overview</h1>
-            <p>Here you can find statistical information about the site.</p>
-            <p>Total Products:{amount.totalAmount}</p>
+            <div className="container-table">
+                <div className='page-header'>
+                    <h1>Data Overview</h1>
+                    <p>Here you can find statistical information about the site.</p>
+                    <p>Total Products:{amount.totalAmount}</p>
+                </div>
+            </div>
             <table className="admin-data-table">
                 <thead>
                     <tr>

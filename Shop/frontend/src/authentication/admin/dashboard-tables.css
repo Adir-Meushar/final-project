@@ -1,7 +1,41 @@
 .container-table{
   min-width: 70vw;
 }
-.users-table ,.product-table {
+.admin-data-table{
+  min-height: 50vh;
+  width: 50vw;
+  margin: 5% auto;
+}
+
+.admin-data-table tr td:not(:first-child) {
+  font-size: 1.5rem;
+ font-weight: bold; 
+}
+
+.dashboard-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 20vh;
+}
+.display{
+  display: flex;
+  gap: 20px;
+}
+.display button,.new-product{
+  min-width: 120px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  background-color:rgb(7, 83, 0);
+  color: white;
+  border-radius: 10px;
+  transition: all .3s;
+}
+.users-table ,.product-table,.admin-data-table {
     width: 85%;
     margin: 3% auto;
     border-collapse: collapse;
@@ -13,7 +47,7 @@
     width: 60px;
     border-radius: 10px;
    }
-  .users-table th ,.product-table th {
+  .users-table th ,.product-table th,.admin-data-table th {
     background-color: #ebebeb;
     border: 1px solid #ddd;
     padding: 10px;
@@ -29,7 +63,7 @@
     background-color: #ff6666; 
     color: white;
   }
-  .users-table td,.product-table td{
+  .users-table td,.product-table td,.admin-data-table td{
     border: 1px solid #bbbbbb;
     background-color: #ffffff;
     padding: 20px;
@@ -39,25 +73,22 @@
     color: white;
     background: linear-gradient(to right, #414345, #232526);
    }
-   .users-table .fa-edit,
-   .users-table .ai-delete,
-   .product-table .fa-edit,
-   .product-table .ai-delete {
+   
+   .users-table .fa-edit,  .users-table .ai-delete,
+   .product-table .fa-edit,.product-table .ai-delete {
        cursor: pointer;
        font-size: 1.2rem;
        transition: all .4s;
    }
    
-   .users-table .fa-edit:hover,
-   .users-table .ai-delete:hover,
-   .product-table .fa-edit:hover,
-   .product-table .ai-delete:hover {
+   .users-table .fa-edit:hover,.users-table .ai-delete:hover,
+   .product-table .fa-edit:hover,.product-table .ai-delete:hover {
        transform: scale(1.2);
    }
+
   /* responsive */
   
   @media screen and (max-width:940px){
-  
     .users-table th ,.product-table th{
       padding: 10px;
       font-size: .8rem;
@@ -76,7 +107,6 @@
   }
 
   @media screen and (max-width:630px){
-  
     .users-table th ,.product-table th{
       padding: 6px;
       font-size: .6rem;

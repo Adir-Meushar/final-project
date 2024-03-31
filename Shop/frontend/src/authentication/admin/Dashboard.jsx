@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import NewProduct from "./NewProduct";
 import ProductsManagement from "./ProductManagement";
 import UsersManagement from "./UsersManagement";
 import AdminData from "./AdminData";
+import './dashboard-tables.css'
 
 function Dashboard() {
-  const [display, setDisplay] = useState('admin-data')
+  const [display, setDisplay] = useState('prodcuts')
   return (
     <>
       <div className="dashboard-header">

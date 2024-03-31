@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react'
-import './users-management.css'
 import { AiFillDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
 import EditProduct from './EditProduct';

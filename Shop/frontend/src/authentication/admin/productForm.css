@@ -12,6 +12,7 @@
 
 .product-modal {
     min-width: 550px;
+    width: 35vw;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -26,6 +27,10 @@
     flex-direction: column;
     gap: 20px;
 }
+.product-modal form input{
+    border: 1px solid #ccc;
+
+}
 .product-modal form h3{
     text-align-last: left;
     margin-bottom: 5px;
@@ -34,18 +39,27 @@
     display: flex;
     justify-content: space-around;
 }
-.form-product-header label{
-  height: 3rem;
+.form-product-header input{
+    height: 2rem;
+}
+.form-product-header select{
+    height: 2rem;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    outline: none;
 }
 .product-modal label{
     font-size: .9rem;
+    text-align-last: left;
 }
-.product-modal input{
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
+.product-modal .input-box{
+    padding: 8px 12px;
+    border-radius: 3px;
+    margin-top: 3px;
+    width: 100%;
+    box-sizing: border-box;
 }
-.product-modal input:focus,.product-modal textarea:focus {
+.product-modal input:focus,.product-modal textarea:focus,.product-modal select:focus  {
     border-color: #007bff;
     box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
   }
@@ -56,17 +70,20 @@
     width: 100%;
     gap: 20px;
 }
-.nutrition-value input{
-    display: flex;
-}
+
 .nutrition-value .input-box{
-    text-align: center;
-    height: 5rem;
+    text-align: left;
+    height: 6rem;
 }
 .pricing{
     width: 100%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+}
+.pricing label{
+    display: flex;
+    flex-direction: column;
 }
 .unit-type{
     display: flex;
@@ -109,20 +126,16 @@ height: 3.5rem;
 .btnAdd:disabled{
     background-color: rgb(131, 184, 253);
   }
-.error-messages {
+/* .error-messages {
     grid-column: span 2;
     margin-top: 20px;
-}
+} */
 
-.error-messages ul {
-    padding: 0;
-    margin: 0;
-}
-
-.error-messages li {
-    color: red;
-    font-size: 0.8rem;
-    list-style: none;
+.product-modal .error-message {
+  color: #b23d3d;
+  font-size: .75rem;
+  font-weight: bold;
+  height: 0;
 }
 .input-number {
     width: 100px;

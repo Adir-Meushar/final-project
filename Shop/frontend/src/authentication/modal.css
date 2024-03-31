@@ -72,7 +72,7 @@
     box-sizing: border-box;
   }
   
-  .modal .close-btn {
+  .modal .close-btn,.product-modal .close-btn {
     position: absolute;
     top: 5px;
     right: 15px;

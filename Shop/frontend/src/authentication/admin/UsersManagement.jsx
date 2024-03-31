@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react'
-import './users-management.css'
 import {GeneralContext, RoleType} from '../../App';
 import { AiFillDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
@@ -83,7 +82,7 @@ function UsersManagement() {
         <div className="container-table">
             <div className='page-header'>
                 <h1 >Users Management</h1>
-                <p>Here you can fined information about the users.</p>
+                <p>Here you can find information about the users.</p>
                 <p>Total Users:{users.length}</p>
             </div>
             <table className='users-table'>

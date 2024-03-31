@@ -40,7 +40,7 @@ function NewProduct() {
 
     const renderError = (name) => {
         return errors[name] && (
-            <div className="error-message" style={{ color: "red", fontSize: ".8rem" }}>
+            <div className="error-message">
                 {errors[name]}
             </div>
         );
@@ -102,10 +102,10 @@ function NewProduct() {
     console.log(errors);
     return (
         <>
-            <button onClick={() => setModal(true)}>New Product</button>
+            <button className="new-product slide" onClick={() => setModal(true)}>New Product</button>
             {modal && (
                 <div className="modal-frame">
-                    <div className="modal product-modal">
+                    <div className=" product-modal">
                         <header>
                             <button className="close-btn" onClick={() => { setModal(false); resetForm(); }}>X</button>
                             <h2>New Product</h2>
