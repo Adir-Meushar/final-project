@@ -94,7 +94,7 @@ function ProductsManagement() {
                             <td>{index + 1}</td>
                             <td>{product.category}</td>
                             <td>{product.title}</td>
-                            <td>{product.price}&#8362;</td>
+                            <td>{product.sale?product.finalPrice:product.price}&#8362;</td>
                             <td>{product.unit}</td>
                             <td>{product.sale ? 'True' : 'False'}</td>
                             <td><img className='table-img' src={product.img.url} alt={product.img.alt} /></td>
@@ -104,7 +104,7 @@ function ProductsManagement() {
                     ))}
                 </tbody>
             </table>
-            <EditProduct modal={modal} setModal={setModal} currentProduct={currentProduct} />
+            <EditProduct setProducts={setProducts} products={products} modal={modal} setModal={setModal} currentProduct={currentProduct} />
         </div>
     )
 }

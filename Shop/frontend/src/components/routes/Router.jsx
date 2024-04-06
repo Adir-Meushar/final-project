@@ -11,7 +11,8 @@ import { GeneralContext } from '../../App';
 import { useContext } from 'react';
 import About from '../pages/about/About';
 import ErrorPage from '../pages/error-page/ErrorPage';
-import QuestionAndAnswer from '../pages/q&a/QuestionAndAnswer';
+import QuestionAndAnswer from '../pages/faq/QuestionAndAnswer';
+import Contact from '../pages/contact/Contact';
 
 
 export default function Router() {
@@ -21,7 +22,8 @@ export default function Router() {
         <Routes>
             <Route path="/" element={<Products />} />
             <Route path="/about" element={<About />} />
-            <Route path="/q&a" element={<QuestionAndAnswer />} />
+            <Route path="/f&q" element={<QuestionAndAnswer />} />
+            <Route path="/contact" element={<Contact />} />
             {user ? <Route path="/my-account" element={<MyAccount />} /> : ''}
             {user ? <Route path="/dashboard" element={<Dashboard />} /> : ''}
             <Route path="/vegetables" element={<Vegetables />} />

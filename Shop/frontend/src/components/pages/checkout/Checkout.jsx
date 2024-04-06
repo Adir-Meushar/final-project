@@ -1,18 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'; 
+import 'react-datepicker/dist/react-datepicker.css';
 import './checkout.css'
 import { useNavigate } from 'react-router-dom';
 import { checkoutSchema } from './checkoutValid';
 import { GeneralContext } from '../../../App';
+import Popup from '../../popup/Popup';
 function Checkout() {
     const { cartProducts, setCartProducts, snackbar, user } = useContext(GeneralContext);
-    const [totalPrice, setTotalPrice] = useState(0); 
+    const [totalPrice, setTotalPrice] = useState(0);
     const [cardExpiredData, setCardExpiredData] = useState();
     const [deliveryDate, setDeliveryDate] = useState(Date.now());
     const [isFormValid, setIsFormValid] = useState(false);
     const [errors, setErrors] = useState({});
     const [formData, setFormData] = useState({})
+    const [popup, setPopup] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -49,7 +51,10 @@ function Checkout() {
                     "Content-type": "application/json",
                     "Authorization": localStorage.token,
                 },
-                body: JSON.stringify({ cart: cartProducts }),
+                body: JSON.stringify({ 
+                    cart: cartProducts,
+                    deliveryDate: deliveryDate // Include deliveryDate in the request body
+                }),
             });
             const data = await response.json();
             if (data.error) {
@@ -58,8 +63,9 @@ function Checkout() {
                 console.log("Order created successfully:", data);
                 setCartProducts([]);
                 localStorage.removeItem('cart');
-                navigate('/');
-                snackbar('Your order has been received! 🎉 We are thrilled to be preparing your items for delivery.');
+                setPopup(true)
+                // navigate('/');
+                // snackbar('Your order has been received! 🎉 We are thrilled to be preparing your items for delivery.');
             }
         } catch (error) {
             console.error("Error creating order:", error);
@@ -75,9 +81,9 @@ function Checkout() {
                 <div className='order-details'>
                     <h3>Order details</h3>
                     <div className='cart-details'>
-                      <div className='cart-summary'><span>Items:{cartProducts.length}</span>  
-                      <span>Total:{totalPrice.toFixed(2)}&#8362;</span>
-                      </div> 
+                        <div className='cart-summary'><span>Items:{cartProducts.length}</span>
+                            <span>Total:{totalPrice.toFixed(2)}&#8362;</span>
+                        </div>
                         <div className='cart-items'>
                             {cartProducts.map(p => (
                                 <div className='item' key={p.id}>{p.quantity} {p.unit}-{p.title}:{Number((p.price * p.quantity).toFixed(2))
@@ -87,8 +93,8 @@ function Checkout() {
                     </div>
                 </div>
                 <div className='delivry-box'>
-                <label>
-                       Choose Date For Delivery:
+                    <label>
+                        Choose Date For Delivery:
                         <DatePicker
                             name="deliveryDate"
                             selected={deliveryDate}
@@ -99,13 +105,13 @@ function Checkout() {
                             dateFormat="dd/MM/yyyy"
                             className='card-fields'
                         />
-                         {errors && errors.deliveryDate && (
+                        {errors && errors.deliveryDate && (
                             <div className="error-message">{errors.deliveryDate}</div>
                         )}
                     </label>
                     <p>**Your delivery will be sent to the address currently saved in your account. Feel free to update it in the account settings if needed </p>
                 </div>
-              
+
                 <div className='card-details'>
                     <h3>Card-details</h3>
                     <label>
@@ -157,10 +163,12 @@ function Checkout() {
                         )}
                     </label>
                 </div>
-
                 <button className='payment-btn' disabled={!isFormValid || totalPrice < 50}>Order & Pay</button>
             </form>
-            {totalPrice<=0?<div><button className='back-to-shop-btn' onClick={()=>navigate('/')}>Back To Shopping</button></div>:''}
+            {totalPrice <= 0&&popup===false ? <div><button className='back-to-shop-btn' onClick={() => navigate('/')}>Back To Shopping</button></div> : ''}
+            {popup&&(
+                <Popup/>
+            )}
         </>
     );
 }

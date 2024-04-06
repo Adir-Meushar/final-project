@@ -22,3 +22,7 @@ input{
   outline: none;
 }
 
+.img-no-product{
+  width: 60vw;
+ grid-column:span 5 ;
+}

@@ -35,10 +35,12 @@ function Footer() {
                         <p>About</p>
                         </Link>
 
-                        <Link to={'/q&a'}>
-                            <p>Q&A</p>
+                        <Link to={'/f&q'}>
+                            <p>FAQ</p>
                          </Link>
-                       
+                         <Link to={'/contact'}>
+                            <p>Contact Us</p>
+                         </Link>
                     </div>
                     {/* <div className="footer-links-div">
                         <h4>Partners</h4>

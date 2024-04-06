@@ -66,7 +66,7 @@ app.put('/products/:id', guard, async (req, res) => {
         }
 
         const productId = req.params.id;
-        const { category, title, description, price, sale, nutritionalValue, img, unit } = req.body;
+        const { category, title, description, price,finalPrice, sale, nutritionalValue, img, unit } = req.body;
 
         // Check if a product with the same title already exists
         const existingProductWithTitle = await Product.findOne({ title, _id: { $ne: productId } });
@@ -98,6 +98,7 @@ app.put('/products/:id', guard, async (req, res) => {
             title,
             description,
             price,
+            finalPrice,
             sale,
             nutritionalValue,
             img,

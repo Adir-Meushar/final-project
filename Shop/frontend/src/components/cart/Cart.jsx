@@ -43,8 +43,6 @@ function Cart() {
         setCartProducts([])
     }
 
-    console.log(totalPrice);
-    console.log(cartProducts.length);
     return (
         <>
             <div className='shopping-cart-box'>

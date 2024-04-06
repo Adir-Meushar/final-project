@@ -42,9 +42,12 @@ const Products = ({ items }) => {
       </div>
 
       <div className="grid-container">
+     
         {filterd.map((item) => (
           <ProductCard key={item._id} item={item} />
         ))}
+         {filterd.length === 0 &&<img className='img-no-product' src="https://cliffclimbers.in/assets/img/nodatafound.png" alt="no-product" />
+ }
       </div>
     </>
   );

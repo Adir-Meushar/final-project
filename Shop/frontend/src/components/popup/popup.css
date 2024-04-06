@@ -1,0 +1,14 @@
+.popup{
+    width: 30vw;
+    min-width: 450px;
+    height: 35vh;
+    border-radius: 8px;
+    padding: 20px;
+    line-height: 1.5;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+

@@ -4,7 +4,7 @@ import './productForm.css';
 import { editProductValidationSchema } from "./newProdcutValid";
 import { GeneralContext } from "../../App";
 
-function EditProduct({ modal, setModal, currentProduct }) {
+function EditProduct({ modal, setModal, currentProduct,setProducts,products }) {
     const [errors, setErrors] = useState([]);
     const [formData, setFormData] = useState({});
     const [isFormValid, setIsFormValid] = useState(true);
@@ -38,10 +38,11 @@ function EditProduct({ modal, setModal, currentProduct }) {
         );
     };
     const handleValid = (ev, item) => {
-        const { name, value } = ev.target;
+        const { name, value, type, checked } = ev.target;
+        const newValue = type === 'checkbox' ? checked : value; // Use checked for checkbox type
         const obj = name === 'nutritionalValue'
-            ? { ...formData, [name]: { ...formData.nutritionalValue, [item]: +value } }
-            : name === 'img' ? { ...formData, [name]: { ...formData.img, [item]: value } } : { ...formData, [name]: value }
+            ? { ...formData, [name]: { ...formData.nutritionalValue, [item]: +newValue } }
+            : name === 'img' ? { ...formData, [name]: { ...formData.img, [item]: newValue } } : { ...formData, [name]: newValue }
         setFormData(obj)
         const validate = editProductValidationSchema.validate(obj, { abortEarly: false })
         const tempErrors = { ...errors }
@@ -69,6 +70,7 @@ function EditProduct({ modal, setModal, currentProduct }) {
         setIsFormValid(!validate.error)
         setErrors(tempErrors)
     }
+    
 
 
 
@@ -91,19 +93,28 @@ function EditProduct({ modal, setModal, currentProduct }) {
             if (data.error) {
                 setErrors(data.error);
             } else {
+                // Update the products array with the updated product
+                const updatedProducts = products.map(product => {
+                    if (product._id === productId) {
+                        return data; // Use the updated product data received from the API
+                    }
+                    return product;
+                });
+    
+                setProducts(updatedProducts);
                 setModal(false);
                 resetForm(currentProduct);
                 setTimeout(() => {
                     setLoader(false)
                 }, 1000)
-                snackbar(`${data?.title} Was updated Sucsesfully!`)
+                snackbar(`${data?.title} Was updated Successfully!`)
             }
         } catch (error) {
             console.error("Error submitting form:", error);
         }
     }
     console.log(isFormValid);
-    console.log(errors);
+    console.log(products);
     return (
         <>
             {modal && Object.keys(formData).length && (
@@ -150,7 +161,7 @@ function EditProduct({ modal, setModal, currentProduct }) {
                             <div className="pricing">
                                 <label>
                                     Price
-                                    <input type="number" autoComplete="off" onChange={handleValid} value={formData.price} name="price" className="input-number" />
+                                    <input type="number" autoComplete="off" onChange={handleValid} value={formData.sale?formData.finalPrice:formData.price} name="price" className="input-number" />
                                     {renderError("price")}
                                 </label>
                                 <label>

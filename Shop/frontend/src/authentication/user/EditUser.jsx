@@ -5,7 +5,7 @@ import { GeneralContext } from "../../App";
 function EditUser() {
     const [errors, setErrors] = useState({});
     const [isFormValid, setIsFormValid] = useState(true);
-    const { user, setUser, snackbar,setLoader } = useContext(GeneralContext);
+    const { user, setUser, snackbar,setLoader,isDarkMode } = useContext(GeneralContext);
     const [formData, setFormData] = useState({});
 
     useEffect(() => {
@@ -104,7 +104,7 @@ function EditUser() {
 
     return (
         <>
-            <div className="edit-modal">
+            <div className={`edit-modal ${isDarkMode ? 'dark' : 'light'}`}>
                 <h2>My Details</h2>
                 <form onSubmit={(ev) => updateUser(ev, user._id)}>
                     {inputFields.map((field, index) => (

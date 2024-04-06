@@ -94,19 +94,19 @@
   margin-top: 20%;
   height: 35px;
   border-radius: 5px;
-  background-color: rgb(46, 122, 222);
+  background-color:rgb(7, 83, 0);
   color: white;
   font-size: 1rem;
   border: none;
 }
 .login-btn:disabled,.signup-btn:disabled{
-  background-color: rgb(131, 184, 253);
+  background-color: rgb(138 188 134);
 }
 .signup-btn{
   grid-column: span 2;
 }
 .signup-link ,.login-link {
-  color: rgb(0, 0, 71);
+  color: #2d5031;
   font-size: .9rem;
   cursor: pointer;
 }
@@ -132,13 +132,13 @@
   background-color: #9b9b9b33;
     color: #dcdcdc;
 }
-.modal.dark .login-btn,.modal.dark .signup-btn{
-  background-color:rgb(24 46 75)
+.modal.dark .login-btn,.modal.dark .signup-btn, .edit-modal.dark button{
+  background-color:rgb(7, 83, 0);
   ;
 }
-.modal.dark .login-btn:disabled,.modal.dark .signup-btn:disabled{
-  background-color:rgb(107, 122, 142);
-  color: rgb(179, 179, 179);
+.modal.dark .login-btn:disabled,.modal.dark .signup-btn:disabled,.edit-modal.dark button:disabled{
+  background-color: rgb(138 188 134);
+  color: rgba(18, 18, 18, 0.491);
 
 }
 .modal.dark .login-link,.modal.dark .signup-link{

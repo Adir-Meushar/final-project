@@ -17,7 +17,7 @@ module.exports = app => {
                 });
             }
 
-            const cart = req.body.cart;
+            const { cart, deliveryDate } = req.body;
 
             if (!Array.isArray(cart) || cart.length === 0) {
                 return res.status(400).send({ error: 'Cart is empty or invalid' });
@@ -28,44 +28,55 @@ module.exports = app => {
             // Iterate over each item in the cart
             for (const item of cart) {
                 const { id, quantity } = item;
-                console.log("Product ID:", id); // Log id
-
                 const product = await Product.findById(id);
 
                 if (!product) {
                     return res.status(404).send({ error: `Product with ID ${id} not found` });
                 }
-
                 items.push({
                     product: id,
                     productName: product.title,
                     quantity: quantity,
-                    price:product.price,
-                    finalPrice:product.finalPrice,
-                    sale:product.sale,
-                    unit:product.unit
+                    price: product.price,
+                    finalPrice: product.finalPrice,
+                    sale: product.sale,
+                    unit: product.unit
                 });
             }
+
+            // Calculate total price
             const totalPricePromise = Promise.all(items.map(async (item) => {
                 const product = await Product.findById(item.product);
-            
-                // If the product has a sale, calculate the total price using the final price
-                if (product.sale) {
-                    return product.finalPrice * item.quantity;
-                } else {
-                    return product.price * item.quantity;
-                }
+                return product.sale ? product.finalPrice * item.quantity : product.price * item.quantity;
             }));
-            
-            // Wait for all promises to resolve
             const totalPriceArray = await totalPricePromise;
-            
-            // Sum up the total price
             const totalPrice = totalPriceArray.reduce((acc, price) => acc + price, 0);
+// Validate delivery date
+            // const currentDate = new Date();
+            // const minDeliveryDate = new Date();
+            // minDeliveryDate.setDate(currentDate.getDate() + 1); // Minimum delivery date is from tomorrow
+
+            // if (deliveryDate < minDeliveryDate) {
+            //     return res.status(400).send({ error: 'Delivery date must be from tomorrow onwards' });
+            // }
+
+            // const maxDeliveryDate = new Date();
+            // maxDeliveryDate.setMonth(maxDeliveryDate.getMonth() + 2); // Maximum delivery date is 2 months from now
+
+            // if (deliveryDate > maxDeliveryDate) {
+            //     return res.status(400).send({ error: 'Delivery date cannot be more than 2 months in the future' });
+            // }
+
+            if(!deliveryDate){
+                return res.status(400).send({ error: 'Delivery Date is required' });
+
+            }
+            // Create the order
             const order = new Order({
                 user: userToken.userId,
                 items: items,
                 totalPrice: totalPrice,
+                deliveryDate
             });
 
             await order.save();
@@ -76,7 +87,7 @@ module.exports = app => {
             res.status(500).send({ error: 'Error creating order' });
         }
     });
-
+    
     app.get('/orders/my-orders/:userId', guard, async (req, res) => {
         try {
             const userToken = getUserInfo(req, res);
@@ -104,6 +115,41 @@ module.exports = app => {
         } catch (error) {
             console.error(error);
             res.status(500).send({ error: 'Error fetching user orders' });
+        }
+    });
+
+    app.delete('/orders/delete/:orderId', guard, async (req, res) => {
+        try {
+            const order = await Order.findByIdAndDelete( req.params.orderId );
+            console.log(order.user);
+            if (!order) {
+                return res.status(404).send({
+                    error: {
+                        code: 404,
+                        message: 'Not Found',
+                        details: 'Order was not found.',
+                    },
+                });
+            }
+            const userToken = getUserInfo(req, res);
+            if (userToken.userId !== order.user.toString()) {
+                // Convert order.user to string before comparison
+                return res.status(401).send({
+                    error: {
+                        code: 401,
+                        message: 'Unauthorized',
+                        details: 'User authentication failed.',
+                    },
+                });
+            }
+          
+                res.status(200).send({
+                    orderDeleted:order,
+                    message:'Order Deleted Successfully'
+                })
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({ error: 'Error deleting order' });
         }
     });
     

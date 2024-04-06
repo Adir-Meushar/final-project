@@ -1,0 +1,22 @@
+.faq{
+    width: 60vw;
+    min-width: 800px;
+    height: fit-content;
+    margin: 2% auto;
+    padding: 50px;
+    text-align: left;    
+    background-color: white;
+    border-radius: 8px;
+}
+
+.faq.dark{
+  background-color: black;
+}
+
+
+@media screen and (max-width:850px) {
+  .faq{
+    min-width: unset;
+    width: 90vw;
+  }
+}

@@ -3,6 +3,7 @@
     width: 90%;
     margin: 5% auto;  
     display: flex;
+    justify-content: space-around;
     
 }
 .edit-modal{
@@ -16,6 +17,14 @@
     box-shadow: 0 0 6px black;
     border-radius: 5px;
     animation: slide-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.edit-modal.dark{
+  color: #bcbcbc;
+  background-color: #1b1b1b;
+}
+.edit-modal.dark input{
+  background-color: #9b9b9b33;
+    color: #dcdcdc;
 }
 .edit-modal form{
     display: grid;
@@ -42,11 +51,10 @@
     align-items: center;
     text-align-last: left;
     cursor: pointer;
-    background: #9a9292;
-    position: absolute;
-    right: 2%;
+    background-color: rgb(210, 210, 210);    
+ 
   }
-  
+
   .order {
     border: 1px solid #ccc;
     background-color: #fff;
@@ -57,7 +65,7 @@
     min-width: 560px;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out; 
-    max-height: 90px;
+    max-height: 103px;
   }
   
   .order.expanded {
