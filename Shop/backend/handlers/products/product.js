@@ -133,13 +133,13 @@ app.put('/products/:id', guard, async (req, res) => {
                   code: 404,
                   message: 'Not Found',
                   details: 'The requested product could not be found.',
-                },
+                }, 
               });
         }
         try{
-           const productToDelete=await Product.findByIdAndDelete(product);
+           const productToDelete=await Product.findByIdAndDelete(product); 
             return res.status(200).send({
-                message:`Product was deleted sucssesfully!`,
+                message:`${productToDelete.title} was deleted sucssesfully!`,
                 Product:productToDelete,
               });
         }catch(error){

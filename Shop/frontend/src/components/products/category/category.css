@@ -7,12 +7,7 @@
     display: flex;
     align-items: center;
 }
-/* .category-container.small{
-    height: 44vh;
-} */
-/* .category-container.small h1{
-    font-size: 2.1rem;
-} */
+
 .category-container img{
     height: 100%;
     width: 100%;
@@ -21,7 +16,7 @@
     width: 100%;
     margin: 0 auto;
     position: absolute;
-    color: #3f6b44;
+    color: rgb(38, 64, 34);
 }
 .cover-title h1{
   font-size: 4rem;
@@ -42,9 +37,9 @@
 
 .category-select select{
     cursor: pointer;
-    color: rgb(8 62 3);
+    color: rgb(38, 64, 34);
     width: 200px;
-    font-size: .9rem;
+    font-size: 1rem;
     font-weight: bold;
     border: none;
     outline: none;

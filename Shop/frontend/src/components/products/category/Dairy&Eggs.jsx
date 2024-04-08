@@ -9,7 +9,6 @@ function DairyAndEggs() {
     useEffect(() => {
         const fetchDairyAndEggs = async () => {
             try {
-                setLoader(true)
                 const response = await fetch('http://localhost:4000/products/dairy&eggs', {
                     credentials: "include",
                     method: "GET", 
@@ -24,9 +23,6 @@ function DairyAndEggs() {
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
-            setTimeout(() => {
-                setLoader(false);
-              }, 1000);
         }
         fetchDairyAndEggs();
     }, [])
@@ -34,7 +30,7 @@ function DairyAndEggs() {
 
 
     return (
-        <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}>
+        <div className={`main-content ${isDarkMode ? 'dark' : ''}`}>
             <div className="category-container">
                <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Refrigerator-milk-and-eggs-Mobile-Long1.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Refrigerator-milk-and-eggs-Desktop1.jpg"} alt="dairy&eggs-img" />
                 <div className="cover-title">

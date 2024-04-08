@@ -10,7 +10,7 @@ function Cart() {
     const [cartModal, setCartModal] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0); // State to hold the total price
     const cartImg = process.env.PUBLIC_URL + '/images/shopping-bag.png';
-    const { count, setCount, cartProducts, setCartProducts } = useContext(GeneralContext);
+    const { count, setCount, cartProducts, setCartProducts,isDarkMode } = useContext(GeneralContext);
     const itemInCart=cartProducts.length;
     useEffect(() => {
         const storedCart = localStorage.getItem('cart');
@@ -45,15 +45,15 @@ function Cart() {
 
     return (
         <>
-            <div className='shopping-cart-box'>
+            <div className='shopping-cart-box' onClick={() => { setCartModal(true); }}>
                 <div className='products-in-cart'>{itemInCart>0?itemInCart:''}</div>
-                <img onClick={() => { setCartModal(true); }}
+                <img 
                     className="cart-img" src={cartImg} alt="Cart" />
             </div>
 
             {cartModal && (
                 <div className="modal-frame" onClick={() => { setCartModal(false) }}>
-                    <div className="cart" onClick={(ev) => ev.stopPropagation()}>
+                    <div className={`cart ${isDarkMode ? 'dark' : ''}`}onClick={(ev) => ev.stopPropagation()}>
                         <button className="close-btn" onClick={() => { setCartModal(false) }}>&times;</button>
                         <div className="cart-header">
                             <div>

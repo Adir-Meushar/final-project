@@ -11,6 +11,8 @@
   .modal {
     position: relative;
     width: 80%;
+        color: rgb(38, 64, 34);
+
     max-width: 400px;
     min-height: 400px;
     padding: 20px;
@@ -42,15 +44,6 @@
   gap: 20px;
  }
  
- h2 {
-  font-size: 1.5em;
-  text-align: center;
-}
-
-  .modal h2 {
-    color: #282c34;
-  }
-
   label { 
   display: block;
    font-size: .9rem;

@@ -1,5 +1,28 @@
 .container-table{
   min-width: 70vw;
+  color: rgb(38, 64, 34);
+}
+.container-table.dark h1{
+  color: #dcdcdc;
+}
+
+.container-table.dark .page-header{
+  color: #dcdcdc;
+}
+.container-table.dark .users-table th,.container-table.dark .product-table th,.container-table.dark .admin-data-table th{
+  background-color: #47474733;
+  color: #dcdcdc;
+}
+.container-table.dark .users-table td,.container-table.dark .product-table td,.container-table.dark .admin-data-table td{
+  background-color: #9b9b9b33;
+  color: #dcdcdc;
+}
+.container-table  .page-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  color: rgb(38, 64, 34);
 }
 .admin-data-table{
   min-height: 50vh;
@@ -17,14 +40,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 20vh;
+}
+.dashboard-header h1{
+margin: 20px;
 }
 .display{
   display: flex;
-  gap: 20px;
+  gap: 25px;
+  background-color: #3f9557;
+  padding: 35px;
+  border-radius: 20px;
 }
 .display button,.new-product{
   min-width: 120px;
+  max-width: 150px;
   padding: 1rem;
   font-size: 1rem;
   font-weight: bold;
@@ -39,6 +68,7 @@
     width: 85%;
     margin: 3% auto;
     border-collapse: collapse;
+
   }
   .users-table-dark{
     color: black;

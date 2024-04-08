@@ -17,23 +17,25 @@ const Products = ({ items }) => {
   };
 
   const sortItems = (items) => {
-    return items&&items.length? items.slice().sort((a, b) => {
+    return items && items.length ? items.slice().sort((a, b) => {
+      const priceA = a.sale ? a.finalPrice : a.price;
+      const priceB = b.sale ? b.finalPrice : b.price;
+  
       if (sortOption === 'low') {
-        return a.price - b.price;
+        return priceA - priceB;
       } else if (sortOption === 'high') {
-        return b.price - a.price;
+        return priceB - priceA;
       } else if (sortOption === 'alphabetical') {
         return a.title.localeCompare(b.title);
       }
-    }):[]
+    }) : [];
   };
-  
   const filterd = search.length ? sortItems(items).filter(item=>item.title.toUpperCase().includes(search.toUpperCase())):sortItems(items);
   console.log(filterd);
 
   return (
     <>
-      <div className={`category-select ${isDarkMode ? 'dark' : 'light'}`}>
+      <div className={`category-select ${isDarkMode ? 'dark' : ''}`}>
         <select name="" id="" onChange={handleSortChange}>
           <option value="low">Price: Low to High</option>
           <option value="high">Price: High to Low</option>

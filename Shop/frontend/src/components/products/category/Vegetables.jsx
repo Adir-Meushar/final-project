@@ -8,7 +8,6 @@ function Vegetables() {
 
     useEffect(() => {
         const fetchVegetables = async () => {
-            setLoader(true)
             try {
                 const response = await fetch('http://localhost:4000/products/vegetables', {
                     credentials: "include",
@@ -24,10 +23,6 @@ function Vegetables() {
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
-            setTimeout(() => {
-                setLoader(false);
-              }, 1000);
-
         }
         fetchVegetables();
     }, [])
@@ -35,7 +30,7 @@ function Vegetables() {
 
 
     return (
-        <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}> 
+        <div className={`main-content ${isDarkMode ? 'dark' : ''}`}> 
             <div className="category-container">
                 <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Mobile-Long1.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Desktop1.jpg"} alt="vegetables-img" />
                 <div className="cover-title">

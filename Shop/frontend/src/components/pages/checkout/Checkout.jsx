@@ -7,7 +7,7 @@ import { checkoutSchema } from './checkoutValid';
 import { GeneralContext } from '../../../App';
 import Popup from '../../popup/Popup';
 function Checkout() {
-    const { cartProducts, setCartProducts, snackbar, user } = useContext(GeneralContext);
+    const { cartProducts, setCartProducts, snackbar, user,isDarkMode } = useContext(GeneralContext);
     const [totalPrice, setTotalPrice] = useState(0);
     const [cardExpiredData, setCardExpiredData] = useState();
     const [deliveryDate, setDeliveryDate] = useState(Date.now());
@@ -51,7 +51,7 @@ function Checkout() {
                     "Content-type": "application/json",
                     "Authorization": localStorage.token,
                 },
-                body: JSON.stringify({ 
+                body: JSON.stringify({
                     cart: cartProducts,
                     deliveryDate: deliveryDate // Include deliveryDate in the request body
                 }),
@@ -64,19 +64,15 @@ function Checkout() {
                 setCartProducts([]);
                 localStorage.removeItem('cart');
                 setPopup(true)
-                // navigate('/');
-                // snackbar('Your order has been received! 🎉 We are thrilled to be preparing your items for delivery.');
             }
         } catch (error) {
             console.error("Error creating order:", error);
         }
     };
-    console.log(errors);
-    console.log(isFormValid);
-    console.log(cartProducts);
+ 
     return (
         <>
-            <form onSubmit={createOrder} className='payment-form'>
+            <form onSubmit={createOrder} className={`payment-form ${isDarkMode ? 'dark' : ''}`}>
                 <h1>Checkout</h1>
                 <div className='order-details'>
                     <h3>Order details</h3>
@@ -86,8 +82,9 @@ function Checkout() {
                         </div>
                         <div className='cart-items'>
                             {cartProducts.map(p => (
-                                <div className='item' key={p.id}>{p.quantity} {p.unit}-{p.title}:{Number((p.price * p.quantity).toFixed(2))
-                                }&#8362;</div>
+                                <div className='item' key={p.id}>
+                                    {p.quantity} {p.unit}-{p.title}: {p.sale === true ? Number((p.finalPrice * p.quantity).toFixed(2)) : Number((p.price * p.quantity).toFixed(2))}&#8362;
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -165,9 +162,9 @@ function Checkout() {
                 </div>
                 <button className='payment-btn' disabled={!isFormValid || totalPrice < 50}>Order & Pay</button>
             </form>
-            {totalPrice <= 0&&popup===false ? <div><button className='back-to-shop-btn' onClick={() => navigate('/')}>Back To Shopping</button></div> : ''}
-            {popup&&(
-                <Popup/>
+            {totalPrice <= 0 && popup === false ? <div><button className='back-to-shop-btn' onClick={() => navigate('/')}>Back To Shopping</button></div> : ''}
+            {popup && (
+                <Popup />
             )}
         </>
     );

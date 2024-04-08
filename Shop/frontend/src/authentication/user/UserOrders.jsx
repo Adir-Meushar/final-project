@@ -1,12 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { GeneralContext } from "../../App";
 import moment from 'moment'; // Import moment
+import { useNavigate } from "react-router-dom";
+import { PiMagnifyingGlassBold } from "react-icons/pi";
+import { PiSmileySadDuotone } from "react-icons/pi";
 
 function UserOrders() {
     const [myOrders, setMyOrders] = useState([]);
     const [expandedOrder, setExpandedOrder] = useState(null);
-    const { snackbar, setLoader, user } = useContext(GeneralContext);
+    const { snackbar, setLoader, user,isDarkMode } = useContext(GeneralContext);
     const currentDate = Date.now();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getMyOrders = async (userId) => {
@@ -20,6 +24,11 @@ function UserOrders() {
                     },
                 });
                 const data = await response.json();
+                data.sort((a, b) => {
+                    const dateA = new Date(moment(a.deliveryDate, 'DD-MM-YYYY'));
+                    const dateB = new Date(moment(b.deliveryDate, 'DD-MM-YYYY'));
+                    return dateA - dateB;
+                });
                 setMyOrders(data);
                 console.log(data);
 
@@ -54,8 +63,9 @@ function UserOrders() {
                 const data = await response.json();
                 if (data.error) {
                     console.log(data.error);
-                }else{
+                } else {
                     setMyOrders(myOrders.filter((order) => order._id !== orderId));
+                    snackbar(`Order Number:${orderId} Was Deleted Successfully!`)
                 }
             } catch (error) {
                 console.error("Error deliting order:", error);
@@ -69,10 +79,10 @@ function UserOrders() {
         console.log("Difference in days:", differenceInDays);
         return differenceInDays > 1; // Returns true if deliveryDate is more than one day away
     };
-    console.log(user);
+
     return (
-        <div className="user-orders">
-            <h1>User Orders</h1>
+        <div className={`user-orders ${isDarkMode ? 'dark' : ''}`}>
+            <h2>My Orders</h2>
             Total orders: {myOrders.length}
             <div className="orders-box" >
                 {myOrders && myOrders.length > 0 ? (
@@ -80,11 +90,11 @@ function UserOrders() {
                         <div key={order._id} className={`order ${expandedOrder === order._id ? 'expanded' : ''}`}
                             onClick={() => handleOrderClick(order._id)}>
                             <div className="order-info">
-                                <div className="order-number">Order Number: {order._id}</div>
+                                <div className="order-number">Order Number: <span>{order._id}</span></div>
                                 <div className="total-price">Total Price: {order.totalPrice}&#8362;</div>
                                 <div >Delivery Schedule: {order.deliveryDate}</div>
                                 <div className="created-time">Created Time: {order.createdTime}</div>
-                                {isOrderCancelable(order.deliveryDate) && <button onClick={() => deleteOrder(order._id)}>Cancel</button>}
+                                {isOrderCancelable(order.deliveryDate) && <button className="cancel-btn" onClick={() => deleteOrder(order._id)}>Cancel</button>}
 
                             </div>
                             {expandedOrder === order._id && (
@@ -104,7 +114,15 @@ function UserOrders() {
                         </div>
                     ))
                 ) : (
-                    <div className="no-orders">No orders available</div>
+                    <div className="no-orders">
+                        <p>No orders yet... </p>
+                        <div className="custom-icon"><PiMagnifyingGlassBold className="magnifying-glass" />
+                        <PiSmileySadDuotone className="sad-smiley" />
+
+                        </div>
+                        <button className='back-to-shop-btn' onClick={() => navigate('/')}>Start shopping now!</button>
+                    </div>
+
                 )}
             </div>
         </div>

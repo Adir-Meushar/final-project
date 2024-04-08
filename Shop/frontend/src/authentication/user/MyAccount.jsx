@@ -5,7 +5,7 @@ import './my-account.css'
 function MyAccount() {
     return (
         <> 
-        <h1>User Account</h1>
+        <h1 className="user-account-header">User Account</h1>
         <div className="user-account">
             <EditUser />
             <UserOrders/>

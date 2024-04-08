@@ -9,7 +9,6 @@ function Bakery() {
     useEffect(() => {
         const fetchBakery = async () => {
             try {
-                setLoader(true)
                 const response = await fetch('http://localhost:4000/products/bakery', {
                     credentials: "include",
                     method: "GET",
@@ -24,9 +23,6 @@ function Bakery() {
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
-            setTimeout(() => {
-                setLoader(false);
-              }, 1000);
         }
         fetchBakery();
     }, [])
@@ -34,7 +30,7 @@ function Bakery() {
 
 
     return (
-        <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}>
+        <div className={`main-content ${isDarkMode ? 'dark' : ''}`}>
          <div className="category-container">
             <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Bakery-Mobile-Long1.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Bakery-Desktop1.jpg"} alt="bakery-img"/>
                 <div className="cover-title">

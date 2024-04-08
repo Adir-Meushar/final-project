@@ -76,7 +76,7 @@ function Login() {
       <button className="register-btn up" onClick={() => setLoginModal(true)}>Login</button>
       {loginModal && (
         <div className="modal-frame" onClick={cleanForm} >
-          <div className={`login-modal modal ${isDarkMode ? 'dark' : 'light'}`} onClick={(ev) => ev.stopPropagation()}>
+          <div className={`login-modal modal ${isDarkMode ? 'dark' : ''}`} onClick={(ev) => ev.stopPropagation()}>
             <header>
               <button className="close-btn" onClick={cleanForm} >X</button>
               <h2>Login</h2>

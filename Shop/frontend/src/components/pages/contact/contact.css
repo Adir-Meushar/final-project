@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: space-between;
     background-color: #ffe5f4;
-
+    color: rgb(38, 64, 34);
   }
 .contact-box.dark{
   background-color: rgb(15, 15, 15);
@@ -34,10 +34,8 @@
   }
   .contact-form-box h1{
     font-size: 3rem;
-    color:#2d5031 ;
   }
   .contact-form-box p{
-    color:#2d5031 ;
    text-align: left;  
    line-height: 1.5;
    width: 100%;
@@ -49,7 +47,6 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-evenly;
-    color: #2d5031;
   }
   .form-icon-box{
     display: flex;
@@ -78,6 +75,11 @@
     color: white;
     border-radius: 10px;
     transition: all .3s;
+    grid-column: 1 / 1; /* Child spans from column 2 to column 4 */
+    grid-row: 4 / 5; /* Child spans from row 1 to row 2 */
+  }
+  .contact-form  label{
+    height: 3.8rem;
   }
   .contact-form input{
     width: 100%;
@@ -86,7 +88,10 @@
     border-radius: 20px;
     border: none;
   }
-  
+  .contact-form .error-message{
+    width: 100%;
+    color: rgb(208, 10, 10);
+  }
   .contact-form textarea{
     grid-column: span 2;
     padding: 20px;

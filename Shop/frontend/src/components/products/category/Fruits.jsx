@@ -9,7 +9,6 @@ function Fruits() {
     useEffect(() => {
         const fetchFruits = async () => {
             try {
-                setLoader(true)
                 const response = await fetch('http://localhost:4000/products/fruits', {
                     credentials: "include",
                     method: "GET",
@@ -24,9 +23,6 @@ function Fruits() {
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
-            setTimeout(() => {
-                setLoader(false);
-              }, 1000);
         }
         fetchFruits();
     }, [])
@@ -34,7 +30,7 @@ function Fruits() {
 
 
     return (
-        <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}>
+        <div className={`main-content ${isDarkMode ? 'dark' : ''}`}>
             <div className="category-container">
                <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Fruits-Mobile-Long1.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Fruits-Desktop1.jpg"} alt="fruits-img" />
                 <div className="cover-title">

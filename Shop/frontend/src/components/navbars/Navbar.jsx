@@ -35,25 +35,26 @@ const Navbar = () => {
     setClicked(!clicked);
   };
 
-
-  // const shouldRenderSearchBar = !['/about', '/dashboard', '/my-account', '/checkout'].includes(location.pathname);
   const shouldRender = ['/vegetables', '/fruits', '/bakery', '/dairy&egss','/'].includes(location.pathname);
-// https://en.pimg.jp/058/800/704/1/58800704.jpg
-//https://i.pinimg.com/564x/24/67/20/24672086120c1e8f0b6192f1b86de4ec.jpg
-//https://i.pinimg.com/564x/04/61/15/04611584c1a983b86242d873b2fbb1cd.jpg
-//https://i.pinimg.com/564x/2c/76/68/2c7668186f41f093f87aba59d82fd268.jpg
+//https://i.pinimg.com/564x/1c/ae/59/1cae59cf6810a4665e5c48f9f6053384.jpg
+//https://i.pinimg.com/564x/c3/b6/28/c3b628c8f1210f266feb82d4641f97c9.jpg //2
+//https://i.pinimg.com/564x/35/df/55/35df55d1d3cfb5883b7b818ccc9cbf01.jpg //1
+//https://i.pinimg.com/564x/c3/a9/ac/c3a9ac234f2fdb8b038926853e6a9738.jpg
+//https://i.pinimg.com/564x/16/5b/4f/165b4f833e087ec50a58dbd2b8da58d4.jpg
+//https://i.pinimg.com/564x/1c/33/3b/1c333bbc0b5a1a262bfc70d8dbffaac6.jpg
+//https://i.pinimg.com/564x/a2/7e/3a/a27e3a318ad5eb863fe9a32c8b8ab6f5.jpg
   return (
     <>
       <div className='nav-container'>
-        <nav className={`top-nav ${isDarkMode ? 'dark' : 'light'}`}>
+        <nav className={`top-nav ${isDarkMode ? 'dark' : ''}`}>
           <Link to="/">
-            <img className='logo' src="https://i.pinimg.com/564x/24/67/20/24672086120c1e8f0b6192f1b86de4ec.jpg" alt="logo" />
+            <img className='logo' src="https://i.pinimg.com/564x/c3/b6/28/c3b628c8f1210f266feb82d4641f97c9.jpg " alt="logo" />
           </Link>
           <ul className={clicked ? 'navbar active' : 'navbar'}>
             <div className='link-box'>
               {shouldRender && <li className='remove-search'><SearchBar /></li>}
             </div>
-            {isSmallScreen ? (shouldRender? <CategoryNavbar clicked={clicked} handleClick={handleClick} />:<Link to={'/'}><div class="icon icon-rotate home-icon"><i class="fa fa-home"></i></div></Link>  ): ''}
+            {isSmallScreen ? (shouldRender? <CategoryNavbar clicked={clicked} handleClick={handleClick} />:<div onClick={() => { navigate('/'); handleClick(); }}  class="icon icon-rotate home-icon"><i class="fa fa-home"></i></div> ): ''}
             {user ? (
               <>
                 <div className='user-box'>

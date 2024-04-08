@@ -7,7 +7,7 @@ function ProductDetails({ item, closeModal, setCount }) {
 
   const handleAddToCart = () => {
     if (!user) {
-      return alert('please login to purchase..')
+      return alert('please login in order to purchase..')
     }
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartItemIndex = cart.findIndex(cartItem => cartItem.id === item._id);
@@ -36,7 +36,7 @@ function ProductDetails({ item, closeModal, setCount }) {
 
   return (
     <div className="modal-frame-details" onClick={(ev) => { closeModal(false); ev.stopPropagation() }}>
-      <div className={`product-details ${isDarkMode ? 'dark' : 'light'}`} onClick={(ev) => ev.stopPropagation()}>
+      <div className={`product-details ${isDarkMode ? 'dark' : ''}`} onClick={(ev) => ev.stopPropagation()}>
         <button className='close-btn' onClick={() => closeModal(false)}>&times;</button>
         <h1>{item.title} </h1>
         <div className='content'>
@@ -87,7 +87,7 @@ function ProductDetails({ item, closeModal, setCount }) {
             handleAddToCart();
             closeModal(false);
           }}
-          className='add-btn'
+          className='add-btn slide'
         >
           Add to Cart
         </button>

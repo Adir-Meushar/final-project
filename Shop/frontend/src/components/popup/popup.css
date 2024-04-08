@@ -9,6 +9,17 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    color: rgb(38, 64, 34);
+}
+.popup.dark{
+    color: #bcbcbc;
+    background-color: #363636;
+}
+@media screen and (max-width:480px) {
+    .popup{
+        min-width: 90vw;
+        height: 30vh;
+
+    }
 
 }
-

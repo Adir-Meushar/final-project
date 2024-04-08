@@ -19,7 +19,20 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     animation: slide-top 0.555s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
-
+.product-modal.dark{
+    color: #bcbcbc;
+    background-color: #1b1b1b;
+}
+.product-modal.dark input,.product-modal.dark select,.product-modal.dark textarea{
+    background-color: #9b9b9b33;
+    color: #dcdcdc;
+}
+.product-modal.dark select option{
+background-color: rgb(38, 38, 38);
+}
+.product-modal.dark .close-btn{
+    color: #dcdcdc;
+}
 .product-modal form{
     width: 100%;
     position: relative;
@@ -29,7 +42,7 @@
 }
 .product-modal form input{
     border: 1px solid #ccc;
-
+  padding-left: 10px;
 }
 .product-modal form h3{
     text-align-last: left;

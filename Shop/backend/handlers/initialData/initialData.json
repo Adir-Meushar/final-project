@@ -40,9 +40,9 @@
             "category": "Vegetables",
             "title": "Ginger",
             "description":"Ginger, prized for its versatility and distinctive flavor, is a beloved ingredient in kitchens worldwide. Whether used fresh in stir-fries, grated into teas, or incorporated into marinades, this aromatic root adds warmth and depth to a variety of dishes",
-            "price": 7.90,
+            "price": 4.90,
             "unit": "unit",
-            "sale": true,
+            "sale": false,
             "nutritionalValue": {
               "calories": 79,
               "fat": 0.8, 
@@ -79,7 +79,7 @@
             "description": "Carrots are loved for their crisp texture and naturally sweet flavor. Whether enjoyed raw as a crunchy snack, grated into salads, or cooked in soups and stews, these nutritious root vegetables add a burst of color and taste to any meal.",
             "price": 3.90,
             "unit": "kg",
-            "sale": true,
+            "sale": false,
             "nutritionalValue": {
               "calories": 41,
               "fat": 0.2, 
@@ -188,7 +188,7 @@
             "description": "Cucumbers are known for their crisp texture and refreshing taste. Whether sliced in salads, pickled for a tangy crunch, or enjoyed on their own as a hydrating snack, these versatile vegetables add a cool and rejuvenating element to any dish.",
             "price": 7.90,
             "unit": "kg",
-            "sale": true,
+            "sale": false,
             "nutritionalValue": {
               "calories": 15,
               "fat": 0.1, 
@@ -386,7 +386,7 @@
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 5.90,
             "unit": "kg",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": {
               "calories": 43,
               "fat": 0.2, 
@@ -398,13 +398,13 @@
               "alt": "Beet"
             }
           } ,
-          {
+          { 
             "category": "Vegetables",
             "title": "Corn",
             "description": "Known for its juicy texture and sweet-tart flavor, tomatoes are a versatile ingredient widely used in salads, sauces, and various culinary dishes.",
             "price": 19.90,
             "unit": "kg",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": {
               "calories": 96,
               "fat": 1.2, 
@@ -458,7 +458,7 @@
             "description": "Squash is a versatile vegetable with a hearty texture and slightly sweet taste, perfect for salads, soups, and other dishes.",
             "price": 9.90,
             "unit": "kg",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": {
               "calories": 19,
               "fat": 0.1, 
@@ -472,11 +472,29 @@
           } ,
           {
             "category": "Vegetables",
+            "title": "Avocado",
+            "description": "Avocado A creamy, nutritious fruit with a buttery texture, rich in healthy fats and versatile in culinary uses.",
+            "price": 10.90,
+            "unit": "kg",
+            "sale": true,
+            "nutritionalValue": {
+              "calories": 160,
+              "fat": 14.6, 
+              "carbohydrates": 8.5, 
+              "protein": 2
+            },
+            "img": { 
+              "url": "https://i.pinimg.com/564x/a9/10/f7/a910f76ccc5a6a547078d18eb4a3189d.jpg",
+              "alt": "Avocado"
+            } 
+          } ,
+          {
+            "category": "Vegetables",
             "title": "Radish",
             "description": "Radish is a crisp and peppery root vegetable, often used to add a fresh and spicy flavor to salads, sandwiches, and various dishes.",
             "price": 5.90,
             "unit": "package",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": {
               "calories": 15,
               "fat": 0.1, 
@@ -492,7 +510,7 @@
             "category": "Vegetables",
             "title": "Chilli Pepper (Green)",
             "description": "Chilli Pepper is known for its vibrant color and spicy flavor, adding heat and depth to a wide range of dishes including salsas, stir-fries, and marinades.",
-            "price": 1.90,
+            "price": 1,
             "unit": "unit",
             "sale": false,
             "nutritionalValue": {
@@ -510,7 +528,7 @@
             "category": "Vegetables",
             "title": "Chilli Pepper (Red)",
             "description": "Chilli Pepper is known for its vibrant color and spicy flavor, adding heat and depth to a wide range of dishes including salsas, stir-fries, and marinades.",
-            "price": 1.90,
+            "price": 1,
             "unit": "unit", 
             "sale": false,
             "nutritionalValue": {
@@ -565,7 +583,7 @@
         "description": "Apples are crisp, juicy, and sweet fruits that come in various colors and flavors. They are rich in fiber and vitamin C.",
         "price": 14.90,
         "unit": "kg",
-        "sale": true,
+        "sale": false,
         "nutritionalValue": {
           "calories": 52,
           "fat": 0.2,  
@@ -578,7 +596,7 @@
         }
       },
       {   "category": "Fruits",
-      "title": "Apple (Golden Delicious)",
+      "title": "Apple (Golden)",
       "description": "Apples are crisp, juicy, and sweet fruits that come in various colors and flavors. They are rich in fiber and vitamin C.",
       "price": 10.90,
       "unit": "kg",
@@ -677,14 +695,14 @@
   "img": {
     "url": "https://i.pinimg.com/564x/43/86/25/43862549c42b44c3ceab28af20099998.jpg",
     "alt": "Plums" 
-  }
+  } 
 },
 {   "category": "Fruits",
 "title": "Apricot",
 "description": "Delight in the juicy sweetness of apricots – perfect for a quick snack or as a tasty addition to your recipes.",
 "price": 16.90,
 "unit": "package",
-"sale": false,
+"sale": true,
 "nutritionalValue": {
   "calories": 48,  
   "fat": 0.4,  
@@ -844,7 +862,7 @@
             "category": "Fruits",
             "title": "Mango",
             "description": "Mangoes are tropical stone fruits with a sweet, juicy flesh and a unique flavor profile. They are rich in vitamins A and C.",
-            "price": 13.90,
+            "price": 14.90,
             "unit": "kg",
             "sale": false,
             "nutritionalValue": {
@@ -917,9 +935,9 @@
             "category": "Fruits",
             "title": "Lemon",
             "description": "Lemons are sour citrus fruits with a bright yellow skin and acidic juice. They are used in cooking, baking, and beverages for their tangy flavor.",
-            "price": 6.90,
+            "price": 8.90,
             "unit": "kg",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": {
               "calories": 29,
               "fat": 0.3,
@@ -969,6 +987,60 @@
           },
           {
             "category": "Fruits",
+            "title": "Blueberries ",
+            "description": "Blueberries: Bursting with antioxidants and vitamins, these small, sweet berries offer a delicious and nutritious addition to various dishes, from smoothies to desserts.",
+            "price": 14.90,
+            "unit": "package",
+            "sale": true,
+            "nutritionalValue": { 
+              "calories": 57,
+              "fat": 0.3,
+              "carbohydrates": 14.4,
+              "protein": 0.7
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/40/8e/84/408e8420924ee6a4c96ef60b31a90d5a.jpg",
+              "alt": "Blueberries "
+            }
+          },
+          {
+            "category": "Fruits",
+            "title": "Raspberries ",
+            "description": "Tart and juicy, raspberries are vibrant red berries loaded with antioxidants and fiber. Their bold flavor adds a refreshing twist to desserts, salads, and breakfast dishes.",
+            "price": 14.90,
+            "unit": "package",
+            "sale": true,
+            "nutritionalValue": { 
+              "calories": 52,
+              "fat": 0.7,
+              "carbohydrates": 12,
+              "protein": 1.2
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/7f/ff/40/7fff40c17c8a9e147b19a8c26ec92f5d.jpg",
+              "alt": "Raspberries "
+            }
+          }, 
+          {
+            "category": "Fruits",
+            "title": "Dates ",
+            "description": "Nature's candy, dates are sweet and chewy fruits packed with essential nutrients like fiber, vitamins, and minerals. They're a versatile ingredient in both sweet and savory dishes, adding a rich caramel-like flavor.",
+            "price": 20.90,
+            "unit": "kg",
+            "sale": true,
+            "nutritionalValue": { 
+              "calories": 277,
+              "fat": 0.15,
+              "carbohydrates": 74.9,
+              "protein": 1.8
+            },
+            "img": {
+              "url": "https://i.pinimg.com/564x/75/4e/bb/754ebb3e5953caaa0d76160e668e8a5a.jpg",
+              "alt": "Dates "
+            }
+          },
+          {
+            "category": "Fruits",
             "title": "Grapes (Green)",
            "description": "Grapes (Green) are crisp and refreshing fruits with a sweet flavor and a hint of tartness. They are enjoyed fresh as a snack, in salads, or pressed into refreshing juices and wines.",
             "price": 18.90,
@@ -1009,9 +1081,9 @@
             "category": "Bakery",
             "title": "White bread",
             "description": "White bread, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
-            "price": 13.90,
+            "price": 13,
             "unit": "unit",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": { 
               "calories": 266,
               "fat": 3.2,
@@ -1027,9 +1099,9 @@
             "category": "Bakery",
             "title": "Pita Bread",
             "description": "Pita Bread a versatile and delicious choice for any meal. Soft, satisfying, and perfect with your favorite spreads or fillings",
-            "price": 5.90,
+            "price": 6,
             "unit": "unit",
-            "sale": false,  
+            "sale": true,  
             "nutritionalValue": { 
               "calories": 275,
               "fat": 1.2,
@@ -1045,7 +1117,7 @@
             "category": "Bakery",
             "title": "Wholegrain bread ",
             "description": "Wholegrain bread , a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
-            "price": 18.90,
+            "price": 18,
             "unit": "unit",
             "sale": false,
             "nutritionalValue": { 
@@ -1061,11 +1133,11 @@
           }, 
           { 
             "category": "Bakery",
-            "title": "challah",
+            "title": "Challah",
             "description": "Wheat bread, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
-            "price": 14.90,
+            "price": 13,
             "unit": "unit",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": { 
               "calories": 283,
               "fat": 6,
@@ -1074,14 +1146,14 @@
             },
             "img": {
               "url": "https://i.pinimg.com/564x/00/cc/a9/00cca993edbf4287dea567c603e97a28.jpg",
-              "alt": "challah"
+              "alt": "Challah"
             }
-          },
+          }, 
           { 
             "category": "Bakery",
             "title": "Buguette",
             "description": "Wheat bread, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
-            "price": 16.90,
+            "price": 16,
             "unit": "unit",
             "sale": false,
             "nutritionalValue": { 
@@ -1099,7 +1171,7 @@
             "category": "Bakery",
             "title": "Croissant",
             "description": "Enjoy our buttery and flaky croissant, perfect for breakfast or a tasty snack!",
-            "price": 9.90,
+            "price": 10,
             "unit": "unit",
             "sale": false,
             "nutritionalValue": { 
@@ -1153,7 +1225,7 @@
             "category": "Bakery",
             "title": "Bagel",
             "description":"Savor our chewy and flavorful bagel, great for breakfast or a quick bite on the go!",
-            "price": 8.90,
+            "price": 10,
             "unit": "unit",
             "sale": false,
             "nutritionalValue": { 
@@ -1171,9 +1243,9 @@
             "category": "Bakery",
             "title": "Mixed Seed Sourdough",
             "description": "Try our hearty sourdough bread packed with mixed seeds for a nutritious and delicious slice every time!",
-            "price": 16.90,
+            "price": 16,
             "unit": "unit",
-            "sale": true, 
+            "sale": false, 
             "nutritionalValue": { 
               "calories": 267,
               "fat": 5.9,
@@ -1207,7 +1279,7 @@
             "category": "Bakery",
             "title": "Burger Buns",
             "description": "Enjoy our soft and fluffy burger buns, the perfect partner for your favorite burgers!",
-            "price": 6.90,
+            "price": 6,
             "unit": "unit",
             "sale": false,
             "nutritionalValue": { 
@@ -1263,7 +1335,7 @@
             "description": "Savor the deliciousness of our Cinnamon Roll. With its perfect mix of cinnamon and sugar, it's a treat you won't want to miss !",
             "price": 10.90,
             "unit": "unit",
-            "sale": false,
+            "sale": true,
             "nutritionalValue": {  
               "calories": 436,
               "fat": 24,
@@ -1354,7 +1426,7 @@
             "category": "Dairy&Eggs",
             "title": "Butter",
             "description": "Butter, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
-            "price": 7.90,
+            "price": 10.90,
             "unit": "package",
             "sale": false,
             "nutritionalValue": { 
@@ -1374,7 +1446,7 @@
             "description": "Cottage Cheese, a wholesome staple enjoyed worldwide, offers a blend of hearty flavor and nutritional benefits.",
             "price": 6.90,
             "unit": "package",
-            "sale": true, 
+            "sale": false, 
             "nutritionalValue": { 
               "calories": 95,
               "fat": 5, 
@@ -1500,7 +1572,7 @@
             "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
             "price": 5.90,
             "unit": "unit", 
-            "sale": false, 
+            "sale": true, 
             "nutritionalValue": { 
               "calories": 54,
               "fat": 0.1,  
@@ -1554,7 +1626,7 @@
             "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
             "price": 5.90,
             "unit": "unit", 
-            "sale": false, 
+            "sale": true, 
             "nutritionalValue": { 
               "calories": 82,
               "fat":4, 
@@ -1590,7 +1662,7 @@
             "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
             "price": 5.90,
             "unit": "unit", 
-            "sale": false, 
+            "sale": true, 
             "nutritionalValue": { 
               "calories": 82,
               "fat":4, 
@@ -1644,7 +1716,7 @@
             "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
             "price": 5.90,
             "unit": "unit", 
-            "sale": false, 
+            "sale": true, 
             "nutritionalValue": { 
               "calories": 82,
               "fat":4, 
@@ -1662,8 +1734,8 @@
             "description": "Experience the goodness of Chobani Greek yogurt – rich in protein, rich in flavor, perfect for your healthy lifestyle.",
             "price": 5.90,
             "unit": "unit", 
-            "sale": false, 
-            "nutritionalValue": { 
+            "sale": true, 
+            "nutritionalValue": {  
               "calories": 82,
               "fat":4, 
               "carbohydrates": 3.2,  
@@ -1726,6 +1798,41 @@
               "url": "https://i.pinimg.com/564x/df/65/a6/df65a6d302771648c693afe4d26f4ad8.jpg",
               "alt": "Chobani (Mango)"
             }
+          }
+        ],
+        "users":[
+          {
+            "firstName":"Admin",
+            "lastName":"User",
+             "phone":"0543143870",
+             "email":"admin@gmail.com",
+             "password":"A11413365$c",
+             "city":"Herzliya",
+             "street":"Ben-Gurion",
+             "houseNumber":"100",
+             "roleType":"20"
+          },
+          {
+            "firstName":"Common",
+            "lastName":"User",
+             "phone":"0552269949",
+             "email":"user@gmail.com",
+             "password":"A11413365$c",
+             "city":"Tel-Aviv",
+             "street":"Menachem Begin",
+             "houseNumber":"54",
+             "roleType":"10"
+          },
+          {
+            "firstName":"CommonTwo",
+            "lastName":"User",
+             "phone":"0525543270", 
+             "email":"user2@gmail.com",
+             "password":"A11413365$c",
+             "city":"Tel-Aviv", 
+             "street":"Rothchild",
+             "houseNumber":"32",
+             "roleType":"10"
           }
         ]
       } 

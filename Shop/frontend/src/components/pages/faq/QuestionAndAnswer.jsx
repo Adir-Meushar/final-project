@@ -6,7 +6,7 @@ function QuestionAndAnswer() {
     const{isDarkMode,isSmallScreen}=useContext(GeneralContext) 
 
     const data = {
-        title: "FAQ",
+        title: "Have Questions? We Have Answers!",
         rows: [
             {
                 title:"How fresh are your vegetables and fruits?",
@@ -56,16 +56,15 @@ function QuestionAndAnswer() {
     }
     
     return (
-        <div className={`main-content ${isDarkMode ? 'dark' : 'light'}`}>
+        <div className={`main-content ${isDarkMode ? 'dark' : ''}`}>
          <div className="category-container">
-            <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/12/Mob_categroey_FAQ.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/12/Des_categroey_FAQ.jpg"} alt="bakery-img"/>
+            <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/12/Mob_categroey_FAQ.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/12/Des_categroey_FAQ.jpg"} alt="faq-img"/>
                 <div className="cover-title">
                     <h1>FAQ</h1>
-                    <p>Freshly baked goods crafted with care from the finest ingredients, delivered swiftly to your doorstep.</p>
                 </div>
             </div>
 
-            <div className={`faq ${isDarkMode ? 'dark' : 'light'}`}>
+            <div className={`faq ${isDarkMode ? 'dark' : ''}`}>
             <Faq data={data} 
             styles={{
                 titleTextColor:isDarkMode ? 'mediumseagreen' : 'green',
@@ -80,3 +79,4 @@ function QuestionAndAnswer() {
 }
 
 export default QuestionAndAnswer
+// rgb(38, 64, 34)

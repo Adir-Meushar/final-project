@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ProductsManagement from "./ProductManagement";
 import UsersManagement from "./UsersManagement";
 import AdminData from "./AdminData";
 import './dashboard-tables.css'
+import { GeneralContext } from "../../App";
 
 function Dashboard() {
   const [display, setDisplay] = useState('prodcuts')
+  const {isDarkMode} = useContext(GeneralContext);
+
   return (
     <>
+    <div className={`container-table ${isDarkMode ? 'dark' : ''}`}>
       <div className="dashboard-header">
         <h1>Dashboard</h1>
       <div className="display">
@@ -27,6 +31,7 @@ function Dashboard() {
           }
         })()
       }
+      </div>
     </>
   )
 }

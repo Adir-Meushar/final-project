@@ -19,7 +19,7 @@ function NewProduct() {
         imgUrl: "",
         imgAlt: ""
     };
-    const { snackbar,setLoader} = useContext(GeneralContext);
+    const { snackbar,setLoader,isDarkMode} = useContext(GeneralContext);
 
     const [modal, setModal] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -105,7 +105,7 @@ function NewProduct() {
             <button className="new-product slide" onClick={() => setModal(true)}>New Product</button>
             {modal && (
                 <div className="modal-frame">
-                    <div className=" product-modal">
+                    <div className={`product-modal ${isDarkMode ? 'dark' : ''}`}>
                         <header>
                             <button className="close-btn" onClick={() => { setModal(false); resetForm(); }}>X</button>
                             <h2>New Product</h2>

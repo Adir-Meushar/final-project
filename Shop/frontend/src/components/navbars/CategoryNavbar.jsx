@@ -14,7 +14,7 @@ function CategoryNavbar({clicked,handleClick}) {
 
     return (
         <div>
-            <nav className={`category-navbar ${isDarkMode ? 'dark' : 'light'}`}>
+            <nav className={`category-navbar ${isDarkMode ? 'dark' : ''}`}>
                 <ul className={ulClass}>
                     <li><Link onClick={handleClick} to="/vegetables">Vegetables</Link></li>
                     <li><Link onClick={handleClick} to="/fruits">Fruits</Link></li>

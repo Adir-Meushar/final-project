@@ -17,7 +17,8 @@
 
 .footer-links{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: start;
     align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
@@ -41,7 +42,7 @@
 .social-media{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly
+    justify-content: space-evenly;
 };
  .media-icon{
    font-size: 2rem;

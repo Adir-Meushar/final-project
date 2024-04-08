@@ -11,7 +11,7 @@ function Footer() {
     const {isDarkMode} = useContext(GeneralContext)
 
     return (
-        <div className={`footer ${isDarkMode ? 'dark' : 'light'}`}>
+        <div className={`footer ${isDarkMode ? 'dark' : ''}`}>
             <div className="am-footer section-padding">
                 <div className="footer-links">
                     <div className="footer-links-div">
@@ -30,7 +30,7 @@ function Footer() {
                         </Link>
                     </div>
                     <div className="footer-links-div">
-                        <h4>Grocery</h4>
+                        <h4>Fresh Clover</h4>
                         <Link to={'/about'}>
                         <p>About</p>
                         </Link>
@@ -43,12 +43,6 @@ function Footer() {
                          </Link>
                     </div>
                     {/* <div className="footer-links-div">
-                        <h4>Partners</h4>
-                        <a href="/">
-                            <p>Employer</p>
-                        </a>
-                    </div> */}
-                    <div className="footer-links-div">
                         <h4>Compeny</h4>
                         <a href="/">
                             <p>Employer</p>
@@ -59,21 +53,21 @@ function Footer() {
                         <a href="/">
                             <p>Employer</p>
                         </a>
-                    </div>
+                    </div> */}
                     <div className="footer-links-div">
                         <h4 className='social-media-header'>Follow Us</h4>
                         <div className="social-media">
-                            <div className='media-icon'><BsFacebook/></div>
-                            <div className='media-icon'><BsInstagram/></div>
-                            <div className='media-icon'><BsYoutube/></div>
-                            <div className='media-icon'><BsLinkedin/> </div>
+                           <a href="https://www.facebook.com/?locale=he_IL" target='_blank'><div className='media-icon'><BsFacebook/></div></a> 
+                           <a href="https://www.instagram.com/" target='_blank'><div className='media-icon'><BsInstagram/></div></a> 
+                           <a href="https://www.youtube.com/" target='_blank'><div className='media-icon'><BsYoutube/></div></a> 
+                           <a href="https://www.linkedin.com/login" target='_blank'><div className='media-icon'><BsLinkedin/> </div></a>
                         </div>
                     </div>
                 </div>
                 <hr></hr>
                 <div className="footer-below">
                     <div className="footer-copyright">
-                        <p>All rights bla bla</p>
+                        <p>© 2024 Fresh Clover. All rights reserved.</p>
                     </div>
                     <div className="footer-below-links">
                         <a href=""><div><p>Terms of conditions</p></div></a>

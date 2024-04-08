@@ -8,7 +8,6 @@ function UsersManagement() {
 
     const fetchUsers=async ()=>{
         try{
-            setLoader(true)
           const response=await fetch('http://localhost:4000/users', {
             credentials: "include",
             method: "GET",
@@ -20,9 +19,6 @@ function UsersManagement() {
          const data=await response.json();
          console.log(data);
          setUsers(data)
-         setTimeout(() => {
-            setLoader(false)
-          }, 500)
         }catch(error){
             console.error("Error fetching users:", error);
         }

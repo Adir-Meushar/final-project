@@ -8,7 +8,7 @@ function EditProduct({ modal, setModal, currentProduct,setProducts,products }) {
     const [errors, setErrors] = useState([]);
     const [formData, setFormData] = useState({});
     const [isFormValid, setIsFormValid] = useState(true);
-    const { snackbar, setLoader } = useContext(GeneralContext);
+    const { snackbar, setLoader,isDarkMode } = useContext(GeneralContext);
 
     useEffect(() => {
         if (Object.keys(currentProduct).length) {
@@ -119,7 +119,7 @@ function EditProduct({ modal, setModal, currentProduct,setProducts,products }) {
         <>
             {modal && Object.keys(formData).length && (
                 <div className="modal-frame">
-                    <div className="product-modal">
+                    <div className={`product-modal ${isDarkMode ? 'dark' : 'light'}`}>
                         <header>
                             <button className="close-btn" onClick={() => { setModal(false); resetForm(); }}>X</button>
                             <h2>Edit Product</h2>

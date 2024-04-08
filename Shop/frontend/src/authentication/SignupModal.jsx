@@ -81,23 +81,22 @@ function Signup() {
     { name: "street", label: "Street", type: "text" },
     { name: "houseNumber", label: "House Number", type: "text" },
   ];
+  const cleanForm = () => {
+    setSignModal(false);
+    setFormData({  firstName: "", lastName: "", phone: "", email: "", password: "",
+    city: "", street: "", houseNumber: "" });
+    setErrors([]);
+    setIsFormValid(false);
+  }
 
   return (
     <>
       <button className="register-btn up" onClick={() => setSignModal(true)}>Signup</button>
       {signupModal && (
-        <div className="modal-frame" onClick={() => setSignModal(false)}>
-          <div className={`signup-modal modal ${isDarkMode ? 'dark' : 'light'}`} onClick={(ev) =>  ev.stopPropagation()}>
+        <div className="modal-frame" onClick={cleanForm}>
+          <div className={`signup-modal modal ${isDarkMode ? 'dark' : ''}`} onClick={(ev) =>  ev.stopPropagation()}>
             <header>
-              <button className="close-btn" onClick={() => {
-                setSignModal(false);
-                setFormData({
-                  firstName: "", lastName: "", phone: "", email: "", password: "",
-                  city: "", street: "", houseNumber: ""
-                });
-                setErrors([]);
-                setIsFormValid(false)
-              }}>X</button>
+              <button className="close-btn" onClick={cleanForm}>X</button>
               <h2>Signup</h2>
             </header>
             <form onSubmit={handleSignup}>

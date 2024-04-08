@@ -1,5 +1,4 @@
-#snackbar {
-    /* background-color: #333; */
+.snackbar {
     background-color: rgb(54, 156, 54);
     color: #fff;
     text-align: center;
@@ -12,14 +11,17 @@
     bottom: 40px; 
     font-size: 17px;
   }
-    
+  .snackbar.dark{
+    background-color: rgb(31, 32, 31);
+
+  }
   @media screen and (min-width:330px) and (max-width:500px) {
-    #snackbar {
+    .snackbar {
       font-size: 13px;
       padding: 10px;
     }
   }
-    #snackbar.show {
+    .snackbar.show {
       visibility: visible;
       -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
       animation: fadein 0.5s, fadeout 0.5s 2.5s;

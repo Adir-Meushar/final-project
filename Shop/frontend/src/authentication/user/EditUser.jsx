@@ -104,7 +104,7 @@ function EditUser() {
 
     return (
         <>
-            <div className={`edit-modal ${isDarkMode ? 'dark' : 'light'}`}>
+            <div className={`edit-modal ${isDarkMode ? 'dark' : ''}`}>
                 <h2>My Details</h2>
                 <form onSubmit={(ev) => updateUser(ev, user._id)}>
                     {inputFields.map((field, index) => (

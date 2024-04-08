@@ -16,7 +16,6 @@ function AdminData() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setLoader(true)
                 const response = await fetch('http://localhost:4000/dashboard/products/data', {
                     credentials: "include",
                     method: "GET",
@@ -29,6 +28,7 @@ function AdminData() {
                 console.log(data);
                 setAmount({
                     totalAmount: data.totalAmount,
+                    totalAmountOnSale: data.totalAmountOnSale,
                     vegetablesAmount: data.vegetablesAmount,
                     fruitsAmount: data.fruitsAmount,
                     bakeryAmount: data.bakeryAmount,
@@ -41,9 +41,6 @@ function AdminData() {
                 console.error("Error fetching data:", error);
             }
         };
-        setTimeout(() => {
-            setLoader(false)
-        }, 1000)
         fetchData();
     }, []);
 
@@ -54,6 +51,7 @@ function AdminData() {
                     <h1>Data Overview</h1>
                     <p>Here you can find statistical information about the site.</p>
                     <p>Total Products:{amount.totalAmount}</p>
+                    <p>Total Products On Sale:{amount.totalAmountOnSale}</p>
                 </div>
             </div>
             <table className="admin-data-table">

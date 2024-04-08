@@ -1,26 +1,34 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { GeneralContext } from '../../App';
 import Vegetables from '../products/category/Vegetables';
 import Fruits from '../products/category/Fruits';
-import Products from '../products/category/AllProducts';
 import Dashboard from '../../authentication/admin/Dashboard';
 import Bakery from '../products/category/Bakery';
 import Checkout from '../pages/checkout/Checkout';
 import DairyAndEggs from '../products/category/Dairy&Eggs';
 import MyAccount from '../../authentication/user/MyAccount';
-import { GeneralContext } from '../../App';
-import { useContext } from 'react';
 import About from '../pages/about/About';
 import ErrorPage from '../pages/error-page/ErrorPage';
 import QuestionAndAnswer from '../pages/faq/QuestionAndAnswer';
 import Contact from '../pages/contact/Contact';
-
+import ProductsOnSale from '../products/category/ProductsOnSale';
 
 export default function Router() {
-    const { user } = useContext(GeneralContext);
+    const { user, setLoader } = useContext(GeneralContext);
+    const location = useLocation();
+
+    useEffect(() => {
+        setLoader(true);
+        const timeout = setTimeout(() => {
+            setLoader(false);
+        }, 1000);
+        return () => clearTimeout(timeout);
+    }, [location, setLoader]);
 
     return (
         <Routes>
-            <Route path="/" element={<Products />} />
+            <Route path="/" element={<ProductsOnSale />} />
             <Route path="/about" element={<About />} />
             <Route path="/f&q" element={<QuestionAndAnswer />} />
             <Route path="/contact" element={<Contact />} />
@@ -31,7 +39,7 @@ export default function Router() {
             <Route path="/bakery" element={<Bakery />} />
             <Route path="/dairy&egss" element={<DairyAndEggs />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="*" element={<ErrorPage />}/>
+            <Route path="*" element={<ErrorPage />} />
         </Routes>
-    )
+    );
 }

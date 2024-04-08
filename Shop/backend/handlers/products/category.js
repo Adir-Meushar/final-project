@@ -11,7 +11,17 @@ module.exports=app=>{
             res.status(500).send({ error: 'Error fetching products'});
         }
     })
-    
+
+     //Get All ProductsOnSale||Permissions:All//
+     app.get('/products/sale',async(req,res)=>{
+        try{
+            const productsOnSale = await Product.find({ sale: 'true' });
+            res.send(productsOnSale);
+        }catch(error){
+            res.status(500).send({ error: 'Error fetching products'});
+        }
+    })
+
     //Get All Vegetables||Permissions:All//
     app.get('/products/vegetables',async(req,res)=>{
         try{
@@ -21,6 +31,7 @@ module.exports=app=>{
             res.status(500).send({ error: 'Error fetching products'});
         }
     })
+
     //Get All Fruits||Permissions:All//
     app.get('/products/fruits',async(req,res)=>{
         try{
@@ -40,6 +51,7 @@ module.exports=app=>{
             res.status(500).send({ error: 'Error fetching products'});
         } 
     });
+
       //Get All Dairy&Eggs||Permissions:All//
       app.get('/products/dairy&eggs',async(req,res)=>{
         try{

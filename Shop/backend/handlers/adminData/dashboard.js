@@ -5,6 +5,7 @@ module.exports=app=>{
     app.get('/dashboard/products/data', guard, async (req, res) => {
         try {
             const totalAmount = await Product.find().countDocuments();
+            const totalAmountOnSale=await Product.countDocuments({ sale: 'true' });
             const vegetablesAmount = await Product.countDocuments({ category: 'Vegetables' });
             const fruitsAmount = await Product.countDocuments({ category: 'Fruits' });
             const bakeryAmount = await Product.countDocuments({ category: 'Bakery' });
@@ -22,9 +23,9 @@ module.exports=app=>{
                 acc[curr._id] = curr.count;
                 return acc;
             }, {});
-            console.log(categoryPrices);
+            console.log(productsOnSale);  
             
-            res.json({ totalAmount, vegetablesAmount, fruitsAmount, bakeryAmount, dairyAndEggsAmount, categoryPrices, productsOnSale });
+            res.json({ totalAmount,totalAmountOnSale, vegetablesAmount, fruitsAmount, bakeryAmount, dairyAndEggsAmount, categoryPrices, productsOnSale });
         } catch (error) {
             console.error("Error fetching product amounts:", error);
             res.status(500).json({ error: "Internal server error" });

@@ -24,8 +24,8 @@ function ErrorPage() {
               <Link to={'/'}> <button className="error-button">Go Back</button></Link> 
             </div>
                 <div className="container-error-page__right desc">
-                    <h1 className={`desc__head ${isDarkMode ? 'dark' : 'light'}`}>Error: 404 - Page Not Found</h1>
-                    <div className={`desc__body ${isDarkMode ? 'dark' : 'light'}`}>
+                    <h1 className={`desc__head ${isDarkMode ? 'dark' : ''}`}>Error: 404 - Page Not Found</h1>
+                    <div className={`desc__body ${isDarkMode ? 'dark' : ''}`}>
                         <p>You might be here because:</p>
                         <ul>
                             <li>The page has moved</li>

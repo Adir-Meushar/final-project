@@ -91,7 +91,7 @@ function ProductCard({ item }) {
         ) : ''}
       </div> */}
 
-      <div className={`card-content ${isDarkMode ? 'dark' : 'light'}`}>
+      <div className={`card-content ${isDarkMode ? 'dark' : ''}`}>
         <h3 className="card-title">{item.title}</h3>
         <div className="card-price">
           {item.sale ? (

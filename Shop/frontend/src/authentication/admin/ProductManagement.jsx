@@ -13,7 +13,6 @@ function ProductsManagement() {
 
     const fetchProducts = async () => {
         try {
-            setLoader(true);
             const response = await fetch('http://localhost:4000/products/all', {
                 credentials: "include",
                 method: "GET",
@@ -24,9 +23,7 @@ function ProductsManagement() {
             });
             const data = await response.json();
             setProducts(data);
-            setTimeout(() => {
-                setLoader(false);
-            }, 500);
+          
         } catch (error) {
             console.error("Error fetching users:", error);
         }
@@ -46,14 +43,17 @@ function ProductsManagement() {
                         "Authorization": localStorage.token,
                     },
                 });
+                const data=await response.json();
+                console.log(data);
                 setProducts(products.filter((product) => product._id !== productId));
+                snackbar(data.message);
+
             } catch (error) {
                 console.error("Error Deleting product:", error);
             }
             setTimeout(() => {
                 setLoader(false);
             }, 500);
-            snackbar(`Product was deleted successfully!`);
         }
     }
 
@@ -67,7 +67,7 @@ function ProductsManagement() {
     }, []);
 
     return (
-        <div className="container-table">
+    <>
             <div className='page-header'>
                 <h1>Product Management</h1>
                 <p>Here you can find information about the products.</p>
@@ -105,7 +105,7 @@ function ProductsManagement() {
                 </tbody>
             </table>
             <EditProduct setProducts={setProducts} products={products} modal={modal} setModal={setModal} currentProduct={currentProduct} />
-        </div>
+            </>
     )
 }
 
