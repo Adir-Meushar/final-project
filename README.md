@@ -9,7 +9,7 @@ adding items to the cart, processing payments, user account management, and an a
 For detailed information on the API endpoints and usage, refer to this link:https://documenter.getpostman.com/view/28292567/2s9Yyqj2pR
 
 ## Features
-#### User Management:
+### User Management:
 - **Registration & Authentication:**
 Users can register for an account securely using their email and password. Authentication is handled through JSON Web Tokens (JWT), ensuring secure access to user-specific features.
 
@@ -19,7 +19,7 @@ Users can register for an account securely using their email and password. Authe
 - **Role-Based Access Control (RBAC) :**
   Admin privileges enable additional functionalities such as updating user type,viewing user data and delete.
   
--#### Product Management:
+### Product Management:
 - **Admin Dashboard:**
  Administrators have access to a dedicated dashboard where they can perform CRUD operations on products.
  This includes adding new products, updating existing ones, deleting items, and viewing the product catalog.
@@ -31,7 +31,7 @@ Users can register for an account securely using their email and password. Authe
 - **Meaningful Error Messages:**
  Detailed error messages are provided to users, guiding them through potential issues and resolutions.
   
-#### Security Measures:
+### Security Measures:
 - **Password Hashing:**
  User passwords are securely hashed using bcrypt before being stored in the database, ensuring protection against unauthorized access.
 
