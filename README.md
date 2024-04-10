@@ -17,58 +17,76 @@ Users can register for an account securely using their email and password. Authe
  Registered users have the ability to edit their profile details and delete their account if needed.
 
 - **Role-Based Access Control (RBAC) :**
-  Admin privileges enable additional functionalities such as managing products and viewing user data and delete.
+  Admin privileges enable additional functionalities such as updating user type,viewing user data and delete.
   
 #### Product Management:
-As an admin, you can log in to the admin dashboard to perform CRUD operations on products.
+- **Admin Dashboard:**
+ Administrators have access to a dedicated dashboard where they can perform CRUD operations on products.
+ This includes adding new products, updating existing ones, deleting items, and viewing the product catalog.
 
 #### Error Handling:
-Custom 404 error page for a user-friendly experience on undefined routes.
-Meaningful error messages for various scenarios.
+- **Custom 404 Error Page :**
+ A custom 404 error page is implemented to enhance user experience when accessing undefined routes.
 
+- **Meaningful Error Messages:**
+ Detailed error messages are provided to users, guiding them through potential issues and resolutions.
+  
 #### Security Measures:
-Passwords are securely hashed using bcrypt.
-JSON Web Tokens (JWT) for secure user authentication.
-Middleware ensures proper access controls and permissions.
+- **Password Hashing:**
+ User passwords are securely hashed using bcrypt before being stored in the database, ensuring protection against unauthorized access.
+
+- **JWT Authentication:**
+ JSON Web Tokens are used for user authentication, providing a secure and stateless authentication mechanism.
+  
+- **Access Controls & Permissions:**
+ Middleware is implemented to enforce proper access controls and permissions, ensuring that users can only access functionalities they are authorized to use.
 
 ## Overall Architecture
-The project follows a modular structure, with organized routes, middleware, models, and validation using Joi.
-MongoDB serves as the data store, ensuring efficient and scalable data management. 
-JSON Web Tokens (JWT) provide a secure authentication mechanism.
+The project follows a modular and scalable architecture, incorporating both frontend and backend components to deliver a comprehensive e-commerce solution.
 
-### Technologies Used
+### Frontend
+- **React.js:**
+  - The frontend is built using React.js, a popular JavaScript library for building user interfaces.
+  - React.js offers component-based architecture, enabling efficient development and maintenance of complex UIs.
+- **React Router:**
+  - React Router is utilized for client-side routing, enabling navigation between different views and ensuring a smooth browsing experience for users.
+
+- **React Icons:**
+  - React Icons provides a collection of customizable icons for use in the frontend UI, enhancing visual appeal and usability.
+
+- **Moment.js:**
+  - Moment is a Date and time manipulation library for JavaScript.
+  - 
+### Backend
 - **Node.js:**
-  - JavaScript runtime environment for server-side development.
+  - The project utilizes the Node.js runtime environment for server-side development, offering scalability and performance.
 
-- **bcrypt:**
-  - Password hashing for secure storage.
+- **Express.js:**
+  - Express.js is used as the web application framework, providing robust features for building server-side logic and handling HTTP requests.
 
-- **chalk:**
-  - Terminal string styling for enhanced console output.
-
-- **cors:**
-  - Middleware for Cross-Origin Resource Sharing in Express.js.
-
-- **dotenv:**
-  - Environment variable management for configuration.
-
-- **express:**
-  - Web application framework for building server-side logic.
-
-- **fs:**
-  - Node.js file system module for file interactions.
-
+- **MongoDB:**
+  - MongoDB serves as the database management system, offering flexibility and scalability for storing product data, user information, and session details.
+  - 
+- **mongoose:**
+  - Mongoose is used as an Object Data Modeling (ODM) library for MongoDB, simplifying interactions with the database through schema-based modeling.
+  - 
+### Additional Technologies Used
 - **joi:**
   - Object schema validation for data sanitization.
 
 - **jsonwebtoken:**
-  - Creation and verification of JSON Web Tokens for secure authentication.
+  - Jsonwebtoken is employed for the creation and verification of JSON Web Tokens, enabling secure user authentication.
 
-- **moment:**
-  - Date and time manipulation library for JavaScript.
+- **Chalk:**
+  - Chalk is utilized for terminal string styling, enhancing console output readability.
+  - 
+-  **Cors:**
+  - Cors middleware is integrated to handle Cross-Origin Resource Sharing in Express.js applications.
+  - 
+- **Dotenv:**
+  - Dotenv is used for environment variable management, facilitating configuration across different environments.
 
-- **mongoose:**
-  - MongoDB object modeling for schema-based database interaction.
+
 
 These technologies collectively power the Node.js backend, ensuring security, functionality, and efficient data management in the web application.
 
