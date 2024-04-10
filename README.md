@@ -65,7 +65,7 @@ The project follows a modular and scalable architecture, incorporating both fron
 - **Express.js:**
    Express.js is used as the web application framework, providing robust features for building server-side logic and handling HTTP requests.
   
-  **Cors:**
+- **Cors:**
    Cors middleware is integrated to handle Cross-Origin Resource Sharing in Express.js applications.
    
 - **Dotenv:**
