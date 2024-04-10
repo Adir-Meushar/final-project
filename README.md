@@ -46,45 +46,45 @@ The project follows a modular and scalable architecture, incorporating both fron
 
 ### Frontend
 - **React.js:**
-  - The frontend is built using React.js, a popular JavaScript library for building user interfaces.
-  - React.js offers component-based architecture, enabling efficient development and maintenance of complex UIs.
+  The frontend is built using React.js, a popular JavaScript library for building user interfaces.
+  React.js offers component-based architecture, enabling efficient development and maintenance of complex UIs.
 - **React Router:**
-  - React Router is utilized for client-side routing, enabling navigation between different views and ensuring a smooth browsing experience for users.
+   React Router is utilized for client-side routing, enabling navigation between different views and ensuring a smooth browsing experience for users.
 
 - **React Icons:**
-  - React Icons provides a collection of customizable icons for use in the frontend UI, enhancing visual appeal and usability.
+   React Icons provides a collection of customizable icons for use in the frontend UI, enhancing visual appeal and usability.
 
 - **Moment.js:**
-  - Moment is a Date and time manipulation library for JavaScript.
-  - 
+  Moment is a Date and time manipulation library for JavaScript.
+   
 ### Backend
 - **Node.js:**
-  - The project utilizes the Node.js runtime environment for server-side development, offering scalability and performance.
+   The project utilizes the Node.js runtime environment for server-side development, offering scalability and performance.
 
 - **Express.js:**
-  - Express.js is used as the web application framework, providing robust features for building server-side logic and handling HTTP requests.
+   Express.js is used as the web application framework, providing robust features for building server-side logic and handling HTTP requests.
 
 - **MongoDB:**
-  - MongoDB serves as the database management system, offering flexibility and scalability for storing product data, user information, and session details.
-  - 
+   MongoDB serves as the database management system, offering flexibility and scalability for storing product data, user information, and session details.
+   
 - **mongoose:**
-  - Mongoose is used as an Object Data Modeling (ODM) library for MongoDB, simplifying interactions with the database through schema-based modeling.
-  - 
+   Mongoose is used as an Object Data Modeling (ODM) library for MongoDB, simplifying interactions with the database through schema-based modeling.
+  
 ### Additional Technologies Used
 - **joi:**
-  - Object schema validation for data sanitization.
+   Object schema validation for data sanitization.
 
 - **jsonwebtoken:**
-  - Jsonwebtoken is employed for the creation and verification of JSON Web Tokens, enabling secure user authentication.
+  Jsonwebtoken is employed for the creation and verification of JSON Web Tokens, enabling secure user authentication.
 
 - **Chalk:**
-  - Chalk is utilized for terminal string styling, enhancing console output readability.
-  - 
+  Chalk is utilized for terminal string styling, enhancing console output readability.
+   
 -  **Cors:**
-  - Cors middleware is integrated to handle Cross-Origin Resource Sharing in Express.js applications.
-  - 
+   Cors middleware is integrated to handle Cross-Origin Resource Sharing in Express.js applications.
+   
 - **Dotenv:**
-  - Dotenv is used for environment variable management, facilitating configuration across different environments.
+   Dotenv is used for environment variable management, facilitating configuration across different environments.
 
 
 
