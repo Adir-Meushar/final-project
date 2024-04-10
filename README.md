@@ -11,7 +11,7 @@ adding items to the cart, processing payments, user account management, and an a
 Users can register for an account securely using their email and password. Authentication is handled through JSON Web Tokens (JWT), ensuring secure access to user-specific features.
 
 - **Profile Editing :**
- Registered users have the ability to edit their profile details and delete their account if needed.
+ Registered users have the ability to edit their profile details.
 
 - **Role-Based Access Control (RBAC) :**
   Admin privileges enable additional functionalities such as updating user type,viewing user data and delete.
