@@ -8,7 +8,7 @@ import { PiSmileySadDuotone } from "react-icons/pi";
 function UserOrders() {
     const [myOrders, setMyOrders] = useState([]);
     const [expandedOrder, setExpandedOrder] = useState(null);
-    const { snackbar, setLoader, user,isDarkMode } = useContext(GeneralContext);
+    const { snackbar, setLoader, user, isDarkMode } = useContext(GeneralContext);
     const currentDate = Date.now();
     const navigate = useNavigate();
 
@@ -48,7 +48,7 @@ function UserOrders() {
     };
 
     const deleteOrder = async (orderId) => {
-        if (!window.confirm(`Are you sure you want to cancel this order?`)) {
+        if (!window.confirm(`Are you sure you want to remove this order?`)) {
             return;
         } else {
             try {
@@ -94,8 +94,8 @@ function UserOrders() {
                                 <div className="total-price">Total Price: {order.totalPrice}&#8362;</div>
                                 <div >Delivery Schedule: {order.deliveryDate}</div>
                                 <div className="created-time">Created Time: {order.createdTime}</div>
-                                {isOrderCancelable(order.deliveryDate) && <button className="cancel-btn" onClick={() => deleteOrder(order._id)}>Cancel</button>}
-
+                                {isOrderCancelable(order.deliveryDate) ? <button className="user-order-btn cancel-btn" onClick={() => deleteOrder(order._id)}>Cancel</button> : <button onClick={()=>deleteOrder(order._id)} className="user-order-btn deliverd-btn">Deliverd</button>
+                                }
                             </div>
                             {expandedOrder === order._id && (
                                 <>
@@ -103,7 +103,7 @@ function UserOrders() {
                                     <div className="items">
                                         {order.items.map((item, index) => (
                                             <div key={index} className="item">
-                                                <div className="item-name">Name: {item.productName}</div>
+                                                <div className="item-name">{item.productName}</div>
                                                 <div className="item-price">Price: {item.sale === false ? item.price : item.finalPrice}&#8362;/{item.unit}</div>
                                                 <div className="item-quantity">Quantity: {item.quantity}</div>
                                             </div>
@@ -115,11 +115,12 @@ function UserOrders() {
                     ))
                 ) : (
                     <div className="no-orders">
-                        <p>No orders yet... </p>
                         <div className="custom-icon"><PiMagnifyingGlassBold className="magnifying-glass" />
-                        <PiSmileySadDuotone className="sad-smiley" />
+                            <PiSmileySadDuotone className="sad-smiley" />
 
                         </div>
+                        <p>No orders yet... </p>
+
                         <button className='back-to-shop-btn' onClick={() => navigate('/')}>Start shopping now!</button>
                     </div>
 

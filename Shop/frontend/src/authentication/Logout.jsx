@@ -19,7 +19,7 @@ function Logout({clicked,handleClick}) {
 
     return (
         <>
-            <div onClick={logout} class="icon icon-collapse"><i class="fa fa-sign-in"></i></div>
+            <div onClick={logout} className="icon icon-collapse"><i className="fa fa-sign-in"></i></div>
         </>
     )
 }

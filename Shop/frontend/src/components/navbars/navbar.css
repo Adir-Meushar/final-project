@@ -14,22 +14,42 @@
     background: #000000;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
     padding: 20px 80px;
     box-shadow:0 5px 15px rgba(0, 0, 0, 0.06) ;
     position: relative;
 }
 .top-nav.dark{
     background: #000000; 
-    }
+}
+.top-nav.dark .logo{
+    filter: grayscale(50%);
 
-.logo{
-    width: 90px;
-    height: 90px;
+}
+.top-nav.dark .site-name{
+        color: white;
+    }
+.logo-box{
     position: absolute;
-    top: 15%;
-    left: 15px;
-    border-radius: 50px;
+    top: 5%;
+    left: 20px;
+}
+.logo{
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s ease;
+}
+.logo:hover{
+    transform: scale(1.08);
+
+}
+.site-name{
+    position: absolute;
+    bottom: -25px; 
+   color:rgb(7, 83, 0);
+    font-family: "Rancho", cursive;
+    font-weight: 400;
+    width: 110%;
+    font-size: 1.2rem;
 }
 
 .link-box{
@@ -143,8 +163,8 @@
        cursor: pointer; 
     }
     .logo{
-        width: 62px;
-        height: 62px;
+        width: 60px;
+        height: 60px;
     }
     .remove-search,.remove-cart{
         display: none;
@@ -156,6 +176,12 @@
       }
     .theme-btn{
         margin-right: 10%;
+         }
+    .site-name{
+      /* display: none; */
+      color: white;
+      font-size: 1.1rem;
+      bottom: -15px;
          }
 }
 

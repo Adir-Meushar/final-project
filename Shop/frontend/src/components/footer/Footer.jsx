@@ -30,7 +30,7 @@ function Footer() {
                         </Link>
                     </div>
                     <div className="footer-links-div">
-                        <h4>Fresh Clover</h4>
+                        <h4>Simply Fresh</h4>
                         <Link to={'/about'}>
                         <p>About</p>
                         </Link>
@@ -67,7 +67,7 @@ function Footer() {
                 <hr></hr>
                 <div className="footer-below">
                     <div className="footer-copyright">
-                        <p>© 2024 Fresh Clover. All rights reserved.</p>
+                        <p>© 2024 Simply Fresh. All rights reserved.</p>
                     </div>
                     <div className="footer-below-links">
                         <a href=""><div><p>Terms of conditions</p></div></a>

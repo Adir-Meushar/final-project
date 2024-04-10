@@ -12,7 +12,7 @@ async function main(){
 } 
 main().catch(err=>console.log(chalk.red(err)));
 
-const app=express(); 
+const app=express();  
 
 app.use(express.json());
 

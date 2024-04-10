@@ -76,11 +76,9 @@ function EditUser() {
             const data = await response.json();
 
             if (data.error) {
-                if (data.error.includes('Email already exists')) {
-                    snackbar('Email already exists');
-                } else {
+                snackbar(`${data.error.details}`)
                     setErrors(data.error);
-                }
+                
             }else{
               snackbar(`${data.firstName} details updated successfully!`)
             }

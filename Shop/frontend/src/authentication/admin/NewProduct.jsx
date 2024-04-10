@@ -4,7 +4,7 @@ import './productForm.css';
 import { productValidationSchema } from "./newProdcutValid";
 import { GeneralContext } from "../../App";
 
-function NewProduct() {
+function NewProduct({updateProducts}) {
     const initialFormData = {
         category: "Vegetables",
         title: "",
@@ -87,17 +87,20 @@ function NewProduct() {
 
             if (data.error) {
                 setErrors(data.error);
+                snackbar(`${data.error.details}`)
+                console.log(data.error);
             } else {
                 setModal(false);
+                updateProducts(data);
                 resetForm();
-                setTimeout(() => {
-                    setLoader(false)
-                  }, 1000)
-                  snackbar(`${data?.title} Was added to the product list!`)
+                snackbar(`${data?.title} Was added to the product list!`)
             }
         } catch (error) {
             console.error("Error submitting form:", error);
         }
+        setTimeout(() => {
+            setLoader(false)
+          }, 1000)
     };
     console.log(errors);
     return (

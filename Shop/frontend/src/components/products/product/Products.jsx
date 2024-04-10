@@ -3,10 +3,11 @@ import './card.css';
 import ProductCard from './ProductCard';
 import { GeneralContext } from '../../../App';
 import { useLocation } from 'react-router-dom';
-
+import { PiMagnifyingGlassBold } from "react-icons/pi";
+import { PiSmileySadDuotone } from "react-icons/pi";
 const Products = ({ items }) => {
   const [sortOption, setSortOption] = useState('low');
-  const { search, setSearch,isDarkMode } = useContext(GeneralContext)
+  const { search, setSearch, isDarkMode } = useContext(GeneralContext)
   const location = useLocation(); // Get current location
   useEffect(() => {
     // Clear query when route changes
@@ -20,7 +21,7 @@ const Products = ({ items }) => {
     return items && items.length ? items.slice().sort((a, b) => {
       const priceA = a.sale ? a.finalPrice : a.price;
       const priceB = b.sale ? b.finalPrice : b.price;
-  
+
       if (sortOption === 'low') {
         return priceA - priceB;
       } else if (sortOption === 'high') {
@@ -30,7 +31,7 @@ const Products = ({ items }) => {
       }
     }) : [];
   };
-  const filterd = search.length ? sortItems(items).filter(item=>item.title.toUpperCase().includes(search.toUpperCase())):sortItems(items);
+  const filterd = search.length ? sortItems(items).filter(item => item.title.toUpperCase().includes(search.toUpperCase())) : sortItems(items);
   console.log(filterd);
 
   return (
@@ -44,12 +45,19 @@ const Products = ({ items }) => {
       </div>
 
       <div className="grid-container">
-     
+
         {filterd.map((item) => (
           <ProductCard key={item._id} item={item} />
         ))}
-         {filterd.length === 0 &&<img className='img-no-product' src="https://cliffclimbers.in/assets/img/nodatafound.png" alt="no-product" />
- }
+        {filterd.length === 0 &&
+          <div className={`custom-icon-box ${isDarkMode ? 'dark' : ''}`}>
+            <p>No Products was found... </p>
+            <div className="custom-icon">
+              <PiMagnifyingGlassBold className="magnifying-glass" />
+              <PiSmileySadDuotone className="sad-smiley" />
+            </div>
+          </div>
+        }
       </div>
     </>
   );

@@ -7,53 +7,62 @@ const { productValidationSchema, editProductValidationSchema } = require('./prod
 module.exports=app=>{
     //Create Product||Permissions:Admin//
     app.post('/products', guard, async (req, res) => {
-    const userToken = getUserInfo(req, res);
-    if (userToken.isAdmin != RoleType.admin) {
-        return res.status(401).send({
-            error: {
-                code: 401,
-                message: 'Unauthorized',
-                details: 'User authentication failed.',
-            },
-        });
-    }
-    const { category, title, description, price, sale, nutritionalValue, img, unit } = req.body;
+        try {
+            const userToken = getUserInfo(req, res);
+            if (userToken.isAdmin != RoleType.admin) { 
+                return res.status(401).send({
+                    error: {
+                        code: 401,
+                        message: 'Unauthorized',
+                        details: 'User authentication failed.',
+                    },
+                });
+            }
+            const { category, title, description, price, sale, nutritionalValue, img, unit } = req.body;
+            
+            const { error, value } = productValidationSchema.validate(req.body, { abortEarly: false });
+    
+            if (error) {
+                return res.status(400).json({ error: error.details.map(detail => detail.message) });
+            }
+    
+            // Convert title to lowercase for case-insensitive comparison
+            const capitalizedTitle = capitalize(title);
 
-    const { error, value } = productValidationSchema.validate(req.body, { abortEarly: false });
-
-    if (error) {
-        return res.status(400).json({ error: error.details.map(detail => detail.message) });
-    }
-
-    try {
-        const existingProduct = await Product.findOne({ title }).get({ getters: true });
-
-        if (existingProduct) {
-            return res.status(400).json({ error: 'Product already exists' });
+        // Check if a product with the same title already exists (case-insensitive)
+        const existingProduct = await Product.findOne({ title: { $regex: new RegExp("^" + capitalizedTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "$", "i") } }).lean();
+    
+            if (existingProduct) {
+                return res.status(400).send({
+                    error: {
+                        code: 400,
+                        message: 'Already exists',
+                        details: 'A product with a similar title already exists.',
+                    },
+                });
+            }
+    
+            const product = new Product({
+                category,
+                title: capitalizedTitle,
+                description,
+                price,
+                sale,
+                nutritionalValue,
+                img,
+                unit
+            });
+    
+            const newProduct = await product.save();
+            res.status(200).send(newProduct);
+        } catch (error) {
+            res.status(500).send({ error: 'Error creating product' });
         }
-
-        const product = new Product({
-            category,
-            title,
-            description,
-            price,
-            sale,
-            nutritionalValue,
-            img,
-            unit
-        });
-
-        const newProduct = await product.save();
-        res.status(200).send(newProduct);
-    } catch (error) {
-        res.status(500).send({ error: 'Error creating product' });
-    }
-});
-
+    });
+    
 // Edit Product || Permissions: Admin//
 app.put('/products/:id', guard, async (req, res) => {
     try {
-        // Ensure user is an admin
         const userToken = getUserInfo(req, res);
         if (userToken.isAdmin !== RoleType.admin) {
             return res.status(401).send({
@@ -66,15 +75,22 @@ app.put('/products/:id', guard, async (req, res) => {
         }
 
         const productId = req.params.id;
-        const { category, title, description, price,finalPrice, sale, nutritionalValue, img, unit } = req.body;
+        let { category, title, description, price, finalPrice, sale, nutritionalValue, img, unit } = req.body;
 
-        // Check if a product with the same title already exists
-        const existingProductWithTitle = await Product.findOne({ title, _id: { $ne: productId } });
+        title = capitalize(title);
+        // Check if a product with the same title already exists (case-insensitive)
+        const existingProductWithTitle = await Product.findOne({ title: { $regex: new RegExp("^" + title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "$", "") }, _id: { $ne: productId } });
+
         if (existingProductWithTitle) {
-            return res.status(400).json({ error: 'Product with the same title already exists.' });
+            return res.status(400).send({
+                error: {
+                    code: 400,
+                    message: 'Already exists',
+                    details: 'A product with a similar title already exists.',
+                },
+            });
         }
 
-        // Find the product by ID
         const product = await Product.findById(productId);
         if (!product) {
             return res.status(404).send({
@@ -85,14 +101,10 @@ app.put('/products/:id', guard, async (req, res) => {
                 },
             });
         }
-
-        // Validate the request body
         const { error, value } = editProductValidationSchema.validate(req.body, { abortEarly: false });
         if (error) {
             return res.status(400).json({ error: error.details.map(detail => detail.message) });
         }
-
-        // Update product fields
         product.set({
             category,
             title,
@@ -104,8 +116,6 @@ app.put('/products/:id', guard, async (req, res) => {
             img,
             unit
         });
-
-        // Save the updated product
         const updatedProduct = await product.save();
         res.send(updatedProduct);
     } catch (error) {
@@ -113,6 +123,7 @@ app.put('/products/:id', guard, async (req, res) => {
         res.status(500).send({ error: 'Error editing product' });
     }
 });
+
 
     //Delete Product||Permissions:Admin//
     app.delete('/products/:id',guard,async(req,res)=>{
@@ -166,5 +177,7 @@ app.put('/products/:id', guard, async (req, res) => {
             res.status(500).send({ error: 'Error fetching product'});
         }
     })
-
+    function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
 };

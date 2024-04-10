@@ -92,6 +92,7 @@ function EditProduct({ modal, setModal, currentProduct,setProducts,products }) {
 
             if (data.error) {
                 setErrors(data.error);
+                snackbar(`${data.error.details}`)
             } else {
                 // Update the products array with the updated product
                 const updatedProducts = products.map(product => {
@@ -104,14 +105,18 @@ function EditProduct({ modal, setModal, currentProduct,setProducts,products }) {
                 setProducts(updatedProducts);
                 setModal(false);
                 resetForm(currentProduct);
-                setTimeout(() => {
-                    setLoader(false)
-                }, 1000)
+               
                 snackbar(`${data?.title} Was updated Successfully!`)
             }
         } catch (error) {
             console.error("Error submitting form:", error);
+         
+             
         }
+        setTimeout(() => {
+            setLoader(false)
+        }, 1000)
+           
     }
     console.log(isFormValid);
     console.log(products);

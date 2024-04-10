@@ -4,18 +4,18 @@ import { BsTrash3 } from "react-icons/bs";
 import Counter from '../counter/Counter';
 import { GeneralContext } from '../../App';
 import { Link } from 'react-router-dom';
-import { ImCart } from "react-icons/im";
-
+// import { ImCart } from "react-icons/im";
+import { PiMagnifyingGlassBold } from "react-icons/pi";
+import { PiSmileySadDuotone } from "react-icons/pi";
 function Cart() {
     const [cartModal, setCartModal] = useState(false);
-    const [totalPrice, setTotalPrice] = useState(0); // State to hold the total price
+    const [totalPrice, setTotalPrice] = useState(0);
     const cartImg = process.env.PUBLIC_URL + '/images/shopping-bag.png';
-    const { count, setCount, cartProducts, setCartProducts,isDarkMode } = useContext(GeneralContext);
-    const itemInCart=cartProducts.length;
+    const { count, setCount, cartProducts, setCartProducts, isDarkMode } = useContext(GeneralContext);
+    const itemInCart = cartProducts.length;
     useEffect(() => {
         const storedCart = localStorage.getItem('cart');
         if (storedCart) {
-            // If cart exists in local storage, parse it and set it to state
             setCartProducts(JSON.parse(storedCart));
         }
     }, []);
@@ -46,14 +46,14 @@ function Cart() {
     return (
         <>
             <div className='shopping-cart-box' onClick={() => { setCartModal(true); }}>
-                <div className='products-in-cart'>{itemInCart>0?itemInCart:''}</div>
-                <img 
+                <div className='products-in-cart'>{itemInCart > 0 ? itemInCart : ''}</div>
+                <img
                     className="cart-img" src={cartImg} alt="Cart" />
             </div>
 
             {cartModal && (
                 <div className="modal-frame" onClick={() => { setCartModal(false) }}>
-                    <div className={`cart ${isDarkMode ? 'dark' : ''}`}onClick={(ev) => ev.stopPropagation()}>
+                    <div className={`cart ${isDarkMode ? 'dark' : ''}`} onClick={(ev) => ev.stopPropagation()}>
                         <button className="close-btn" onClick={() => { setCartModal(false) }}>&times;</button>
                         <div className="cart-header">
                             <div>
@@ -72,14 +72,14 @@ function Cart() {
                                             <div className='cart-item-title'>{cartItem.title}</div>
                                             <div className='cart-item-sum'>
                                                 <span>{cartItem.quantity}-{cartItem.unit}</span>
-                                            <div>
-                                                {cartItem.sale ? ( 
-                                                    Number((cartItem.finalPrice * cartItem.quantity).toFixed(2))
-                                                ) : (
-                                                    Number((cartItem.price * cartItem.quantity).toFixed(2))
-                                                )}
-                                                &#8362;
-                                            </div>
+                                                <div>
+                                                    {cartItem.sale ? (
+                                                        Number((cartItem.finalPrice * cartItem.quantity).toFixed(2))
+                                                    ) : (
+                                                        Number((cartItem.price * cartItem.quantity).toFixed(2))
+                                                    )}
+                                                    &#8362;
+                                                </div>
                                             </div>
                                             <Counter count={cartItem.quantity} onChange={(value) => handleQuantityChange(index, value)} />
                                         </div>
@@ -91,8 +91,13 @@ function Cart() {
                                 </div>
                             </>
                         ) : <div className='empty-cart-msg'>
-                            <p >Your cart is empty...</p>
-                            <img className='empty-cart-img' src="https://i.pinimg.com/564x/b7/4e/21/b74e214472d9ee763f2613ae280f96d2.jpg" alt="sad-emo" />
+                            <div className="custom-icon">
+                                <PiMagnifyingGlassBold className="magnifying-glass" />
+                                <PiSmileySadDuotone className="sad-smiley" />
+                            </div>
+                            <p>No Products was found... </p>
+
+                            {/* <img className='empty-cart-img' src="https://i.pinimg.com/564x/b7/4e/21/b74e214472d9ee763f2613ae280f96d2.jpg" alt="sad-emo" /> */}
                         </div>}
                     </div>
                 </div>

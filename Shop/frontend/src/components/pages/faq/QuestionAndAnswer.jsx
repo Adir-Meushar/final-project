@@ -67,10 +67,11 @@ function QuestionAndAnswer() {
             <div className={`faq ${isDarkMode ? 'dark' : ''}`}>
             <Faq data={data} 
             styles={{
-                titleTextColor:isDarkMode ? 'mediumseagreen' : 'green',
-                rowTitleColor: "mediumseagreen",
-                rowContentColor: ' grey',
-                bgColor: isDarkMode ? 'black' : 'white'
+                titleTextColor:isDarkMode ? '#dcdcdc' : 'rgb(38, 64, 34)',
+                rowTitleColor: isDarkMode?'#8afaa1': "#258f54",
+                rowContentColor:isDarkMode?'#dcdcdc': ' rgb(38, 64, 34)',
+                rowContentPaddingBottom:'5px',
+                bgColor: 'transparent'
             }}
             />
             </div>
@@ -79,4 +80,4 @@ function QuestionAndAnswer() {
 }
 
 export default QuestionAndAnswer
-// rgb(38, 64, 34)
+

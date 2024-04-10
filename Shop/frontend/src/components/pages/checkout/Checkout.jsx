@@ -24,7 +24,13 @@ function Checkout() {
         });
         setTotalPrice(total);
     }, [cartProducts]);
-
+    useEffect(() => {
+        // Get tomorrow's date
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        setDeliveryDate(tomorrow);
+        handleValid({ target: { name: 'deliveryDate', value: tomorrow } });
+    }, []); // Empt
     const handleValid = (ev) => {
         const { name, value } = ev.target;
         const obj = { ...formData, [name]: value }

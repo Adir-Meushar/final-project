@@ -5,12 +5,8 @@
     margin: 2% auto;
     padding: 50px;
     text-align: left;    
-    background-color: white;
+    /* background-color: white; */
     border-radius: 8px;
-}
-
-.faq.dark{
-  background-color: black;
 }
 
 

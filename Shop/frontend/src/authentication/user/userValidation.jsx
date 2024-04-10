@@ -23,7 +23,7 @@ export const signupSchema = Joi.object({
     'any.required': 'Last name is required',
   }),
   phone: Joi.string().pattern(/^[0-9]{9,13}$/).required().messages({
-    'string.pattern.base': 'Phone must be numeric and between 9 to 13 digits',
+    'string.pattern.base': 'Requires numbers between 9 to 13 digits',
     'any.required': 'Phone number is required',
   }),
   email: Joi.string().email({ tlds: false }).required().messages({

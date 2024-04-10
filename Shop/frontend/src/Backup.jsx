@@ -1,75 +1,379 @@
-// const handleValid = (ev, item) => {
-//     const { name, value } = ev.target;
-
-
-//     const obj = name === 'nutritionalValue'
-//         ? { ...formData, [name]: { ...formData.nutritionalValue, [item]: +value } }
-//         : name === 'img' ? { ...formData, [name]: { ...formData.img, [item]: value } } : { ...formData, [name]: value }
-//     setFormData(obj)
-//     const validate = productValidationSchema.validate(obj, { abortEarly: false })
-//     const tempErrors = { ...errors }
-//     delete tempErrors[name];
-//     if (validate.error) {
-//         const item = validate.error.details.find((e) => e.context.key == name)
-//         if (item) {
-//             tempErrors[name] = item.message;
+// .user-account-header{
+//     font-size: 2.4rem;
+//     margin-top: 30px;
+//     color: rgb(38, 64, 34);
+//     text-shadow: 1px 1px 1px rgb(46, 82, 25);
+//   }
+//   .user-account-header.dark{
+//     color: #bcbcbc;
+//     text-shadow: 1px 1px 1px rgb(189, 193, 187);
+  
+//   }
+//   .user-account{
+//      position: relative;
+//       width: 90%;
+//       margin: 1% auto;  
+//       display: flex;
+//       justify-content: space-around;  
+//       color: rgb(38, 64, 34);
+//   }
+//   /* 
+//       width: 100vw;
+//       margin: 0% auto;
+//       background-color: aliceblue;
+//       padding: 30px; */
+  
+//   .user-account h2{
+//     padding: 10px;
+//   }
+//   .edit-modal{
+//       position: relative;
+//       width: 35%;
+//       height: 50%;
+//       min-width: 570px;
+//       min-height: 600px;
+//       padding: 20px;
+//       background-color: white;
+//       box-shadow: 0 0 6px black;
+//       border-radius: 5px;
+//       animation: slide-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+//   }
+//   .edit-modal.dark,   .user-orders.dark{
+//     color: #bcbcbc;
+//     background-color: #1b1b1b;
+//   }
+//   .edit-modal.dark input,.user-orders.dark .order{
+//     background-color: #9b9b9b33;
+//       color: #dcdcdc;
+//   }
+//   .edit-modal form{
+//       display: grid;
+//       grid-template-columns: repeat(2,1fr);
+//       gap: 20px;
+//       padding: 7px;
+//   }
+//   .edit-modal form label{
+//       text-align-last: left;
+//       height:4rem ;
+//   }
+//   .edit-modal form input{
+//       display: block;
+//       border: 1px solid black;
+//       padding: 8px 12px;
+//       border-radius: 3px;
+//       margin-top: 3px;
+//       width: 100%;
+//       box-sizing: border-box;
+//   }
+//   .user-orders {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       text-align-last: left;
+//       cursor: pointer;
+//       background-color: white;    
+//       box-shadow: 0 0 6px black;
+//       border-radius: 5px;
+//       padding: 10px;
+//     }
+  
+//     .order {
+//       border: 1px solid #ccc;
+//       background-color: #fff;
+//       border-radius: 5px;
+//       padding: 15px;
+//       margin: 10px;
+//       width: 30vw;
+//       min-width: 530px;
+//       overflow: hidden;
+//       transition: max-height 0.3s ease-in-out; 
+//       max-height: 105px;
+//     }
+    
+//     .order.expanded {
+//       max-height: 500px;
+//       overflow-y: auto;
+//     }
+    
+//     .order-info {
+//       margin-bottom: 10px;
+      
+//     }
+    
+//     .order-number {
+//       font-weight: bold;
+//     }
+    
+//     .items {
+//       margin-top: 10px;
+//       text-align-last: left;
+//       font-size: .75rem;
+//       display: grid;
+//       grid-template-columns: repeat(3, 1fr);
+//       overflow: hidden;
+//     }
+    
+//     .user-orders .item {
+//       border-bottom: 1px solid #ccc;
+//       padding: 5px 0;
+//     }
+//      .cancel-btn{
+//       font-weight: bold;
+//       margin-top: 10px;
+//       background-color: rgb(196, 5, 5);
+//       color: white;
+//       padding: 7px 12px;
+//       border: none;
+//       border-radius: 5px;
+//       box-shadow: 1px 1px 1px rgb(156, 139, 139);
+//       transition: all .4s;
+//      }
+//      .cancel-btn:hover{
+//       background-color: rgb(212, 55, 55);
+//      }
+//     .no-orders {
+//       min-width: 550px;
+//       padding: 20px;
+//       margin-top: 10%;
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       gap: 20px;
+//       font-weight: bold;
+//     }
+//     .custom-icon{
+//       position: relative;
+//     }
+//     .magnifying-glass{
+//       font-size: 4rem;
+//     }
+//     .sad-smiley{
+//       position: absolute;
+//       font-size: 2.9rem;
+//       left:5px ;
+//       top: 5px;
+//     }
+//     @media screen and (max-width:1350px) {
+//       .user-account{
+//         flex-direction: column;
+//         align-items: center;
+//         gap: 50px;
+//       }
+//       .user-orders{
+//        position: unset;
+//        }
+//        .no-orders{
+//         margin-top: unset;
+//        }
+//     }
+  
+  
+//     @media screen and (max-width:600px) {
+//       .edit-modal{
+//         width: 92vw;
+//         min-width: 350px;
+//       }
+//       .edit-modal form{
+//         display: flex;
+//         flex-direction: column;
+//         gap: 5px;
+//         max-height: 90vh;
+//        }
+       
+//         .order , .no-orders{
+//         width: 83vw;
+//         min-width:300px;
+//         }
+//         .items{
+//          grid-template-columns: repeat(2,1fr);
+//         }
+//         @media screen and (max-width:460px) {
+//           .order{
+//             max-height: 120px;
+//           }
+//           .order-number{
+//             display: flex;
+//             flex-direction: column;
+//           }
 //         }
 //     }
-//     setIsFormValid(!validate.error)
-//     setErrors(tempErrors)
-// }
+import React, { useContext, useEffect, useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import './checkout.css'
+import { useNavigate } from 'react-router-dom';
+import { checkoutSchema } from './checkoutValid';
+import { GeneralContext } from '../../../App';
+import Popup from '../../popup/Popup';
+function Checkout() {
+    const { cartProducts, setCartProducts, snackbar, user,isDarkMode } = useContext(GeneralContext);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [cardExpiredData, setCardExpiredData] = useState();
+    const [deliveryDate, setDeliveryDate] = useState(Date.now());
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [errors, setErrors] = useState({});
+    const [formData, setFormData] = useState({})
+    const [popup, setPopup] = useState(false);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        let total = 0;
+        cartProducts.forEach(item => {
+            total += item.sale ? item.finalPrice * item.quantity : item.price * item.quantity;
+        });
+        setTotalPrice(total);
+    }, [cartProducts]);
+    useEffect(() => {
+        // Get tomorrow's date
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        setDeliveryDate(tomorrow);
+        handleValid({ target: { name: 'deliveryDate', value: tomorrow } });
+    }, []); // Empt
+    const handleValid = (ev) => {
+        const { name, value } = ev.target;
+        const obj = { ...formData, [name]: value }
+        setFormData(obj)
+        const validate = checkoutSchema.validate(obj, { abortEarly: false })
+        const tempErrors = { ...errors }
+        delete tempErrors[name];
+        if (validate.error) {
+            const item = validate.error.details.find((e) => e.context.key == name)
+            if (item) {
+                tempErrors[name] = item.message;
+            }
+        }
+        setIsFormValid(!validate.error)
+        setErrors(tempErrors)
+    }
+    const createOrder = async (ev) => {
+        ev.preventDefault();
+        try {
+            const response = await fetch('http://localhost:4000/orders/create', {
+                credentials: "include",
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": localStorage.token,
+                },
+                body: JSON.stringify({
+                    cart: cartProducts,
+                    deliveryDate: deliveryDate // Include deliveryDate in the request body
+                }),
+            });
+            const data = await response.json();
+            if (data.error) {
+                console.log(data.error);
+            } else {
+                console.log("Order created successfully:", data);
+                setCartProducts([]);
+                localStorage.removeItem('cart');
+                setPopup(true)
+            }
+        } catch (error) {
+            console.error("Error creating order:", error);
+        }
+    };
+ 
+    return (
+        <>
+            <form onSubmit={createOrder} className={`payment-form ${isDarkMode ? 'dark' : ''}`}>
+                <h1>Checkout</h1>
+                <div className='order-details'>
+                    <h3>Order details</h3>
+                    <div className='cart-details'>
+                        <div className='cart-summary'><span>Items:{cartProducts.length}</span>
+                            <span>Total:{totalPrice.toFixed(2)}&#8362;</span>
+                        </div>
+                        <div className='cart-items'>
+                            {cartProducts.map(p => (
+                                <div className='item' key={p.id}>
+                                    {p.quantity} {p.unit}-{p.title}: {p.sale === true ? Number((p.finalPrice * p.quantity).toFixed(2)) : Number((p.price * p.quantity).toFixed(2))}&#8362;
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                <div className='delivry-box'>
+                    <label>
+                        Choose Date For Delivery:
+                        <DatePicker
+                            name="deliveryDate"
+                            selected={deliveryDate}
+                            onChange={(date) => {
+                                setDeliveryDate(date);
+                                handleValid({ target: { name: 'deliveryDate', value: date } });
+                            }}
+                            dateFormat="dd/MM/yyyy"
+                            className='card-fields'
+                        />
+                        {errors && errors.deliveryDate && (
+                            <div className="error-message">{errors.deliveryDate}</div>
+                        )}
+                    </label>
+                    <p>**Your delivery will be sent to the address currently saved in your account. Feel free to update it in the account settings if needed </p>
+                </div>
 
-// import Joi from "joi";
+                <div className='card-details'>
+                    <h3>Card-details</h3>
+                    <label>
+                        Card Holder:
+                        <input
+                            autoComplete='off'
+                            name="cardHolder"
+                            placeholder='Card Holder'
+                            type="text"
+                            className='card-fields'
+                            onChange={handleValid}
+                        />
+                        {errors && errors.cardHolder && (
+                            <div className="error-message">{errors.cardHolder}</div>
+                        )}
+                    </label>
+                    <label>
+                        Card number:
+                        <input name="cardNumber" placeholder='Card Number' type="number"
+                            className='card-fields' onChange={handleValid} />
+                        {errors && errors.cardNumber && (
+                            <div className="error-message">{errors.cardNumber}</div>
+                        )}
+                    </label>
+                    <label>
+                        CVV:
+                        <input name="cvv" placeholder='CVV' type="number"
+                            className='card-fields' onChange={handleValid} />
+                        {errors && errors.cvv && (
+                            <div className="error-message">{errors.cvv}</div>
+                        )}
+                    </label>
+                    <label>
+                        Expiration Date:
+                        <DatePicker
+                            name="expirationDate"
+                            selected={cardExpiredData}
+                            onChange={(date) => {
+                                setCardExpiredData(date);
+                                handleValid({ target: { name: 'expirationDate', value: date } });
+                            }}
+                            dateFormat="dd/MM/yyyy"
+                            placeholderText="Select expiration date"
+                            className='card-fields'
+                            autoComplete='off'
+                        />
+                        {errors && errors.expirationDate && (
+                            <div className="error-message">{errors.expirationDate}</div>
+                        )}
+                    </label>
+                </div>
+                <button className='payment-btn' disabled={!isFormValid || totalPrice < 50}>Order & Pay</button>
+            </form>
+            {totalPrice <= 0 && popup === false ? <div><button className='back-to-shop-btn' onClick={() => navigate('/')}>Back To Shopping</button></div> : ''}
+            {popup && (
+                <Popup />
+            )}
+        </>
+    );
+}
 
-// const futureDate = Joi.extend((joi) => ({
-//   type: "futureDate",
-//   base: joi.date(),
-//   messages: {
-//     "futureDate.base": "Date cannot be a past date.",
-//     "futureDate.tooFar": "Date cannot be more than two months in the future.",
-//   },
-//   validate(value, helpers) {
-//     const currentDate = new Date();
-//     const minDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1); // Date after today
-//     const maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, currentDate.getDate()); // Two months from now
+export default Checkout;
 
-//     if (value < minDate) {
-//       return { value, errors: helpers.error("futureDate.base") };
-//     }
-//     if (value > maxDate) {
-//       return { value, errors: helpers.error("futureDate.tooFar") };
-//     }
-//     return value;
-//   },
-// }));
-
-// export const checkoutSchema = Joi.object({
-//   cardHolder: Joi.string().required().pattern(/^[A-Za-z]+$/)
-//     .min(2).max(20).messages({
-//       'any.required': 'Card owner name is required.',
-//       'string.empty': 'name must not be empty.',
-//       'string.min': 'Owner Name Min 2 Letters.',
-//       'string.pattern.base': 'Name must contain only letters.',
-//     }),
-//   cardNumber: Joi.string().creditCard().length(16).required().messages({
-//     'any.required': 'Card number is required.',
-//     'string.creditCard': 'Invalid credit card number format.',
-//     'string.length': 'Credit card number must be exactly 16 digits.',
-//   }),
-//   cvv: Joi.string().length(3).pattern(/^[0-9]+$/).required().messages({
-//     'any.required': 'CVV is required.',
-//     'string.length': 'CVV must be exactly 3 digits.',
-//     'string.pattern.base': 'CVV must contain only numeric digits.',
-//   }),
-//   expirationDate: futureDate.futureDate().required().messages({
-//     'any.required': 'Expiration date is required.',
-//     'futureDate.base': 'Expiration date cannot be a past date.',
-//     'futureDate.tooFar': 'Expiration date cannot be more than two months in the future.',
-//   }),
-//   deliveryDate: futureDate.futureDate().required().messages({
-//     'any.required': 'Delivery date is required.',
-//     'futureDate.base': 'Delivery date cannot be a past date.',
-//     'futureDate.tooFar': 'Delivery date cannot be more than two months in the future.',
-//   }),
-// });

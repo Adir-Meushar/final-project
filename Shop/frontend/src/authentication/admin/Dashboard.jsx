@@ -7,7 +7,7 @@ import { GeneralContext } from "../../App";
 
 function Dashboard() {
   const [display, setDisplay] = useState('prodcuts')
-  const {isDarkMode} = useContext(GeneralContext);
+  const {isDarkMode,setSearch} = useContext(GeneralContext);
 
   return (
     <>
@@ -15,9 +15,9 @@ function Dashboard() {
       <div className="dashboard-header">
         <h1>Dashboard</h1>
       <div className="display">
-        <button className="dashboard-btn slide" onClick={() => setDisplay('users')} > Users </button>
+      <button className="dashboard-btn slide" onClick={() => {setDisplay('users'); setSearch('');}} > Users </button>
         <button className="dashboard-btn slide" onClick={() => setDisplay('prodcuts')}>Prodcuts </button>
-        <button className="dashboard-btn slide" onClick={() => setDisplay('admin-data')} >Summary </button>
+        <button className="dashboard-btn slide" onClick={() => {setDisplay('admin-data'); setSearch('');}} > Summery </button>
       </div>
 
       </div>

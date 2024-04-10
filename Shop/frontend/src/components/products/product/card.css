@@ -64,7 +64,31 @@
   margin: 0;
   font-size: 1rem;
 }
+.custom-icon-box {
+  grid-column:span 5 ;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 150px 0;
+  color: rgb(38, 64, 34);
 
+}
+.custom-icon-box p{
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.custom-icon-box.dark{
+  color: #bcbcbc;
+
+}
+.custom-icon-box .magnifying-glass{
+  font-size: 12rem;
+}
+.custom-icon-box .sad-smiley{
+  position: absolute;
+  font-size: 10rem;
+  left:55px ;
+  top: 5px;
+}
 @media screen and (max-width:1350px) {
   .grid-container{
     grid-template-columns: repeat(4,1fr);

@@ -56,7 +56,7 @@
           },
           {
             "category": "Vegetables",
-            "title": "Mushrooms (Shiitake)",
+            "title": "Mushrooms",
             "description": 
             "Mushrooms are celebrated for their versatility and rich flavor. Whether sautéed, grilled, or added to soups, these fungi bring depth and earthiness to a wide range of dishes.",
             "price": 8.90,
@@ -1307,7 +1307,7 @@
               "protein": 5.5
             },
             "img": {
-              "url": "https://i.pinimg.com/564x/13/d0/b4/13d0b445814042ab89517d2d5cd35807.jpg",
+              "url": "https://i.pinimg.com/236x/13/e8/35/13e835ec53489589b30b4d982350c372.jpg",
               "alt": "Chocolate Chip Cookie"
             }
           },

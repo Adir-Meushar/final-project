@@ -68,7 +68,13 @@ module.exports=app=>{
                // Check if the email already exists for a different user
            const existingUser = await User.findOne({ email: value.email, _id: { $ne: req.params.id } });
            if (existingUser) {
-               return res.status(400).send('Email is already in use by another user.');
+            return res.status(400).send({
+              error: {
+                  code: 400,
+                  message: 'Alredy exist',
+                  details: 'User with the same Email Alredy exist.',
+              },
+          });
              }
              const user=await User.findById(req.params.id);
              if (!user) {

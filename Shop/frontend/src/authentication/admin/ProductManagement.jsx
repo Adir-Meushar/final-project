@@ -1,15 +1,18 @@
-import { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import { AiFillDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
 import EditProduct from './EditProduct';
 import { GeneralContext } from '../../App';
 import NewProduct from './NewProduct';
+import SearchBar from '../../components/searchbar/SearchBar';
 
 function ProductsManagement() {
     const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
     const [modal, setModal] = useState(false);
     const [currentProduct, setCurrentProduct] = useState({});
     const { snackbar, setLoader } = useContext(GeneralContext);
+    const { search } = useContext(GeneralContext); // Importing search state
 
     const fetchProducts = async () => {
         try {
@@ -22,8 +25,10 @@ function ProductsManagement() {
                 },
             });
             const data = await response.json();
-            setProducts(data);
-          
+            const sortedProducts = data.sort((a, b) => a.category.localeCompare(b.category));
+            setProducts(sortedProducts);
+            setFilteredProducts(sortedProducts); // Initialize filteredProducts with all products
+
         } catch (error) {
             console.error("Error fetching users:", error);
         }
@@ -43,9 +48,10 @@ function ProductsManagement() {
                         "Authorization": localStorage.token,
                     },
                 });
-                const data=await response.json();
+                const data = await response.json();
                 console.log(data);
                 setProducts(products.filter((product) => product._id !== productId));
+                setFilteredProducts(filteredProducts.filter((product) => product._id !== productId)); // Update filteredProducts as well
                 snackbar(data.message);
 
             } catch (error) {
@@ -62,17 +68,32 @@ function ProductsManagement() {
         setModal(true);
     };
 
+    // Filter products based on search query
+    useEffect(() => {
+        if (search === "") {
+            setFilteredProducts(products); // If search is empty, show all products
+        } else {
+            const filtered = products.filter(product =>
+                product.title.toLowerCase().includes(search.toLowerCase())
+            );
+            setFilteredProducts(filtered);
+        }
+    }, [search, products]);
+
     useEffect(() => {
         fetchProducts();
     }, []);
-
+    const updateProducts = (newProduct) => {
+        setProducts([...products, newProduct]);
+        setFilteredProducts([...filteredProducts, newProduct]);
+    };
     return (
-    <>
+        <>
             <div className='page-header'>
                 <h1>Product Management</h1>
                 <p>Here you can find information about the products.</p>
                 <p>Total Products:{products.length}</p>
-                <NewProduct />
+                <NewProduct  updateProducts={updateProducts}/> <SearchBar />
             </div>
             <table className='product-table'>
                 <thead>
@@ -80,24 +101,24 @@ function ProductsManagement() {
                         <th>X</th>
                         <th>Category</th>
                         <th>Title</th>
+                        <th>Image</th>
                         <th>Price</th>
                         <th>Unit</th>
                         <th>Sale</th>
-                        <th>Image</th>
                         <th>Edit Product</th>
                         <th>Delete Product</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {products?.map((product, index) => (
+                    {filteredProducts?.map((product, index) => (
                         <tr key={index}>
                             <td>{index + 1}</td>
                             <td>{product.category}</td>
                             <td>{product.title}</td>
-                            <td>{product.sale?product.finalPrice:product.price}&#8362;</td>
+                            <td><img className='table-img' src={product.img.url} alt={product.img.alt} /></td>
+                            <td>{product.sale ? product.finalPrice : product.price}&#8362;</td>
                             <td>{product.unit}</td>
                             <td>{product.sale ? 'True' : 'False'}</td>
-                            <td><img className='table-img' src={product.img.url} alt={product.img.alt} /></td>
                             <td><FaRegEdit className="fa-edit" onClick={() => openEditModal(product)} /></td>
                             <td><AiFillDelete className="ai-delete" onClick={() => deleteProduct(product._id)} /></td>
                         </tr>
@@ -105,7 +126,7 @@ function ProductsManagement() {
                 </tbody>
             </table>
             <EditProduct setProducts={setProducts} products={products} modal={modal} setModal={setModal} currentProduct={currentProduct} />
-            </>
+        </>
     )
 }
 
