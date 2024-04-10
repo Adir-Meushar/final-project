@@ -19,12 +19,12 @@ Users can register for an account securely using their email and password. Authe
 - **Role-Based Access Control (RBAC) :**
   Admin privileges enable additional functionalities such as updating user type,viewing user data and delete.
   
-#### Product Management:
+-#### Product Management:
 - **Admin Dashboard:**
  Administrators have access to a dedicated dashboard where they can perform CRUD operations on products.
  This includes adding new products, updating existing ones, deleting items, and viewing the product catalog.
 
-#### Error Handling:
+### Error Handling:
 - **Custom 404 Error Page :**
  A custom 404 error page is implemented to enhance user experience when accessing undefined routes.
 
