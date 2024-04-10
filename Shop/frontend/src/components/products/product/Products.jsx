@@ -1,23 +1,28 @@
 import { useContext, useEffect, useState } from 'react';
-import './card.css';
+import './product-styles/card.css';
+import './product-styles/card-responsive.css';
 import ProductCard from './ProductCard';
 import { GeneralContext } from '../../../App';
 import { useLocation } from 'react-router-dom';
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { PiSmileySadDuotone } from "react-icons/pi";
+
 const Products = ({ items }) => {
   const [sortOption, setSortOption] = useState('low');
   const { search, setSearch, isDarkMode } = useContext(GeneralContext)
-  const location = useLocation(); // Get current location
+
+  const location = useLocation(); 
+
   useEffect(() => {
-    // Clear query when route changes
     setSearch('');
-  }, [location.pathname]); // Re-run effect when pathname changes
+  }, [location.pathname]); 
+
   const handleSortChange = (ev) => {
     setSortOption(ev.target.value);
   };
 
   const sortItems = (items) => {
+    
     return items && items.length ? items.slice().sort((a, b) => {
       const priceA = a.sale ? a.finalPrice : a.price;
       const priceB = b.sale ? b.finalPrice : b.price;
@@ -31,8 +36,8 @@ const Products = ({ items }) => {
       }
     }) : [];
   };
+
   const filterd = search.length ? sortItems(items).filter(item => item.title.toUpperCase().includes(search.toUpperCase())) : sortItems(items);
-  console.log(filterd);
 
   return (
     <>
@@ -45,7 +50,6 @@ const Products = ({ items }) => {
       </div>
 
       <div className="grid-container">
-
         {filterd.map((item) => (
           <ProductCard key={item._id} item={item} />
         ))}

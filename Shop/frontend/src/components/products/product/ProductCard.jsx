@@ -16,12 +16,11 @@ function ProductCard({ item }) {
         const foundItem = cartProducts[foundItemIndex];
         if (foundItem.quantity > 0) {
           setCount(foundItem.quantity);
-          console.log(foundItem);
         } else {
           // Remove item from cartProducts
-          const newCartProducts = [...cartProducts]; // Create a copy of the cartProducts array
-          newCartProducts.splice(foundItemIndex, 1); // Remove the item at foundItemIndex
-          setCartProducts(newCartProducts); // Update cartProducts state
+          const newCartProducts = [...cartProducts]; 
+          newCartProducts.splice(foundItemIndex, 1); 
+          setCartProducts(newCartProducts); 
         }
       }
     }
@@ -57,7 +56,7 @@ function ProductCard({ item }) {
     }
   };
 
-  const updateCart = (productId, quantity, price,finalPrice, title, imgUrl, unit,sale) => {
+  const updateCart = (productId, quantity, price, finalPrice, title, imgUrl, unit, sale) => {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartItemIndex = cart.findIndex(item => item.id === productId);
     if (cartItemIndex !== -1) {
@@ -67,11 +66,11 @@ function ProductCard({ item }) {
         id: productId,
         quantity: quantity,
         price: price,
-        finalPrice:finalPrice,
+        finalPrice: finalPrice,
         title: title,
         img: imgUrl,
         unit: unit,
-        sale:sale
+        sale: sale
       });
     }
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -79,18 +78,12 @@ function ProductCard({ item }) {
   };
 
   return (
-    <div
+    <div className="card"
       onClick={handleCardClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="card">
+    >
       <img src={item.img.url} alt={item.title} className="card-image" />
-      {/* <div className="counter-box">
-        {user ? hovered && (
-          <Counter count={count} onChange={handleCountChange} />
-        ) : ''}
-      </div> */}
-
       <div className={`card-content ${isDarkMode ? 'dark' : ''}`}>
         <h3 className="card-title">{item.title}</h3>
         <div className="card-price">

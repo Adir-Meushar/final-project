@@ -65,7 +65,6 @@ module.exports=app=>{
             if (error) {
                 return res.status(400).json({ error: error.details.map(detail => detail.message) });
               }
-               // Check if the email already exists for a different user
            const existingUser = await User.findOne({ email: value.email, _id: { $ne: req.params.id } });
            if (existingUser) {
             return res.status(400).send({

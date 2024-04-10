@@ -1,11 +1,12 @@
-import './error-page.css'
-import './error-page-button.css'
+import './error-page-styles/error-page.css'
+import './error-page-styles/error-page-button.css'
 import { Link } from 'react-router-dom'
 import { GeneralContext } from '../../../App'
 import { useContext } from 'react'
 
 function ErrorPage() {
-    const{setLoader,isDarkMode}=useContext(GeneralContext) 
+
+    const{isDarkMode}=useContext(GeneralContext) 
  
     return (
         <>

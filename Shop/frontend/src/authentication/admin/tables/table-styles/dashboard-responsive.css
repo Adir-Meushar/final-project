@@ -1,0 +1,43 @@
+@media screen and (max-width:940px){
+    .users-table th ,
+    .product-table th{
+      padding: 10px;
+      font-size: .8rem;
+    }
+    .users-table td ,
+    .product-table td{
+      padding: 6px;
+      font-size: .8rem;
+    }
+    .table-img{
+      width: 35px;
+    }
+    .users-table .fa-edit,
+    .product-table .fa-edit,
+    .users-table .ai-delete,
+    .product-table .ai-delete {
+      font-size: .8rem;
+    }
+  }
+
+  @media screen and (max-width:630px){
+    .users-table th ,
+    .product-table th{
+      padding: 6px;
+      font-size: .6rem;
+    }
+    .users-table td ,
+    .product-table td{
+      padding: 4px;
+      font-size: .6rem;
+    }
+    .table-img{
+      width: 25px;
+    }
+    .users-table .fa-edit,
+    .product-table .fa-edit,
+    .users-table .ai-delete,
+    .product-table .ai-delete {
+      font-size: .6rem;
+    }
+  }

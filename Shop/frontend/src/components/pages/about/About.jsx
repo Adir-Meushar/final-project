@@ -1,18 +1,24 @@
 import React, { useContext } from 'react';
-import './about.css'; // Import the CSS file
+import './about.css'; 
 import { GeneralContext } from '../../../App';
 
 function About() {
-    const { isDarkMode} = useContext(GeneralContext)
+    const { isDarkMode,isSmallScreen} = useContext(GeneralContext)
 
     return (
         <>
-        
+          <div className="category-container">
+                <img src={isSmallScreen?
+                    'https://noyhasade.b-cdn.net/wp-content/uploads/2024/01/outlet_mob_background.jpeg':
+                    "https://noyhasade.b-cdn.net/wp-content/uploads/2022/12/Des_categroey_outlet.jpg"} 
+                    alt="dishes-img" />
+                <div className="cover-title">
+                    <h1>About</h1>
+                </div>
+            </div>
         <div className={`about-page-container ${isDarkMode ? 'dark' : ''}`}>
         <img className='fig' src="https://noyhasade.co.il/_nuxt/img/fig33.322b8e9.png" alt="fig" />
-
         <div className="about-container">
-            <h1 className="about-title">About</h1>
             <div className="about-content">
                 <p>
                     Welcome to Simply Fresh!
@@ -29,18 +35,14 @@ function About() {
                 <li>Community Focus: We're not just a grocery store; we're a part of your community. We strive to build meaningful relationships with our customers and contribute positively to the communities we serve.</li>
                 <li>Whether you're stocking up on essentials, planning your weekly meals, or seeking inspiration for your next culinary adventure, Simply Fresh is here to make grocery shopping a breeze.</li>
             </ul>
-
-            <p className="about-thankyou">Thank you for choosing us to be your trusted source for basic groceries. We look forward to serving you and becoming your go-to destination for all your grocery needs.</p>
-
+            <p className="about-thankyou">
+                Thank you for choosing us to be your trusted source for basic groceries. We look forward to serving you and becoming your go-to destination for all your grocery needs.
+            </p>
             <p className="about-signature">Adir Meushar<br />Founder,Simply Fresh</p>
         </div>
         <img className='pineapple' src="https://noyhasade.co.il/_nuxt/img/ananas.580c50f.png" alt="pineapple" />
-
         </div>
-       
-
-        </>
-       
+        </>   
     );
 }
 

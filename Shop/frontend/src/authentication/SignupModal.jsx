@@ -1,7 +1,9 @@
 import { useContext, useState } from "react"
-import './modal.css'
+import './modal-styles/modal.css'
+import './modal-styles/login-signup.css'
 import { signupSchema } from "./user/userValidation";
 import { GeneralContext } from "../App";
+
 function Signup() {
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
@@ -15,7 +17,8 @@ function Signup() {
     street: "",
     houseNumber: ""
   });
-  const { snackbar, setUser, setLoader,signupModal,setSignModal,setLoginModal,isDarkMode} = useContext(GeneralContext);
+  
+  const { snackbar, setLoader, signupModal, setSignModal, setLoginModal, isDarkMode } = useContext(GeneralContext);
 
   const handleValid = (ev) => {
     const { name, value } = ev.target;
@@ -33,6 +36,7 @@ function Signup() {
     setIsFormValid(!validate.error)
     setErrors(tempErrors)
   }
+
   const handleSignup = async (ev) => {
     ev.preventDefault();
     try {
@@ -81,10 +85,13 @@ function Signup() {
     { name: "street", label: "Street", type: "text" },
     { name: "houseNumber", label: "House Number", type: "text" },
   ];
+
   const cleanForm = () => {
     setSignModal(false);
-    setFormData({  firstName: "", lastName: "", phone: "", email: "", password: "",
-    city: "", street: "", houseNumber: "" });
+    setFormData({
+      firstName: "", lastName: "", phone: "", email: "", password: "",
+      city: "", street: "", houseNumber: ""
+    });
     setErrors([]);
     setIsFormValid(false);
   }
@@ -94,7 +101,7 @@ function Signup() {
       <button className="register-btn up" onClick={() => setSignModal(true)}>Signup</button>
       {signupModal && (
         <div className="modal-frame" onClick={cleanForm}>
-          <div className={`signup-modal modal ${isDarkMode ? 'dark' : ''}`} onClick={(ev) =>  ev.stopPropagation()}>
+          <div className={`signup-modal modal ${isDarkMode ? 'dark' : ''}`} onClick={(ev) => ev.stopPropagation()}>
             <header>
               <button className="close-btn" onClick={cleanForm}>X</button>
               <h2>Signup</h2>
@@ -116,7 +123,9 @@ function Signup() {
                 </label>
               ))}
               <button className="signup-btn" disabled={!isFormValid}>Sign</button>
-              <p className="login-link" onClick={() => { setLoginModal(true); setSignModal(false); }}>Already signed up? Log in</p>
+              <p className="login-link" onClick={() => { setLoginModal(true); setSignModal(false); }}>
+                Already signed up? Log in
+              </p>
             </form>
           </div>
         </div>
@@ -125,4 +134,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default Signup;

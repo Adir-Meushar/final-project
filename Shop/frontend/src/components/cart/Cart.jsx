@@ -1,24 +1,27 @@
 import { useContext, useEffect, useState } from 'react';
-import './cart.css';
+import './cart-styles/cart-style-1.css';
+import './cart-styles/cart-style-2.css';
 import { BsTrash3 } from "react-icons/bs";
 import Counter from '../counter/Counter';
 import { GeneralContext } from '../../App';
 import { Link } from 'react-router-dom';
-// import { ImCart } from "react-icons/im";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { PiSmileySadDuotone } from "react-icons/pi";
+
 function Cart() {
     const [cartModal, setCartModal] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
     const cartImg = process.env.PUBLIC_URL + '/images/shopping-bag.png';
     const { count, setCount, cartProducts, setCartProducts, isDarkMode } = useContext(GeneralContext);
     const itemInCart = cartProducts.length;
+
     useEffect(() => {
         const storedCart = localStorage.getItem('cart');
         if (storedCart) {
             setCartProducts(JSON.parse(storedCart));
         }
     }, []);
+
     useEffect(() => {
         let total = 0;
         cartProducts.forEach(item => {
@@ -32,12 +35,12 @@ function Cart() {
         const updatedCart = [...cartProducts];
         updatedCart[index].quantity += value;
         if (updatedCart[index].quantity <= 0) {
-            // If quantity becomes zero or negative, remove the item from the cart
             updatedCart.splice(index, 1);
         }
         setCartProducts(updatedCart);
         localStorage.setItem('cart', JSON.stringify(updatedCart));
     };
+
     const clearCart = () => {
         localStorage.removeItem('cart')
         setCartProducts([])
@@ -47,8 +50,7 @@ function Cart() {
         <>
             <div className='shopping-cart-box' onClick={() => { setCartModal(true); }}>
                 <div className='products-in-cart'>{itemInCart > 0 ? itemInCart : ''}</div>
-                <img
-                    className="cart-img" src={cartImg} alt="Cart" />
+                <img className="cart-img" src={cartImg} alt="Cart" />     
             </div>
 
             {cartModal && (
@@ -63,6 +65,7 @@ function Cart() {
                             </div>
                             <BsTrash3 onClick={clearCart} className="cart-trash" />
                         </div>
+
                         {cartProducts.length > 0 ? (
                             <>
                                 <div className="cart-products">
@@ -85,19 +88,22 @@ function Cart() {
                                         </div>
                                     ))}
                                 </div>
-                                <p className={totalPrice > 50 ? 'remove-message' : 'minimum-message'}>*Please note minimum cost for delivery is 50&#8362;*</p>
+                                <p className={totalPrice > 50 ? 'remove-message' : 'minimum-message'}>
+                                    *Please note minimum cost for delivery is 50&#8362;*
+                                </p>
                                 <div className={'cart-payout ' + (cartProducts.length > 6 ? "cart-payout-sticky" : "cart-payout-fixed")}>
-                                    <Link to={'/checkout'}><button disabled={totalPrice < 50} onClick={() => setCartModal(false)} >Go To Checkout</button></Link>
+                                    <Link to={'/checkout'}>
+                                    <button disabled={totalPrice < 50} onClick={() => setCartModal(false)} >Go To Checkout</button>
+                                    </Link>
                                 </div>
                             </>
-                        ) : <div className='empty-cart-msg'>
+                        ) :
+                         <div className='empty-cart-msg'>
                             <div className="custom-icon">
                                 <PiMagnifyingGlassBold className="magnifying-glass" />
                                 <PiSmileySadDuotone className="sad-smiley" />
                             </div>
                             <p>No Products was found... </p>
-
-                            {/* <img className='empty-cart-img' src="https://i.pinimg.com/564x/b7/4e/21/b74e214472d9ee763f2613ae280f96d2.jpg" alt="sad-emo" /> */}
                         </div>}
                     </div>
                 </div>

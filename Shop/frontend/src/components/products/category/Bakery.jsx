@@ -4,7 +4,7 @@ import { GeneralContext } from "../../../App";
 
 function Bakery() {
     const [bakery, setBakery] = useState([]);
-    const{setLoader,isDarkMode,isSmallScreen}=useContext(GeneralContext) 
+    const{isDarkMode,isSmallScreen}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchBakery = async () => {
@@ -14,12 +14,15 @@ function Bakery() {
                     method: "GET",
                     headers: { "Content-type": "application/json", }
                 })
+                
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
+
                 const bakeryData = await response.json();
+
                 setBakery(bakeryData);
-                console.log(bakeryData);
+
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
@@ -32,7 +35,10 @@ function Bakery() {
     return (
         <div className={`main-content ${isDarkMode ? 'dark' : ''}`}>
          <div className="category-container">
-            <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Bakery-Mobile-Long1.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Bakery-Desktop1.jpg"} alt="bakery-img"/>
+            <img src={isSmallScreen?
+                'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Bakery-Mobile-Long1.jpg':
+                "https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Bakery-Desktop1.jpg"} 
+                alt="bakery-img"/>
                 <div className="cover-title">
                     <h1>Bakery</h1>
                     <p>Freshly baked goods crafted with care from the finest ingredients, delivered swiftly to your doorstep.</p>
@@ -43,4 +49,4 @@ function Bakery() {
     )
 }
 
-export default Bakery
+export default Bakery;

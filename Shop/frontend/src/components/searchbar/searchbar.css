@@ -1,17 +1,20 @@
-
 .search-bar-box {
   display: flex;
   align-items: center;
   background-color: #fff;
   border-radius: 8px;
 }
-.search-bar-box.dark,.search-bar-box.dark .search-input{
+
+.search-bar-box.dark,
+.search-bar-box.dark .search-input{
   background-color: #404040;
     color: #dcdcdc;
 } 
+
 .search-bar-box.dark .search-input::placeholder{
   color: #e3e3e3b8;
 }
+
 .search-input {
   padding: 10px 12px;
   border-radius: 8px;
@@ -26,6 +29,7 @@
   color: grey;
   margin-right: 10px;
 }
+
 @media screen and (max-width:769px) {
   .search-bar-box {
     width: 102vw;

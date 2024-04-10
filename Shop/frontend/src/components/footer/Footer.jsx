@@ -8,6 +8,7 @@ import { GeneralContext } from '../../App';
 import { useContext } from 'react';
 
 function Footer() {
+    
     const {isDarkMode} = useContext(GeneralContext)
 
     return (
@@ -34,7 +35,6 @@ function Footer() {
                         <Link to={'/about'}>
                         <p>About</p>
                         </Link>
-
                         <Link to={'/f&q'}>
                             <p>FAQ</p>
                          </Link>
@@ -42,18 +42,6 @@ function Footer() {
                             <p>Contact Us</p>
                          </Link>
                     </div>
-                    {/* <div className="footer-links-div">
-                        <h4>Compeny</h4>
-                        <a href="/">
-                            <p>Employer</p>
-                        </a>
-                        <a href="/">
-                            <p>Employer</p>
-                        </a>
-                        <a href="/">
-                            <p>Employer</p>
-                        </a>
-                    </div> */}
                     <div className="footer-links-div">
                         <h4 className='social-media-header'>Follow Us</h4>
                         <div className="social-media">

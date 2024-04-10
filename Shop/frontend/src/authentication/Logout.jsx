@@ -2,9 +2,11 @@ import { useContext } from 'react';
 import { GeneralContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 
-function Logout({clicked,handleClick}) {
+function Logout({handleClick}) {
     const { setUser, snackbar, user, setLoader } = useContext(GeneralContext)
+    
     const navigate = useNavigate();
+
     const logout = () => {
         localStorage.clear();
         setLoader(true)

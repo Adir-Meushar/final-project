@@ -1,5 +1,5 @@
 
-    export const productsStructure = [
+export const productsStructure = [
         { name: "category", label: "Category", type: "text" },
         { name: "title", label: "Title", type: "text" },
         { name: "description", label: "Description", type: "text" },

@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { GeneralContext } from "../App";
 import { loginSchema } from './user/userValidation';
-import { Link } from "react-router-dom";
 
 function Login() {
   const [errors, setErrors] = useState({});
@@ -10,6 +9,7 @@ function Login() {
     email: "",
     password: "",
   });
+
   const { setUser, snackbar, setLoader, loginModal, setLoginModal, setSignModal, isDarkMode } = useContext(GeneralContext);
 
   const handleValid = (ev) => {
@@ -28,6 +28,7 @@ function Login() {
     setIsFormValid(!validate.error)
     setErrors(tempErrors)
   }
+
   const handleLogin = async (ev, setUser) => {
     ev.preventDefault();
     try {
@@ -39,15 +40,14 @@ function Login() {
         body: JSON.stringify(formData),
       });
 
-      console.log("Response status:", response.status);
       const data = await response.json();
-      console.log("Response data:", data);
+      
       if (data.error) {
         setErrors(data.error);
         setIsFormValid(false)
       } else {
         localStorage.setItem("token", data.token);
-        setUser(data.user); // Update user state with fetched user data
+        setUser(data.user); 
         setLoginModal(false);
         setFormData({
           email: "",
@@ -64,6 +64,7 @@ function Login() {
       setLoader(false)
     }, 1000)
   };
+  
   const cleanForm = () => {
     setLoginModal(false);
     setFormData({ email: "", password: "" });
@@ -109,7 +110,9 @@ function Login() {
                 )}
               </label>
               <button className="login-btn" disabled={!isFormValid}>Login</button>
-              <p className="signup-link" onClick={() => { setLoginModal(false); setSignModal(true); }}>First time here? Sign up</p>
+              <p className="signup-link" onClick={() => { setLoginModal(false); setSignModal(true); }}>
+                First time here? Sign up
+              </p>
             </form>
           </div>
         </div>

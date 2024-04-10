@@ -17,7 +17,6 @@
 
 .footer-links{
     display: flex;
-    /* justify-content: space-between; */
     justify-content: start;
     align-items: flex-start;
     flex-direction: row;
@@ -93,7 +92,6 @@ hr{
     color: rgb(255, 252, 252);
     font-weight: 600;
 }
-
 
 @media screen and (max-width:550px) {
     .footer-links-div{ 

@@ -4,7 +4,7 @@ import './category.css'
 import { GeneralContext } from "../../../App";
 function Vegetables() {
     const [vegetables, setVegetables] = useState([]);
-    const{setLoader,isDarkMode,isSmallScreen}=useContext(GeneralContext) 
+    const{isDarkMode,isSmallScreen}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchVegetables = async () => {
@@ -14,12 +14,15 @@ function Vegetables() {
                     method: "GET",
                     headers: { "Content-type": "application/json", }
                 })
+
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
+
                 const vegetablesData = await response.json();
+
                 setVegetables(vegetablesData);
-                console.log(vegetablesData);
+
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
@@ -32,7 +35,10 @@ function Vegetables() {
     return (
         <div className={`main-content ${isDarkMode ? 'dark' : ''}`}> 
             <div className="category-container">
-                <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Mobile-Long1.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Desktop1.jpg"} alt="vegetables-img" />
+                <img src={isSmallScreen?
+                    'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Mobile-Long1.jpg':
+                    "https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Desktop1.jpg"} 
+                    alt="vegetables-img" />
                 <div className="cover-title">
                     <h1>Vegetables</h1>
                     <p>An enormous variety of fresh, high-quality, and delicious vegetables, delivered straight to us every morning from the finest farmers in the country with fast home delivery.</p>
@@ -43,4 +49,4 @@ function Vegetables() {
     )
 }
 
-export default Vegetables
+export default Vegetables;

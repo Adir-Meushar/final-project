@@ -1,16 +1,21 @@
 import { useContext } from 'react';
 import { GeneralContext } from '../../../App';
-import './product-details.css';
+import './product-styles/product-details.css';
+import './product-styles/product-details-responsive.css';
 
 function ProductDetails({ item, closeModal, setCount }) {
-  const { user, cartProducts, setCartProducts, snackbar,isDarkMode } = useContext(GeneralContext)
+  const { user,setCartProducts, snackbar,isDarkMode } = useContext(GeneralContext)
 
   const handleAddToCart = () => {
+
     if (!user) {
       return alert('please login in order to purchase..')
     }
+
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
     const cartItemIndex = cart.findIndex(cartItem => cartItem.id === item._id);
+    
     if (cartItemIndex !== -1) {
       cart[cartItemIndex].quantity += 1;
     } else {
@@ -78,19 +83,14 @@ function ProductDetails({ item, closeModal, setCount }) {
                 </tbody>
               </table>
             </div>
-
           </div>
         </div>
-        <button
+        <button className='add-btn slide'
           onClick={(ev) => {
             ev.stopPropagation();
             handleAddToCart();
             closeModal(false);
-          }}
-          className='add-btn slide'
-        >
-          Add to Cart
-        </button>
+          }}>Add to Cart</button>    
       </div>
     </div>
   )

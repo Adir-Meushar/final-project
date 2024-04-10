@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import Joi from 'joi';
-import './contact.css';
+import './contact-styles/contact.css';
+import './contact-styles/contact-responsive.css';
 import { GeneralContext } from '../../../App';
 import { FaWhatsapp } from 'react-icons/fa';
 import { RiCustomerServiceLine } from 'react-icons/ri';
@@ -18,7 +19,8 @@ const Contact = () => {
     });
     const [errors, setErrors] = useState({});
     const navigate=useNavigate();
-    const { setLoader, isDarkMode,snackbar } = useContext(GeneralContext);
+
+    const { isDarkMode,snackbar } = useContext(GeneralContext);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -45,7 +47,6 @@ const Contact = () => {
         if (validateForm()) {
             snackbar('Form submitted successfully!')
             navigate('/')
-            console.log('Form submitted successfully:', formData);
         }
     };
 
@@ -79,7 +80,7 @@ const Contact = () => {
                         09-9589323 <RiCustomerServiceLine className='form-icon' />
                     </div>
                     <div className='form-icon-box'>
-                        freshClover@gmail.com <GrMailOption className='form-icon' />
+                        simplyFresh@gmail.com <GrMailOption className='form-icon' />
                     </div>
                 </div>
                 <form className='contact-form' onSubmit={handleSubmit}>

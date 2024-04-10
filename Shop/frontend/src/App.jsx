@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Loader from './components/loader/Loader';
 
 
-export const GeneralContext=createContext();
+export const GeneralContext = createContext();
 
 export const RoleType = {
   user: 10,
@@ -21,12 +21,12 @@ function App() {
   const [user, setUser] = useState();
   const [count, setCount] = useState(0);
   const [cartProducts, setCartProducts] = useState([]);
-  const [snackbarText,setSnackbarText]=useState('')
+  const [snackbarText, setSnackbarText] = useState('')
   const [loader, setLoader] = useState(true);
   const [search, setSearch] = useState('');
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const[loginModal,setLoginModal]=useState(false);
-  const[signupModal,setSignModal]=useState(false)
+  const [loginModal, setLoginModal] = useState(false);
+  const [signupModal, setSignModal] = useState(false)
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1000);
 
   const navigate = useNavigate();
@@ -36,9 +36,9 @@ function App() {
       const token = localStorage.getItem('token');
       if (token) {
         const decodedToken = jwtDecode(token);
-        const {currentUser}=decodedToken;
+        const { currentUser } = decodedToken;
         setUser(currentUser)
-   
+
         console.log(currentUser);
         if (decodedToken && decodedToken.exp * 1000 < Date.now()) {
           // Token is expired, remove it from local storage
@@ -69,22 +69,26 @@ function App() {
       document.body.classList.remove('dark-mode');
     }
   }, [isDarkMode]);
-  
+
   const snackbar = (text) => {
     setSnackbarText(text);
     setTimeout(() => setSnackbarText(""), 3 * 1000);
   };
 
   return (
-    <GeneralContext.Provider value={{snackbar,user,setUser,count, setCount,cartProducts, setCartProducts,search, 
-    setSearch,setLoader,isDarkMode, setIsDarkMode,loginModal,setLoginModal,signupModal,setSignModal,isSmallScreen, setIsSmallScreen}}>
-    <CenteredLayout>
-      <Navbar />
-      <Router/>
-      <Footer/>
-      {loader && <Loader />}
-      {snackbarText && <Snackbar text={snackbarText} />}
-    </CenteredLayout>
+    <GeneralContext.Provider value={{
+      snackbar, user, setUser, count, setCount,
+      cartProducts, setCartProducts, search, setSearch,
+      setLoader, isDarkMode, setIsDarkMode, loginModal, setLoginModal, signupModal, setSignModal,
+       isSmallScreen, setIsSmallScreen
+    }}>
+      <CenteredLayout>
+        <Navbar />
+        <Router />
+        <Footer />
+        {loader && <Loader />}
+        {snackbarText && <Snackbar text={snackbarText} />}
+      </CenteredLayout>
     </GeneralContext.Provider>
   );
 }

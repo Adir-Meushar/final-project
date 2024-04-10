@@ -6,7 +6,7 @@ const initialDataStart = async () => {
     const userAmount=await User.find().countDocuments();
     const productAmount = await Product.find().countDocuments();
     if (!productAmount) {
-        const allProducts = [...vegetables, ...fruits,...bakery,...dairyAndeggs]; // Merge vegetables and fruits arrays
+        const allProducts = [...vegetables, ...fruits,...bakery,...dairyAndeggs]; 
         
         for (let i = 0; i < allProducts.length; i++) {
             const product = new Product(allProducts[i]);
@@ -14,7 +14,6 @@ const initialDataStart = async () => {
         } 
     }
     if (!userAmount) {
-        // No users found, add users from the initial data file
         for (let i = 0; i < users.length; i++) {
             const userData = users[i];
             const user = new User(userData);

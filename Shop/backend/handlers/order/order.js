@@ -4,6 +4,7 @@ const { Product } = require('../products/product-model');
 const Order = require('./order-model');
 
 module.exports = app => {
+    //Create new order||Permissions:Registerd user//
     app.post('/orders/create', guard, async (req, res) => {
         try {
             const userToken = getUserInfo(req, res);
@@ -25,7 +26,6 @@ module.exports = app => {
 
             const items = [];
 
-            // Iterate over each item in the cart
             for (const item of cart) {
                 const { id, quantity } = item;
                 const product = await Product.findById(id);
@@ -51,21 +51,6 @@ module.exports = app => {
             }));
             const totalPriceArray = await totalPricePromise;
             const totalPrice = totalPriceArray.reduce((acc, price) => acc + price, 0);
-// Validate delivery date
-            // const currentDate = new Date();
-            // const minDeliveryDate = new Date();
-            // minDeliveryDate.setDate(currentDate.getDate() + 1); // Minimum delivery date is from tomorrow
-
-            // if (deliveryDate < minDeliveryDate) {
-            //     return res.status(400).send({ error: 'Delivery date must be from tomorrow onwards' });
-            // }
-
-            // const maxDeliveryDate = new Date();
-            // maxDeliveryDate.setMonth(maxDeliveryDate.getMonth() + 2); // Maximum delivery date is 2 months from now
-
-            // if (deliveryDate > maxDeliveryDate) {
-            //     return res.status(400).send({ error: 'Delivery date cannot be more than 2 months in the future' });
-            // }
 
             if(!deliveryDate){
                 return res.status(400).send({ error: 'Delivery Date is required' });
@@ -87,7 +72,8 @@ module.exports = app => {
             res.status(500).send({ error: 'Error creating order' });
         }
     });
-    
+
+   //Get my Orders||Permissions:Registerd user//
     app.get('/orders/my-orders/:userId', guard, async (req, res) => {
         try {
             const userToken = getUserInfo(req, res);
@@ -118,6 +104,7 @@ module.exports = app => {
         }
     });
 
+    //Delete order||Permissions:Registerd user//
     app.delete('/orders/delete/:orderId', guard, async (req, res) => {
         try {
             const order = await Order.findByIdAndDelete( req.params.orderId );
@@ -133,7 +120,6 @@ module.exports = app => {
             }
             const userToken = getUserInfo(req, res);
             if (userToken.userId !== order.user.toString()) {
-                // Convert order.user to string before comparison
                 return res.status(401).send({
                     error: {
                         code: 401,
@@ -142,7 +128,6 @@ module.exports = app => {
                     },
                 });
             }
-          
                 res.status(200).send({
                     orderDeleted:order,
                     message:'Order Deleted Successfully'

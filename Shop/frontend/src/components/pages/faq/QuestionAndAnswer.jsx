@@ -58,7 +58,10 @@ function QuestionAndAnswer() {
     return (
         <div className={`main-content ${isDarkMode ? 'dark' : ''}`}>
          <div className="category-container">
-            <img src={isSmallScreen?'https://noyhasade.b-cdn.net/wp-content/uploads/2022/12/Mob_categroey_FAQ.jpg':"https://noyhasade.b-cdn.net/wp-content/uploads/2022/12/Des_categroey_FAQ.jpg"} alt="faq-img"/>
+            <img src={isSmallScreen?
+                'https://noyhasade.b-cdn.net/wp-content/uploads/2022/12/Mob_categroey_FAQ.jpg':
+                "https://noyhasade.b-cdn.net/wp-content/uploads/2022/12/Des_categroey_FAQ.jpg"} 
+                alt="faq-img"/>
                 <div className="cover-title">
                     <h1>FAQ</h1>
                 </div>

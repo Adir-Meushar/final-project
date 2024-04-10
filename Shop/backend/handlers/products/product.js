@@ -26,7 +26,6 @@ module.exports=app=>{
                 return res.status(400).json({ error: error.details.map(detail => detail.message) });
             }
     
-            // Convert title to lowercase for case-insensitive comparison
             const capitalizedTitle = capitalize(title);
 
         // Check if a product with the same title already exists (case-insensitive)
@@ -78,7 +77,6 @@ app.put('/products/:id', guard, async (req, res) => {
         let { category, title, description, price, finalPrice, sale, nutritionalValue, img, unit } = req.body;
 
         title = capitalize(title);
-        // Check if a product with the same title already exists (case-insensitive)
         const existingProductWithTitle = await Product.findOne({ title: { $regex: new RegExp("^" + title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "$", "") }, _id: { $ne: productId } });
 
         if (existingProductWithTitle) {

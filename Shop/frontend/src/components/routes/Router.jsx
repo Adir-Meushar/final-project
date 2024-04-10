@@ -7,7 +7,7 @@ import Dashboard from '../../authentication/admin/Dashboard';
 import Bakery from '../products/category/Bakery';
 import Checkout from '../pages/checkout/Checkout';
 import DairyAndEggs from '../products/category/Dairy&Eggs';
-import MyAccount from '../../authentication/user/MyAccount';
+import MyAccount from '../../authentication/user/user-account/MyAccount';
 import About from '../pages/about/About';
 import ErrorPage from '../pages/error-page/ErrorPage';
 import QuestionAndAnswer from '../pages/faq/QuestionAndAnswer';
