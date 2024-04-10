@@ -6,7 +6,7 @@ The project includes both frontend and backend components, facilitating features
 adding items to the cart, processing payments, user account management, and an admin dashboard for managing products.
 
 ## Features
-### User Management:
+### Users:
 - **Registration & Authentication:**
 Users can register for an account securely using their email and password. Authentication is handled through JSON Web Tokens (JWT), ensuring secure access to user-specific features.
 
@@ -16,7 +16,10 @@ Users can register for an account securely using their email and password. Authe
 - **Role-Based Access Control (RBAC) :**
   Admin privileges enable additional functionalities such as updating user type,viewing user data and delete.
   
-### Product Management:
+### Products:
+- **Buy Products:**
+  Registered users can add items to their cart and seamlessly proceed to checkout, where they finalize their order securely.
+  
 - **Admin Dashboard:**
  Administrators have access to a dedicated dashboard where they can perform CRUD operations on products.
  This includes adding new products, updating existing ones, deleting items, and viewing the product catalog.
