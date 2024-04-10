@@ -94,6 +94,6 @@ The project follows a modular and scalable architecture, incorporating both fron
   fs enables file system interactions for managing files and directories.
   
 ## Summary
-The Final-Project is a full-stack e-commerce platform tailored for groceries shopping. It offers robust features such as user registration, authentication, profile editing, and role-based access control. Administrators have access to an admin dashboard for managing products. Error handling mechanisms ensure a smooth user experience, while security measures include password hashing, JWT authentication, and access controls. The architecture employs React.js for the frontend, Express.js for the backend, MongoDB for data storage, and integrates additional technologies like Joi for validation, bcrypt for password hashing, and fs for file system interactions.
+Simply Fresh is a full-stack e-commerce platform tailored for groceries shopping. It offers variety of features such as user registration, authentication, profile editing, and role-based access control. Administrators have access to an admin dashboard for managing products and users. Error handling mechanisms ensure a smooth user experience, while security measures include password hashing, JWT authentication, and access controls. The architecture employs React.js for the frontend, Express.js for the backend, MongoDB for data storage, and integrates additional technologies like Joi for validation, bcrypt for password hashing, and fs for file system interactions.
 
 
