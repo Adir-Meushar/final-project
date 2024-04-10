@@ -48,6 +48,7 @@ The project follows a modular and scalable architecture, incorporating both fron
 - **React.js:**
   The frontend is built using React.js, a popular JavaScript library for building user interfaces.
   React.js offers component-based architecture, enabling efficient development and maintenance of complex UIs.
+  
 - **React Router:**
    React Router is utilized for client-side routing, enabling navigation between different views and ensuring a smooth browsing experience for users.
 
@@ -63,7 +64,13 @@ The project follows a modular and scalable architecture, incorporating both fron
 
 - **Express.js:**
    Express.js is used as the web application framework, providing robust features for building server-side logic and handling HTTP requests.
-
+  
+  **Cors:**
+   Cors middleware is integrated to handle Cross-Origin Resource Sharing in Express.js applications.
+   
+- **Dotenv:**
+   Dotenv is used for environment variable management, facilitating configuration across different environments.
+  
 - **MongoDB:**
    MongoDB serves as the database management system, offering flexibility and scalability for storing product data, user information, and session details.
    
@@ -71,22 +78,22 @@ The project follows a modular and scalable architecture, incorporating both fron
    Mongoose is used as an Object Data Modeling (ODM) library for MongoDB, simplifying interactions with the database through schema-based modeling.
   
 ### Additional Technologies Used
-- **joi:**
-   Object schema validation for data sanitization.
-
 - **jsonwebtoken:**
   Jsonwebtoken is employed for the creation and verification of JSON Web Tokens, enabling secure user authentication.
 
 - **Chalk:**
   Chalk is utilized for terminal string styling, enhancing console output readability.
+  
+ - **joi:**
+   Joi provides robust schema validation for ensuring data integrity.
    
--  **Cors:**
-   Cors middleware is integrated to handle Cross-Origin Resource Sharing in Express.js applications.
-   
-- **Dotenv:**
-   Dotenv is used for environment variable management, facilitating configuration across different environments.
+- **bcrypt:**
+  bcrypt offers secure password hashing for user authentication.
+  
+- **fs:**
+  fs enables file system interactions for managing files and directories.
+  
+## Additional Technologies Used
+The Final-Project is a full-stack e-commerce platform tailored for groceries shopping. It offers robust features such as user registration, authentication, profile editing, and role-based access control. Administrators have access to an admin dashboard for managing products. Error handling mechanisms ensure a smooth user experience, while security measures include password hashing, JWT authentication, and access controls. The architecture employs React.js for the frontend, Express.js for the backend, MongoDB for data storage, and integrates additional technologies like Joi for validation, bcrypt for password hashing, and fs for file system interactions.
 
-
-
-These technologies collectively power the Node.js backend, ensuring security, functionality, and efficient data management in the web application.
 
