@@ -1,12 +1,9 @@
-# Final-Project
+# Simply Fresh
 
 ## Overview
 This is a full-stack e-commerce project aimed at providing users with a seamless shopping experience for groceries. 
 The project includes both frontend and backend components, facilitating features such as shopping,
 adding items to the cart, processing payments, user account management, and an admin dashboard for managing products.
-
-## Api Documentaion
-For detailed information on the API endpoints and usage, refer to this link:https://documenter.getpostman.com/view/28292567/2s9Yyqj2pR
 
 ## Features
 ### User Management:
@@ -93,7 +90,7 @@ The project follows a modular and scalable architecture, incorporating both fron
 - **fs:**
   fs enables file system interactions for managing files and directories.
   
-## Additional Technologies Used
+## Summary
 The Final-Project is a full-stack e-commerce platform tailored for groceries shopping. It offers robust features such as user registration, authentication, profile editing, and role-based access control. Administrators have access to an admin dashboard for managing products. Error handling mechanisms ensure a smooth user experience, while security measures include password hashing, JWT authentication, and access controls. The architecture employs React.js for the frontend, Express.js for the backend, MongoDB for data storage, and integrates additional technologies like Joi for validation, bcrypt for password hashing, and fs for file system interactions.
 
 
