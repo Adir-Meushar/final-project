@@ -4,6 +4,7 @@
     border-radius: 5px;
     width: 40vw;
     min-width: 700px;
+    max-width: 800px;
     height: fit-content;  
     min-height: 650px;
     background-color: #fff;
@@ -89,15 +90,4 @@
   .cart-items{
     grid-template-columns: repeat(1,1fr);
   }
-  .card-details{
-    width: 100%;
-    padding: 10px;
-    height: fit-content; 
-    display: flex;
-    flex-direction: column;
-  }
-  .card-details label{
-    margin-bottom: 20px;
-  }
-  
 }

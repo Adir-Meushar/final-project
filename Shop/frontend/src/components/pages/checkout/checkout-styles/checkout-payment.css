@@ -1,10 +1,13 @@
 .card-details{
     width: 85%;
     height: 30vh;
+    max-height: 300px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
   }
-  
+  .delivry-box label{
+    height: 50px;
+  }
   .card-details label{
     height: 60px;
     width: 85%;
@@ -56,4 +59,19 @@
   .back-to-shop-btn:hover{
     background-color: rgba(40, 177, 51, 0.856);
   
+  }
+  @media screen and (max-width:500px){
+    .card-details{
+      width: 100%;
+      max-height: unset;
+      padding: 10px;
+      height: fit-content; 
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .card-details label{
+    height: 70px;
+    font-size: .8rem;
+  }
   }

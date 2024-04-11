@@ -5,6 +5,9 @@
       background-color: #fff;
       height: 96vh;
   }
+  .product-details p{
+    font-size: .9rem;
+  }
   .product-details .content{
     flex-direction: column;
     width: 80%;
@@ -14,8 +17,8 @@
   height: 60%;
 }
 .product-image {
-  width: 50%;
-  height: 75%;
+  width: 45%;
+  height: 70%;
 }
 .content .details-box {
   gap: 20px;
@@ -25,11 +28,14 @@
 
 @media screen and (max-width:700px){
   .product-image{
-    width: 60%;
+    width: 50%;
     height: 70%;
   }
   .product-details .content{
     width: unset;
+  }
+  .product-details h1{
+    font-size: 1.8rem;
   }
 }
 
@@ -46,3 +52,9 @@
     width: 8rem;
   }
 }
+@media screen and (max-width:400px){
+  .product-details p{
+  line-height: 1.2; 
+ }
+}
+

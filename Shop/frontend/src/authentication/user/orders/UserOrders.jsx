@@ -51,10 +51,13 @@ function UserOrders() {
     };
 
     const deleteOrder = async (orderId) => {
+
         if (!window.confirm(`Are you sure you want to remove this order?`)) {
             return;
+
         } else {
             try {
+
                 const response = await fetch(`http://localhost:4000/orders/delete/${orderId}`, {
                     credentials: "include",
                     method: "DELETE",
@@ -63,7 +66,9 @@ function UserOrders() {
                         "Authorization": localStorage.token,
                     },
                 });
+
                 const data = await response.json();
+
                 if (data.error) {
                     console.log(data.error);
                 } else {
@@ -75,12 +80,12 @@ function UserOrders() {
             }
         }
     }
+    
     const isOrderCancelable = (deliveryDate) => {
         const oneDayInMilliseconds = 24 * 60 * 60 * 1000; 
         const parsedDeliveryDate = moment(deliveryDate, 'DD-MM-YYYY').toDate(); 
         const differenceInDays = (parsedDeliveryDate.getTime() - currentDate) / oneDayInMilliseconds;
-        console.log("Difference in days:", differenceInDays);
-        return differenceInDays >-1; // Returns true if deliveryDate is more than one day away //1?
+        return differenceInDays > 0;
     };
 
     return (
@@ -128,7 +133,6 @@ function UserOrders() {
                         <p>No orders yet... </p>
                         <button className='back-to-shop-btn' onClick={() => navigate('/')}>Start shopping now!</button>
                     </div>
-
                 )}
             </div>
         </div>

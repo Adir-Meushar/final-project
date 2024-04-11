@@ -2,25 +2,7 @@
   min-width: 70vw;
   color: rgb(38, 64, 34);
 }
-.container-table.dark h1{
-  color: #dcdcdc;
-}
 
-.container-table.dark .page-header{
-  color: #dcdcdc;
-}
-.container-table.dark .users-table th,
-.container-table.dark .product-table th,
-.container-table.dark .admin-data-table th{
-  background-color: #47474733;
-  color: #dcdcdc;
-}
-.container-table.dark .users-table td,
-.container-table.dark .product-table td,
-.container-table.dark .admin-data-table td{
-  background-color: #9b9b9b33;
-  color: #dcdcdc;
-}
 .container-table  .page-header{
   display: flex;
   flex-direction: column;
@@ -29,14 +11,21 @@
   color: rgb(38, 64, 34);
 }
 .admin-data-table{
-  min-height: 50vh;
+  height: 40vh;
+  max-height: 800px;
   width: 50vw;
+  max-width: 900px;
   margin: 5% auto;
+  border-collapse: collapse;
 }
-
+.admin-data-table tr td{
+  border: 1px solid #bbbbbb;
+  background-color: #ffffff;
+}
 .admin-data-table tr td:not(:first-child) {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
  font-weight: bold; 
+
 }
 
 .dashboard-header{
@@ -68,16 +57,14 @@ margin: 20px;
   transition: all .3s;
 }
 .users-table ,
-.product-table,
-.admin-data-table {
-    width: 85%;
+.product-table{
+    width: 70vw;
+    min-width: 850px;
+    max-width: 1500px;
     margin: 3% auto;
     border-collapse: collapse;
-
   }
-  .users-table-dark{
-    color: black;
-   }
+
    .table-img{
     width: 60px;
     border-radius: 10px;
@@ -101,18 +88,14 @@ margin: 20px;
     color: white;
   }
   .users-table td,
-  .product-table td,
-  .admin-data-table td{
+  .product-table td{
     border: 1px solid #bbbbbb;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 20px 10px;
     text-align: center;
+    font-size: .9rem;
   }
-  .users-table-dark td{
-    color: white;
-    background: linear-gradient(to right, #414345, #232526);
-   }
-   
+    
   .users-table .fa-edit, 
   .users-table .ai-delete,
    .product-table .fa-edit,

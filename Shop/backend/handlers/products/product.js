@@ -8,7 +8,9 @@ module.exports=app=>{
     //Create Product||Permissions:Admin//
     app.post('/products', guard, async (req, res) => {
         try {
+
             const userToken = getUserInfo(req, res);
+
             if (userToken.isAdmin != RoleType.admin) { 
                 return res.status(401).send({
                     error: {
@@ -18,6 +20,7 @@ module.exports=app=>{
                     },
                 });
             }
+
             const { category, title, description, price, sale, nutritionalValue, img, unit } = req.body;
             
             const { error, value } = productValidationSchema.validate(req.body, { abortEarly: false });
@@ -62,7 +65,9 @@ module.exports=app=>{
 // Edit Product || Permissions: Admin//
 app.put('/products/:id', guard, async (req, res) => {
     try {
+
         const userToken = getUserInfo(req, res);
+
         if (userToken.isAdmin !== RoleType.admin) {
             return res.status(401).send({
                 error: {
@@ -77,6 +82,7 @@ app.put('/products/:id', guard, async (req, res) => {
         let { category, title, description, price, finalPrice, sale, nutritionalValue, img, unit } = req.body;
 
         title = capitalize(title);
+
         const existingProductWithTitle = await Product.findOne({ title: { $regex: new RegExp("^" + title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "$", "") }, _id: { $ne: productId } });
 
         if (existingProductWithTitle) {
@@ -90,6 +96,7 @@ app.put('/products/:id', guard, async (req, res) => {
         }
 
         const product = await Product.findById(productId);
+
         if (!product) {
             return res.status(404).send({
                 error: {
@@ -99,10 +106,13 @@ app.put('/products/:id', guard, async (req, res) => {
                 },
             });
         }
+
         const { error, value } = editProductValidationSchema.validate(req.body, { abortEarly: false });
+
         if (error) {
             return res.status(400).json({ error: error.details.map(detail => detail.message) });
         }
+
         product.set({
             category,
             title,
@@ -114,6 +124,7 @@ app.put('/products/:id', guard, async (req, res) => {
             img,
             unit
         });
+
         const updatedProduct = await product.save();
         res.send(updatedProduct);
     } catch (error) {
@@ -126,6 +137,7 @@ app.put('/products/:id', guard, async (req, res) => {
     //Delete Product||Permissions:Admin//
     app.delete('/products/:id',guard,async(req,res)=>{
         const userToken=getUserInfo(req,res);
+
         if(userToken.isAdmin!=RoleType.admin){
             return res.status(401).send({
                 error: {
@@ -135,7 +147,9 @@ app.put('/products/:id', guard, async (req, res) => {
                 },
               });
         }
+
         const product=await Product.findById(req.params.id);
+
         if(!product){
             return res.status(404).send({
                 error: {
@@ -145,8 +159,10 @@ app.put('/products/:id', guard, async (req, res) => {
                 }, 
               });
         }
+
         try{
            const productToDelete=await Product.findByIdAndDelete(product); 
+
             return res.status(200).send({
                 message:`${productToDelete.title} was deleted sucssesfully!`,
                 Product:productToDelete,
@@ -161,6 +177,7 @@ app.put('/products/:id', guard, async (req, res) => {
     app.get('/product/:id',async(req,res)=>{
         try{
             const product=await Product.findById(req.params.id);
+
             if(!product){
                 return res.status(404).send({
                     error: {
@@ -170,6 +187,7 @@ app.put('/products/:id', guard, async (req, res) => {
                     },
                   });
             }
+            
             res.status(200).send(product);
         }catch(error){
             res.status(500).send({ error: 'Error fetching product'});

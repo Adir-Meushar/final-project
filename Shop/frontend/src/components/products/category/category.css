@@ -64,9 +64,20 @@
         height: 44vh;
     }
     .category-container h1{
-     font-size: 2.1rem;
+     font-size: 3rem;
     }
     .cover-title p{
         width: 75%;
+    }
+  }
+  @media screen and (max-width:500px) {
+    .category-container h1{
+        font-size: 2.1rem;
+       }
+       .category-select select{
+        font-size: .9rem;
+       }
+       .category-select select option{
+       font-size: .8rem;   
     }
   }

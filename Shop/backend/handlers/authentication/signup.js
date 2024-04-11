@@ -11,6 +11,7 @@ module.exports=app=>{
         if (error) {
           return res.status(400).json({ error: error.details.map(detail => detail.message) }); 
         }
+        
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {

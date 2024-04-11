@@ -1,6 +1,7 @@
 .product-modal {
     min-width: 600px;
     width: 35vw;
+    max-width: 100px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -73,7 +74,18 @@ background-color: rgb(38, 38, 38);
   @media screen and (max-width:500px){
       .product-modal{
           min-width: 350px;
-          width: 95vw;
+          padding: 5px;
+
+      }
+      .product-modal form {
+        gap: 6px;
+      }
+      .product-modal .error-message{
+        font-size: .6rem;
+      }
+      .product-modal form h3{
+        margin: unset;
+        font-size: 1rem;
       }
       .nutrition-value{
       display: grid;

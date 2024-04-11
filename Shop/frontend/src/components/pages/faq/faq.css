@@ -13,5 +13,13 @@
   .faq{
     min-width: unset;
     width: 90vw;
+    padding: 25px;
+
   }
+}
+
+@media screen and (max-width:450px) {
+.faq{
+  padding: 5px;
+}
 }

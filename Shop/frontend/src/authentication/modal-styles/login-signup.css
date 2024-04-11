@@ -61,10 +61,15 @@
      max-height: 90vh;
     }
   }
-  
+  @media screen and (max-width:480px) {
+    .login-modal form{
+      padding: 5px;
+    }
+  }
   @media screen and (max-width:430px){
     .signup-modal label ,.login-modal label{
       height: 5rem;
+      font-size: .8rem;
     }
     .signup-modal, .login-modal{
       min-width: 90vw;

@@ -45,4 +45,9 @@
       transform: translateY(0);
     }
   }
-  
+  @media screen and (max-width:400px) {
+    .counter{
+      width: 98%;
+      gap: 6px;
+    }
+  }
