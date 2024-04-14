@@ -5,6 +5,9 @@ This is a full-stack e-commerce project aimed at providing users with a seamless
 The project includes both frontend and backend components, facilitating features such as shopping,
 adding items to the cart, processing payments, user account management, and an admin dashboard for managing products.
 
+## Api Documentaion
+For detailed information on the API endpoints and usage, refer to this link:https://documenter.getpostman.com/view/28292567/2sA3BhduGT
+
 ## Features
 ### Users:
 - **Registration & Authentication:**
