@@ -12,7 +12,11 @@
 .contact-box.dark{
   background-color: rgb(15, 15, 15);
 }
-
+.contact-box.dark .contact-form-box input,
+.contact-box.dark .contact-form-box textarea{
+  background-color: #9b9b9b33;
+  color: #dcdcdc;
+}
   .contact-box .contact-main-img{
    width: 53%;
   }
@@ -109,13 +113,5 @@
     width: 200px;
   transform: translateX(-55px);
   }
-  .arrow-box{
-    text-align: left;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  .arrow{
-    font-size: 3rem;
-  }
+
  

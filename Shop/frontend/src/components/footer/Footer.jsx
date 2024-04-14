@@ -45,10 +45,10 @@ function Footer() {
                     <div className="footer-links-div">
                         <h4 className='social-media-header'>Follow Us</h4>
                         <div className="social-media">
-                           <a href="https://www.facebook.com/?locale=he_IL" target='_blank'><div className='media-icon'><BsFacebook/></div></a> 
-                           <a href="https://www.instagram.com/" target='_blank'><div className='media-icon'><BsInstagram/></div></a> 
-                           <a href="https://www.youtube.com/" target='_blank'><div className='media-icon'><BsYoutube/></div></a> 
-                           <a href="https://www.linkedin.com/login" target='_blank'><div className='media-icon'><BsLinkedin/> </div></a>
+                           <a href="https://www.facebook.com/?locale=he_IL" target='_blank' rel='noreferrer noopener'><div className='media-icon'><BsFacebook/></div></a> 
+                           <a href="https://www.instagram.com/" target='_blank' rel='noreferrer noopener'><div className='media-icon'><BsInstagram/></div></a> 
+                           <a href="https://www.youtube.com/" target='_blank' rel='noreferrer noopener'><div className='media-icon'><BsYoutube/></div></a> 
+                           <a href="https://www.linkedin.com/login" target='_blank' rel='noreferrer noopener'><div className='media-icon'><BsLinkedin/> </div></a>
                         </div>
                     </div>
                 </div>

@@ -41,7 +41,6 @@ function Bakery() {
                 alt="bakery-img"/>
                 <div className="cover-title">
                     <h1>Bakery</h1>
-                    <p>Freshly baked goods crafted with care from the finest ingredients, delivered swiftly to your doorstep.</p>
                 </div>
             </div>
           <Products items={bakery}/>

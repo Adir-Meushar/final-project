@@ -42,7 +42,7 @@ function ProductsOnSale() {
                  alt="health-img"/>
                 <div className="cover-title">
                     <h1>Welcome!</h1>
-                    <p>Discover a wide variety of fresh and flavorful products, ranging from farm-fresh vegetables and juicy fruits to delectable bakery treats and more.</p>
+                    <p>At Simply Fresh you can find a wide variety of fresh and flavorful products, ranging from farm-fresh vegetables and juicy fruits to delectable bakery treats and more.</p>
                 </div>
             </div>
           <Products items={productsOnSale}/>

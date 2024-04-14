@@ -1813,27 +1813,60 @@
              "roleType":"20"
           },
           {
-            "firstName":"Common",
-            "lastName":"User",
-             "phone":"0552269949",
-             "email":"user@gmail.com",
-             "password":"A11413365$c",
-             "city":"Tel-Aviv",
-             "street":"Menachem Begin",
-             "houseNumber":"54",
-             "roleType":"10"
-          },
-          {
-            "firstName":"CommonTwo",
-            "lastName":"User",
-             "phone":"0525543270", 
-             "email":"user2@gmail.com",
-             "password":"A11413365$c",
-             "city":"Tel-Aviv", 
-             "street":"Rothchild",
-             "houseNumber":"32",
-             "roleType":"10"
-          }
+            "firstName": "John",
+            "lastName": "Doe",
+            "phone": "0552269949",
+            "email": "johndoe@gmail.com",
+            "password": "A11413365$c",
+            "city": "Tel Aviv",
+            "street": "Menachem Begin",
+            "houseNumber": "54",
+            "roleType": "10"
+        },
+        {
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "phone": "0525543270",
+            "email": "alicesmith@gmail.com",
+            "password": "A11413365$c",
+            "city": "Tel Aviv",
+            "street": "Rothschild",
+            "houseNumber": "32",
+            "roleType": "10"
+        },
+        {
+            "firstName": "Michael",
+            "lastName": "Johnson",
+            "phone": "0547891234",
+            "email": "michaeljohnson@gmail.com",
+            "password": "A11413365$c",
+            "city": "Jerusalem",
+            "street": "King David",
+            "houseNumber": "12",
+            "roleType": "10"
+        },
+        {
+            "firstName": "Emily",
+            "lastName": "Brown",
+            "phone": "0512345678",
+            "email": "emilybrown@gmail.com",
+            "password": "A11413365$c",
+            "city": "Haifa",
+            "street": "Herzl",
+            "houseNumber": "8",
+            "roleType": "10"
+        },
+        {
+            "firstName": "Daniel",
+            "lastName": "Martinez",
+            "phone": "0534567890",
+            "email": "danielmartinez@gmail.com",
+            "password": "A11413365$c",
+            "city": "Beersheba", 
+            "street": "Ben Gurion",
+            "houseNumber": "21",
+            "roleType": "10"
+        }
         ]
       } 
     

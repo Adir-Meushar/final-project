@@ -41,7 +41,6 @@ function DairyAndEggs() {
                 alt="dairy&eggs-img" />
                 <div className="cover-title">
                     <h1>Dairy&Eggs</h1>
-                    <p>Explore our selection of fresh dairy products and eggs, sourced directly from local farms for quality and flavor.</p>
                 </div>
             </div>
           <Products items={dairyAndEggs}/>

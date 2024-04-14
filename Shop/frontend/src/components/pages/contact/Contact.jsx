@@ -36,30 +36,34 @@ const Contact = () => {
             [name]: contactSchema.extract(name)
         });
         const { error } = fieldSchema.validate({ [name]: value });
-        setErrors({
-            ...errors,
-            [name]: error ? error.details[0].message : ''
-        });
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: error ? error.details[0].message : value.trim() === '' ? 'This field is required' : ''
+        }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (validateForm()) {
-            snackbar('Form submitted successfully!')
-            navigate('/')
+        const isValidForm = validateForm(); 
+        const isNotEmpty = Object.values(formData).every(value => value.trim() !== ''); 
+        if (isValidForm && isNotEmpty) {
+            snackbar('Form submitted successfully!');
+            navigate('/');
+        } else {
+            snackbar('Please fill in all required fields!');
         }
     };
 
     const validateForm = () => {
+        let isValid = true; 
         const formDataKeys = Object.keys(formData);
-        let isValid = true;
         formDataKeys.forEach((key) => {
             validateField(key, formData[key]);
             if (errors[key]) {
-                isValid = false;
+                isValid = false; 
             }
         });
-        return isValid;
+        return isValid; 
     };
 
     return (
