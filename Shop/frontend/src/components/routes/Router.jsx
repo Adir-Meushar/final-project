@@ -37,7 +37,7 @@ export default function Router() {
             <Route path="/vegetables" element={<Vegetables />} />
             <Route path="/fruits" element={<Fruits />} />
             <Route path="/bakery" element={<Bakery />} />
-            <Route path="/dairy&egss" element={<DairyAndEggs />} />
+            <Route path="/dairy&eggs" element={<DairyAndEggs />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="*" element={<ErrorPage />} />
         </Routes>

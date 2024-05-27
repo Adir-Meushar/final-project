@@ -62,8 +62,8 @@ function ProductDetails({ item, closeModal, setCount }) {
           )}
             </div>
             <p>{item.description}</p>
-            <div>
-              <h4>"Nutritional Information (per 100g)"</h4>
+            <div className='nutrition-value-box'>
+              <h4>Nutritional Information (per 100g)</h4>
               <table>
                 <thead>
                   <tr>

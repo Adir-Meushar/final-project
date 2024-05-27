@@ -41,7 +41,7 @@ const Navbar = () => {
     setClicked(!clicked);
   };
 
-  const shouldRender = ['/vegetables', '/fruits', '/bakery', '/dairy&egss', '/'].includes(location.pathname);
+  const shouldRender = ['/vegetables', '/fruits', '/bakery', '/dairy&eggs', '/'].includes(location.pathname);
   
   return (
     <>

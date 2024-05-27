@@ -68,8 +68,11 @@
 
   .product-details p{
     line-height: 1.6;
+    text-align: left;
   }
- 
+ .nutrition-value-box{
+  text-align: left;
+ }
   .product-details .close-btn{
     position: absolute;
     top: 5px;
@@ -103,7 +106,7 @@
   }
 
  .product-details table {
-    margin: 10px auto;
+    margin: 15px 0;
     width: 80%;
     border-collapse: collapse;
   }

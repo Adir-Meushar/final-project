@@ -1,20 +1,21 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
 const express=require('express');
 const cors =require('cors');
 const mongoose=require('mongoose');
 const chalk=require('chalk'); 
 const loggerMiddleware=require('./handlers/helpers/logger');
-const port=process.env.PORT;
- 
+const port = process.env.PORT || 5000;
+const env = dotenv.config({ path: './prod.env' }); // for mongoDb Atlas use path: './prod.env'
+
 async function main(){
-    await mongoose.connect(process.env.REMOTE_URL);  
+    await mongoose.connect(env.parsed.REMOTE_URL);  
     console.log(chalk.blue('Connection Established')); 
 } 
-main().catch(err=>console.log(chalk.red(err)));
+main().catch(err=>console.log(chalk.red(err))); 
 
-const app=express();  
+const app=express();   
 
-app.use(express.json());
+app.use(express.json()); 
 
 app.use(cors({ 
     origin: true,  

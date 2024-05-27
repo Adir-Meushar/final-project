@@ -9,7 +9,7 @@ function CategoryNavbar({handleClick}) {
 
     const location = useLocation();
 
-    const shouldRender = ['/vegetables', '/fruits', '/bakery', '/dairy&egss','/']
+    const shouldRender = ['/vegetables', '/fruits', '/bakery', '/dairy&eggs','/']
 
     const shouldRenderUl = shouldRender.includes(location.pathname);
 
@@ -22,7 +22,7 @@ function CategoryNavbar({handleClick}) {
                     <li><Link onClick={handleClick} to="/vegetables">Vegetables</Link></li>
                     <li><Link onClick={handleClick} to="/fruits">Fruits</Link></li>
                     <li><Link onClick={handleClick} to="/bakery">Bakery</Link></li>
-                    <li><Link onClick={handleClick} to="/dairy&egss">Dairy&Egss</Link></li>
+                    <li><Link onClick={handleClick} to="/dairy&eggs">Dairy&eggs</Link></li>
                 </ul>
             </nav>
         </div>
