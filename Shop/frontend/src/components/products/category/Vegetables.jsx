@@ -4,11 +4,12 @@ import './category.css'
 import { GeneralContext } from "../../../App";
 function Vegetables() {
     const [vegetables, setVegetables] = useState([]);
-    const{isDarkMode,isSmallScreen}=useContext(GeneralContext) 
+    const { isDarkMode, isSmallScreen,setGridLoader } = useContext(GeneralContext)
 
     useEffect(() => {
         const fetchVegetables = async () => {
             try {
+                setGridLoader(true)
                 const response = await fetch('http://localhost:4000/products/vegetables', {
                     credentials: "include",
                     method: "GET",
@@ -21,7 +22,10 @@ function Vegetables() {
 
                 const vegetablesData = await response.json();
 
+
+
                 setVegetables(vegetablesData);
+                setGridLoader(false)
 
             } catch (error) {
                 console.error('Error fetching user data:', error);
@@ -33,11 +37,11 @@ function Vegetables() {
 
 
     return (
-        <div className={`main-content ${isDarkMode ? 'dark' : ''}`}> 
+        <div className={`main-content ${isDarkMode ? 'dark' : ''}`}>
             <div className="category-container">
-                <img src={isSmallScreen?
-                    'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Mobile-Long1.jpg':
-                    "https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Desktop1.jpg"} 
+                <img src={isSmallScreen ?
+                    'https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Mobile-Long1.jpg' :
+                    "https://noyhasade.b-cdn.net/wp-content/uploads/2022/07/Veg-Desktop1.jpg"}
                     alt="vegetables-img" />
                 <div className="cover-title">
                     <h1>Vegetables</h1>

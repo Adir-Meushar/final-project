@@ -4,11 +4,12 @@ import { GeneralContext } from "../../../App";
 
 function Bakery() {
     const [bakery, setBakery] = useState([]);
-    const{isDarkMode,isSmallScreen}=useContext(GeneralContext) 
+    const{isDarkMode,isSmallScreen,setGridLoader}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchBakery = async () => {
             try {
+                setGridLoader(true)
                 const response = await fetch('http://localhost:4000/products/bakery', {
                     credentials: "include",
                     method: "GET",
@@ -22,7 +23,7 @@ function Bakery() {
                 const bakeryData = await response.json();
 
                 setBakery(bakeryData);
-
+                setGridLoader(false)
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }

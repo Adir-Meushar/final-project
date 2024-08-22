@@ -4,11 +4,12 @@ import { GeneralContext } from "../../../App";
 
 function Fruits() {
     const [fruits, setFruits] = useState([]);
-    const{isDarkMode,isSmallScreen}=useContext(GeneralContext) 
+    const{isDarkMode,isSmallScreen,setGridLoader}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchFruits = async () => {
             try {
+                setGridLoader(true)
                 const response = await fetch('http://localhost:4000/products/fruits', {
                     credentials: "include",
                     method: "GET",
@@ -22,7 +23,7 @@ function Fruits() {
                 const fruitsData = await response.json();
 
                 setFruits(fruitsData);
-
+                setGridLoader(false)
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }

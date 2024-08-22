@@ -18,16 +18,18 @@ export default function Router() {
     const { user, setLoader } = useContext(GeneralContext);
     const location = useLocation();
 
-    useEffect(() => {
-        setLoader(true);
-        const timeout = setTimeout(() => {
-            setLoader(false);
-        }, 1000);
-        return () => clearTimeout(timeout);
-    }, [location, setLoader]);
+    // useEffect(() => {
+    //     setLoader(true);
+    //     const timeout = setTimeout(() => {
+    //         setLoader(false);
+    //     }, 1000);
+    //     return () => clearTimeout(timeout);
+    // }, [location, setLoader]);
 
     return (
-        <Routes>
+        <>
+
+         <Routes>
             <Route path="/" element={<ProductsOnSale />} />
             <Route path="/about" element={<About />} />
             <Route path="/f&q" element={<QuestionAndAnswer />} />
@@ -41,5 +43,7 @@ export default function Router() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="*" element={<ErrorPage />} />
         </Routes>
+        </>
+       
     );
 }

@@ -8,6 +8,8 @@ import Snackbar from './components/snackbar/Snackbar';
 import Footer from './components/footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import Loader from './components/loader/Loader';
+import GridLoader from './components/loader/GridLoader';
+import ScrollToTop from './components/scrollToTop/ScrollToTop';
 
 
 export const GeneralContext = createContext();
@@ -23,6 +25,7 @@ function App() {
   const [cartProducts, setCartProducts] = useState([]);
   const [snackbarText, setSnackbarText] = useState('')
   const [loader, setLoader] = useState(true);
+  const [gridLoader, setGridLoader] = useState(false)
   const [search, setSearch] = useState('');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
@@ -51,16 +54,16 @@ function App() {
     setLoader(false)
   }, []);
 
-  useEffect(() => {
-    // Prevent scrolling when loader is visible
-    if (loader) {
-      document.body.style.overflow = 'hidden';
-      window.scrollTo(0, 0);
-    } else {
-      document.body.style.overflow = 'auto';
-      document.body.style.overflowX = 'hidden'; // Disable horizontal scrollbar
-    }
-  }, [loader]);
+  // useEffect(() => {
+  //   // Prevent scrolling when loader is visible
+  //   if (loader) {
+  //     document.body.style.overflow = 'hidden';
+  //     window.scrollTo(0, 0);
+  //   } else {
+  //     document.body.style.overflow = 'auto';
+  //     document.body.style.overflowX = 'hidden'; // Disable horizontal scrollbar
+  //   }
+  // }, [loader]);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -79,14 +82,18 @@ function App() {
     <GeneralContext.Provider value={{
       snackbar, user, setUser, count, setCount,
       cartProducts, setCartProducts, search, setSearch,
-      setLoader, isDarkMode, setIsDarkMode, loginModal, setLoginModal, signupModal, setSignModal,
-       isSmallScreen, setIsSmallScreen
+      setLoader, loader, setGridLoader, gridLoader, isDarkMode, setIsDarkMode, loginModal, setLoginModal, signupModal, setSignModal,
+      isSmallScreen, setIsSmallScreen
     }}>
+       <ScrollToTop />
+
+      {/* <ScrollToTop routesToScroll={['/about', '/contact', '/checkout','/f&q']} /> */}
       <CenteredLayout>
         <Navbar />
         <Router />
         <Footer />
         {loader && <Loader />}
+        {/* {gridLoader && <GridLoader />} */}
         {snackbarText && <Snackbar text={snackbarText} />}
       </CenteredLayout>
     </GeneralContext.Provider>

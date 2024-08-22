@@ -4,11 +4,12 @@ import Products from "../product/Products";
 
 function DairyAndEggs() {
     const [dairyAndEggs, setDairyAndEggs] = useState([]);
-    const{isDarkMode,isSmallScreen}=useContext(GeneralContext) 
+    const{isDarkMode,isSmallScreen,setGridLoader}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchDairyAndEggs = async () => {
             try {
+                setGridLoader(true)
                 const response = await fetch('http://localhost:4000/products/dairy&eggs', {
                     credentials: "include",
                     method: "GET", 
@@ -22,7 +23,7 @@ function DairyAndEggs() {
                 const dairyAndEggsData = await response.json();
 
                 setDairyAndEggs(dairyAndEggsData);
-
+                setGridLoader(false)
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }

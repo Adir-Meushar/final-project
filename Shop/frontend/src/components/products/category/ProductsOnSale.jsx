@@ -5,11 +5,12 @@ import { GeneralContext } from "../../../App";
 
 function ProductsOnSale() {
     const [productsOnSale, setProductsOnSale] = useState([]);
-    const{isDarkMode,isSmallScreen}=useContext(GeneralContext) 
+    const{isDarkMode,isSmallScreen,setGridLoader}=useContext(GeneralContext) 
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
+                setGridLoader(true)
                 const response = await fetch('http://localhost:4000/products/sale', {
                     credentials: "include",
                     method: "GET",
@@ -23,7 +24,7 @@ function ProductsOnSale() {
                 const productsData = await response.json();
 
                 setProductsOnSale(productsData);
-
+                setGridLoader(false)
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }

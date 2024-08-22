@@ -20,11 +20,12 @@
   width: 15rem;
   border-radius: 8px;
   padding: 39px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
  transition: all .4s ease-in-out;
 }
 .card-image:hover{
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .card-content {
@@ -71,7 +72,8 @@
   color: rgb(38, 64, 34);
 
 }
-.custom-icon-box p{
+
+.custom-icon-box .main-grid-msg{
   font-weight: bold;
   font-size: 1.5rem;
 }
@@ -82,9 +84,17 @@
 .custom-icon-box .magnifying-glass{
   font-size: 12rem;
 }
-.custom-icon-box .sad-smiley{
+
+.custom-icon-box .smiley {
   position: absolute;
   font-size: 10rem;
-  left:55px ;
   top: 5px;
+}
+
+.custom-icon-box .sad-smiley-empty {
+  left: 52px;
+}
+
+.custom-icon-box .happy-smiley-loading {
+  left: 92px;
 }
