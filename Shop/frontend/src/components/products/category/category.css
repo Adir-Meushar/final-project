@@ -2,7 +2,7 @@
     position: relative;
     max-width: 2500px;
     width: 100vw;
-    height: 35vh;
+    /* height: 35vh; */
     background-color: #e7e5e5;
     display: flex;
     align-items: center;

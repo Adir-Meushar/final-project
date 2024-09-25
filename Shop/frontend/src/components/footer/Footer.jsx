@@ -27,7 +27,7 @@ function Footer() {
                         <p>Bakery</p>
                         </Link>
                         <Link to={'/dairy&eggs'}>
-                        <p>Dairy&eggs</p>
+                        <p>Dairy&Eggs</p>
                         </Link>
                     </div>
                     <div className="footer-links-div">

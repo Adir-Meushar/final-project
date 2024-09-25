@@ -78,7 +78,7 @@
    .deliverd-btn:hover{
     background-color: rgb(47, 143, 47); 
     }
-  .no-orders {
+  .empty-area{
     min-width: 550px;
     padding: 20px;
     margin-top: 10%;
@@ -94,7 +94,7 @@
   .magnifying-glass{
     font-size: 4rem;
   }
-  .sad-smiley{
+  .sad-smiley,.happy-smiley-loading{
     position: absolute;
     font-size: 2.9rem;
     left:5px ;

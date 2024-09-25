@@ -123,7 +123,27 @@
     background-color: #c7ffc9;
     color: rgb(0, 66, 0);
   }
+  .message-class {
+    position: fixed; /* Fixed positioning to stay in place */
+    bottom: -100px; /* Start below the screen */
+    left: 20px; /* Position it on the left side */
+    font-size: 2rem;
+    background: #ffffff;
+    color: rgb(24, 125, 12);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Initially hidden */
+    transform: translateY(100px); /* Start with translation */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Transition for smooth slide-in */
+  }
   
+  .message-class.show {
+    opacity: 1; /* Become fully visible */
+    transform: translateY(0); /* Move to its final position */
+    bottom: 20px; /* Slide up into view */
+  }
+
   @keyframes slide-up {
     0% {
       opacity: 0;
